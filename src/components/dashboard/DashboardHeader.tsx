@@ -7,11 +7,11 @@ interface DashboardHeaderProps {
 
 const DashboardHeader = ({ title, subtitle }: DashboardHeaderProps) => {
   return (
-    <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-      <div className="pl-12 lg:pl-0">
-        <h1 className="text-2xl md:text-3xl font-bold text-foreground">{title}</h1>
+    <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+      <div className="pl-14 lg:pl-0">
+        <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">{title}</h1>
         {subtitle && (
-          <p className="text-muted-foreground mt-1">{subtitle}</p>
+          <p className="text-muted-foreground mt-2 text-lg">{subtitle}</p>
         )}
       </div>
 
@@ -20,23 +20,23 @@ const DashboardHeader = ({ title, subtitle }: DashboardHeaderProps) => {
         <div className="relative hidden md:block">
           <Search
             size={16}
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
           />
           <input
             type="text"
             placeholder="Search..."
-            className="w-64 pl-10 pr-4 py-2 rounded-lg border border-white/10 bg-white/5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
+            className="w-72 pl-11 pr-4 py-3 rounded-xl border border-white/[0.06] bg-card text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/50 transition-all"
           />
         </div>
 
         {/* Notifications */}
-        <button className="relative p-2 rounded-lg border border-white/10 bg-white/5 text-muted-foreground hover:text-foreground hover:bg-white/10 transition-all">
+        <button className="relative p-3 rounded-xl border border-white/[0.06] bg-card text-muted-foreground hover:text-foreground transition-all">
           <Bell size={18} />
-          <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-primary" />
+          <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-accent" />
         </button>
 
         {/* Avatar */}
-        <button className="w-9 h-9 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground font-semibold text-sm">
+        <button className="w-11 h-11 rounded-xl bg-accent flex items-center justify-center text-accent-foreground font-bold text-sm">
           JD
         </button>
       </div>

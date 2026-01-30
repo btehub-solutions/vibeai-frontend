@@ -2,62 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
-    --background: 220 20% 6%;
-    --foreground: 210 20% 95%;
+    /* Shopify-inspired: Deep black, warm cream accent, lime green pop */
+    --background: 160 15% 4%;
+    --foreground: 60 20% 95%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 210 20% 95%;
+    --card: 160 12% 7%;
+    --card-foreground: 60 20% 95%;
 
-    --popover: 220 18% 10%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 160 12% 7%;
+    --popover-foreground: 60 20% 95%;
 
-    --primary: 175 80% 50%;
-    --primary-foreground: 220 20% 6%;
+    /* Warm cream/off-white for primary CTAs - Shopify style */
+    --primary: 45 30% 94%;
+    --primary-foreground: 160 15% 4%;
 
-    --secondary: 220 15% 16%;
-    --secondary-foreground: 210 20% 90%;
+    --secondary: 160 10% 12%;
+    --secondary-foreground: 60 15% 85%;
 
-    --muted: 220 15% 14%;
-    --muted-foreground: 215 15% 55%;
+    --muted: 160 8% 15%;
+    --muted-foreground: 160 5% 55%;
 
-    --accent: 175 80% 50%;
-    --accent-foreground: 220 20% 6%;
+    /* Vibrant lime accent - Shopify's signature */
+    --accent: 75 85% 55%;
+    --accent-foreground: 160 15% 4%;
 
     --destructive: 0 72% 51%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive-foreground: 60 20% 98%;
 
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 175 80% 50%;
+    --border: 160 10% 15%;
+    --input: 160 10% 15%;
+    --ring: 75 85% 55%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Glass effects */
-    --glass-bg: 220 18% 12% / 0.6;
-    --glass-border: 220 15% 25% / 0.4;
-    --glass-blur: 16px;
-    
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220 20% 4%) 0%, hsl(220 25% 8%) 50%, hsl(200 20% 6%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(175 80% 50%) 0%, hsl(185 75% 45%) 100%);
-    --gradient-glass: linear-gradient(135deg, hsl(220 18% 14% / 0.8) 0%, hsl(220 18% 10% / 0.6) 100%);
-    
-    /* Shadows */
-    --shadow-glass: 0 8px 32px hsl(220 30% 4% / 0.4);
-    --shadow-glow: 0 0 40px hsl(175 80% 50% / 0.15);
+    /* Premium shadows */
+    --shadow-soft: 0 2px 20px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 60px rgba(190, 242, 100, 0.1);
 
-    --sidebar-background: 220 18% 8%;
-    --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 175 80% 50%;
-    --sidebar-primary-foreground: 220 20% 6%;
-    --sidebar-accent: 220 15% 14%;
-    --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 220 15% 16%;
-    --sidebar-ring: 175 80% 50%;
+    --sidebar-background: 160 12% 6%;
+    --sidebar-foreground: 60 15% 90%;
+    --sidebar-primary: 75 85% 55%;
+    --sidebar-primary-foreground: 160 15% 4%;
+    --sidebar-accent: 160 10% 14%;
+    --sidebar-accent-foreground: 60 15% 90%;
+    --sidebar-border: 160 10% 12%;
+    --sidebar-ring: 75 85% 55%;
   }
 }
 
@@ -71,75 +64,65 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
 }
 
 @layer components {
-  .glass-card {
-    @apply relative rounded-xl border border-white/[0.08] bg-card/60 backdrop-blur-xl;
-    box-shadow: var(--shadow-glass);
-  }
-
-  .glass-panel {
-    @apply relative rounded-2xl border border-white/[0.06] backdrop-blur-2xl;
-    background: linear-gradient(135deg, hsl(220 18% 12% / 0.7) 0%, hsl(220 18% 8% / 0.5) 100%);
-  }
-
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-accent);
-  }
-
+  /* Shopify-style primary button - cream/white, bold */
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold transition-all duration-300;
-    background: var(--gradient-accent);
+    @apply inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold transition-all duration-200;
+    background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
-    box-shadow: 0 4px 20px hsl(175 80% 50% / 0.25);
   }
 
   .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px hsl(175 80% 50% / 0.35);
+    transform: scale(1.02);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
   }
 
+  /* Secondary button - outlined, clean */
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:bg-white/10 hover:border-white/20;
+    @apply inline-flex items-center justify-center rounded-full border border-white/20 bg-transparent px-8 py-4 text-base font-medium text-foreground transition-all duration-200;
   }
 
+  .btn-secondary:hover {
+    @apply bg-white/5 border-white/40;
+  }
+
+  /* Shopify-style section */
   .section-padding {
-    @apply px-6 py-20 md:px-8 md:py-28 lg:px-12 lg:py-32;
+    @apply px-6 py-24 md:px-8 md:py-32 lg:px-12 lg:py-40;
   }
 
-  .container-narrow {
-    @apply mx-auto max-w-6xl;
+  .container-main {
+    @apply mx-auto max-w-[1400px] px-6 md:px-12;
   }
 
-  .container-wide {
-    @apply mx-auto max-w-7xl;
+  /* Card with subtle depth */
+  .card-elevated {
+    @apply relative rounded-3xl border border-white/[0.06] bg-card;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Text gradient for accent */
+  .text-accent-gradient {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, hsl(75 85% 55%) 0%, hsl(85 80% 60%) 100%);
   }
 }
 
 @layer utilities {
-  .animate-fade-up {
-    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  /* Hero text animation */
+  .animate-text-reveal {
+    animation: textReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .animate-fade-up-delay {
-    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
-    opacity: 0;
-  }
-
-  .animate-fade-up-delay-2 {
-    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-    opacity: 0;
-  }
-
-  @keyframes fadeUp {
+  @keyframes textReveal {
     from {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(40px);
     }
     to {
       opacity: 1;
@@ -147,16 +130,41 @@
     }
   }
 
-  .animate-glow {
-    animation: glow 3s ease-in-out infinite alternate;
+  .animate-delay-100 { animation-delay: 0.1s; opacity: 0; }
+  .animate-delay-200 { animation-delay: 0.2s; opacity: 0; }
+  .animate-delay-300 { animation-delay: 0.3s; opacity: 0; }
+  .animate-delay-400 { animation-delay: 0.4s; opacity: 0; }
+
+  /* Smooth fade in */
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
   }
 
-  @keyframes glow {
-    from {
-      box-shadow: 0 0 20px hsl(175 80% 50% / 0.2);
-    }
-    to {
-      box-shadow: 0 0 40px hsl(175 80% 50% / 0.35);
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Shopify rotating text container */
+  .rotating-text-container {
+    display: inline-block;
+    position: relative;
+    height: 1.2em;
+    overflow: hidden;
+    vertical-align: bottom;
+  }
+
+  .rotating-text {
+    display: block;
+    animation: rotateText 8s ease-in-out infinite;
+  }
+
+  @keyframes rotateText {
+    0%, 16% { transform: translateY(0); }
+    20%, 36% { transform: translateY(-100%); }
+    40%, 56% { transform: translateY(-200%); }
+    60%, 76% { transform: translateY(-300%); }
+    80%, 96% { transform: translateY(-400%); }
+    100% { transform: translateY(0); }
   }
 }

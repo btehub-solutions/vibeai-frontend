@@ -1,131 +1,142 @@
 import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 
 const plans = [
   {
     name: "Starter",
     price: "Free",
-    description: "Get started with the fundamentals of AI learning.",
+    period: "",
+    description: "Get started with AI fundamentals.",
     features: [
       "Access to introductory modules",
       "Basic AI tools overview",
       "Community forum access",
-      "Weekly newsletter",
     ],
-    cta: "Start Free",
+    cta: "Start free",
     popular: false,
   },
   {
-    name: "Pro Learner",
+    name: "Pro",
     price: "₦15,000",
-    period: "/month",
-    description: "Full access to all learning paths and resources.",
+    period: "/mo",
+    description: "Full access to everything.",
     features: [
       "All learning paths unlocked",
       "Complete AI tools library",
       "Priority support",
       "Certificate of completion",
       "Live Q&A sessions",
-      "Exclusive workshops",
     ],
-    cta: "Get Pro Access",
+    cta: "Start free trial",
     popular: true,
   },
   {
     name: "Enterprise",
     price: "₦50,000",
-    period: "/month",
-    description: "For teams and organizations serious about AI adoption.",
+    period: "/mo",
+    description: "For teams serious about AI.",
     features: [
       "Everything in Pro",
-      "Team management dashboard",
+      "Team management",
       "Custom learning paths",
-      "Dedicated account manager",
+      "Dedicated support",
       "API access",
-      "White-label options",
     ],
-    cta: "Contact Sales",
+    cta: "Contact sales",
     popular: false,
   },
 ];
 
 const PricingSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section id="pricing" className="section-padding bg-background relative">
-      <div className="container-narrow mx-auto">
+    <section id="pricing" className="section-padding bg-card relative">
+      {/* Rounded top */}
+      <div className="absolute -top-8 left-0 right-0 h-16 bg-background rounded-b-[3rem]" />
+
+      <div className="container-main" ref={ref}>
         {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-sm font-medium text-primary uppercase tracking-wider mb-4">
-            Pricing
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+        <div 
+          className="text-center max-w-2xl mx-auto mb-20"
+          style={{
+            transform: isInView ? "none" : "translateY(40px)",
+            opacity: isInView ? 1 : 0,
+            transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1)"
+          }}
+        >
+          <h2 className="text-display-sm md:text-display-md text-foreground mb-6">
             Invest in your AI future
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose the plan that fits your learning goals. 
-            Upgrade or downgrade anytime as your needs evolve.
+          <p className="text-body-lg text-muted-foreground">
+            Simple pricing that grows with you. Start free, upgrade when ready.
           </p>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {plans.map((plan) => (
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {plans.map((plan, index) => (
             <div
               key={plan.name}
-              className={`relative rounded-2xl p-8 transition-all duration-300 ${
+              className={`relative rounded-3xl p-8 transition-all duration-300 ${
                 plan.popular
-                  ? "glass-card border-primary/40 scale-[1.02]"
-                  : "glass-card hover:border-white/20"
+                  ? "bg-primary text-primary-foreground scale-105"
+                  : "bg-secondary border border-white/[0.06]"
               }`}
+              style={{
+                transform: isInView ? "none" : "translateY(40px)",
+                opacity: isInView ? 1 : 0,
+                transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) ${0.1 + index * 0.1}s`
+              }}
             >
               {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-xs font-semibold">
+                  <span className="px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-xs font-semibold">
                     Most Popular
                   </span>
                 </div>
               )}
 
-              {/* Plan Header */}
               <div className="mb-8">
-                <h3 className="text-xl font-semibold text-foreground mb-2">
+                <h3 className={`text-lg font-semibold mb-4 ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
                   {plan.name}
                 </h3>
                 <div className="flex items-baseline gap-1 mb-3">
-                  <span className="text-4xl font-bold text-foreground">
+                  <span className={`text-4xl font-bold ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
                     {plan.price}
                   </span>
                   {plan.period && (
-                    <span className="text-muted-foreground">{plan.period}</span>
+                    <span className={plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}>
+                      {plan.period}
+                    </span>
                   )}
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className={`text-sm ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
                   {plan.description}
                 </p>
               </div>
 
-              {/* Features */}
               <ul className="space-y-4 mb-8">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
-                      <Check size={12} className="text-primary" />
-                    </div>
-                    <span className="text-sm text-muted-foreground">
+                    <Check size={18} className={`flex-shrink-0 mt-0.5 ${plan.popular ? "text-accent" : "text-accent"}`} />
+                    <span className={`text-sm ${plan.popular ? "text-primary-foreground/90" : "text-muted-foreground"}`}>
                       {feature}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              {/* CTA */}
               <Link
                 to="/dashboard"
-                className={`block w-full text-center py-3 rounded-lg font-medium transition-all duration-300 ${
+                className={`block w-full text-center py-4 rounded-full font-semibold text-sm transition-all ${
                   plan.popular
-                    ? "btn-primary"
-                    : "btn-secondary"
+                    ? "bg-accent text-accent-foreground hover:opacity-90"
+                    : "bg-primary text-primary-foreground hover:opacity-90"
                 }`}
               >
                 {plan.cta}
@@ -134,12 +145,16 @@ const PricingSection = () => {
           ))}
         </div>
 
-        {/* Money Back Guarantee */}
-        <div className="mt-12 text-center">
-          <p className="text-sm text-muted-foreground">
-            14-day money-back guarantee on all paid plans. No questions asked.
-          </p>
-        </div>
+        {/* Guarantee */}
+        <p 
+          className="text-center text-sm text-muted-foreground mt-12"
+          style={{
+            opacity: isInView ? 1 : 0,
+            transition: "opacity 0.9s ease 0.5s"
+          }}
+        >
+          14-day money-back guarantee. No questions asked.
+        </p>
       </div>
     </section>
   );
