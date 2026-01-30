@@ -1,80 +1,17 @@
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
-import { Calendar, Clock, ExternalLink, Video } from "lucide-react";
+import { Clock, ExternalLink, Video } from "lucide-react";
 
 const upcomingEvents = [
-  {
-    id: 1,
-    title: "AI Tools Workshop",
-    description:
-      "Hands-on session exploring the latest AI tools and how to integrate them into your workflow.",
-    date: "February 1, 2025",
-    time: "3:00 PM WAT",
-    duration: "90 minutes",
-    type: "Workshop",
-    link: "https://zoom.us/j/example1",
-  },
-  {
-    id: 2,
-    title: "Community Office Hours",
-    description:
-      "Open Q&A session with our instructors. Bring your questions about AI, courses, or career advice.",
-    date: "February 5, 2025",
-    time: "4:00 PM WAT",
-    duration: "60 minutes",
-    type: "Q&A",
-    link: "https://zoom.us/j/example2",
-  },
-  {
-    id: 3,
-    title: "Prompt Engineering Masterclass",
-    description:
-      "Deep dive into advanced prompting techniques for ChatGPT, Claude, and other LLMs.",
-    date: "February 8, 2025",
-    time: "2:00 PM WAT",
-    duration: "2 hours",
-    type: "Workshop",
-    link: "https://zoom.us/j/example3",
-  },
-  {
-    id: 4,
-    title: "Monthly Community Meetup",
-    description:
-      "Connect with fellow learners, share your progress, and network in our monthly virtual meetup.",
-    date: "February 15, 2025",
-    time: "5:00 PM WAT",
-    duration: "90 minutes",
-    type: "Networking",
-    link: "https://zoom.us/j/example4",
-  },
-  {
-    id: 5,
-    title: "Guest Speaker: AI in Nigerian Tech",
-    description:
-      "Special guest session featuring leaders in Nigeria's growing AI ecosystem.",
-    date: "February 20, 2025",
-    time: "3:00 PM WAT",
-    duration: "75 minutes",
-    type: "Guest Speaker",
-    link: "https://zoom.us/j/example5",
-  },
+  { id: 1, title: "AI Tools Workshop", description: "Hands-on session exploring the latest AI tools and how to integrate them into your workflow.", date: "February 1, 2025", time: "3:00 PM WAT", duration: "90 min", type: "Workshop", link: "#" },
+  { id: 2, title: "Community Office Hours", description: "Open Q&A session with our instructors. Bring your questions about AI, courses, or career advice.", date: "February 5, 2025", time: "4:00 PM WAT", duration: "60 min", type: "Q&A", link: "#" },
+  { id: 3, title: "Prompt Engineering Masterclass", description: "Deep dive into advanced prompting techniques for ChatGPT, Claude, and other LLMs.", date: "February 8, 2025", time: "2:00 PM WAT", duration: "2 hours", type: "Workshop", link: "#" },
+  { id: 4, title: "Monthly Community Meetup", description: "Connect with fellow learners, share your progress, and network in our monthly virtual meetup.", date: "February 15, 2025", time: "5:00 PM WAT", duration: "90 min", type: "Networking", link: "#" },
 ];
 
 const pastEvents = [
-  {
-    id: 101,
-    title: "Introduction to LLMs Workshop",
-    date: "January 20, 2025",
-    type: "Workshop",
-    recording: "https://youtube.com/example1",
-  },
-  {
-    id: 102,
-    title: "Community Office Hours",
-    date: "January 15, 2025",
-    type: "Q&A",
-    recording: "https://youtube.com/example2",
-  },
+  { id: 101, title: "Introduction to LLMs Workshop", date: "January 20, 2025", type: "Workshop", recording: "#" },
+  { id: 102, title: "Community Office Hours", date: "January 15, 2025", type: "Q&A", recording: "#" },
 ];
 
 const DashboardSchedule = () => {
@@ -82,32 +19,30 @@ const DashboardSchedule = () => {
     <div className="min-h-screen bg-background flex">
       <DashboardSidebar />
 
-      <main className="flex-1 p-6 lg:p-8 overflow-auto">
+      <main className="flex-1 p-6 lg:p-10 overflow-auto">
         <DashboardHeader
           title="Schedule"
           subtitle="Upcoming programs, workshops, and meetings"
         />
 
         {/* Upcoming Events */}
-        <div className="mb-12">
-          <h2 className="text-lg font-semibold text-foreground mb-6">
+        <div className="mb-16">
+          <h2 className="text-xl font-semibold text-foreground mb-8">
             Upcoming Events
           </h2>
-          <div className="grid gap-4 max-w-4xl">
+          <div className="grid gap-5 max-w-5xl">
             {upcomingEvents.map((event) => (
               <div
                 key={event.id}
-                className="glass-card p-6 hover:border-primary/30 transition-all duration-300"
+                className="card-elevated p-8 hover:border-accent/20 transition-all duration-300"
               >
-                <div className="flex flex-col md:flex-row md:items-start gap-4">
+                <div className="flex flex-col md:flex-row md:items-center gap-6">
                   {/* Date Card */}
-                  <div className="flex-shrink-0 w-20 h-20 rounded-xl bg-secondary flex flex-col items-center justify-center text-center">
-                    <span className="text-xs text-muted-foreground uppercase">
-                      {new Date(event.date).toLocaleDateString("en-US", {
-                        month: "short",
-                      })}
+                  <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-secondary flex flex-col items-center justify-center text-center">
+                    <span className="text-xs text-muted-foreground uppercase font-medium">
+                      {new Date(event.date).toLocaleDateString("en-US", { month: "short" })}
                     </span>
-                    <span className="text-2xl font-bold text-foreground">
+                    <span className="text-3xl font-bold text-foreground">
                       {new Date(event.date).getDate()}
                     </span>
                   </div>
@@ -115,23 +50,20 @@ const DashboardSchedule = () => {
                   {/* Content */}
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-3 mb-2">
-                      <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                      <span className="inline-block px-3 py-1.5 rounded-full text-xs font-medium bg-accent/10 text-accent">
                         {event.type}
                       </span>
                     </div>
-                    <h3 className="text-lg font-semibold text-foreground mb-2">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
                       {event.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
                       {event.description}
                     </p>
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                      <span className="flex items-center gap-1">
+                    <div className="flex flex-wrap items-center gap-5 text-sm text-muted-foreground">
+                      <span>{event.time}</span>
+                      <span className="flex items-center gap-1.5">
                         <Clock size={14} />
-                        {event.time}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Calendar size={14} />
                         {event.duration}
                       </span>
                     </div>
@@ -141,9 +73,7 @@ const DashboardSchedule = () => {
                   <div className="flex-shrink-0">
                     <a
                       href={event.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 bg-primary text-primary-foreground hover:opacity-90"
+                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm bg-primary text-primary-foreground hover:opacity-90 transition-all"
                     >
                       Join Event
                       <ExternalLink size={14} />
@@ -157,30 +87,28 @@ const DashboardSchedule = () => {
 
         {/* Past Events */}
         <div>
-          <h2 className="text-lg font-semibold text-foreground mb-6">
+          <h2 className="text-xl font-semibold text-foreground mb-8">
             Past Events
           </h2>
-          <div className="grid md:grid-cols-2 gap-4 max-w-4xl">
+          <div className="grid md:grid-cols-2 gap-5 max-w-5xl">
             {pastEvents.map((event) => (
               <div
                 key={event.id}
-                className="glass-card p-5 hover:border-primary/30 transition-all duration-300"
+                className="card-elevated p-6 hover:border-accent/20 transition-all duration-300"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <span className="inline-block px-2 py-0.5 rounded-full text-xs font-medium bg-secondary text-muted-foreground mb-2">
+                    <span className="inline-block px-2.5 py-1 rounded-full text-xs font-medium bg-secondary text-muted-foreground mb-3">
                       {event.type}
                     </span>
-                    <h3 className="font-medium text-foreground mb-1">
+                    <h3 className="font-semibold text-foreground mb-1">
                       {event.title}
                     </h3>
-                    <p className="text-xs text-muted-foreground">{event.date}</p>
+                    <p className="text-sm text-muted-foreground">{event.date}</p>
                   </div>
                   <a
                     href={event.recording}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-shrink-0 p-2 rounded-lg bg-white/5 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
+                    className="flex-shrink-0 p-3 rounded-xl bg-secondary text-muted-foreground hover:text-accent hover:bg-accent/10 transition-all"
                   >
                     <Video size={18} />
                   </a>

@@ -1,94 +1,102 @@
-import { BookOpen, Users, Rocket, Trophy } from "lucide-react";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
+import { Zap, BookOpen, Target, Award } from "lucide-react";
 
-const steps = [
+const features = [
   {
     icon: BookOpen,
-    title: "Choose Your Path",
-    description:
-      "Select from curated learning paths designed for different skill levels and goals. Start where you are, go where you want.",
+    title: "Structured paths",
+    description: "Clear progression from fundamentals to mastery. Each module builds naturally on the last.",
   },
   {
-    icon: Users,
-    title: "Learn With Structure",
-    description:
-      "Each path guides you through progressive modules. Concepts build naturally, ensuring deep comprehension over surface knowledge.",
+    icon: Zap,
+    title: "Always current",
+    description: "Content that evolves with the AI landscape. What you learn today is relevant tomorrow.",
   },
   {
-    icon: Rocket,
-    title: "Apply Your Knowledge",
-    description:
-      "Practical exercises and real-world applications help cement your learning. Theory meets practice at every step.",
+    icon: Target,
+    title: "Practical focus",
+    description: "Theory meets application. Real skills you can use immediately in your work.",
   },
   {
-    icon: Trophy,
-    title: "Track Your Progress",
-    description:
-      "See how far you've come. Clear progress indicators and achievements keep you motivated and moving forward.",
+    icon: Award,
+    title: "Track progress",
+    description: "See how far you've come with clear milestones and achievements along the way.",
   },
 ];
 
 const HowItWorksSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section id="how-it-works" className="section-padding bg-background relative">
-      <div className="container-narrow mx-auto">
+    <section id="how-it-works" className="section-padding bg-card relative">
+      {/* Rounded top edge - Shopify style */}
+      <div className="absolute -top-8 left-0 right-0 h-16 bg-background rounded-b-[3rem]" />
+      
+      <div className="container-main" ref={ref}>
         {/* Header */}
-        <div className="text-center mb-16">
-          <p className="text-sm font-medium text-primary uppercase tracking-wider mb-4">
-            How It Works
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Learning made simple
+        <div 
+          className="max-w-3xl mb-20"
+          style={{
+            transform: isInView ? "none" : "translateY(40px)",
+            opacity: isInView ? 1 : 0,
+            transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1)"
+          }}
+        >
+          <h2 className="text-display-sm md:text-display-md text-foreground mb-6">
+            Learning, simplified
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A straightforward approach to mastering AI. No complexity, no confusion, 
-            just clear paths to understanding.
+          <p className="text-body-lg text-muted-foreground">
+            A straightforward approach to AI mastery. No complexity, no confusion.
           </p>
         </div>
 
-        {/* Steps Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {steps.map((step, index) => (
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 gap-x-16 gap-y-16">
+          {features.map((feature, index) => (
             <div
-              key={step.title}
-              className="glass-card p-8 group hover:border-primary/30 transition-all duration-300"
+              key={feature.title}
+              className="flex gap-6"
+              style={{
+                transform: isInView ? "none" : "translateY(40px)",
+                opacity: isInView ? 1 : 0,
+                transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) ${0.1 + index * 0.1}s`
+              }}
             >
-              <div className="flex items-start gap-6">
-                {/* Step Number */}
-                <div className="flex-shrink-0">
-                  <div className="relative">
-                    <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-300">
-                      <step.icon className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                    </div>
-                    <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
-                      {index + 1}
-                    </span>
-                  </div>
+              <div className="flex-shrink-0">
+                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
+                  <feature.icon className="w-6 h-6 text-accent" />
                 </div>
-
-                {/* Content */}
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-foreground mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Visual Flow Indicator */}
-        <div className="mt-16 flex justify-center">
-          <div className="glass-panel px-8 py-4 flex items-center gap-4">
-            <span className="text-sm text-muted-foreground">Your journey:</span>
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-foreground">Beginner</span>
-              <div className="w-24 h-1 rounded-full bg-gradient-to-r from-primary/40 via-primary to-primary/40" />
-              <span className="text-sm font-medium text-foreground">Expert</span>
-            </div>
+        {/* Visual element - Journey bar */}
+        <div 
+          className="mt-24 py-8 px-12 rounded-3xl bg-secondary/50 flex items-center justify-between"
+          style={{
+            transform: isInView ? "none" : "translateY(40px)",
+            opacity: isInView ? 1 : 0,
+            transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+          }}
+        >
+          <span className="text-lg font-medium text-foreground">Beginner</span>
+          <div className="flex-1 mx-8 h-1 rounded-full bg-gradient-to-r from-accent via-accent/50 to-muted relative">
+            <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-accent" />
+            <div className="absolute left-1/2 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-accent/60" />
+            <div className="absolute left-3/4 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-muted" />
           </div>
+          <span className="text-lg font-medium text-foreground">Expert</span>
         </div>
       </div>
     </section>

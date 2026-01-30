@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Play } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,36 +15,36 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "How It Works", href: "#how-it-works" },
-    { name: "AI Tools", href: "#ai-tools" },
+    { name: "Why VibeAI", href: "#why" },
+    { name: "Learning", href: "#how-it-works" },
     { name: "Pricing", href: "#pricing" },
   ];
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-white/[0.06]"
+          ? "bg-background/90 backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
-      <div className="container-wide mx-auto px-6 md:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div className="container-main">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">V</span>
+          <Link to="/" className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center">
+              <span className="text-accent-foreground font-bold text-lg">V</span>
             </div>
-            <span className="text-lg font-semibold text-foreground">VibeAI</span>
+            <span className="text-xl font-bold text-foreground tracking-tight">VibeAI</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-[15px] text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 {link.name}
               </a>
@@ -55,19 +55,19 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-4">
             <Link
               to="/dashboard"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="text-[15px] text-muted-foreground hover:text-foreground transition-colors duration-200 px-4 py-2"
             >
-              Sign In
+              Log in
             </Link>
-            <Link to="/dashboard" className="btn-primary text-sm px-5 py-2.5">
-              Start Learning
+            <Link to="/dashboard" className="btn-primary text-[15px] px-6 py-3">
+              Start for free
             </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+            className="md:hidden p-2 text-foreground"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -75,27 +75,27 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-6 border-t border-white/[0.06]">
-            <div className="flex flex-col gap-4">
+          <div className="md:hidden py-8 border-t border-white/[0.06]">
+            <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {link.name}
                 </a>
               ))}
-              <div className="pt-4 flex flex-col gap-3">
+              <div className="pt-6 flex flex-col gap-4">
                 <Link
                   to="/dashboard"
-                  className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Sign In
+                  Log in
                 </Link>
                 <Link to="/dashboard" className="btn-primary text-center">
-                  Start Learning
+                  Start for free
                 </Link>
               </div>
             </div>

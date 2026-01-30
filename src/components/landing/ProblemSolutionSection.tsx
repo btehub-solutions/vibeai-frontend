@@ -1,97 +1,81 @@
-import { Zap, Target, Compass, TrendingUp } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 const ProblemSolutionSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="section-padding bg-background relative overflow-hidden">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
+    <section id="why" className="section-padding bg-background relative overflow-hidden">
+      {/* Subtle gradient accent */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       
-      <div className="container-narrow mx-auto relative z-10">
-        {/* Problem Statement */}
-        <div className="text-center mb-20">
-          <p className="text-sm font-medium text-primary uppercase tracking-wider mb-4">
-            The Challenge
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
-            AI is everywhere.<br />
-            <span className="text-muted-foreground">Understanding it shouldn't be hard.</span>
+      <div className="container-main" ref={ref}>
+        {/* Main statement - Shopify bold typography */}
+        <div 
+          className="max-w-5xl mb-24"
+          style={{
+            transform: isInView ? "none" : "translateY(40px)",
+            opacity: isInView ? 1 : 0,
+            transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1)"
+          }}
+        >
+          <h2 className="text-display-sm md:text-display-md lg:text-display-lg text-foreground mb-8">
+            The one learning platform for{" "}
+            <span className="text-muted-foreground">everything AI</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            The AI landscape moves fast. New tools launch daily. Information is scattered, 
-            often overwhelming, and rarely structured for real understanding.
+          <p className="text-body-lg text-muted-foreground max-w-2xl">
+            Learn from fundamentals to advanced. Learn for work and personal growth. 
+            Learn structured content and trending tools.
           </p>
         </div>
 
-        {/* Problem Cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-20">
-          <div className="glass-card p-8">
-            <div className="w-12 h-12 rounded-xl bg-destructive/10 flex items-center justify-center mb-6">
-              <Compass className="w-6 h-6 text-destructive/80" />
+        {/* Grid of brand showcases - Shopify style */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { 
+              title: "ChatGPT Mastery", 
+              image: "https://images.unsplash.com/photo-1676299081847-824916de030a?w=600&h=800&fit=crop",
+              link: "chatgpt.com"
+            },
+            { 
+              title: "Prompt Engineering", 
+              image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=700&fit=crop",
+              link: "prompts.ai"
+            },
+            { 
+              title: "AI for Business", 
+              image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=800&fit=crop",
+              link: "business.ai"
+            },
+            { 
+              title: "Creative AI Tools", 
+              image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=700&fit=crop",
+              link: "creative.ai"
+            },
+          ].map((item, index) => (
+            <div
+              key={item.title}
+              className="group relative overflow-hidden rounded-3xl bg-card aspect-[3/4] cursor-pointer"
+              style={{
+                transform: isInView ? "none" : "translateY(60px)",
+                opacity: isInView ? 1 : 0,
+                transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) ${0.1 + index * 0.1}s`
+              }}
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <p className="text-sm text-muted-foreground mb-2">{item.link}</p>
+                <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
+              </div>
             </div>
-            <h3 className="text-xl font-semibold text-foreground mb-3">
-              Scattered Learning Resources
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              YouTube tutorials, Twitter threads, blog posts, courses scattered everywhere. 
-              No clear path from beginner to competent.
-            </p>
-          </div>
-
-          <div className="glass-card p-8">
-            <div className="w-12 h-12 rounded-xl bg-destructive/10 flex items-center justify-center mb-6">
-              <TrendingUp className="w-6 h-6 text-destructive/80" />
-            </div>
-            <h3 className="text-xl font-semibold text-foreground mb-3">
-              Rapidly Changing Landscape
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              What you learned last month might already be outdated. 
-              Keeping up feels like a full-time job.
-            </p>
-          </div>
-        </div>
-
-        {/* Solution Statement */}
-        <div className="text-center mb-12">
-          <p className="text-sm font-medium text-primary uppercase tracking-wider mb-4">
-            The Solution
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            VibeAI brings clarity
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            One platform. Structured learning paths. Current, curated content. 
-            Learn AI the way it should be taught.
-          </p>
-        </div>
-
-        {/* Solution Cards */}
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="glass-card p-8 border-primary/20">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-              <Target className="w-6 h-6 text-primary" />
-            </div>
-            <h3 className="text-xl font-semibold text-foreground mb-3">
-              Structured Learning Paths
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Clear progression from fundamentals to advanced concepts. 
-              Each module builds on the last, creating deep understanding.
-            </p>
-          </div>
-
-          <div className="glass-card p-8 border-primary/20">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-              <Zap className="w-6 h-6 text-primary" />
-            </div>
-            <h3 className="text-xl font-semibold text-foreground mb-3">
-              Always Current Content
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Our content evolves with the AI landscape. 
-              Learn what's relevant today, prepared for tomorrow.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </section>
