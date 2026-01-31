@@ -30,13 +30,10 @@ const ProblemSolutionSection = () => {
 
   return (
     <section id="why" className="section-padding bg-background relative overflow-hidden">
-      {/* Subtle green glow at top */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-accent/5 blur-[150px] rounded-full" />
-      
       <div className="container-main relative" ref={ref}>
         {/* Main statement - Shopify bold typography */}
         <div 
-          className="max-w-5xl mb-24"
+          className="max-w-5xl mb-16 md:mb-24"
           style={{
             transform: isInView ? "none" : "translateY(40px)",
             opacity: isInView ? 1 : 0,
@@ -53,12 +50,12 @@ const ProblemSolutionSection = () => {
           </p>
         </div>
 
-        {/* Grid of brand showcases - Shopify style cards that blend with bg */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Grid of brand showcases - Shopify style cards */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {showcaseItems.map((item, index) => (
             <div
               key={item.title}
-              className="group relative overflow-hidden rounded-3xl bg-card aspect-[3/4] cursor-pointer border border-white/[0.04] transition-all duration-500 hover:border-accent/20"
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl bg-card aspect-[3/4] cursor-pointer border border-white/[0.04] transition-all duration-500 hover:border-white/10"
               style={{
                 transform: isInView ? "none" : "translateY(60px)",
                 opacity: isInView ? 1 : 0,
@@ -72,16 +69,13 @@ const ProblemSolutionSection = () => {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               
-              {/* Shopify-style gradient overlay - blends into bg */}
+              {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
               
-              {/* Green glow on hover */}
-              <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-500" />
-              
               {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="text-sm text-muted-foreground mb-2">{item.link}</p>
-                <h3 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                <p className="text-xs md:text-sm text-muted-foreground mb-1 md:mb-2">{item.link}</p>
+                <h3 className="text-base md:text-xl font-semibold text-foreground group-hover:text-muted-foreground transition-colors duration-300">
                   {item.title}
                 </h3>
               </div>

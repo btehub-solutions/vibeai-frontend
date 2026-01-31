@@ -61,13 +61,10 @@ const AIToolsSection = () => {
 
   return (
     <section id="ai-tools" className="section-padding bg-background relative">
-      {/* Green glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-accent/5 blur-[150px] rounded-full" />
-      
       <div className="container-main relative" ref={ref}>
         {/* Header */}
         <div 
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8 mb-12 md:mb-16"
           style={{
             transform: isInView ? "none" : "translateY(40px)",
             opacity: isInView ? 1 : 0,
@@ -75,34 +72,36 @@ const AIToolsSection = () => {
           }}
         >
           <div className="max-w-2xl">
-            <h2 className="text-display-sm md:text-display-md text-foreground mb-6">
+            <h2 className="text-display-sm md:text-display-md text-foreground mb-4 md:mb-6">
               Trending AI tools
             </h2>
-            <p className="text-body-lg text-muted-foreground">
+            <p className="text-body-md md:text-body-lg text-muted-foreground">
               Stay current with the tools shaping the industry. We track, analyze, 
               and teach you how to use them.
             </p>
           </div>
 
-          {/* Navigation - Shopify style circular buttons */}
+          {/* Navigation */}
           <div className="flex items-center gap-3">
             <button
               onClick={() => setCurrentPage((p) => (p - 1 + totalPages) % totalPages)}
-              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/30 hover:bg-accent/5 transition-all duration-300"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+              aria-label="Previous page"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               onClick={() => setCurrentPage((p) => (p + 1) % totalPages)}
-              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/30 hover:bg-accent/5 transition-all duration-300"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+              aria-label="Next page"
             >
               <ChevronRight size={20} />
             </button>
           </div>
         </div>
 
-        {/* Tools Grid - Shopify style with images */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Tools Grid - Responsive for mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {visibleTools.map((tool, index) => (
             <div
               key={tool.name}
@@ -114,7 +113,7 @@ const AIToolsSection = () => {
               }}
             >
               {/* Image */}
-              <div className="relative h-48 overflow-hidden rounded-t-3xl">
+              <div className="relative h-40 md:h-48 overflow-hidden rounded-t-3xl">
                 <img 
                   src={tool.image} 
                   alt={tool.name}
@@ -124,7 +123,7 @@ const AIToolsSection = () => {
                 
                 {/* Trending badge */}
                 {tool.trending && (
-                  <span className="absolute top-4 right-4 inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-accent/20 backdrop-blur-sm text-accent text-xs font-medium border border-accent/20">
+                  <span className="absolute top-4 right-4 inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-foreground text-xs font-medium border border-white/10">
                     <TrendingUp size={12} />
                     Trending
                   </span>
@@ -132,12 +131,12 @@ const AIToolsSection = () => {
               </div>
               
               {/* Content */}
-              <div className="p-6">
+              <div className="p-5 md:p-6">
                 <div className="mb-4">
-                  <h3 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors duration-300 mb-1">
+                  <h3 className="text-lg md:text-xl font-semibold text-foreground group-hover:text-muted-foreground transition-colors duration-300 mb-1">
                     {tool.name}
                   </h3>
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-xs md:text-sm text-muted-foreground">
                     {tool.category}
                   </span>
                 </div>
@@ -146,7 +145,7 @@ const AIToolsSection = () => {
                   {tool.description}
                 </p>
                 
-                <button className="flex items-center gap-2 text-sm font-medium text-foreground group-hover:text-accent transition-colors duration-300">
+                <button className="flex items-center gap-2 text-sm font-medium text-foreground group-hover:text-muted-foreground transition-colors duration-300">
                   Learn more
                   <ExternalLink size={14} />
                 </button>
@@ -158,17 +157,18 @@ const AIToolsSection = () => {
           ))}
         </div>
 
-        {/* Page indicators - Shopify style */}
-        <div className="flex justify-center gap-2 mt-12">
+        {/* Page indicators */}
+        <div className="flex justify-center gap-2 mt-10 md:mt-12">
           {Array.from({ length: totalPages }).map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentPage(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 currentPage === index 
-                  ? "bg-accent w-8" 
+                  ? "bg-foreground w-8" 
                   : "bg-white/20 w-2 hover:bg-white/40"
               }`}
+              aria-label={`Go to page ${index + 1}`}
             />
           ))}
         </div>
