@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Play } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,13 +24,13 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/90 backdrop-blur-xl"
+          ? "bg-background/95 backdrop-blur-xl border-b border-white/[0.06]"
           : "bg-transparent"
       }`}
     >
       <div className="container-main">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* Logo - Shopify style with icon */}
           <Link to="/" className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center">
               <span className="text-accent-foreground font-bold text-lg">V</span>
@@ -38,7 +38,7 @@ const Navbar = () => {
             <span className="text-xl font-bold text-foreground tracking-tight">VibeAI</span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Shopify minimal style */}
           <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a
@@ -51,7 +51,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA - Shopify exact style */}
           <div className="hidden md:flex items-center gap-4">
             <Link
               to="/dashboard"
@@ -75,7 +75,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-8 border-t border-white/[0.06]">
+          <div className="md:hidden py-8 border-t border-white/[0.06] bg-background/95 backdrop-blur-xl">
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
                 <a
@@ -87,7 +87,7 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <div className="pt-6 flex flex-col gap-4">
+              <div className="pt-6 flex flex-col gap-4 border-t border-white/[0.06]">
                 <Link
                   to="/dashboard"
                   className="text-muted-foreground hover:text-foreground transition-colors"

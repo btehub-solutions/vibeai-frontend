@@ -6,51 +6,55 @@
 
 @layer base {
   :root {
-    /* Shopify-inspired: Deep black, warm cream accent, lime green pop */
-    --background: 160 15% 4%;
+    /* Shopify's exact color palette - Deep teal-black base */
+    --background: 164 22% 5%;
     --foreground: 60 20% 95%;
 
-    --card: 160 12% 7%;
+    /* Card matches background for blended effect */
+    --card: 164 22% 8%;
     --card-foreground: 60 20% 95%;
 
-    --popover: 160 12% 7%;
+    --popover: 164 22% 8%;
     --popover-foreground: 60 20% 95%;
 
     /* Warm cream/off-white for primary CTAs - Shopify style */
     --primary: 45 30% 94%;
-    --primary-foreground: 160 15% 4%;
+    --primary-foreground: 164 22% 5%;
 
-    --secondary: 160 10% 12%;
+    /* Blended teal-green for sections */
+    --secondary: 164 18% 10%;
     --secondary-foreground: 60 15% 85%;
 
-    --muted: 160 8% 15%;
-    --muted-foreground: 160 5% 55%;
+    --muted: 164 12% 18%;
+    --muted-foreground: 160 8% 55%;
 
-    /* Vibrant lime accent - Shopify's signature */
-    --accent: 75 85% 55%;
-    --accent-foreground: 160 15% 4%;
+    /* Shopify's signature lime-green accent */
+    --accent: 75 90% 55%;
+    --accent-foreground: 164 22% 5%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 60 20% 98%;
 
-    --border: 160 10% 15%;
-    --input: 160 10% 15%;
-    --ring: 75 85% 55%;
+    --border: 164 15% 12%;
+    --input: 164 15% 12%;
+    --ring: 75 90% 55%;
 
     --radius: 1rem;
 
-    /* Premium shadows */
-    --shadow-soft: 0 2px 20px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 60px rgba(190, 242, 100, 0.1);
+    /* Shopify-style shadows and glows */
+    --shadow-soft: 0 4px 30px rgba(0, 0, 0, 0.4);
+    --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.3);
+    --glow-green: 0 0 80px rgba(170, 230, 80, 0.15);
+    --glow-green-strong: 0 0 120px rgba(170, 230, 80, 0.25);
 
-    --sidebar-background: 160 12% 6%;
+    --sidebar-background: 164 22% 6%;
     --sidebar-foreground: 60 15% 90%;
-    --sidebar-primary: 75 85% 55%;
-    --sidebar-primary-foreground: 160 15% 4%;
-    --sidebar-accent: 160 10% 14%;
+    --sidebar-primary: 75 90% 55%;
+    --sidebar-primary-foreground: 164 22% 5%;
+    --sidebar-accent: 164 18% 14%;
     --sidebar-accent-foreground: 60 15% 90%;
-    --sidebar-border: 160 10% 12%;
-    --sidebar-ring: 75 85% 55%;
+    --sidebar-border: 164 15% 12%;
+    --sidebar-ring: 75 90% 55%;
   }
 }
 
@@ -70,7 +74,7 @@
 }
 
 @layer components {
-  /* Shopify-style primary button - cream/white, bold */
+  /* Shopify-style primary button - cream/white, bold, pill shape */
   .btn-primary {
     @apply inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold transition-all duration-200;
     background: hsl(var(--primary));
@@ -91,7 +95,7 @@
     @apply bg-white/5 border-white/40;
   }
 
-  /* Shopify-style section */
+  /* Shopify-style section padding */
   .section-padding {
     @apply px-6 py-24 md:px-8 md:py-32 lg:px-12 lg:py-40;
   }
@@ -100,21 +104,65 @@
     @apply mx-auto max-w-[1400px] px-6 md:px-12;
   }
 
-  /* Card with subtle depth */
+  /* Shopify blended card - same bg as section with subtle border */
   .card-elevated {
-    @apply relative rounded-3xl border border-white/[0.06] bg-card;
+    @apply relative rounded-3xl border border-white/[0.06];
+    background: hsl(var(--card));
     box-shadow: var(--shadow-soft);
+  }
+
+  /* Shopify-style feature card with green glow on hover */
+  .card-feature {
+    @apply relative rounded-3xl border border-white/[0.06] overflow-hidden transition-all duration-500;
+    background: hsl(var(--card));
+  }
+
+  .card-feature:hover {
+    border-color: hsl(var(--accent) / 0.2);
+    box-shadow: var(--glow-green);
+  }
+
+  /* Green glow overlay effect - Shopify signature */
+  .glow-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, hsl(75 90% 55% / 0.08) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   /* Text gradient for accent */
   .text-accent-gradient {
     @apply bg-clip-text text-transparent;
-    background: linear-gradient(135deg, hsl(75 85% 55%) 0%, hsl(85 80% 60%) 100%);
+    background: linear-gradient(135deg, hsl(75 90% 55%) 0%, hsl(85 85% 60%) 100%);
+  }
+
+  /* Rounded section transition - Shopify style */
+  .section-rounded-top {
+    border-radius: 3rem 3rem 0 0;
+  }
+
+  .section-rounded-bottom {
+    border-radius: 0 0 3rem 3rem;
+  }
+
+  /* Shopify-style scrolling ticker */
+  .ticker-container {
+    @apply overflow-hidden whitespace-nowrap;
+  }
+
+  .ticker-content {
+    @apply flex gap-8;
+    animation: ticker 30s linear infinite;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 }
 
 @layer utilities {
-  /* Hero text animation */
+  /* Hero text animation - smooth reveal */
   .animate-text-reveal {
     animation: textReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -145,7 +193,7 @@
     to { opacity: 1; }
   }
 
-  /* Shopify rotating text container */
+  /* Shopify rotating text for hero */
   .rotating-text-container {
     display: inline-block;
     position: relative;
@@ -156,7 +204,7 @@
 
   .rotating-text {
     display: block;
-    animation: rotateText 8s ease-in-out infinite;
+    animation: rotateText 10s ease-in-out infinite;
   }
 
   @keyframes rotateText {
@@ -166,5 +214,25 @@
     60%, 76% { transform: translateY(-300%); }
     80%, 96% { transform: translateY(-400%); }
     100% { transform: translateY(0); }
+  }
+
+  /* Subtle float animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Pulse glow for accents */
+  .animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: var(--glow-green); }
+    50% { box-shadow: var(--glow-green-strong); }
   }
 }

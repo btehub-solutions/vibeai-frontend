@@ -54,11 +54,11 @@ const PricingSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="pricing" className="section-padding bg-card relative">
-      {/* Rounded top */}
-      <div className="absolute -top-8 left-0 right-0 h-16 bg-background rounded-b-[3rem]" />
-
-      <div className="container-main" ref={ref}>
+    <section id="pricing" className="section-padding bg-card relative overflow-hidden section-rounded-top">
+      {/* Green glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 blur-[150px] rounded-full" />
+      
+      <div className="container-main relative" ref={ref}>
         {/* Header */}
         <div 
           className="text-center max-w-2xl mx-auto mb-20"
@@ -76,15 +76,15 @@ const PricingSection = () => {
           </p>
         </div>
 
-        {/* Pricing Cards */}
+        {/* Pricing Cards - Shopify blended style */}
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
             <div
               key={plan.name}
-              className={`relative rounded-3xl p-8 transition-all duration-300 ${
+              className={`relative rounded-3xl p-8 transition-all duration-500 border ${
                 plan.popular
-                  ? "bg-primary text-primary-foreground scale-105"
-                  : "bg-secondary border border-white/[0.06]"
+                  ? "bg-primary text-primary-foreground border-primary scale-[1.02] shadow-xl"
+                  : "bg-secondary border-white/[0.06] hover:border-accent/20"
               }`}
               style={{
                 transform: isInView ? "none" : "translateY(40px)",
@@ -95,7 +95,7 @@ const PricingSection = () => {
               {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-xs font-semibold">
+                  <span className="px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-xs font-semibold shadow-lg">
                     Most Popular
                   </span>
                 </div>
@@ -133,9 +133,9 @@ const PricingSection = () => {
 
               <Link
                 to="/dashboard"
-                className={`block w-full text-center py-4 rounded-full font-semibold text-sm transition-all ${
+                className={`block w-full text-center py-4 rounded-full font-semibold text-sm transition-all duration-300 ${
                   plan.popular
-                    ? "bg-accent text-accent-foreground hover:opacity-90"
+                    ? "bg-accent text-accent-foreground hover:opacity-90 shadow-lg"
                     : "bg-primary text-primary-foreground hover:opacity-90"
                 }`}
               >

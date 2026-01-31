@@ -1,27 +1,27 @@
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-import { Zap, BookOpen, Target, Award } from "lucide-react";
+import { BookOpen, Zap, Trophy, Users } from "lucide-react";
 
-const features = [
+const steps = [
   {
     icon: BookOpen,
-    title: "Structured paths",
-    description: "Clear progression from fundamentals to mastery. Each module builds naturally on the last.",
+    title: "Learn the fundamentals",
+    description: "Start with clear, structured content that builds your AI foundation step by step.",
   },
   {
     icon: Zap,
-    title: "Always current",
-    description: "Content that evolves with the AI landscape. What you learn today is relevant tomorrow.",
+    title: "Practice with real tools",
+    description: "Get hands-on with ChatGPT, Claude, Midjourney, and other industry-leading AI tools.",
   },
   {
-    icon: Target,
-    title: "Practical focus",
-    description: "Theory meets application. Real skills you can use immediately in your work.",
+    icon: Users,
+    title: "Learn from experts",
+    description: "Watch real professionals use AI to solve real problems. No abstract theory.",
   },
   {
-    icon: Award,
-    title: "Track progress",
-    description: "See how far you've come with clear milestones and achievements along the way.",
+    icon: Trophy,
+    title: "Build real skills",
+    description: "Complete projects, earn certificates, and join a community of AI practitioners.",
   },
 ];
 
@@ -30,14 +30,14 @@ const HowItWorksSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="how-it-works" className="section-padding bg-card relative">
-      {/* Rounded top edge - Shopify style */}
-      <div className="absolute -top-8 left-0 right-0 h-16 bg-background rounded-b-[3rem]" />
+    <section id="how-it-works" className="section-padding bg-secondary relative overflow-hidden section-rounded-top">
+      {/* Green glow effect - Shopify signature */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 blur-[150px] rounded-full" />
       
-      <div className="container-main" ref={ref}>
+      <div className="container-main relative" ref={ref}>
         {/* Header */}
         <div 
-          className="max-w-3xl mb-20"
+          className="text-center max-w-3xl mx-auto mb-20"
           style={{
             transform: isInView ? "none" : "translateY(40px)",
             opacity: isInView ? 1 : 0,
@@ -45,58 +45,69 @@ const HowItWorksSection = () => {
           }}
         >
           <h2 className="text-display-sm md:text-display-md text-foreground mb-6">
-            Learning, simplified
+            How VibeAI works
           </h2>
           <p className="text-body-lg text-muted-foreground">
-            A straightforward approach to AI mastery. No complexity, no confusion.
+            A clear path from AI curious to AI confident.
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-2 gap-x-16 gap-y-16">
-          {features.map((feature, index) => (
+        {/* Steps Grid - Shopify-style blended cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((step, index) => (
             <div
-              key={feature.title}
-              className="flex gap-6"
+              key={step.title}
+              className="card-feature p-8 group"
               style={{
                 transform: isInView ? "none" : "translateY(40px)",
                 opacity: isInView ? 1 : 0,
                 transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) ${0.1 + index * 0.1}s`
               }}
             >
-              <div className="flex-shrink-0">
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
-                  <feature.icon className="w-6 h-6 text-accent" />
-                </div>
+              {/* Icon with green glow on hover */}
+              <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors duration-300">
+                <step.icon className="w-6 h-6 text-accent" />
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
+              
+              <h3 className="text-xl font-semibold text-foreground mb-4 group-hover:text-accent transition-colors duration-300">
+                {step.title}
+              </h3>
+              
+              <p className="text-muted-foreground leading-relaxed">
+                {step.description}
+              </p>
+              
+              {/* Subtle glow overlay */}
+              <div className="glow-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           ))}
         </div>
 
-        {/* Visual element - Journey bar */}
+        {/* Stats row - Shopify style */}
         <div 
-          className="mt-24 py-8 px-12 rounded-3xl bg-secondary/50 flex items-center justify-between"
+          className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
           style={{
-            transform: isInView ? "none" : "translateY(40px)",
+            transform: isInView ? "none" : "translateY(30px)",
             opacity: isInView ? 1 : 0,
             transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
           }}
         >
-          <span className="text-lg font-medium text-foreground">Beginner</span>
-          <div className="flex-1 mx-8 h-1 rounded-full bg-gradient-to-r from-accent via-accent/50 to-muted relative">
-            <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-accent" />
-            <div className="absolute left-1/2 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-accent/60" />
-            <div className="absolute left-3/4 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-muted" />
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-foreground mb-2">2.5K+</p>
+            <p className="text-muted-foreground">Active learners</p>
           </div>
-          <span className="text-lg font-medium text-foreground">Expert</span>
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-foreground mb-2">50+</p>
+            <p className="text-muted-foreground">Courses</p>
+          </div>
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-foreground mb-2">4.9</p>
+            <p className="text-muted-foreground">Avg rating</p>
+          </div>
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-accent mb-2">95%</p>
+            <p className="text-muted-foreground">Completion rate</p>
+          </div>
         </div>
       </div>
     </section>

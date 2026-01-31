@@ -9,7 +9,10 @@ const FinalCTASection = () => {
 
   return (
     <section className="section-padding bg-background relative overflow-hidden">
-      <div className="container-main" ref={ref}>
+      {/* Shopify-style green glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent/8 blur-[150px] rounded-full" />
+      
+      <div className="container-main relative" ref={ref}>
         <div 
           className="text-center max-w-3xl mx-auto"
           style={{
@@ -24,10 +27,18 @@ const FinalCTASection = () => {
           <p className="text-body-lg text-muted-foreground mb-12">
             Join thousands building real AI skills. Start your journey today.
           </p>
-          <Link to="/dashboard" className="btn-primary text-lg px-10 py-5 inline-flex items-center">
-            Start for free
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
+          
+          {/* CTA with Shopify-style glow */}
+          <div className="inline-block">
+            <Link 
+              to="/dashboard" 
+              className="btn-primary text-lg px-10 py-5 inline-flex items-center group"
+            >
+              Start for free
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+          
           <p className="mt-8 text-sm text-muted-foreground">
             No credit card required
           </p>
