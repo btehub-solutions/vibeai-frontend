@@ -1,6 +1,28 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useInView } from "framer-motion";
+
+const showcaseItems = [
+  { 
+    title: "ChatGPT Mastery", 
+    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=800&fit=crop&q=80",
+    link: "chatgpt.com"
+  },
+  { 
+    title: "Prompt Engineering", 
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=800&fit=crop&q=80",
+    link: "prompts.ai"
+  },
+  { 
+    title: "AI for Business", 
+    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=800&fit=crop&q=80",
+    link: "business.ai"
+  },
+  { 
+    title: "Creative AI Tools", 
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=800&fit=crop&q=80",
+    link: "creative.ai"
+  },
+];
 
 const ProblemSolutionSection = () => {
   const ref = useRef(null);
@@ -8,10 +30,10 @@ const ProblemSolutionSection = () => {
 
   return (
     <section id="why" className="section-padding bg-background relative overflow-hidden">
-      {/* Subtle gradient accent */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      {/* Subtle green glow at top */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-accent/5 blur-[150px] rounded-full" />
       
-      <div className="container-main" ref={ref}>
+      <div className="container-main relative" ref={ref}>
         {/* Main statement - Shopify bold typography */}
         <div 
           className="max-w-5xl mb-24"
@@ -31,48 +53,37 @@ const ProblemSolutionSection = () => {
           </p>
         </div>
 
-        {/* Grid of brand showcases - Shopify style */}
+        {/* Grid of brand showcases - Shopify style cards that blend with bg */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[
-            { 
-              title: "ChatGPT Mastery", 
-              image: "https://images.unsplash.com/photo-1676299081847-824916de030a?w=600&h=800&fit=crop",
-              link: "chatgpt.com"
-            },
-            { 
-              title: "Prompt Engineering", 
-              image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=700&fit=crop",
-              link: "prompts.ai"
-            },
-            { 
-              title: "AI for Business", 
-              image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=800&fit=crop",
-              link: "business.ai"
-            },
-            { 
-              title: "Creative AI Tools", 
-              image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=700&fit=crop",
-              link: "creative.ai"
-            },
-          ].map((item, index) => (
+          {showcaseItems.map((item, index) => (
             <div
               key={item.title}
-              className="group relative overflow-hidden rounded-3xl bg-card aspect-[3/4] cursor-pointer"
+              className="group relative overflow-hidden rounded-3xl bg-card aspect-[3/4] cursor-pointer border border-white/[0.04] transition-all duration-500 hover:border-accent/20"
               style={{
                 transform: isInView ? "none" : "translateY(60px)",
                 opacity: isInView ? 1 : 0,
                 transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) ${0.1 + index * 0.1}s`
               }}
             >
+              {/* Image */}
               <img
                 src={item.image}
                 alt={item.title}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+              
+              {/* Shopify-style gradient overlay - blends into bg */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+              
+              {/* Green glow on hover */}
+              <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-500" />
+              
+              {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <p className="text-sm text-muted-foreground mb-2">{item.link}</p>
-                <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
+                <h3 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
+                  {item.title}
+                </h3>
               </div>
             </div>
           ))}

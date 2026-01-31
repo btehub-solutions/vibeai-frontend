@@ -5,11 +5,12 @@ import heroVideo from "@/assets/hero-video.mp4";
 
 const rotatingWords = [
   "AI fluent",
-  "future ready",
+  "future ready", 
   "prompt masters",
   "industry leaders",
   "career ready",
 ];
+
 const HeroSection = () => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -30,12 +31,12 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Video Background - Full bleed */}
+      {/* Video Background - Full bleed with Shopify-style treatment */}
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
           className={`w-full h-full object-cover transition-opacity duration-1000 ${
-            isVideoLoaded ? "opacity-50" : "opacity-0"
+            isVideoLoaded ? "opacity-60" : "opacity-0"
           }`}
           autoPlay
           muted
@@ -44,14 +45,15 @@ const HeroSection = () => {
           preload="metadata"
           onLoadedData={() => setIsVideoLoaded(true)}
         >
-          <source
-            src={heroVideo}
-            type="video/mp4"
-          />
+          <source src={heroVideo} type="video/mp4" />
         </video>
-        {/* Gradient overlay - Shopify style dark gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
+        
+        {/* Shopify-style gradient overlays - blending with teal background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+        
+        {/* Subtle green glow at bottom */}
+        <div className="absolute bottom-0 left-1/4 w-1/2 h-64 bg-accent/5 blur-[100px] rounded-full" />
       </div>
 
       {/* Content */}
@@ -74,12 +76,12 @@ const HeroSection = () => {
             </span>
           </h1>
 
-          {/* Subheadline */}
+          {/* Subheadline - Clean, calm */}
           <p className="animate-text-reveal animate-delay-200 text-body-lg md:text-body-lg text-muted-foreground max-w-xl mb-12">
             Dream big, learn fast, and grow far with VibeAI.
           </p>
 
-          {/* CTAs - Shopify style */}
+          {/* CTAs - Shopify exact style: cream primary, outlined secondary */}
           <div className="animate-text-reveal animate-delay-300 flex flex-wrap items-center gap-4">
             <Link to="/dashboard" className="btn-primary">
               Start for free
@@ -94,6 +96,9 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Curved bottom transition - Shopify signature */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-background rounded-t-[4rem]" />
     </section>
   );
 };
