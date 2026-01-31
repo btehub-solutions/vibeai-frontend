@@ -6,55 +6,54 @@
 
 @layer base {
   :root {
-    /* Shopify's exact color palette - Deep teal-black base */
-    --background: 164 22% 5%;
-    --foreground: 60 20% 95%;
+    /* Shopify's exact color palette - Deep dark base with warm whites */
+    --background: 180 10% 4%;
+    --foreground: 0 0% 98%;
 
     /* Card matches background for blended effect */
-    --card: 164 22% 8%;
-    --card-foreground: 60 20% 95%;
+    --card: 180 8% 7%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 164 22% 8%;
-    --popover-foreground: 60 20% 95%;
+    --popover: 180 8% 7%;
+    --popover-foreground: 0 0% 98%;
 
-    /* Warm cream/off-white for primary CTAs - Shopify style */
-    --primary: 45 30% 94%;
-    --primary-foreground: 164 22% 5%;
+    /* Pure white for primary CTAs - Shopify style */
+    --primary: 0 0% 100%;
+    --primary-foreground: 180 10% 4%;
 
-    /* Blended teal-green for sections */
-    --secondary: 164 18% 10%;
-    --secondary-foreground: 60 15% 85%;
+    /* Blended dark sections */
+    --secondary: 180 6% 9%;
+    --secondary-foreground: 0 0% 85%;
 
-    --muted: 164 12% 18%;
-    --muted-foreground: 160 8% 55%;
+    --muted: 180 5% 15%;
+    --muted-foreground: 0 0% 55%;
 
-    /* Shopify's signature lime-green accent */
-    --accent: 75 90% 55%;
-    --accent-foreground: 164 22% 5%;
+    /* Neutral accent - light gray/white for highlights */
+    --accent: 0 0% 90%;
+    --accent-foreground: 180 10% 4%;
 
     --destructive: 0 72% 51%;
-    --destructive-foreground: 60 20% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 164 15% 12%;
-    --input: 164 15% 12%;
-    --ring: 75 90% 55%;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 0 0% 60%;
 
     --radius: 1rem;
 
-    /* Shopify-style shadows and glows */
+    /* Subtle shadows - Shopify style */
     --shadow-soft: 0 4px 30px rgba(0, 0, 0, 0.4);
     --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.3);
-    --glow-green: 0 0 80px rgba(170, 230, 80, 0.15);
-    --glow-green-strong: 0 0 120px rgba(170, 230, 80, 0.25);
+    --glow-subtle: 0 0 60px rgba(255, 255, 255, 0.03);
 
-    --sidebar-background: 164 22% 6%;
-    --sidebar-foreground: 60 15% 90%;
-    --sidebar-primary: 75 90% 55%;
-    --sidebar-primary-foreground: 164 22% 5%;
-    --sidebar-accent: 164 18% 14%;
-    --sidebar-accent-foreground: 60 15% 90%;
-    --sidebar-border: 164 15% 12%;
-    --sidebar-ring: 75 90% 55%;
+    --sidebar-background: 180 10% 5%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 180 10% 4%;
+    --sidebar-accent: 180 6% 12%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 0 0% 60%;
   }
 }
 
@@ -70,11 +69,12 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    overflow-x: hidden;
   }
 }
 
 @layer components {
-  /* Shopify-style primary button - cream/white, bold, pill shape */
+  /* Shopify-style primary button - pure white, bold, pill shape */
   .btn-primary {
     @apply inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold transition-all duration-200;
     background: hsl(var(--primary));
@@ -83,7 +83,7 @@
 
   .btn-primary:hover {
     transform: scale(1.02);
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.12);
   }
 
   /* Secondary button - outlined, clean */
@@ -97,11 +97,11 @@
 
   /* Shopify-style section padding */
   .section-padding {
-    @apply px-6 py-24 md:px-8 md:py-32 lg:px-12 lg:py-40;
+    @apply px-4 py-16 md:px-6 md:py-24 lg:px-12 lg:py-32;
   }
 
   .container-main {
-    @apply mx-auto max-w-[1400px] px-6 md:px-12;
+    @apply mx-auto max-w-[1400px] px-4 md:px-6 lg:px-12;
   }
 
   /* Shopify blended card - same bg as section with subtle border */
@@ -111,29 +111,23 @@
     box-shadow: var(--shadow-soft);
   }
 
-  /* Shopify-style feature card with green glow on hover */
+  /* Shopify-style feature card with subtle hover */
   .card-feature {
     @apply relative rounded-3xl border border-white/[0.06] overflow-hidden transition-all duration-500;
     background: hsl(var(--card));
   }
 
   .card-feature:hover {
-    border-color: hsl(var(--accent) / 0.2);
-    box-shadow: var(--glow-green);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: var(--glow-subtle);
   }
 
-  /* Green glow overlay effect - Shopify signature */
+  /* Subtle overlay effect */
   .glow-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, hsl(75 90% 55% / 0.08) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
     pointer-events: none;
-  }
-
-  /* Text gradient for accent */
-  .text-accent-gradient {
-    @apply bg-clip-text text-transparent;
-    background: linear-gradient(135deg, hsl(75 90% 55%) 0%, hsl(85 85% 60%) 100%);
   }
 
   /* Rounded section transition - Shopify style */
@@ -145,19 +139,13 @@
     border-radius: 0 0 3rem 3rem;
   }
 
-  /* Shopify-style scrolling ticker */
-  .ticker-container {
-    @apply overflow-hidden whitespace-nowrap;
+  /* Responsive images container */
+  .img-container {
+    @apply overflow-hidden rounded-2xl;
   }
 
-  .ticker-content {
-    @apply flex gap-8;
-    animation: ticker 30s linear infinite;
-  }
-
-  @keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  .img-container img {
+    @apply w-full h-full object-cover;
   }
 }
 
@@ -224,15 +212,5 @@
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
-  }
-
-  /* Pulse glow for accents */
-  .animate-pulse-glow {
-    animation: pulseGlow 3s ease-in-out infinite;
-  }
-
-  @keyframes pulseGlow {
-    0%, 100% { box-shadow: var(--glow-green); }
-    50% { box-shadow: var(--glow-green-strong); }
   }
 }

@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Why VibeAI", href: "#why" },
-    { name: "Learning", href: "#how-it-works" },
+    { name: "Courses", href: "#courses" },
     { name: "Pricing", href: "#pricing" },
   ];
 
@@ -30,15 +30,15 @@ const Navbar = () => {
     >
       <div className="container-main">
         <div className="flex items-center justify-between h-20">
-          {/* Logo - Shopify style with icon */}
+          {/* Logo - Shopify style */}
           <Link to="/" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center">
-              <span className="text-accent-foreground font-bold text-lg">V</span>
+            <div className="w-9 h-9 rounded-xl bg-foreground flex items-center justify-center">
+              <span className="text-background font-bold text-lg">V</span>
             </div>
             <span className="text-xl font-bold text-foreground tracking-tight">VibeAI</span>
           </Link>
 
-          {/* Desktop Navigation - Shopify minimal style */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <a
@@ -51,7 +51,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Desktop CTA - Shopify exact style */}
+          {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
             <Link
               to="/dashboard"
@@ -68,6 +68,7 @@ const Navbar = () => {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-2 text-foreground"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

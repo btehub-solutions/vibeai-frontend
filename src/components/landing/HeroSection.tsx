@@ -31,12 +31,12 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Video Background - Full bleed with Shopify-style treatment */}
+      {/* Video Background - Full visibility with smooth fade-in */}
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
           className={`w-full h-full object-cover transition-opacity duration-1000 ${
-            isVideoLoaded ? "opacity-60" : "opacity-0"
+            isVideoLoaded ? "opacity-100" : "opacity-0"
           }`}
           autoPlay
           muted
@@ -48,12 +48,9 @@ const HeroSection = () => {
           <source src={heroVideo} type="video/mp4" />
         </video>
         
-        {/* Shopify-style gradient overlays - blending with teal background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
-        
-        {/* Subtle green glow at bottom */}
-        <div className="absolute bottom-0 left-1/4 w-1/2 h-64 bg-accent/5 blur-[100px] rounded-full" />
+        {/* Shopify-style minimal gradient - only for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
       </div>
 
       {/* Content */}
@@ -65,7 +62,7 @@ const HeroSection = () => {
             <span className="animate-text-reveal animate-delay-100 block relative">
               <span className="inline-block overflow-hidden h-[1.1em] align-bottom">
                 <span 
-                  className="block transition-transform duration-500 ease-out text-accent"
+                  className="block transition-transform duration-500 ease-out text-muted-foreground"
                   style={{ transform: `translateY(-${currentWordIndex * 100}%)` }}
                 >
                   {rotatingWords.map((word, index) => (
@@ -81,7 +78,7 @@ const HeroSection = () => {
             Dream big, learn fast, and grow far with VibeAI.
           </p>
 
-          {/* CTAs - Shopify exact style: cream primary, outlined secondary */}
+          {/* CTAs - Shopify exact style: white primary, outlined secondary */}
           <div className="animate-text-reveal animate-delay-300 flex flex-wrap items-center gap-4">
             <Link to="/dashboard" className="btn-primary">
               Start for free
