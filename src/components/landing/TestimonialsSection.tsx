@@ -47,7 +47,21 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="section-padding bg-secondary relative overflow-hidden">
+    <section className="section-padding bg-atmosphere-indigo relative overflow-hidden">
+      {/* Ambient glow effects */}
+      <div 
+        className="absolute top-0 right-1/3 w-[600px] h-[600px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(235, 50%, 25%, 0.12) 0%, transparent 70%)'
+        }}
+      />
+      <div 
+        className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(188, 45%, 22%, 0.1) 0%, transparent 70%)'
+        }}
+      />
+      
       <div className="container-main relative" ref={ref}>
         {/* Header */}
         <div 
@@ -75,8 +89,13 @@ const TestimonialsSection = () => {
             transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s"
           }}
         >
-          <div className="card-feature p-8 md:p-12 relative">
-            <Quote className="absolute top-8 left-8 w-12 h-12 text-muted-foreground/20" />
+          <div 
+            className="glass-indigo p-8 md:p-12 relative rounded-3xl"
+          >
+            <Quote 
+              className="absolute top-8 left-8 w-12 h-12"
+              style={{ color: 'hsla(235, 50%, 25%, 0.4)' }}
+            />
             
             <div className="relative z-10">
               <p className="text-xl md:text-2xl text-foreground leading-relaxed mb-10 pt-8">
@@ -87,7 +106,11 @@ const TestimonialsSection = () => {
                 <img
                   src={testimonials[currentIndex].image}
                   alt={testimonials[currentIndex].name}
-                  className="w-14 h-14 rounded-full object-cover border-2 border-white/10"
+                  className="w-14 h-14 rounded-full object-cover"
+                  style={{
+                    border: '2px solid hsla(235, 50%, 25%, 0.4)',
+                    boxShadow: '0 0 20px hsla(235, 50%, 25%, 0.2)'
+                  }}
                 />
                 <div>
                   <p className="font-semibold text-foreground">
@@ -101,14 +124,18 @@ const TestimonialsSection = () => {
             </div>
 
             {/* Glow overlay */}
-            <div className="glow-overlay" />
+            <div className="glow-overlay-indigo" />
           </div>
 
           {/* Navigation */}
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prevTestimonial}
-              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+              className="w-12 h-12 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-all duration-300"
+              style={{
+                border: '1px solid hsla(235, 50%, 25%, 0.3)',
+                background: 'hsla(235, 40%, 15%, 0.3)'
+              }}
               aria-label="Previous testimonial"
             >
               <ChevronLeft size={20} />
@@ -122,9 +149,14 @@ const TestimonialsSection = () => {
                   onClick={() => setCurrentIndex(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     currentIndex === index 
-                      ? "bg-foreground w-8" 
-                      : "bg-white/20 w-2 hover:bg-white/40"
+                      ? "w-8" 
+                      : "w-2 hover:opacity-80"
                   }`}
+                  style={{
+                    background: currentIndex === index 
+                      ? 'hsl(var(--foreground))' 
+                      : 'hsla(235, 50%, 25%, 0.4)'
+                  }}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}
@@ -132,7 +164,11 @@ const TestimonialsSection = () => {
             
             <button
               onClick={nextTestimonial}
-              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+              className="w-12 h-12 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-all duration-300"
+              style={{
+                border: '1px solid hsla(235, 50%, 25%, 0.3)',
+                background: 'hsla(235, 40%, 15%, 0.3)'
+              }}
               aria-label="Next testimonial"
             >
               <ChevronRight size={20} />

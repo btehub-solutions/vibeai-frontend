@@ -31,7 +31,7 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Video Background - Full visibility with smooth fade-in */}
+      {/* Video Background - Full clarity, no dark overlays */}
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
@@ -48,21 +48,37 @@ const HeroSection = () => {
           <source src={heroVideo} type="video/mp4" />
         </video>
         
-        {/* Shopify-style minimal gradient - only for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+        {/* Ambient color glow from left - replaces dark overlay for text readability */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(ellipse 60% 80% at 0% 50%, hsla(180, 35%, 8%, 0.95) 0%, transparent 60%),
+              radial-gradient(ellipse 50% 60% at 0% 80%, hsla(175, 45%, 12%, 0.8) 0%, transparent 50%),
+              radial-gradient(ellipse 40% 50% at 10% 20%, hsla(235, 40%, 15%, 0.6) 0%, transparent 50%)
+            `
+          }}
+        />
+        
+        {/* Bottom curve blend - soft gradient, not black */}
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-48"
+          style={{
+            background: `linear-gradient(to top, hsl(180 10% 4%), transparent)`
+          }}
+        />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container-main pt-32 pb-24">
         <div className="max-w-4xl">
-          {/* Main Headline - Shopify massive typography */}
+          {/* Main Headline */}
           <h1 className="text-display-md md:text-display-lg lg:text-display-xl text-foreground mb-8">
-            <span className="animate-text-reveal block">Be the next</span>
+            <span className="animate-text-reveal block drop-shadow-lg">Be the next</span>
             <span className="animate-text-reveal animate-delay-100 block relative">
               <span className="inline-block overflow-hidden h-[1.1em] align-bottom">
                 <span 
-                  className="block transition-transform duration-500 ease-out text-muted-foreground"
+                  className="block transition-transform duration-500 ease-out text-muted-foreground drop-shadow-lg"
                   style={{ transform: `translateY(-${currentWordIndex * 100}%)` }}
                 >
                   {rotatingWords.map((word, index) => (
@@ -73,14 +89,14 @@ const HeroSection = () => {
             </span>
           </h1>
 
-          {/* Subheadline - Clean, calm */}
-          <p className="animate-text-reveal animate-delay-200 text-body-lg md:text-body-lg text-muted-foreground max-w-xl mb-12">
+          {/* Subheadline */}
+          <p className="animate-text-reveal animate-delay-200 text-body-lg md:text-body-lg text-muted-foreground max-w-xl mb-12 drop-shadow-md">
             Dream big, learn fast, and grow far with VibeAI.
           </p>
 
-          {/* CTAs - Shopify exact style: white primary, outlined secondary */}
+          {/* CTAs */}
           <div className="animate-text-reveal animate-delay-300 flex flex-wrap items-center gap-4">
-            <Link to="/dashboard" className="btn-primary">
+            <Link to="/dashboard" className="btn-primary shadow-lg">
               Start for free
             </Link>
             <a
@@ -94,8 +110,11 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Curved bottom transition - Shopify signature */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-background rounded-t-[4rem]" />
+      {/* Curved bottom transition - matches background color */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-24 rounded-t-[4rem]"
+        style={{ background: 'hsl(180 10% 4%)' }}
+      />
     </section>
   );
 };

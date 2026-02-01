@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    /* Shopify's exact color palette - Deep dark base with warm whites */
+    /* Core palette - Deep dark base with warm whites */
     --background: 180 10% 4%;
     --foreground: 0 0% 98%;
 
@@ -17,7 +17,7 @@
     --popover: 180 8% 7%;
     --popover-foreground: 0 0% 98%;
 
-    /* Pure white for primary CTAs - Shopify style */
+    /* Pure white for primary CTAs */
     --primary: 0 0% 100%;
     --primary-foreground: 180 10% 4%;
 
@@ -28,7 +28,7 @@
     --muted: 180 5% 15%;
     --muted-foreground: 0 0% 55%;
 
-    /* Neutral accent - light gray/white for highlights */
+    /* Neutral accent */
     --accent: 0 0% 90%;
     --accent-foreground: 180 10% 4%;
 
@@ -41,11 +41,41 @@
 
     --radius: 1rem;
 
-    /* Subtle shadows - Shopify style */
+    /* ===== RICH COLOR PALETTE - Art Gallery Depth ===== */
+    
+    /* Deep Teal - Primary atmospheric color */
+    --teal-deep: 180 35% 8%;
+    --teal-rich: 175 40% 12%;
+    --teal-glow: 175 45% 20%;
+    
+    /* Indigo - Secondary depth color */
+    --indigo-deep: 230 35% 10%;
+    --indigo-rich: 235 40% 15%;
+    --indigo-glow: 235 50% 25%;
+    
+    /* Emerald - Accent warmth */
+    --emerald-deep: 160 30% 8%;
+    --emerald-rich: 155 35% 12%;
+    --emerald-glow: 155 45% 20%;
+    
+    /* Blue-Green - Transitional harmony */
+    --cyan-deep: 190 30% 10%;
+    --cyan-rich: 188 35% 14%;
+    --cyan-glow: 188 45% 22%;
+
+    /* ===== SHADOW & GLOW SYSTEM ===== */
     --shadow-soft: 0 4px 30px rgba(0, 0, 0, 0.4);
     --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.3);
+    --shadow-elevated: 0 20px 60px rgba(0, 0, 0, 0.5);
+    
+    /* Ambient glows - tinted with palette colors */
     --glow-subtle: 0 0 60px rgba(255, 255, 255, 0.03);
+    --glow-teal: 0 0 80px hsla(175, 45%, 20%, 0.15);
+    --glow-indigo: 0 0 80px hsla(235, 50%, 25%, 0.12);
+    --glow-emerald: 0 0 80px hsla(155, 45%, 20%, 0.12);
+    --glow-cyan: 0 0 80px hsla(188, 45%, 22%, 0.12);
 
+    /* Sidebar */
     --sidebar-background: 180 10% 5%;
     --sidebar-foreground: 0 0% 90%;
     --sidebar-primary: 0 0% 100%;
@@ -74,7 +104,7 @@
 }
 
 @layer components {
-  /* Shopify-style primary button - pure white, bold, pill shape */
+  /* Primary button - pure white, bold, pill shape */
   .btn-primary {
     @apply inline-flex items-center justify-center rounded-full px-8 py-4 text-base font-semibold transition-all duration-200;
     background: hsl(var(--primary));
@@ -88,14 +118,17 @@
 
   /* Secondary button - outlined, clean */
   .btn-secondary {
-    @apply inline-flex items-center justify-center rounded-full border border-white/20 bg-transparent px-8 py-4 text-base font-medium text-foreground transition-all duration-200;
+    @apply inline-flex items-center justify-center rounded-full border bg-transparent px-8 py-4 text-base font-medium text-foreground transition-all duration-200;
+    border-color: hsla(var(--foreground) / 0.2);
+    backdrop-filter: blur(8px);
   }
 
   .btn-secondary:hover {
-    @apply bg-white/5 border-white/40;
+    background: hsla(var(--foreground) / 0.05);
+    border-color: hsla(var(--foreground) / 0.4);
   }
 
-  /* Shopify-style section padding */
+  /* Section padding */
   .section-padding {
     @apply px-4 py-16 md:px-6 md:py-24 lg:px-12 lg:py-32;
   }
@@ -104,33 +137,197 @@
     @apply mx-auto max-w-[1400px] px-4 md:px-6 lg:px-12;
   }
 
-  /* Shopify blended card - same bg as section with subtle border */
-  .card-elevated {
-    @apply relative rounded-3xl border border-white/[0.06];
-    background: hsl(var(--card));
-    box-shadow: var(--shadow-soft);
+  /* ===== LAYERED GRADIENT BACKGROUNDS ===== */
+  
+  /* Deep teal atmosphere - primary sections */
+  .bg-atmosphere-teal {
+    background: 
+      radial-gradient(ellipse 80% 60% at 20% 100%, hsla(var(--teal-glow) / 0.15), transparent 50%),
+      radial-gradient(ellipse 60% 50% at 80% 20%, hsla(var(--indigo-glow) / 0.1), transparent 50%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(var(--teal-deep)));
+  }
+  
+  /* Indigo depth - secondary sections */
+  .bg-atmosphere-indigo {
+    background: 
+      radial-gradient(ellipse 70% 50% at 10% 80%, hsla(var(--indigo-glow) / 0.12), transparent 50%),
+      radial-gradient(ellipse 60% 40% at 90% 30%, hsla(var(--cyan-glow) / 0.1), transparent 50%),
+      linear-gradient(180deg, hsl(var(--secondary)), hsl(var(--indigo-deep)));
+  }
+  
+  /* Emerald warmth - accent sections */
+  .bg-atmosphere-emerald {
+    background: 
+      radial-gradient(ellipse 80% 50% at 30% 90%, hsla(var(--emerald-glow) / 0.12), transparent 50%),
+      radial-gradient(ellipse 50% 40% at 70% 20%, hsla(var(--teal-glow) / 0.08), transparent 50%),
+      linear-gradient(180deg, hsl(var(--card)), hsl(var(--emerald-deep)));
+  }
+  
+  /* Cyan blend - transitional sections */
+  .bg-atmosphere-cyan {
+    background: 
+      radial-gradient(ellipse 70% 60% at 80% 90%, hsla(var(--cyan-glow) / 0.14), transparent 50%),
+      radial-gradient(ellipse 60% 40% at 20% 30%, hsla(var(--teal-glow) / 0.1), transparent 50%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(var(--cyan-deep)));
   }
 
-  /* Shopify-style feature card with subtle hover */
-  .card-feature {
-    @apply relative rounded-3xl border border-white/[0.06] overflow-hidden transition-all duration-500;
+  /* ===== VIGNETTE EFFECTS ===== */
+  .vignette-soft {
+    position: relative;
+  }
+  
+  .vignette-soft::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, hsl(var(--background)) 100%);
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  /* ===== REFINED GLASSMORPHISM ===== */
+  
+  /* Light tinted glass - subtle */
+  .glass-subtle {
+    background: hsla(var(--card) / 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsla(var(--foreground) / 0.06);
+  }
+  
+  /* Teal-tinted glass */
+  .glass-teal {
+    background: linear-gradient(
+      135deg,
+      hsla(var(--teal-rich) / 0.5),
+      hsla(var(--card) / 0.4)
+    );
+    backdrop-filter: blur(16px);
+    border: 1px solid hsla(var(--teal-glow) / 0.15);
+  }
+  
+  /* Indigo-tinted glass */
+  .glass-indigo {
+    background: linear-gradient(
+      135deg,
+      hsla(var(--indigo-rich) / 0.5),
+      hsla(var(--card) / 0.4)
+    );
+    backdrop-filter: blur(16px);
+    border: 1px solid hsla(var(--indigo-glow) / 0.12);
+  }
+
+  /* ===== AMBIENT GLOW BACKDROPS ===== */
+  
+  .ambient-glow-teal {
+    position: relative;
+  }
+  
+  .ambient-glow-teal::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(circle, hsla(var(--teal-glow) / 0.2) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .ambient-glow-indigo {
+    position: relative;
+  }
+  
+  .ambient-glow-indigo::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(circle, hsla(var(--indigo-glow) / 0.18) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  .ambient-glow-emerald {
+    position: relative;
+  }
+  
+  .ambient-glow-emerald::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(circle, hsla(var(--emerald-glow) / 0.18) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* ===== CARD STYLES ===== */
+  
+  /* Elevated card with ambient glow */
+  .card-elevated {
+    @apply relative rounded-3xl;
     background: hsl(var(--card));
+    border: 1px solid hsla(var(--foreground) / 0.06);
+    box-shadow: var(--shadow-soft), var(--glow-teal);
+  }
+
+  /* Feature card with refined hover */
+  .card-feature {
+    @apply relative rounded-3xl overflow-hidden transition-all duration-500;
+    background: linear-gradient(
+      180deg,
+      hsl(var(--card)),
+      hsla(var(--teal-deep) / 0.5)
+    );
+    border: 1px solid hsla(var(--foreground) / 0.06);
   }
 
   .card-feature:hover {
-    border-color: rgba(255, 255, 255, 0.12);
-    box-shadow: var(--glow-subtle);
+    border-color: hsla(var(--teal-glow) / 0.3);
+    box-shadow: var(--glow-teal);
   }
-
-  /* Subtle overlay effect */
-  .glow-overlay {
+  
+  /* Gallery-style image frame */
+  .frame-gallery {
+    @apply relative rounded-2xl md:rounded-3xl overflow-hidden;
+    border: 1px solid hsla(var(--foreground) / 0.08);
+    box-shadow: 
+      var(--shadow-card),
+      inset 0 1px 0 hsla(var(--foreground) / 0.05);
+  }
+  
+  .frame-gallery::after {
+    content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+    background: linear-gradient(
+      180deg,
+      transparent 60%,
+      hsla(var(--background) / 0.4) 100%
+    );
     pointer-events: none;
   }
 
-  /* Rounded section transition - Shopify style */
+  /* Glow overlay - tinted */
+  .glow-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at center,
+      hsla(var(--teal-glow) / 0.06) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+  
+  .glow-overlay-indigo {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at center,
+      hsla(var(--indigo-glow) / 0.06) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  /* Rounded section transitions */
   .section-rounded-top {
     border-radius: 3rem 3rem 0 0;
   }
@@ -139,7 +336,7 @@
     border-radius: 0 0 3rem 3rem;
   }
 
-  /* Responsive images container */
+  /* Image container */
   .img-container {
     @apply overflow-hidden rounded-2xl;
   }
@@ -150,7 +347,7 @@
 }
 
 @layer utilities {
-  /* Hero text animation - smooth reveal */
+  /* Hero text animation */
   .animate-text-reveal {
     animation: textReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -181,7 +378,7 @@
     to { opacity: 1; }
   }
 
-  /* Shopify rotating text for hero */
+  /* Rotating text for hero */
   .rotating-text-container {
     display: inline-block;
     position: relative;
@@ -212,5 +409,17 @@
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
+  }
+  
+  /* ===== GRADIENT TEXT ===== */
+  .text-gradient-teal {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--foreground)),
+      hsla(var(--teal-glow))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

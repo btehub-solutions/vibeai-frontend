@@ -30,7 +30,21 @@ const HowItWorksSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="how-it-works" className="section-padding bg-secondary relative overflow-hidden section-rounded-top">
+    <section id="how-it-works" className="section-padding bg-atmosphere-indigo relative overflow-hidden section-rounded-top">
+      {/* Ambient glow effects */}
+      <div 
+        className="absolute top-20 left-0 w-[500px] h-[500px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(235, 50%, 25%, 0.15) 0%, transparent 70%)'
+        }}
+      />
+      <div 
+        className="absolute bottom-0 right-0 w-[600px] h-[600px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(188, 45%, 22%, 0.12) 0%, transparent 70%)'
+        }}
+      />
+      
       <div className="container-main relative" ref={ref}>
         {/* Header */}
         <div 
@@ -54,7 +68,7 @@ const HowItWorksSection = () => {
           {steps.map((step, index) => (
             <div
               key={step.title}
-              className="card-feature p-6 md:p-8 group"
+              className="glass-indigo p-6 md:p-8 group rounded-3xl relative overflow-hidden"
               style={{
                 transform: isInView ? "none" : "translateY(40px)",
                 opacity: isInView ? 1 : 0,
@@ -62,7 +76,13 @@ const HowItWorksSection = () => {
               }}
             >
               {/* Icon */}
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-white/10 transition-colors duration-300">
+              <div 
+                className="w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300"
+                style={{
+                  background: 'hsla(235, 50%, 25%, 0.3)',
+                  boxShadow: '0 0 30px hsla(235, 50%, 25%, 0.2)'
+                }}
+              >
                 <step.icon className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
               </div>
               
@@ -74,37 +94,32 @@ const HowItWorksSection = () => {
                 {step.description}
               </p>
               
-              {/* Glow overlay */}
-              <div className="glow-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Hover glow */}
+              <div className="glow-overlay-indigo opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           ))}
         </div>
 
         {/* Stats row */}
         <div 
-          className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center"
+          className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
           style={{
             transform: isInView ? "none" : "translateY(30px)",
             opacity: isInView ? 1 : 0,
             transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
           }}
         >
-          <div>
-            <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">2.5K+</p>
-            <p className="text-sm md:text-base text-muted-foreground">Active learners</p>
-          </div>
-          <div>
-            <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">50+</p>
-            <p className="text-sm md:text-base text-muted-foreground">Courses</p>
-          </div>
-          <div>
-            <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">4.9</p>
-            <p className="text-sm md:text-base text-muted-foreground">Avg rating</p>
-          </div>
-          <div>
-            <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">95%</p>
-            <p className="text-sm md:text-base text-muted-foreground">Completion rate</p>
-          </div>
+          {[
+            { value: "2.5K+", label: "Active learners" },
+            { value: "50+", label: "Courses" },
+            { value: "4.9", label: "Avg rating" },
+            { value: "95%", label: "Completion rate" },
+          ].map((stat, index) => (
+            <div key={stat.label} className="text-center">
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-2">{stat.value}</p>
+              <p className="text-sm md:text-base text-muted-foreground">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
