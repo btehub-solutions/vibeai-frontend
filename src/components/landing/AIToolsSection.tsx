@@ -60,7 +60,21 @@ const AIToolsSection = () => {
   );
 
   return (
-    <section id="ai-tools" className="section-padding bg-background relative">
+    <section id="ai-tools" className="section-padding bg-atmosphere-emerald relative">
+      {/* Ambient glow effects */}
+      <div 
+        className="absolute top-1/3 left-0 w-[500px] h-[500px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(155, 45%, 20%, 0.12) 0%, transparent 70%)'
+        }}
+      />
+      <div 
+        className="absolute bottom-0 right-1/4 w-[600px] h-[600px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(175, 45%, 20%, 0.1) 0%, transparent 70%)'
+        }}
+      />
+      
       <div className="container-main relative" ref={ref}>
         {/* Header */}
         <div 
@@ -85,14 +99,22 @@ const AIToolsSection = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setCurrentPage((p) => (p - 1 + totalPages) % totalPages)}
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-all duration-300"
+              style={{
+                border: '1px solid hsla(155, 45%, 20%, 0.3)',
+                background: 'hsla(155, 35%, 12%, 0.3)'
+              }}
               aria-label="Previous page"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               onClick={() => setCurrentPage((p) => (p + 1) % totalPages)}
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-all duration-300"
+              style={{
+                border: '1px solid hsla(155, 45%, 20%, 0.3)',
+                background: 'hsla(155, 35%, 12%, 0.3)'
+              }}
               aria-label="Next page"
             >
               <ChevronRight size={20} />
@@ -100,30 +122,44 @@ const AIToolsSection = () => {
           </div>
         </div>
 
-        {/* Tools Grid - Responsive for mobile */}
+        {/* Tools Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {visibleTools.map((tool, index) => (
             <div
               key={tool.name}
-              className="card-feature group cursor-pointer"
+              className="group cursor-pointer rounded-3xl overflow-hidden relative"
               style={{
+                background: 'linear-gradient(180deg, hsl(180 8% 7%), hsla(155, 35%, 12%, 0.3))',
+                border: '1px solid hsla(155, 45%, 20%, 0.15)',
                 transform: isInView ? "none" : "translateY(40px)",
                 opacity: isInView ? 1 : 0,
                 transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) ${0.1 + index * 0.1}s`
               }}
             >
               {/* Image */}
-              <div className="relative h-40 md:h-48 overflow-hidden rounded-t-3xl">
+              <div className="relative h-40 md:h-48 overflow-hidden">
                 <img 
                   src={tool.image} 
                   alt={tool.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+                <div 
+                  className="absolute inset-0"
+                  style={{
+                    background: 'linear-gradient(to top, hsl(180 8% 7%), hsla(155, 35%, 12%, 0.4) 50%, transparent)'
+                  }}
+                />
                 
                 {/* Trending badge */}
                 {tool.trending && (
-                  <span className="absolute top-4 right-4 inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-foreground text-xs font-medium border border-white/10">
+                  <span 
+                    className="absolute top-4 right-4 inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-foreground text-xs font-medium"
+                    style={{
+                      background: 'hsla(155, 40%, 15%, 0.6)',
+                      backdropFilter: 'blur(8px)',
+                      border: '1px solid hsla(155, 45%, 20%, 0.3)'
+                    }}
+                  >
                     <TrendingUp size={12} />
                     Trending
                   </span>
@@ -151,8 +187,13 @@ const AIToolsSection = () => {
                 </button>
               </div>
               
-              {/* Glow overlay */}
-              <div className="glow-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Hover glow */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  background: 'radial-gradient(ellipse at center, hsla(155, 45%, 20%, 0.08) 0%, transparent 70%)'
+                }}
+              />
             </div>
           ))}
         </div>
@@ -165,9 +206,14 @@ const AIToolsSection = () => {
               onClick={() => setCurrentPage(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 currentPage === index 
-                  ? "bg-foreground w-8" 
-                  : "bg-white/20 w-2 hover:bg-white/40"
+                  ? "w-8" 
+                  : "w-2 hover:opacity-80"
               }`}
+              style={{
+                background: currentPage === index 
+                  ? 'hsl(var(--foreground))' 
+                  : 'hsla(155, 45%, 20%, 0.4)'
+              }}
               aria-label={`Go to page ${index + 1}`}
             />
           ))}

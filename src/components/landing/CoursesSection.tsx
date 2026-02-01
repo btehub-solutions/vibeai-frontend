@@ -43,7 +43,21 @@ const CoursesSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="courses" className="section-padding bg-background relative overflow-hidden">
+    <section id="courses" className="section-padding bg-atmosphere-teal relative overflow-hidden">
+      {/* Ambient glow effects */}
+      <div 
+        className="absolute top-0 left-1/4 w-[600px] h-[600px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(175, 45%, 20%, 0.1) 0%, transparent 70%)'
+        }}
+      />
+      <div 
+        className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(235, 50%, 25%, 0.08) 0%, transparent 70%)'
+        }}
+      />
+      
       <div className="container-main relative" ref={ref}>
         {/* Header */}
         <div 
@@ -91,10 +105,23 @@ const CoursesSection = () => {
                   alt={course.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+                {/* Teal-tinted gradient overlay */}
+                <div 
+                  className="absolute inset-0"
+                  style={{
+                    background: 'linear-gradient(to top, hsl(180 8% 7%), hsla(175, 40%, 12%, 0.3) 50%, transparent)'
+                  }}
+                />
                 
-                {/* Level badge */}
-                <span className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-foreground text-xs font-medium border border-white/10">
+                {/* Level badge - glassmorphism */}
+                <span 
+                  className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-foreground text-xs font-medium"
+                  style={{
+                    background: 'hsla(175, 40%, 15%, 0.6)',
+                    backdropFilter: 'blur(8px)',
+                    border: '1px solid hsla(175, 45%, 20%, 0.3)'
+                  }}
+                >
                   {course.level}
                 </span>
               </div>

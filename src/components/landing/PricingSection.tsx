@@ -54,7 +54,21 @@ const PricingSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="pricing" className="section-padding bg-card relative overflow-hidden section-rounded-top">
+    <section id="pricing" className="section-padding bg-atmosphere-emerald relative overflow-hidden section-rounded-top">
+      {/* Ambient glow effects */}
+      <div 
+        className="absolute top-20 right-0 w-[600px] h-[600px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(155, 45%, 20%, 0.15) 0%, transparent 70%)'
+        }}
+      />
+      <div 
+        className="absolute bottom-0 left-1/4 w-[500px] h-[500px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(175, 45%, 20%, 0.1) 0%, transparent 70%)'
+        }}
+      />
+      
       <div className="container-main relative" ref={ref}>
         {/* Header */}
         <div 
@@ -78,12 +92,21 @@ const PricingSection = () => {
           {plans.map((plan, index) => (
             <div
               key={plan.name}
-              className={`relative rounded-2xl md:rounded-3xl p-6 md:p-8 transition-all duration-500 border ${
+              className={`relative rounded-2xl md:rounded-3xl p-6 md:p-8 transition-all duration-500 ${
                 plan.popular
-                  ? "bg-foreground text-background border-foreground md:scale-[1.02] shadow-xl"
-                  : "bg-secondary border-white/[0.06] hover:border-white/10"
+                  ? "md:scale-[1.02]"
+                  : ""
               }`}
               style={{
+                background: plan.popular 
+                  ? 'hsl(var(--foreground))'
+                  : 'linear-gradient(180deg, hsla(155, 35%, 12%, 0.5), hsla(180, 8%, 7%, 0.8))',
+                border: plan.popular 
+                  ? 'none'
+                  : '1px solid hsla(155, 45%, 20%, 0.2)',
+                boxShadow: plan.popular 
+                  ? '0 20px 60px rgba(0, 0, 0, 0.4), 0 0 60px hsla(155, 45%, 20%, 0.15)'
+                  : 'none',
                 transform: isInView ? "none" : "translateY(40px)",
                 opacity: isInView ? 1 : 0,
                 transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) ${0.1 + index * 0.1}s`
@@ -92,7 +115,14 @@ const PricingSection = () => {
               {/* Popular Badge */}
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="px-4 py-1.5 rounded-full bg-background text-foreground text-xs font-semibold shadow-lg">
+                  <span 
+                    className="px-4 py-1.5 rounded-full text-xs font-semibold"
+                    style={{
+                      background: 'hsl(var(--background))',
+                      color: 'hsl(var(--foreground))',
+                      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)'
+                    }}
+                  >
                     Most Popular
                   </span>
                 </div>
@@ -132,9 +162,20 @@ const PricingSection = () => {
                 to="/dashboard"
                 className={`block w-full text-center py-3 md:py-4 rounded-full font-semibold text-sm transition-all duration-300 ${
                   plan.popular
-                    ? "bg-background text-foreground hover:opacity-90 shadow-lg"
-                    : "bg-foreground text-background hover:opacity-90"
+                    ? "hover:opacity-90"
+                    : "hover:opacity-90"
                 }`}
+                style={{
+                  background: plan.popular 
+                    ? 'hsl(var(--background))'
+                    : 'hsl(var(--foreground))',
+                  color: plan.popular 
+                    ? 'hsl(var(--foreground))'
+                    : 'hsl(var(--background))',
+                  boxShadow: plan.popular 
+                    ? '0 4px 20px rgba(0, 0, 0, 0.3)'
+                    : 'none'
+                }}
               >
                 {plan.cta}
               </Link>

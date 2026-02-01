@@ -29,9 +29,23 @@ const ProblemSolutionSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="why" className="section-padding bg-background relative overflow-hidden">
+    <section id="why" className="section-padding bg-atmosphere-teal relative overflow-hidden">
+      {/* Ambient glow backdrop */}
+      <div 
+        className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(175, 45%, 20%, 0.12) 0%, transparent 70%)'
+        }}
+      />
+      <div 
+        className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(235, 50%, 25%, 0.1) 0%, transparent 70%)'
+        }}
+      />
+      
       <div className="container-main relative" ref={ref}>
-        {/* Main statement - Shopify bold typography */}
+        {/* Main statement */}
         <div 
           className="max-w-5xl mb-16 md:mb-24"
           style={{
@@ -50,12 +64,12 @@ const ProblemSolutionSection = () => {
           </p>
         </div>
 
-        {/* Grid of brand showcases - Shopify style cards */}
+        {/* Grid of brand showcases */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {showcaseItems.map((item, index) => (
             <div
               key={item.title}
-              className="group relative overflow-hidden rounded-2xl md:rounded-3xl bg-card aspect-[3/4] cursor-pointer border border-white/[0.04] transition-all duration-500 hover:border-white/10"
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[3/4] cursor-pointer frame-gallery"
               style={{
                 transform: isInView ? "none" : "translateY(60px)",
                 opacity: isInView ? 1 : 0,
@@ -69,16 +83,34 @@ const ProblemSolutionSection = () => {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+              {/* Refined gradient overlay - teal tinted */}
+              <div 
+                className="absolute inset-0 z-10"
+                style={{
+                  background: `
+                    linear-gradient(to top, 
+                      hsla(180, 35%, 8%, 0.95) 0%, 
+                      hsla(175, 40%, 12%, 0.4) 40%, 
+                      transparent 70%
+                    )
+                  `
+                }}
+              />
               
               {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-20">
                 <p className="text-xs md:text-sm text-muted-foreground mb-1 md:mb-2">{item.link}</p>
                 <h3 className="text-base md:text-xl font-semibold text-foreground group-hover:text-muted-foreground transition-colors duration-300">
                   {item.title}
                 </h3>
               </div>
+              
+              {/* Hover glow */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"
+                style={{
+                  background: 'radial-gradient(ellipse at center bottom, hsla(175, 45%, 20%, 0.15) 0%, transparent 60%)'
+                }}
+              />
             </div>
           ))}
         </div>
