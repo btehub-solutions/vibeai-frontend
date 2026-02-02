@@ -9,8 +9,8 @@ const FinalCTASection = () => {
 
   return (
     <section className="section-padding bg-background relative overflow-hidden">
-      {/* Shopify-style green glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent/8 blur-[150px] rounded-full" />
+      {/* Shopify-style green glow - hidden on mobile */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] md:w-[800px] md:h-[400px] bg-accent/8 blur-[100px] md:blur-[150px] rounded-full hidden md:block" />
       
       <div className="container-main relative" ref={ref}>
         <div 
@@ -21,10 +21,10 @@ const FinalCTASection = () => {
             transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1)"
           }}
         >
-          <h2 className="text-display-sm md:text-display-md lg:text-display-lg text-foreground mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-display-md lg:text-display-lg text-foreground mb-6 md:mb-8">
             Ready to master AI?
           </h2>
-          <p className="text-body-lg text-muted-foreground mb-12">
+          <p className="text-base md:text-body-lg text-muted-foreground mb-8 md:mb-12">
             Join thousands building real AI skills. Start your journey today.
           </p>
           
@@ -32,14 +32,14 @@ const FinalCTASection = () => {
           <div className="inline-block">
             <Link 
               to="/dashboard" 
-              className="btn-primary text-lg px-10 py-5 inline-flex items-center group"
+              className="btn-primary text-base md:text-lg px-8 py-4 md:px-10 md:py-5 inline-flex items-center group"
             >
               Start for free
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
           
-          <p className="mt-8 text-sm text-muted-foreground">
+          <p className="mt-6 md:mt-8 text-xs md:text-sm text-muted-foreground">
             No credit card required
           </p>
         </div>
