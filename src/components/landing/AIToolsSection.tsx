@@ -51,7 +51,18 @@ const AIToolsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currentPage, setCurrentPage] = useState(0);
-  const toolsPerPage = 3;
+  
+  // Show 1 on mobile, 2 on sm, 3 on md+
+  const getToolsPerPage = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 640) return 1;
+      if (window.innerWidth < 768) return 2;
+      return 3;
+    }
+    return 3;
+  };
+  
+  const [toolsPerPage, setToolsPerPage] = useState(3);
   const totalPages = Math.ceil(aiTools.length / toolsPerPage);
 
   const visibleTools = aiTools.slice(
@@ -60,14 +71,14 @@ const AIToolsSection = () => {
   );
 
   return (
-    <section id="ai-tools" className="section-padding bg-background relative">
-      {/* Green glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-accent/5 blur-[150px] rounded-full" />
+    <section id="ai-tools" className="section-padding bg-background relative overflow-hidden">
+      {/* Green glow - hidden on mobile */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[300px] md:w-[600px] md:h-[400px] bg-accent/5 blur-[100px] md:blur-[150px] rounded-full hidden md:block" />
       
       <div className="container-main relative" ref={ref}>
         {/* Header */}
         <div 
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16"
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8 mb-10 md:mb-16"
           style={{
             transform: isInView ? "none" : "translateY(40px)",
             opacity: isInView ? 1 : 0,
@@ -75,34 +86,34 @@ const AIToolsSection = () => {
           }}
         >
           <div className="max-w-2xl">
-            <h2 className="text-display-sm md:text-display-md text-foreground mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-display-md text-foreground mb-4 md:mb-6">
               Trending AI tools
             </h2>
-            <p className="text-body-lg text-muted-foreground">
+            <p className="text-base md:text-body-lg text-muted-foreground">
               Stay current with the tools shaping the industry. We track, analyze, 
               and teach you how to use them.
             </p>
           </div>
 
           {/* Navigation - Shopify style circular buttons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             <button
               onClick={() => setCurrentPage((p) => (p - 1 + totalPages) % totalPages)}
-              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/30 hover:bg-accent/5 transition-all duration-300"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/30 hover:bg-accent/5 transition-all duration-300"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={18} />
             </button>
             <button
               onClick={() => setCurrentPage((p) => (p + 1) % totalPages)}
-              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/30 hover:bg-accent/5 transition-all duration-300"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-accent/30 hover:bg-accent/5 transition-all duration-300"
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={18} />
             </button>
           </div>
         </div>
 
         {/* Tools Grid - Shopify style with images */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {visibleTools.map((tool, index) => (
             <div
               key={tool.name}
@@ -114,7 +125,7 @@ const AIToolsSection = () => {
               }}
             >
               {/* Image */}
-              <div className="relative h-48 overflow-hidden rounded-t-3xl">
+              <div className="relative h-36 md:h-48 overflow-hidden rounded-t-2xl md:rounded-t-3xl">
                 <img 
                   src={tool.image} 
                   alt={tool.name}
@@ -124,31 +135,31 @@ const AIToolsSection = () => {
                 
                 {/* Trending badge */}
                 {tool.trending && (
-                  <span className="absolute top-4 right-4 inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-accent/20 backdrop-blur-sm text-accent text-xs font-medium border border-accent/20">
-                    <TrendingUp size={12} />
+                  <span className="absolute top-3 right-3 md:top-4 md:right-4 inline-flex items-center gap-1 px-2 py-1 md:px-3 md:py-1.5 rounded-full bg-accent/20 backdrop-blur-sm text-accent text-[10px] md:text-xs font-medium border border-accent/20">
+                    <TrendingUp size={10} className="md:w-3 md:h-3" />
                     Trending
                   </span>
                 )}
               </div>
               
               {/* Content */}
-              <div className="p-6">
-                <div className="mb-4">
-                  <h3 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors duration-300 mb-1">
+              <div className="p-4 md:p-6">
+                <div className="mb-3 md:mb-4">
+                  <h3 className="text-lg md:text-xl font-semibold text-foreground group-hover:text-accent transition-colors duration-300 mb-1">
                     {tool.name}
                   </h3>
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-xs md:text-sm text-muted-foreground">
                     {tool.category}
                   </span>
                 </div>
                 
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                <p className="text-muted-foreground text-xs md:text-sm leading-relaxed mb-4 md:mb-6">
                   {tool.description}
                 </p>
                 
-                <button className="flex items-center gap-2 text-sm font-medium text-foreground group-hover:text-accent transition-colors duration-300">
+                <button className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground group-hover:text-accent transition-colors duration-300">
                   Learn more
-                  <ExternalLink size={14} />
+                  <ExternalLink size={12} className="md:w-[14px] md:h-[14px]" />
                 </button>
               </div>
               
@@ -159,14 +170,14 @@ const AIToolsSection = () => {
         </div>
 
         {/* Page indicators - Shopify style */}
-        <div className="flex justify-center gap-2 mt-12">
+        <div className="flex justify-center gap-2 mt-8 md:mt-12">
           {Array.from({ length: totalPages }).map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentPage(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 currentPage === index 
-                  ? "bg-accent w-8" 
+                  ? "bg-accent w-6 md:w-8" 
                   : "bg-white/20 w-2 hover:bg-white/40"
               }`}
             />

@@ -11,24 +11,24 @@ const GlobalReachSection = () => {
       {/* Deep background gradient - Shopify globe-style */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary via-background to-background" />
       
-      {/* Multiple ambient glows */}
-      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-accent/8 blur-[120px] rounded-full" />
-      <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-emerald-500/10 blur-[100px] rounded-full" />
+      {/* Ambient glows - hidden on mobile */}
+      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-accent/8 blur-[100px] md:blur-[120px] rounded-full hidden md:block" />
+      <div className="absolute bottom-1/4 right-1/4 w-[200px] h-[200px] md:w-[300px] md:h-[300px] bg-emerald-500/10 blur-[80px] md:blur-[100px] rounded-full hidden md:block" />
       
       <div className="container-main relative" ref={ref}>
         {/* Header */}
         <div 
-          className="max-w-3xl mb-16 md:mb-24"
+          className="max-w-3xl mb-12 md:mb-24"
           style={{
             transform: isInView ? "none" : "translateY(40px)",
             opacity: isInView ? 1 : 0,
             transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1)"
           }}
         >
-          <h2 className="text-display-sm md:text-display-md lg:text-display-lg text-foreground mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-display-md lg:text-display-lg text-foreground mb-4 md:mb-6">
             Learn at the speed of AI
           </h2>
-          <p className="text-body-lg text-muted-foreground max-w-xl">
+          <p className="text-base md:text-body-lg text-muted-foreground max-w-xl">
             Access cutting-edge AI education from anywhere. Our platform delivers 
             content optimized for how you learn best.
           </p>
@@ -44,12 +44,12 @@ const GlobalReachSection = () => {
           }}
         >
           {/* Globe/visual container */}
-          <div className="relative aspect-[16/10] md:aspect-[16/8] rounded-3xl overflow-hidden border border-white/[0.06]">
+          <div className="relative aspect-[4/3] md:aspect-[16/8] rounded-2xl md:rounded-3xl overflow-hidden border border-white/[0.06]">
             {/* Dark gradient background with glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-secondary via-background to-emerald-950/20" />
             
-            {/* Central glow effect */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-accent/5 blur-[80px] rounded-full" />
+            {/* Central glow effect - smaller on mobile */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] md:w-[80%] md:h-[80%] bg-accent/5 blur-[60px] md:blur-[80px] rounded-full" />
             
             {/* Network grid pattern */}
             <div className="absolute inset-0 opacity-20">
@@ -63,9 +63,9 @@ const GlobalReachSection = () => {
               </svg>
             </div>
 
-            {/* Connection lines - animated */}
+            {/* Connection lines - animated - simplified on mobile */}
             <div className="absolute inset-0">
-              <svg className="w-full h-full" viewBox="0 0 800 400">
+              <svg className="w-full h-full" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="hsl(75 90% 55% / 0.1)" />
@@ -88,7 +88,7 @@ const GlobalReachSection = () => {
                   fill="none" 
                   stroke="url(#lineGradient)" 
                   strokeWidth="1"
-                  className="animate-pulse"
+                  className="animate-pulse hidden md:block"
                   style={{ animationDuration: "4s", animationDelay: "1s" }}
                 />
                 <path 
@@ -96,7 +96,7 @@ const GlobalReachSection = () => {
                   fill="none" 
                   stroke="url(#lineGradient)" 
                   strokeWidth="1"
-                  className="animate-pulse"
+                  className="animate-pulse hidden md:block"
                   style={{ animationDuration: "3.5s", animationDelay: "0.5s" }}
                 />
                 
@@ -109,45 +109,41 @@ const GlobalReachSection = () => {
                 
                 <circle cx="650" cy="280" r="4" fill="hsl(75 90% 55%)" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
                 <circle cx="650" cy="280" r="8" fill="hsl(75 90% 55% / 0.3)" className="animate-pulse" style={{ animationDelay: "0.6s" }} />
-                
-                <circle cx="500" cy="150" r="3" fill="hsl(160 60% 50%)" className="animate-pulse" />
-                <circle cx="300" cy="350" r="3" fill="hsl(160 60% 50%)" className="animate-pulse" style={{ animationDelay: "0.4s" }} />
-                <circle cx="700" cy="300" r="3" fill="hsl(160 60% 50%)" className="animate-pulse" style={{ animationDelay: "0.8s" }} />
               </svg>
             </div>
 
-            {/* Light scatter points */}
-            <div className="absolute top-[20%] left-[30%] w-1 h-1 bg-accent rounded-full animate-pulse" />
-            <div className="absolute top-[40%] left-[60%] w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: "0.5s" }} />
-            <div className="absolute top-[60%] left-[45%] w-1 h-1 bg-accent rounded-full animate-pulse" style={{ animationDelay: "1s" }} />
-            <div className="absolute top-[30%] left-[75%] w-1 h-1 bg-teal-400 rounded-full animate-pulse" style={{ animationDelay: "0.8s" }} />
+            {/* Light scatter points - hidden on mobile */}
+            <div className="absolute top-[20%] left-[30%] w-1 h-1 bg-accent rounded-full animate-pulse hidden md:block" />
+            <div className="absolute top-[40%] left-[60%] w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse hidden md:block" style={{ animationDelay: "0.5s" }} />
+            <div className="absolute top-[60%] left-[45%] w-1 h-1 bg-accent rounded-full animate-pulse hidden md:block" style={{ animationDelay: "1s" }} />
+            <div className="absolute top-[30%] left-[75%] w-1 h-1 bg-teal-400 rounded-full animate-pulse hidden md:block" style={{ animationDelay: "0.8s" }} />
           </div>
 
-          {/* Floating stats card - left */}
+          {/* Floating stats cards - repositioned for mobile */}
           <div 
-            className="absolute bottom-4 left-4 md:bottom-8 md:left-8 card-elevated p-4 md:p-6 animate-float"
+            className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 md:bottom-8 md:left-8 card-elevated p-3 sm:p-4 md:p-6 animate-float"
             style={{ animationDelay: "0.5s" }}
           >
-            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1 md:mb-2">
+            <p className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider mb-1">
               Countries
             </p>
-            <p className="text-2xl md:text-3xl font-bold text-foreground">40+</p>
-            <p className="text-xs md:text-sm text-muted-foreground">learners worldwide</p>
+            <p className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground">40+</p>
+            <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground">learners worldwide</p>
           </div>
 
-          {/* Floating stat card - right with accent */}
+          {/* Floating stat card - right - repositioned for mobile */}
           <div 
-            className="absolute bottom-12 right-4 md:bottom-16 md:right-8 card-elevated p-4 md:p-6 animate-float border-accent/20"
+            className="absolute bottom-2 right-2 sm:bottom-12 sm:right-4 md:bottom-16 md:right-8 card-elevated p-3 sm:p-4 md:p-6 animate-float border-accent/20 max-w-[45%] sm:max-w-none"
             style={{ animationDelay: "1s" }}
           >
-            <div className="flex items-center gap-2 mb-2">
-              <Sparkles className="w-4 h-4 text-accent" />
-              <span className="text-xs uppercase tracking-wider text-accent font-medium">Every 60 seconds</span>
+            <div className="flex items-center gap-1.5 sm:gap-2 mb-1 sm:mb-2">
+              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-accent" />
+              <span className="text-[9px] sm:text-xs uppercase tracking-wider text-accent font-medium">Every 60 seconds</span>
             </div>
-            <p className="text-sm md:text-base text-foreground font-medium">
+            <p className="text-xs sm:text-sm md:text-base text-foreground font-medium">
               A new learner starts their
             </p>
-            <p className="text-sm md:text-base text-accent font-semibold">
+            <p className="text-xs sm:text-sm md:text-base text-accent font-semibold">
               AI journey with VibeAI
             </p>
           </div>
@@ -155,17 +151,17 @@ const GlobalReachSection = () => {
 
         {/* Innovation section below */}
         <div 
-          className="mt-20 md:mt-32 max-w-3xl"
+          className="mt-12 md:mt-32 max-w-3xl"
           style={{
             transform: isInView ? "none" : "translateY(40px)",
             opacity: isInView ? 1 : 0,
             transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.6s"
           }}
         >
-          <h3 className="text-display-xs md:text-display-sm text-foreground mb-6">
+          <h3 className="text-xl sm:text-2xl md:text-display-sm text-foreground mb-4 md:mb-6">
             VibeAI never stops evolving
           </h3>
-          <p className="text-body-lg text-muted-foreground">
+          <p className="text-base md:text-body-lg text-muted-foreground">
             Our curriculum updates weekly with the latest AI breakthroughs. 
             New tools, new techniques, new opportunities—delivered to you first.
           </p>
