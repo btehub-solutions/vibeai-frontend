@@ -81,10 +81,10 @@ const PricingSection = () => {
           {plans.map((plan, index) => (
             <div
               key={plan.name}
-              className={`relative rounded-2xl md:rounded-3xl p-5 md:p-8 transition-all duration-500 border ${
+              className={`glass-panel p-6 md:p-8 rounded-3xl relative transition-all duration-500 group ${
                 plan.popular
-                  ? "bg-primary text-primary-foreground border-primary sm:scale-[1.02] shadow-xl"
-                  : "bg-secondary border-white/[0.06] hover:border-accent/20"
+                  ? "border-accent/50 shadow-[0_0_40px_-10px_rgba(180,255,50,0.15)] scale-[1.02] z-10"
+                  : "hover:border-accent/30 hover:-translate-y-2"
               }`}
               style={{
                 transform: isInView ? "none" : "translateY(40px)",
@@ -94,49 +94,57 @@ const PricingSection = () => {
             >
               {/* Popular Badge */}
               {plan.popular && (
-                <div className="absolute -top-3 md:-top-4 left-1/2 -translate-x-1/2">
-                  <span className="px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-accent text-accent-foreground text-[10px] md:text-xs font-semibold shadow-lg whitespace-nowrap">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span className="px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-xs font-bold shadow-[0_4px_20px_-5px_rgba(180,255,50,0.4)] uppercase tracking-wide flex items-center gap-1.5">
+                    <Check size={12} strokeWidth={4} />
                     Most Popular
                   </span>
                 </div>
               )}
 
-              <div className="mb-6 md:mb-8">
-                <h3 className={`text-base md:text-lg font-semibold mb-3 md:mb-4 ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
+              {/* Background Gradient for popular card */}
+              {plan.popular && (
+                <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent pointer-events-none" />
+              )}
+
+              <div className="mb-6 md:mb-8 relative z-10">
+                <h3 className={`text-lg font-semibold mb-2 ${plan.popular ? "text-accent" : "text-foreground"}`}>
                   {plan.name}
                 </h3>
-                <div className="flex items-baseline gap-1 mb-2 md:mb-3">
-                  <span className={`text-3xl md:text-4xl font-bold ${plan.popular ? "text-primary-foreground" : "text-foreground"}`}>
+                <div className="flex items-baseline gap-1 mb-3">
+                  <span className="text-3xl md:text-4xl font-bold text-foreground">
                     {plan.price}
                   </span>
                   {plan.period && (
-                    <span className={`text-sm ${plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                    <span className="text-sm text-muted-foreground">
                       {plan.period}
                     </span>
                   )}
                 </div>
-                <p className={`text-xs md:text-sm ${plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                <p className="text-sm text-muted-foreground">
                   {plan.description}
                 </p>
               </div>
 
-              <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
+              <div className="space-y-4 mb-8 relative z-10">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 md:gap-3">
-                    <Check size={16} className={`flex-shrink-0 mt-0.5 ${plan.popular ? "text-accent" : "text-accent"}`} />
-                    <span className={`text-xs md:text-sm ${plan.popular ? "text-primary-foreground/90" : "text-muted-foreground"}`}>
+                  <div key={feature} className="flex items-start gap-3">
+                    <div className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${plan.popular ? "bg-accent text-accent-foreground" : "bg-white/10 text-muted-foreground"}`}>
+                      <Check size={10} strokeWidth={3} />
+                    </div>
+                    <span className="text-sm text-foreground/90">
                       {feature}
                     </span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
 
               <Link
                 to="/dashboard"
-                className={`block w-full text-center py-3 md:py-4 rounded-full font-semibold text-xs md:text-sm transition-all duration-300 ${
+                className={`w-full py-4 rounded-xl font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${
                   plan.popular
-                    ? "bg-accent text-accent-foreground hover:opacity-90 shadow-lg"
-                    : "bg-primary text-primary-foreground hover:opacity-90"
+                    ? "bg-accent text-accent-foreground hover:shadow-[0_0_30px_-5px_rgba(180,255,50,0.4)] hover:scale-[1.02]"
+                    : "bg-white/5 text-foreground hover:bg-white/10 border border-white/10 hover:border-white/20"
                 }`}
               >
                 {plan.cta}

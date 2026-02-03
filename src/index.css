@@ -2,59 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
 
 @layer base {
   :root {
-    /* Shopify's exact color palette - Deep teal-black base */
-    --background: 164 22% 5%;
-    --foreground: 60 20% 95%;
+    /* Shopify-inspired "Vibe" Palette - Richer and deeper */
+    /* Deep forest/void background */
+    --background: 150 40% 2%;
+    --foreground: 85 20% 98%;
 
-    /* Card matches background for blended effect */
-    --card: 164 22% 8%;
-    --card-foreground: 60 20% 95%;
+    /* Card background - slightly lighter than bg for depth */
+    --card: 150 30% 4%;
+    --card-foreground: 85 20% 98%;
 
-    --popover: 164 22% 8%;
-    --popover-foreground: 60 20% 95%;
+    --popover: 150 30% 4%;
+    --popover-foreground: 85 20% 98%;
 
-    /* Warm cream/off-white for primary CTAs - Shopify style */
-    --primary: 45 30% 94%;
-    --primary-foreground: 164 22% 5%;
+    /* Primary - Electric Lime (The "Pop") */
+    --primary: 85 100% 60%;
+    --primary-foreground: 150 60% 5%;
 
-    /* Blended teal-green for sections */
-    --secondary: 164 18% 10%;
-    --secondary-foreground: 60 15% 85%;
+    /* Secondary - Muted Deep Green/Teal */
+    --secondary: 160 30% 10%;
+    --secondary-foreground: 85 20% 90%;
 
-    --muted: 164 12% 18%;
-    --muted-foreground: 160 8% 55%;
+    --muted: 160 20% 15%;
+    --muted-foreground: 160 10% 60%;
 
-    /* Shopify's signature lime-green accent */
-    --accent: 75 90% 55%;
-    --accent-foreground: 164 22% 5%;
+    /* Accent - Cyan/Teal for secondary highlights */
+    --accent: 170 100% 45%;
+    --accent-foreground: 150 60% 5%;
 
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 60 20% 98%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 164 15% 12%;
-    --input: 164 15% 12%;
-    --ring: 75 90% 55%;
+    --border: 160 20% 12%;
+    --input: 160 20% 12%;
+    --ring: 85 100% 60%;
 
     --radius: 1rem;
 
-    /* Shopify-style shadows and glows */
-    --shadow-soft: 0 4px 30px rgba(0, 0, 0, 0.4);
-    --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.3);
-    --glow-green: 0 0 80px rgba(170, 230, 80, 0.15);
-    --glow-green-strong: 0 0 120px rgba(170, 230, 80, 0.25);
+    /* Enhanced Glows & Shadows */
+    --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-card: 0 12px 48px rgba(0, 0, 0, 0.6);
 
-    --sidebar-background: 164 22% 6%;
-    --sidebar-foreground: 60 15% 90%;
-    --sidebar-primary: 75 90% 55%;
-    --sidebar-primary-foreground: 164 22% 5%;
-    --sidebar-accent: 164 18% 14%;
-    --sidebar-accent-foreground: 60 15% 90%;
-    --sidebar-border: 164 15% 12%;
-    --sidebar-ring: 75 90% 55%;
+    /* Neon Glows */
+    --glow-primary: 0 0 40px rgba(180, 255, 50, 0.15);
+    --glow-primary-strong: 0 0 80px rgba(180, 255, 50, 0.3);
+
+    --sidebar-background: 150 40% 3%;
+    --sidebar-foreground: 85 10% 95%;
+    --sidebar-primary: 85 100% 60%;
+    --sidebar-primary-foreground: 150 60% 5%;
+    --sidebar-accent: 160 30% 8%;
+    --sidebar-accent-foreground: 85 10% 95%;
+    --sidebar-border: 160 20% 12%;
+    --sidebar-ring: 85 100% 60%;
   }
 }
 
@@ -69,7 +72,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   }
 }
 
@@ -126,14 +129,22 @@
   .glow-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, hsl(75 90% 55% / 0.08) 0%, transparent 70%);
+    background: radial-gradient(
+      ellipse at center,
+      hsl(75 90% 55% / 0.08) 0%,
+      transparent 70%
+    );
     pointer-events: none;
   }
 
   /* Text gradient for accent */
   .text-accent-gradient {
     @apply bg-clip-text text-transparent;
-    background: linear-gradient(135deg, hsl(75 90% 55%) 0%, hsl(85 85% 60%) 100%);
+    background: linear-gradient(
+      135deg,
+      hsl(75 90% 55%) 0%,
+      hsl(85 85% 60%) 100%
+    );
   }
 
   /* Rounded section transition - Shopify style */
@@ -162,8 +173,12 @@
   }
 
   @keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 }
 
@@ -184,10 +199,22 @@
     }
   }
 
-  .animate-delay-100 { animation-delay: 0.1s; opacity: 0; }
-  .animate-delay-200 { animation-delay: 0.2s; opacity: 0; }
-  .animate-delay-300 { animation-delay: 0.3s; opacity: 0; }
-  .animate-delay-400 { animation-delay: 0.4s; opacity: 0; }
+  .animate-delay-100 {
+    animation-delay: 0.1s;
+    opacity: 0;
+  }
+  .animate-delay-200 {
+    animation-delay: 0.2s;
+    opacity: 0;
+  }
+  .animate-delay-300 {
+    animation-delay: 0.3s;
+    opacity: 0;
+  }
+  .animate-delay-400 {
+    animation-delay: 0.4s;
+    opacity: 0;
+  }
 
   /* Smooth fade in */
   .animate-fade-in {
@@ -195,8 +222,12 @@
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   /* Shopify rotating text for hero */
@@ -214,12 +245,29 @@
   }
 
   @keyframes rotateText {
-    0%, 16% { transform: translateY(0); }
-    20%, 36% { transform: translateY(-100%); }
-    40%, 56% { transform: translateY(-200%); }
-    60%, 76% { transform: translateY(-300%); }
-    80%, 96% { transform: translateY(-400%); }
-    100% { transform: translateY(0); }
+    0%,
+    16% {
+      transform: translateY(0);
+    }
+    20%,
+    36% {
+      transform: translateY(-100%);
+    }
+    40%,
+    56% {
+      transform: translateY(-200%);
+    }
+    60%,
+    76% {
+      transform: translateY(-300%);
+    }
+    80%,
+    96% {
+      transform: translateY(-400%);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 
   /* Subtle float animation */
@@ -228,8 +276,13 @@
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   /* Pulse glow for accents */
@@ -238,8 +291,13 @@
   }
 
   @keyframes pulseGlow {
-    0%, 100% { box-shadow: var(--glow-green); }
-    50% { box-shadow: var(--glow-green-strong); }
+    0%,
+    100% {
+      box-shadow: var(--glow-green);
+    }
+    50% {
+      box-shadow: var(--glow-green-strong);
+    }
   }
 
   /* Floating animation with rotation */
@@ -248,11 +306,12 @@
   }
 
   @keyframes floatRotate {
-    0%, 100% { 
-      transform: translateY(0px) rotate(0deg); 
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
     }
-    50% { 
-      transform: translateY(-15px) rotate(3deg); 
+    50% {
+      transform: translateY(-15px) rotate(3deg);
     }
   }
 
@@ -263,12 +322,24 @@
     animation: staggerIn 0.6s ease-out forwards;
   }
 
-  .stagger-reveal > *:nth-child(1) { animation-delay: 0.1s; }
-  .stagger-reveal > *:nth-child(2) { animation-delay: 0.2s; }
-  .stagger-reveal > *:nth-child(3) { animation-delay: 0.3s; }
-  .stagger-reveal > *:nth-child(4) { animation-delay: 0.4s; }
-  .stagger-reveal > *:nth-child(5) { animation-delay: 0.5s; }
-  .stagger-reveal > *:nth-child(6) { animation-delay: 0.6s; }
+  .stagger-reveal > *:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .stagger-reveal > *:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .stagger-reveal > *:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .stagger-reveal > *:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  .stagger-reveal > *:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  .stagger-reveal > *:nth-child(6) {
+    animation-delay: 0.6s;
+  }
 
   @keyframes staggerIn {
     to {
@@ -283,7 +354,7 @@
   }
 
   .glow-border::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: -1px;
     border-radius: inherit;
@@ -295,8 +366,12 @@
       transparent 60%,
       hsl(75 90% 55% / 0.3)
     );
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     animation: glowRotate 4s linear infinite;

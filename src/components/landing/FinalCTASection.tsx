@@ -10,7 +10,7 @@ const FinalCTASection = () => {
   return (
     <section className="section-padding bg-background relative overflow-hidden">
       {/* Shopify-style green glow - hidden on mobile */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] md:w-[800px] md:h-[400px] bg-accent/8 blur-[100px] md:blur-[150px] rounded-full hidden md:block" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] md:w-[800px] md:h-[400px] bg-accent/20 blur-[120px] md:blur-[180px] rounded-full hidden md:block animate-pulse-glow" />
       
       <div className="container-main relative" ref={ref}>
         <div 

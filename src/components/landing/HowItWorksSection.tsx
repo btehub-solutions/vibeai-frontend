@@ -57,28 +57,28 @@ const HowItWorksSection = () => {
           {steps.map((step, index) => (
             <div
               key={step.title}
-              className="card-feature p-5 md:p-8 group"
+              className="glass-panel glass-panel-hover p-5 md:p-8 rounded-3xl group relative overflow-hidden"
               style={{
                 transform: isInView ? "none" : "translateY(40px)",
                 opacity: isInView ? 1 : 0,
                 transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) ${0.1 + index * 0.1}s`
               }}
             >
-              {/* Icon with green glow on hover */}
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-accent/10 flex items-center justify-center mb-4 md:mb-6 group-hover:bg-accent/20 transition-colors duration-300">
-                <step.icon className="w-5 h-5 md:w-6 md:h-6 text-accent" />
+              {/* Animated Background Blob on Hover */}
+              <div className="absolute -right-10 -top-10 w-32 h-32 bg-accent/20 blur-[50px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              
+              {/* Icon with levitation effect */}
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-lg">
+                <step.icon className="w-6 h-6 text-accent group-hover:drop-shadow-[0_0_10px_rgba(180,255,50,0.5)] transition-all duration-300" />
               </div>
               
-              <h3 className="text-lg md:text-xl font-semibold text-foreground mb-3 md:mb-4 group-hover:text-accent transition-colors duration-300">
+              <h3 className="text-xl font-bold text-foreground mb-3 md:mb-4 group-hover:text-accent transition-colors duration-300">
                 {step.title}
               </h3>
               
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed group-hover:text-muted-foreground/80 transition-colors">
                 {step.description}
               </p>
-              
-              {/* Subtle glow overlay */}
-              <div className="glow-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           ))}
         </div>

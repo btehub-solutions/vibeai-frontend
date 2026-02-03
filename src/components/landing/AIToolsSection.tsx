@@ -22,7 +22,7 @@ const aiTools = [
     category: "Image Generation",
     description: "Create stunning visuals from text. Industry-leading image quality.",
     trending: false,
-    image: "https://images.unsplash.com/photo-1686191128892-3b37add4fc7c?w=400&h=300&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&h=300&fit=crop&q=80",
   },
   {
     name: "Cursor",
@@ -36,7 +36,7 @@ const aiTools = [
     category: "Video AI",
     description: "Generate and edit videos using AI. Revolutionary creative tool.",
     trending: true,
-    image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=400&h=300&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=400&h=300&fit=crop&q=80",
   },
   {
     name: "Perplexity",
@@ -117,7 +117,7 @@ const AIToolsSection = () => {
           {visibleTools.map((tool, index) => (
             <div
               key={tool.name}
-              className="card-feature group cursor-pointer"
+              className="glass-panel glass-panel-hover group cursor-pointer rounded-3xl overflow-hidden"
               style={{
                 transform: isInView ? "none" : "translateY(40px)",
                 opacity: isInView ? 1 : 0,
@@ -125,46 +125,46 @@ const AIToolsSection = () => {
               }}
             >
               {/* Image */}
-              <div className="relative h-36 md:h-48 overflow-hidden rounded-t-2xl md:rounded-t-3xl">
+              <div className="relative h-48 md:h-64 overflow-hidden">
                 <img 
                   src={tool.image} 
                   alt={tool.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-90" />
                 
                 {/* Trending badge */}
                 {tool.trending && (
-                  <span className="absolute top-3 right-3 md:top-4 md:right-4 inline-flex items-center gap-1 px-2 py-1 md:px-3 md:py-1.5 rounded-full bg-accent/20 backdrop-blur-sm text-accent text-[10px] md:text-xs font-medium border border-accent/20">
-                    <TrendingUp size={10} className="md:w-3 md:h-3" />
+                  <span className="absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md text-accent text-xs font-medium border border-accent/30 shadow-lg">
+                    <TrendingUp size={12} className="text-accent" />
                     Trending
                   </span>
                 )}
               </div>
               
               {/* Content */}
-              <div className="p-4 md:p-6">
-                <div className="mb-3 md:mb-4">
-                  <h3 className="text-lg md:text-xl font-semibold text-foreground group-hover:text-accent transition-colors duration-300 mb-1">
+              <div className="p-6 md:p-8 relative">
+                {/* Floating blur blob behind text */}
+                <div className="absolute right-0 top-0 w-32 h-32 bg-accent/10 blur-[40px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="mb-4 relative z-10">
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-accent transition-colors duration-300 mb-2">
                     {tool.name}
                   </h3>
-                  <span className="text-xs md:text-sm text-muted-foreground">
+                  <span className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-muted-foreground group-hover:border-accent/30 transition-colors">
                     {tool.category}
                   </span>
                 </div>
                 
-                <p className="text-muted-foreground text-xs md:text-sm leading-relaxed mb-4 md:mb-6">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-2">
                   {tool.description}
                 </p>
                 
-                <button className="flex items-center gap-2 text-xs md:text-sm font-medium text-foreground group-hover:text-accent transition-colors duration-300">
+                <button className="flex items-center gap-2 text-sm font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
                   Learn more
-                  <ExternalLink size={12} className="md:w-[14px] md:h-[14px]" />
+                  <ExternalLink size={14} className="transition-transform group-hover:translate-x-1" />
                 </button>
               </div>
-              
-              {/* Glow overlay */}
-              <div className="glow-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           ))}
         </div>

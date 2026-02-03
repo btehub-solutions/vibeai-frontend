@@ -156,25 +156,26 @@ const ShowcaseSection = () => {
           }}
         >
           {/* Featured course card */}
-          <div className="card-elevated p-4 md:p-8 flex items-center gap-4 md:gap-6">
+          <div className="glass-panel glass-panel-hover p-4 md:p-8 flex items-center gap-4 md:gap-6 group">
             <div className="w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0 border border-white/[0.08]">
               <img 
                 src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=200&h=200&fit=crop&q=80"
                 alt="AI Course"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
             </div>
             <div>
-              <p className="text-base md:text-xl font-semibold text-foreground">AI Fundamentals</p>
+              <p className="text-base md:text-xl font-semibold text-foreground group-hover:text-accent transition-colors">AI Fundamentals</p>
               <p className="text-sm text-accent font-medium">₦35,000 NGN</p>
               <p className="text-[10px] md:text-xs text-muted-foreground mt-1">Most popular course</p>
             </div>
           </div>
 
           {/* Brand element */}
-          <div className="card-elevated p-4 md:p-8 flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 rounded-xl md:rounded-2xl bg-gradient-to-br from-accent/30 to-emerald-500/30 flex items-center justify-center">
+          <div className="glass-panel glass-panel-hover p-4 md:p-8 flex items-center justify-center relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="text-center relative z-10">
+              <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 rounded-xl md:rounded-2xl bg-gradient-to-br from-accent/30 to-emerald-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg">
                 <span className="text-xl md:text-2xl font-bold text-accent">V</span>
               </div>
               <p className="text-foreground font-medium text-sm md:text-base">Trusted by 2,500+ learners</p>
