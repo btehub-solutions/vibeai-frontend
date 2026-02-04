@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import {
@@ -46,13 +48,21 @@ const upcomingMeetings = [
 ];
 
 const Dashboard = () => {
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setUser(user);
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-background flex">
       <DashboardSidebar />
 
       <main className="flex-1 p-6 lg:p-10 overflow-auto">
         <DashboardHeader
-          title="Welcome back, John"
+          title={`Welcome back, ${user?.email?.split('@')[0] || 'Member'}`}
           subtitle="Continue your AI learning journey"
         />
 

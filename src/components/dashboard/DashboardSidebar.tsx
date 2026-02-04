@@ -11,6 +11,7 @@ import {
   X,
 } from "lucide-react";
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 const navItems = [
   { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
@@ -71,7 +72,10 @@ const DashboardSidebar = () => {
           <Settings size={18} />
           Settings
         </Link>
-        <button className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-[15px] font-medium text-muted-foreground hover:text-foreground hover:bg-white/[0.03] transition-all duration-200">
+        <button 
+          onClick={async () => await supabase.auth.signOut()}
+          className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-[15px] font-medium text-muted-foreground hover:text-foreground hover:bg-white/[0.03] transition-all duration-200"
+        >
           <LogOut size={18} />
           Sign Out
         </button>

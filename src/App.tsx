@@ -4,6 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import DashboardCourses from "./pages/DashboardCourses";
 import DashboardTools from "./pages/DashboardTools";
@@ -23,13 +25,19 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard/courses" element={<DashboardCourses />} />
-          <Route path="/dashboard/tools" element={<DashboardTools />} />
-          <Route path="/dashboard/announcements" element={<DashboardAnnouncements />} />
-          <Route path="/dashboard/schedule" element={<DashboardSchedule />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/chat" element={<Chat />} />
+          
+          {/* Protected Dashboard Routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/courses" element={<DashboardCourses />} />
+            <Route path="/dashboard/tools" element={<DashboardTools />} />
+            <Route path="/dashboard/announcements" element={<DashboardAnnouncements />} />
+            <Route path="/dashboard/schedule" element={<DashboardSchedule />} />
+          </Route>
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

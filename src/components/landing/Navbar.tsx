@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,7 +15,27 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    // Check active session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+  };
+  
+const navLinks = [
     { name: "Why VibeAI", href: "/#why" },
     { name: "Learning", href: "/#how-it-works" },
     { name: "AI Chat", href: "/chat" },
@@ -55,15 +76,34 @@ const Navbar = () => {
 
           {/* Desktop CTA - Shopify exact style */}
           <div className="hidden md:flex items-center gap-4">
-            <Link
-              to="/dashboard"
-              className="text-[15px] text-muted-foreground hover:text-foreground transition-colors duration-200 px-4 py-2"
-            >
-              Log in
-            </Link>
-            <Link to="/dashboard" className="btn-primary text-[15px] px-6 py-3">
-              Start for free
-            </Link>
+            {user ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  className="btn-primary text-[15px] px-6 py-3"
+                >
+                  Dashboard
+                </Link>
+                <button 
+                  onClick={handleSignOut}
+                  className="text-[15px] text-muted-foreground hover:text-foreground transition-colors duration-200 px-4 py-2"
+                >
+                  Sign Out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="text-[15px] text-muted-foreground hover:text-foreground transition-colors duration-200 px-4 py-2"
+                >
+                  Log in
+                </Link>
+                <Link to="/login" className="btn-primary text-[15px] px-6 py-3">
+                  Start for free
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -90,15 +130,34 @@ const Navbar = () => {
                 </Link>
               ))}
               <div className="pt-6 flex flex-col gap-4 border-t border-white/[0.06]">
-                <Link
-                  to="/dashboard"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Log in
-                </Link>
-                <Link to="/dashboard" className="btn-primary text-center">
-                  Start for free
-                </Link>
+                {user ? (
+                  <>
+                    <Link
+                      to="/dashboard"
+                      className="btn-primary text-center"
+                    >
+                      Dashboard
+                    </Link>
+                    <button
+                      onClick={handleSignOut}
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      Sign Out
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to="/login"
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      Log in
+                    </Link>
+                    <Link to="/login" className="btn-primary text-center">
+                      Start for free
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>
