@@ -11,6 +11,7 @@ import DashboardAnnouncements from "./pages/DashboardAnnouncements";
 import DashboardSchedule from "./pages/DashboardSchedule";
 import Testimonials from "./pages/Testimonials";
 import NotFound from "./pages/NotFound";
+import Chat from "./pages/Chat";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/dashboard/announcements" element={<DashboardAnnouncements />} />
           <Route path="/dashboard/schedule" element={<DashboardSchedule />} />
           <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/chat" element={<Chat />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

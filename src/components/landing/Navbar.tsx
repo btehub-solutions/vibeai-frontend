@@ -17,6 +17,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Why VibeAI", href: "/#why" },
     { name: "Learning", href: "/#how-it-works" },
+    { name: "AI Chat", href: "/chat" },
     { name: "Pricing", href: "/#pricing" },
     { name: "Testimonials", href: "/testimonials" },
   ];
