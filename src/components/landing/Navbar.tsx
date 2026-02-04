@@ -15,9 +15,10 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Why VibeAI", href: "#why" },
-    { name: "Learning", href: "#how-it-works" },
-    { name: "Pricing", href: "#pricing" },
+    { name: "Why VibeAI", href: "/#why" },
+    { name: "Learning", href: "/#how-it-works" },
+    { name: "Pricing", href: "/#pricing" },
+    { name: "Testimonials", href: "/testimonials" },
   ];
 
   return (
@@ -41,13 +42,13 @@ const Navbar = () => {
           {/* Desktop Navigation - Shopify minimal style */}
           <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className="text-[15px] text-muted-foreground hover:text-foreground transition-colors duration-200"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -78,14 +79,14 @@ const Navbar = () => {
           <div className="md:hidden py-8 border-t border-white/[0.06] bg-background/95 backdrop-blur-xl">
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-lg text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
               <div className="pt-6 flex flex-col gap-4 border-t border-white/[0.06]">
                 <Link
