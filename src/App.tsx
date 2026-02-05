@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import DashboardCourses from "./pages/DashboardCourses";
+import DashboardCourseDetail from "./pages/DashboardCourseDetail";
 import DashboardTools from "./pages/DashboardTools";
 import DashboardAnnouncements from "./pages/DashboardAnnouncements";
 import DashboardSchedule from "./pages/DashboardSchedule";
@@ -33,6 +34,7 @@ const App = () => (
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/courses" element={<DashboardCourses />} />
+            <Route path="/dashboard/courses/:courseId" element={<DashboardCourseDetail />} />
             <Route path="/dashboard/tools" element={<DashboardTools />} />
             <Route path="/dashboard/announcements" element={<DashboardAnnouncements />} />
             <Route path="/dashboard/schedule" element={<DashboardSchedule />} />
