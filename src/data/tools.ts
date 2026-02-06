@@ -26,7 +26,7 @@ export const tools: Tool[] = [
     longDescription: "VibeAI Assistant is specialized in helping you learn about AI concepts. It has context about your courses and progress, allowing for personalized guidance.",
     trending: true, 
     rating: 5.0, 
-    link: "/dashboard/tools/vibe-ai",
+    link: "/dashboard/tools/100",
     isInternal: true,
     icon: Bot,
     features: [

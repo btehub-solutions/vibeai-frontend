@@ -9,10 +9,12 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import DashboardCourses from "./pages/DashboardCourses";
 import DashboardCourseDetail from "./pages/DashboardCourseDetail";
+import LessonPlayer from "./pages/LessonPlayer";
 import DashboardTools from "./pages/DashboardTools";
 import DashboardToolDetail from "./pages/DashboardToolDetail";
 import DashboardAnnouncements from "./pages/DashboardAnnouncements";
 import DashboardSchedule from "./pages/DashboardSchedule";
+import DashboardSettings from "./pages/DashboardSettings";
 import Testimonials from "./pages/Testimonials";
 import NotFound from "./pages/NotFound";
 import Chat from "./pages/Chat";
@@ -36,10 +38,12 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/dashboard/courses" element={<DashboardCourses />} />
             <Route path="/dashboard/courses/:courseId" element={<DashboardCourseDetail />} />
+            <Route path="/dashboard/courses/:courseId/lessons/:lessonId" element={<LessonPlayer />} />
             <Route path="/dashboard/tools" element={<DashboardTools />} />
             <Route path="/dashboard/tools/:toolId" element={<DashboardToolDetail />} />
             <Route path="/dashboard/announcements" element={<DashboardAnnouncements />} />
             <Route path="/dashboard/schedule" element={<DashboardSchedule />} />
+            <Route path="/dashboard/settings" element={<DashboardSettings />} />
           </Route>
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

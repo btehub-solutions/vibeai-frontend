@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
-import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
-import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import {
   BookOpen,
   Clock,
@@ -11,36 +7,12 @@ import {
   ArrowRight,
   Sparkles,
   Calendar,
+  Loader2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const stats = [
-  { label: "In Progress", value: "3", icon: BookOpen, change: "+1 this week" },
-  { label: "Hours Learned", value: "24", icon: Clock, change: "+5 this week" },
-  { label: "Completed", value: "12", icon: Trophy, change: "+3 this week" },
-  { label: "Day Streak", value: "7", icon: TrendingUp, change: "Keep going!" },
-];
-
-const continueLearning = [
-  {
-    title: "Introduction to Large Language Models",
-    progress: 65,
-    nextLesson: "Understanding Transformers",
-    duration: "15 min",
-  },
-  {
-    title: "Prompt Engineering Fundamentals",
-    progress: 40,
-    nextLesson: "Chain of Thought Prompting",
-    duration: "20 min",
-  },
-  {
-    title: "AI for Business Applications",
-    progress: 20,
-    nextLesson: "Customer Service Automation",
-    duration: "25 min",
-  },
-];
+import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import { useDashboardData } from "@/hooks/useDashboardData";
 
 const upcomingMeetings = [
   { title: "AI Tools Workshop", date: "Feb 1", time: "3:00 PM" },
@@ -48,13 +20,22 @@ const upcomingMeetings = [
 ];
 
 const Dashboard = () => {
-  const [user, setUser] = useState<any>(null);
+  const { loading, user, stats, learningPath } = useDashboardData();
 
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      setUser(user);
-    });
-  }, []);
+  const statCards = [
+    { label: "In Progress", value: stats.inProgress.toString(), icon: BookOpen, change: "Active Courses" },
+    { label: "Hours Learned", value: stats.hoursLearned.toString(), icon: Clock, change: "Total Time" },
+    { label: "Completed", value: stats.completed.toString(), icon: Trophy, change: "Certificates" },
+    { label: "Day Streak", value: stats.streak.toString(), icon: TrendingUp, change: "Keep going!" },
+  ];
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-accent" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background flex">
@@ -62,13 +43,13 @@ const Dashboard = () => {
 
       <main className="flex-1 p-6 lg:p-10 overflow-auto">
         <DashboardHeader
-          title={`Welcome back, ${user?.email?.split('@')[0] || 'Member'}`}
+          title={`Welcome back, ${user?.user_metadata?.full_name?.split(' ')[0] || user?.email?.split('@')[0] || 'Member'}`}
           subtitle="Continue your AI learning journey"
         />
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-          {stats.map((stat) => (
+          {statCards.map((stat) => (
             <div key={stat.label} className="card-elevated p-6">
               <div className="flex items-start justify-between mb-4">
                 <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center">
@@ -101,37 +82,46 @@ const Dashboard = () => {
             </div>
 
             <div className="space-y-4">
-              {continueLearning.map((course) => (
-                <div
-                  key={course.title}
-                  className="p-5 rounded-2xl bg-secondary/50 hover:bg-secondary transition-all group cursor-pointer"
-                >
-                  <div className="flex items-start justify-between gap-4 mb-4">
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-foreground mb-1 group-hover:text-accent transition-colors">
-                        {course.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Next: {course.nextLesson}
-                      </p>
+              {learningPath.length > 0 ? (
+                learningPath.map((course) => (
+                  <div
+                    key={course.courseId}
+                    className="p-5 rounded-2xl bg-secondary/50 hover:bg-secondary transition-all group cursor-pointer"
+                  >
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-foreground mb-1 group-hover:text-accent transition-colors">
+                          {course.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          Next: {course.nextLesson}
+                        </p>
+                      </div>
+                      <button className="flex-shrink-0 w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-all">
+                        <Play size={18} fill="currentColor" />
+                      </button>
                     </div>
-                    <button className="flex-shrink-0 w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-all">
-                      <Play size={18} fill="currentColor" />
-                    </button>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-accent rounded-full transition-all"
-                        style={{ width: `${course.progress}%` }}
-                      />
+                    <div className="flex items-center gap-4">
+                      <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-accent rounded-full transition-all"
+                          style={{ width: `${course.progress}%` }}
+                        />
+                      </div>
+                      <span className="text-xs text-muted-foreground font-medium">
+                        {course.progress}%
+                      </span>
                     </div>
-                    <span className="text-xs text-muted-foreground font-medium">
-                      {course.progress}%
-                    </span>
                   </div>
+                ))
+              ) : (
+                <div className="text-center py-12 text-muted-foreground">
+                  <p>No active courses found.</p>
+                  <Link to="/dashboard/courses" className="text-accent hover:underline mt-2 inline-block">
+                    Start learning today
+                  </Link>
                 </div>
-              ))}
+              )}
             </div>
           </div>
 

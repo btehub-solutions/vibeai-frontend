@@ -1,17 +1,37 @@
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
-import { Play, Clock, BookOpen, ChevronRight } from "lucide-react";
+import { Play, Clock, BookOpen, ChevronRight, Loader2 } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { courses, categories } from "@/data/courses";
+import { useNavigate } from "react-router-dom";
+import { CATEGORIES } from "@/data/courses";
+import { useCourses } from "@/hooks/useCourses";
 
 const DashboardCourses = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const { loading, courses, startCourse } = useCourses();
+  const navigate = useNavigate();
 
   const filteredCourses =
     activeCategory === "All"
       ? courses
       : courses.filter((course) => course.category === activeCategory);
+
+  const handleStartCourse = async (courseId: string, isStarted: boolean) => {
+    if (isStarted) {
+      navigate(`/dashboard/courses/${courseId}`);
+    } else {
+      await startCourse(courseId);
+      navigate(`/dashboard/courses/${courseId}`);
+    }
+  };
+
+  if (loading) {
+     return (
+       <div className="min-h-screen bg-background flex items-center justify-center">
+         <Loader2 className="w-8 h-8 animate-spin text-accent" />
+       </div>
+     );
+  }
 
   return (
     <div className="min-h-screen bg-background flex">
@@ -20,12 +40,12 @@ const DashboardCourses = () => {
       <main className="flex-1 p-6 lg:p-10 overflow-auto">
         <DashboardHeader
           title="Courses"
-          subtitle="Continue learning or start something new"
+          subtitle="Explore our curriculum and master new skills"
         />
 
         {/* Category Filter */}
         <div className="flex flex-wrap gap-3 mb-10">
-          {categories.map((category) => (
+          {CATEGORIES.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
@@ -64,20 +84,20 @@ const DashboardCourses = () => {
               <div className="flex items-center gap-5 text-xs text-muted-foreground mb-5">
                 <span className="flex items-center gap-1.5">
                   <BookOpen size={12} />
-                  {course.lessons} lessons
+                  {course.totalLessons} lessons
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Clock size={12} />
-                  {course.duration}
+                  {course.totalDurationMin} min
                 </span>
               </div>
 
               {/* Progress */}
-              {course.progress > 0 && (
+              {course.isStarted && (
                 <div className="mb-5">
                   <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
                     <span>Progress</span>
-                    <span>{course.completedLessons}/{course.lessons}</span>
+                    <span>{course.completedLessons}/{course.totalLessons}</span>
                   </div>
                   <div className="h-1.5 bg-muted rounded-full overflow-hidden">
                     <div
@@ -89,11 +109,11 @@ const DashboardCourses = () => {
               )}
 
               {/* CTA */}
-              <Link 
-                to={`/dashboard/courses/${course.id}`}
+              <button 
+                onClick={() => handleStartCourse(course.id, course.isStarted)}
                 className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 bg-secondary text-foreground hover:bg-accent hover:text-accent-foreground"
               >
-                {course.progress > 0 ? (
+                {course.isStarted ? (
                   <>
                     <Play size={14} fill="currentColor" />
                     Continue
@@ -104,7 +124,7 @@ const DashboardCourses = () => {
                     <ChevronRight size={14} />
                   </>
                 )}
-              </Link>
+              </button>
             </div>
           ))}
         </div>
