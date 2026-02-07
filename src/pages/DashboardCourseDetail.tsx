@@ -77,10 +77,7 @@ const DashboardCourseDetail = () => {
 
   // Calculate unlock status based on simple progress % (Mock logic)
   const isLessonUnlock = (lessonIndex: number) => {
-      // Unlock if previous lessons equivalent % is met. 
-      // Simple heuristic: 100% / totalLessons * index <= progress
-      const threshold = (100 / course.totalLessons) * lessonIndex;
-      return progress >= threshold; 
+      return true; // All lessons unlocked per user request
   };
   
   const isLessonCompleted = (lessonIndex: number) => {

@@ -1,9 +1,17 @@
+export interface Question {
+  id: number;
+  text: string;
+  options: string[];
+  correctAnswer: number;
+}
+
 export interface Lesson {
   id: string;
   title: string;
   duration: string;
   type: 'video' | 'text' | 'quiz';
   content?: string; // Markdown content for text lessons
+  questions?: Question[];
 }
 
 export interface Module {
@@ -224,6 +232,47 @@ Not all AIs are created equal.
 ### For Visuals
 *   **Midjourney:** The highest aesthetic quality for artistic generation.
 *   **DALL-E 3:** Best for following complex prompt instructions effortlessly.`
+            },
+            {
+                id: '101-3-3',
+                title: "Quiz: AI Foundations",
+                duration: "10 min",
+                type: 'quiz',
+                questions: [
+                    {
+                        id: 1,
+                        text: "What is the primary difference between Narrow AI and General AI?",
+                        options: [
+                            "Narrow AI is faster than General AI.",
+                            "Narrow AI is designed for specific tasks, while General AI can perform any intellectual task a human can do.",
+                            "Narrow AI is only used for games.",
+                            "There is no difference."
+                        ],
+                        correctAnswer: 1
+                    },
+                    {
+                         id: 2,
+                         text: "Which of the following is an example of Generative AI?",
+                         options: [
+                             "A spam filter",
+                             "Netflix recommendations",
+                             "Midjourney",
+                             "A weather forecast"
+                         ],
+                         correctAnswer: 2
+                    },
+                    {
+                        id: 3,
+                        text: "What is a 'Hallucination' in the context of LLMs?",
+                        options: [
+                            "When the AI generates an image.",
+                            "When the AI crashes.",
+                            "When the AI confidently states incorrect information as fact.",
+                            "When the AI becomes sentient."
+                        ],
+                        correctAnswer: 2
+                    }
+                ]
             }
         ]
       }

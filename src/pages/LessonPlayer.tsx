@@ -133,6 +133,29 @@ const LessonPlayer = () => {
                             </div>
                             <span className="absolute bottom-4 left-4 text-white font-medium">Video Placeholder</span>
                         </div>
+                    ) : currentLesson.type === 'quiz' && currentLesson.questions ? (
+                         <div className="space-y-8">
+                            {currentLesson.questions.map((q, idx) => (
+                                <div key={q.id} className="space-y-4">
+                                    <h3 className="text-lg font-medium">{idx + 1}. {q.text}</h3>
+                                    <div className="space-y-2">
+                                        {q.options.map((option, optIdx) => (
+                                            <div key={optIdx} className="flex items-center space-x-2 p-3 rounded-lg border border-border hover:bg-accent/5 transition-colors cursor-pointer">
+                                                <input 
+                                                    type="radio" 
+                                                    name={`question-${q.id}`} 
+                                                    id={`q${q.id}-opt${optIdx}`}
+                                                    className="w-4 h-4 text-accent" 
+                                                />
+                                                <label htmlFor={`q${q.id}-opt${optIdx}`} className="flex-1 cursor-pointer text-sm">
+                                                    {option}
+                                                </label>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                         </div>
                     ) : (
                         <div className="prose prose-invert max-w-none">
                             {currentLesson.content ? (
