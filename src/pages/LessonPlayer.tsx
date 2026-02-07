@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/lib/supabase";
+import ReactMarkdown from 'react-markdown';
 
 const LessonPlayer = () => {
   const { courseId, lessonId } = useParams();
@@ -135,7 +136,7 @@ const LessonPlayer = () => {
                     ) : (
                         <div className="prose prose-invert max-w-none">
                             {currentLesson.content ? (
-                                <div className="whitespace-pre-wrap">{currentLesson.content}</div>
+                                <ReactMarkdown>{currentLesson.content}</ReactMarkdown>
                             ) : (
                                 <p className="text-muted-foreground italic">Content coming soon...</p>
                             )}
