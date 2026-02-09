@@ -15,6 +15,11 @@ export interface Tool {
   isInternal?: boolean;
   features?: string[];
   pricing?: string;
+  useCases?: string[];
+  pros?: string[];
+  cons?: string[];
+  bestFor?: string;
+  gettingStarted?: string[];
 }
 
 export const tools: Tool[] = [
@@ -35,7 +40,30 @@ export const tools: Tool[] = [
       "Course recommendation",
       "24/7 Availability"
     ],
-    pricing: "Free with Subscription"
+    pricing: "Free with Subscription",
+    useCases: [
+      "Get help understanding complex AI concepts",
+      "Debug code from your lessons",
+      "Receive personalized course recommendations",
+      "Practice interview questions"
+    ],
+    pros: [
+      "Integrated with your learning progress",
+      "Understands course context",
+      "Always available",
+      "Free for subscribers"
+    ],
+    cons: [
+      "Limited to VibeAI platform",
+      "Requires active subscription"
+    ],
+    bestFor: "Students actively learning AI who want personalized, context-aware assistance",
+    gettingStarted: [
+      "Click 'Start Chat' to begin a conversation",
+      "Ask questions about your current course",
+      "Request code explanations or debugging help",
+      "Get recommendations for next steps in your learning journey"
+    ]
   },
   { 
     id: 1, 
@@ -47,7 +75,31 @@ export const tools: Tool[] = [
     rating: 4.9, 
     link: "https://chat.openai.com",
     features: ["Natural conversational ability", "Code generation", "Data analysis", "Image understanding"],
-    pricing: "Free / Plus ($20/mo)"
+    pricing: "Free / Plus ($20/mo)",
+    useCases: [
+      "Write and debug code across multiple languages",
+      "Analyze data and create visualizations",
+      "Generate creative content and marketing copy",
+      "Understand and describe images"
+    ],
+    pros: [
+      "Extremely versatile and capable",
+      "Multimodal (text, images, voice)",
+      "Large knowledge base",
+      "Regular updates and improvements"
+    ],
+    cons: [
+      "Can be expensive for heavy use",
+      "Knowledge cutoff date",
+      "Occasional hallucinations"
+    ],
+    bestFor: "General-purpose AI assistance across writing, coding, analysis, and creative tasks",
+    gettingStarted: [
+      "Sign up at chat.openai.com",
+      "Start with simple questions to understand capabilities",
+      "Use clear, specific prompts for best results",
+      "Explore GPT-4 for advanced reasoning (Plus subscription)"
+    ]
   },
   { 
     id: 2, 

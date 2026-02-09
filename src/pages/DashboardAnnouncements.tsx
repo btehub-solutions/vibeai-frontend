@@ -4,6 +4,7 @@ import { Bell, Calendar, BookOpen, Sparkles, X, Check } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { useUser } from "@/hooks/useUser";
 
 const initialAnnouncements = [
   { id: 1, title: "New Course: Advanced RAG Systems", description: "We've just launched our comprehensive course on Retrieval-Augmented Generation. Learn how to build AI systems that combine the power of LLMs with your own data sources.", date: "Today", type: "New Content", icon: BookOpen },
@@ -13,6 +14,7 @@ const initialAnnouncements = [
 ];
 
 const DashboardAnnouncements = () => {
+  const { user } = useUser();
   const [announcements, setAnnouncements] = useState(initialAnnouncements);
 
   const handleDismiss = (id: number) => {
@@ -33,6 +35,7 @@ const DashboardAnnouncements = () => {
         <DashboardHeader
           title="Announcements"
           subtitle="Stay updated with the latest news and updates"
+          user={user}
         />
 
         <div className="max-w-4xl mx-auto">

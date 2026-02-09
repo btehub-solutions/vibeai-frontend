@@ -50,6 +50,7 @@ const DashboardSettings = () => {
         <DashboardHeader
           title="Settings"
           subtitle="Manage your account preferences"
+          user={user}
         />
 
         <div className="max-w-xl mt-8 space-y-8">

@@ -1154,3 +1154,19 @@ export const expandedCourses: Course[] = [
 ];
 
 export const categories = ["All", "Fundamentals", "Skills", "Business", "Creative", "Advanced", "Career"];
+
+// Metadata lookup for courses (used by dashboard)
+export const COURSES_METADATA: Record<string, { title: string; totalDurationMin: number; totalLessons: number }> = expandedCourses.reduce((acc, course) => {
+  // Parse duration string (e.g., "8 hours" -> 480 minutes)
+  const durationMatch = course.duration.match(/(\d+)\s*(hour|min)/);
+  const durationValue = durationMatch ? parseInt(durationMatch[1]) : 60;
+  const durationUnit = durationMatch ? durationMatch[2] : 'hour';
+  const totalDurationMin = durationUnit === 'hour' ? durationValue * 60 : durationValue;
+  
+  acc[course.id.toString()] = {
+    title: course.title,
+    totalDurationMin,
+    totalLessons: course.lessons
+  };
+  return acc;
+}, {} as Record<string, { title: string; totalDurationMin: number; totalLessons: number }>);

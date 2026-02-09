@@ -1,5 +1,6 @@
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import { useUser } from "@/hooks/useUser";
 import { Clock, ExternalLink, Video, Calendar, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -18,6 +19,7 @@ const pastEvents = [
 ];
 
 const DashboardSchedule = () => {
+  const { user } = useUser();
   const [registeredEvents, setRegisteredEvents] = useState<number[]>([]);
 
   const handleRegister = (id: number, title: string) => {
@@ -35,6 +37,7 @@ const DashboardSchedule = () => {
         <DashboardHeader
           title="Schedule"
           subtitle="Upcoming programs, workshops, and meetings"
+          user={user}
         />
 
         {/* Upcoming Events */}
