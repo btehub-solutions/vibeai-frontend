@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
-import { getCourseMetadata } from "@/data/courses";
+import { getCourseMetadata } from "@/data/courses-expanded";
 import { 
   ArrowLeft, Clock, BookOpen, PlayCircle, CheckCircle, Lock, Loader2,
   Target, Award, ChevronDown, ChevronUp, FileText, Brain, Zap,

@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { getCourseMetadata } from "@/data/courses";
+import { getCourseMetadata } from "@/data/courses-expanded";
 import { 
   ArrowLeft, ChevronLeft, ChevronRight, CheckCircle, Play, FileText, 
   HelpCircle, Target, Zap, BookOpen, Award, StickyNote, Download,

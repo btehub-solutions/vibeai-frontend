@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { CourseMetadata, COURSES_LIST } from "@/data/courses";
+import { CourseMetadata, COURSES_LIST } from "@/data/courses-expanded";
 import { toast } from "sonner";
 
 export interface CourseWithProgress extends CourseMetadata {

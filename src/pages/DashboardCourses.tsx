@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { CATEGORIES } from "@/data/courses";
+import { CATEGORIES } from "@/data/courses-expanded";
 import { useCourses } from "@/hooks/useCourses";
 import { useUser } from "@/hooks/useUser";
 

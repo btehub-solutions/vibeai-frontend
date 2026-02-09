@@ -2,12 +2,22 @@
 import { BookOpen, Calendar, Rocket, Lightbulb, Palette, Database } from "lucide-react";
 
 export interface Lesson {
+  id?: string;
   title: string;
   duration: string;
+  type?: 'video' | 'quiz' | 'reading';
   completed?: boolean;
   objectives?: string[];
   activity?: string;
   quiz?: string;
+  questions?: Array<{
+    id: string;
+    text: string;
+    options: string[];
+    correctAnswer: string;
+    explanation?: string;
+  }>;
+  content?: string;
 }
 
 export interface Chapter {
@@ -34,9 +44,12 @@ export interface Course {
   category: string;
   image?: string;
   chapters?: Chapter[];
+  modules?: Chapter[]; // Alias for chapters
   projects?: Project[];
   prerequisites?: string[];
   learningOutcomes?: string[];
+  totalLessons?: number; // Computed property
+  totalDurationMin?: number; // Computed property in minutes
 }
 
 export const expandedCourses: Course[] = [
@@ -1170,3 +1183,26 @@ export const COURSES_METADATA: Record<string, { title: string; totalDurationMin:
   };
   return acc;
 }, {} as Record<string, { title: string; totalDurationMin: number; totalLessons: number }>);
+
+// Helper function to get course by ID or string ID
+export const getCourseMetadata = (courseId: string | number): Course => {
+  const id = typeof courseId === 'string' ? parseInt(courseId) : courseId;
+  const course = expandedCourses.find(c => c.id === id);
+  if (!course) {
+    throw new Error(`Course with ID ${courseId} not found`);
+  }
+  
+  // Add modules alias and computed properties
+  return {
+    ...course,
+    modules: course.chapters, // Alias for backward compatibility
+    totalLessons: course.lessons,
+    totalDurationMin: COURSES_METADATA[id.toString()]?.totalDurationMin || 0
+  };
+};
+
+// Export aliases for backward compatibility
+export const COURSES_LIST = expandedCourses;
+export const CATEGORIES = categories;
+export type CourseMetadata = Course;
+
