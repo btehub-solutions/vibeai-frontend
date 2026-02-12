@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import logo from "@/assets/logo.png";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { supabase } from "@/lib/supabase";
@@ -52,13 +53,10 @@ const navLinks = [
       }`}
     >
       <div className="container-main">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo - Shopify style with icon */}
+        <div className="flex items-center justify-between h-32">
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center">
-              <span className="text-accent-foreground font-bold text-lg">V</span>
-            </div>
-            <span className="text-xl font-bold text-foreground tracking-tight">VibeAI</span>
+            <img src={logo} alt="VibeAI Logo" className="h-28 w-auto object-contain hover:scale-105 transition-transform duration-300" />
           </Link>
 
           {/* Desktop Navigation - Shopify minimal style */}

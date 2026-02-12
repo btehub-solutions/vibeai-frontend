@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const footerLinks = {
@@ -29,10 +30,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 sm:col-span-3 md:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4 md:mb-6">
-              <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg md:rounded-xl bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-base md:text-lg">V</span>
-              </div>
-              <span className="text-lg md:text-xl font-bold text-foreground tracking-tight">VibeAI</span>
+              <img src={logo} alt="VibeAI Logo" className="h-20 md:h-24 w-auto object-contain hover:opacity-80 transition-opacity" />
             </Link>
             <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
               Learn AI in Vibe Mode.

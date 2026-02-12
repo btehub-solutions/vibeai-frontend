@@ -1,185 +1,171 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
+import { 
+  Terminal, Share2, Layers, Cpu, 
+  Code, Zap, CheckCircle2, Search
+} from "lucide-react";
 
-const courses = [
-  {
-    title: "Prompt Engineering",
-    subtitle: "Master the art",
-    price: "₦49,500",
-    gradient: "from-emerald-600/20 to-teal-600/20",
-    borderColor: "border-emerald-500/20",
-  },
-  {
-    title: "ChatGPT Pro",
-    subtitle: "Beyond basics",
-    price: "₦75,000",
-    gradient: "from-violet-600/20 to-purple-600/20",
-    borderColor: "border-violet-500/20",
-  },
-  {
-    title: "AI for Business",
-    subtitle: "Enterprise ready",
-    price: "₦125,000",
-    gradient: "from-amber-600/20 to-orange-600/20",
-    borderColor: "border-amber-500/20",
-  },
-];
+/* Feature Tab Component */
+const FeatureTab = ({ 
+  icon: Icon, 
+  title, 
+  isActive, 
+  onClick 
+}: { 
+  icon: any, 
+  title: string, 
+  isActive: boolean, 
+  onClick: () => void 
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      className={`flex items-center gap-3 p-4 rounded-xl border transition-all duration-300 w-full text-left ${
+        isActive 
+          ? "bg-accent/10 border-accent/40 text-foreground" 
+          : "bg-transparent border-transparent hover:bg-white/[0.03] text-muted-foreground hover:text-foreground"
+      }`}
+    >
+      <div className={`p-2 rounded-lg ${isActive ? "bg-accent text-black" : "bg-white/5 text-muted-foreground"}`}>
+        <Icon size={20} />
+      </div>
+      <span className="font-medium">{title}</span>
+    </button>
+  );
+};
 
 const ShowcaseSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [activeFeature, setActiveFeature] = useState(0);
+
+  const features = [
+    {
+      title: "AI-Powered Learning",
+      description: "Our platform adapts to your learning style. Stuck on a concept? Our AI tutor explains it in simple terms, even using Pidgin or local analogies if you prefer.",
+      icon:  BrainIcon,
+      image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=600&fit=crop&q=80", // Black man using laptop
+      stats: [
+        { label: "Personalized", value: "100%" },
+        { label: "Languages", value: "3+" }
+      ]
+    },
+    {
+      title: "Project Workspace",
+      description: "Don't just watch videos. Build real AI apps in our cloud workspace. No high-end laptop needed — everything runs in your browser.",
+      icon: Terminal,
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop&q=80", // Diverse team planning
+      stats: [
+        { label: "Setup Time", value: "0s" },
+        { label: "GPU Access", value: "Free" }
+      ]
+    },
+    {
+      title: "Community Hub",
+      description: "Connect with mentors and peers. Share your projects, get feedback, and find co-founders for your next big idea.",
+      icon: Share2,
+      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop&q=80", // Diverse community group
+      stats: [
+        { label: "Active Members", value: "2.5k+" },
+        { label: "Daily Events", value: "5+" }
+      ]
+    }
+  ];
 
   return (
     <section className="section-padding bg-background relative overflow-hidden">
-      {/* Ambient glows - hidden on mobile */}
-      <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] md:w-[400px] md:h-[400px] bg-accent/5 blur-[100px] md:blur-[150px] rounded-full hidden md:block" />
-      
+      {/* Background decorations */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[150px] rounded-full hidden md:block" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 blur-[120px] rounded-full hidden md:block" />
+
       <div className="container-main relative" ref={ref}>
-        {/* Main showcase card - Shopify featured style */}
-        <div 
-          className="card-elevated p-4 sm:p-6 md:p-10 lg:p-16 overflow-hidden"
-          style={{
-            transform: isInView ? "none" : "translateY(40px)",
-            opacity: isInView ? 1 : 0,
-            transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1)"
-          }}
-        >
-          {/* Inner gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-emerald-600/5" />
-          
-          <div className="relative grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            {/* Left: Layered device mockups */}
-            <div className="relative order-2 lg:order-1">
-              {/* Tablet mockup - main */}
-              <div className="relative w-full aspect-[4/3] rounded-xl md:rounded-3xl overflow-hidden border border-white/[0.08] bg-slate-900 shadow-2xl">
-                {/* Tablet header */}
-                <div className="flex items-center justify-between px-3 md:px-4 py-1.5 md:py-2 border-b border-white/[0.06]">
-                  <div className="flex items-center gap-1.5 md:gap-2">
-                    <div className="w-2 h-2 md:w-3 md:h-3 rounded-sm bg-accent/50" />
-                    <span className="text-[10px] md:text-xs text-foreground font-medium">VibeAI</span>
-                  </div>
-                  <div className="flex gap-1.5 md:gap-2">
-                    <div className="w-3 h-3 md:w-4 md:h-4 rounded bg-white/10" />
-                  </div>
-                </div>
-                
-                {/* Tablet content - course cards */}
-                <div className="p-3 md:p-6">
-                  <div className="grid grid-cols-2 gap-2 md:gap-3">
-                    {courses.slice(0, 2).map((course, i) => (
-                      <div 
-                        key={i}
-                        className={`p-2 md:p-4 rounded-lg md:rounded-xl bg-gradient-to-br ${course.gradient} border ${course.borderColor}`}
-                      >
-                        <div className="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-white/10 mb-2 md:mb-3" />
-                        <p className="text-[10px] md:text-sm font-medium text-foreground">{course.title}</p>
-                        <p className="text-[8px] md:text-xs text-muted-foreground">{course.subtitle}</p>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* Bottom section */}
-                  <div className="mt-3 md:mt-4 p-2 md:p-4 rounded-lg md:rounded-xl bg-white/5 border border-white/[0.06]">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-[10px] md:text-xs text-muted-foreground">Total Progress</p>
-                        <p className="text-base md:text-lg font-bold text-foreground">68%</p>
-                      </div>
-                      <div className="w-14 h-14 md:w-20 md:h-20 rounded-full border-4 border-accent/30 flex items-center justify-center">
-                        <span className="text-accent font-bold text-sm md:text-base">3/5</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Phone mockup - overlapping - hidden on very small screens */}
-              <div className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-4 md:-bottom-8 md:-right-8 w-[35%] md:w-[40%] aspect-[9/16] rounded-xl md:rounded-2xl overflow-hidden border border-white/[0.08] bg-slate-950 shadow-2xl z-10 hidden sm:block">
-                {/* Phone notch */}
-                <div className="flex justify-center pt-1.5 md:pt-2">
-                  <div className="w-8 md:w-12 h-3 md:h-4 bg-black rounded-full" />
-                </div>
-                
-                {/* Phone content */}
-                <div className="p-2 md:p-3 space-y-1.5 md:space-y-2">
-                  <div className="aspect-square rounded-lg overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=200&h=200&fit=crop&q=80"
-                      alt="Learning"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <div className="h-1.5 md:h-2 rounded bg-white/20 w-3/4" />
-                    <div className="h-1.5 md:h-2 rounded bg-white/10 w-1/2" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Content */}
-            <div className="order-1 lg:order-2">
-              <h3 className="text-xl sm:text-2xl md:text-display-sm text-foreground mb-4 md:mb-6">
-                Learn anywhere,<br />on any device
-              </h3>
-              <p className="text-sm md:text-body-md text-muted-foreground mb-6 md:mb-8">
-                Access your courses from desktop, tablet, or phone. Your progress syncs 
-                seamlessly across all devices, so you never miss a beat.
-              </p>
-              
-              {/* Feature list */}
-              <div className="space-y-3 md:space-y-4">
-                {[
-                  "Responsive design for all screens",
-                  "Offline access to downloaded content",
-                  "Real-time progress synchronization"
-                ].map((feature, i) => (
-                  <div key={i} className="flex items-center gap-2 md:gap-3">
-                    <div className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                      <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-accent" />
-                    </div>
-                    <span className="text-foreground text-xs md:text-sm">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-sm">
+            <Layers className="w-4 h-4 text-accent" />
+            <span className="text-sm text-foreground/80">Platform Features</span>
           </div>
+          
+          <h2 className="text-3xl sm:text-4xl md:text-display-md font-bold mb-6">
+            Everything you need to <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-emerald-400">master AI engineering</span>
+          </h2>
+          
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            We've built a world-class learning environment optimized for the African context. 
+            Low data usage, mobile-first design, and powerful tools at your fingertips.
+          </p>
         </div>
 
-        {/* Bottom showcase - Product highlight */}
-        <div 
-          className="mt-6 md:mt-8 grid sm:grid-cols-2 gap-4 md:gap-6"
-          style={{
-            transform: isInView ? "none" : "translateY(40px)",
-            opacity: isInView ? 1 : 0,
-            transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.3s"
-          }}
-        >
-          {/* Featured course card */}
-          <div className="glass-panel glass-panel-hover p-4 md:p-8 flex items-center gap-4 md:gap-6 group">
-            <div className="w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0 border border-white/[0.08]">
-              <img 
-                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=200&h=200&fit=crop&q=80"
-                alt="AI Course"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        <div className="grid lg:grid-cols-12 gap-8 md:gap-12 items-center">
+          {/* Feature List */}
+          <div className="lg:col-span-5 space-y-4">
+            {features.map((feature, index) => (
+              <FeatureTab
+                key={index}
+                icon={feature.icon}
+                title={feature.title}
+                isActive={activeFeature === index}
+                onClick={() => setActiveFeature(index)}
               />
-            </div>
-            <div>
-              <p className="text-base md:text-xl font-semibold text-foreground group-hover:text-accent transition-colors">AI Fundamentals</p>
-              <p className="text-sm text-accent font-medium">₦35,000 NGN</p>
-              <p className="text-[10px] md:text-xs text-muted-foreground mt-1">Most popular course</p>
+            ))}
+
+            <div className="mt-8 p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06] backdrop-blur-sm">
+              <h4 className="text-lg font-semibold mb-3">Why VibeAI?</h4>
+              <ul className="space-y-3">
+                {[
+                  "Offline-first mode for unstable internet",
+                  "Mobile-optimized coding environment",
+                  "Direct access to AI credits (no credit card needed)"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                    <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
-          {/* Brand element */}
-          <div className="glass-panel glass-panel-hover p-4 md:p-8 flex items-center justify-center relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="text-center relative z-10">
-              <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 rounded-xl md:rounded-2xl bg-gradient-to-br from-accent/30 to-emerald-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg">
-                <span className="text-xl md:text-2xl font-bold text-accent">V</span>
+          {/* Feature Visual */}
+          <div className="lg:col-span-7">
+            <div className="relative rounded-2xl md:rounded-3xl border border-white/[0.08] bg-card/50 backdrop-blur-xl aspect-[4/3] overflow-hidden group">
+              {/* Main Image */}
+              <div className="absolute inset-0">
+                 <img 
+                    src={features[activeFeature].image} 
+                    alt={features[activeFeature].title}
+                    className="w-full h-full object-cover transition-all duration-700 opacity-90 group-hover:scale-105"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
               </div>
-              <p className="text-foreground font-medium text-sm md:text-base">Trusted by 2,500+ learners</p>
-              <p className="text-xs md:text-sm text-muted-foreground">across 40+ countries</p>
+
+              {/* Content Overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10">
+                <div className="flex items-center gap-3 mb-4">
+                   <div className="p-3 rounded-xl bg-accent text-black">
+                     {(() => {
+                        const Icon = features[activeFeature].icon;
+                        return <Icon size={24} />;
+                     })()}
+                   </div>
+                   <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80">
+                      {features[activeFeature].title}
+                   </h3>
+                </div>
+                
+                <p className="text-lg text-white/80 mb-8 max-w-xl leading-relaxed">
+                  {features[activeFeature].description}
+                </p>
+
+                <div className="flex gap-8 border-t border-white/10 pt-6">
+                  {features[activeFeature].stats.map((stat, i) => (
+                    <div key={i}>
+                      <div className="text-2xl font-bold text-accent mb-1">{stat.value}</div>
+                      <div className="text-sm text-white/60">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -187,5 +173,26 @@ const ShowcaseSection = () => {
     </section>
   );
 };
+
+/* Helper Icon */
+function BrainIcon(props: any) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
+      <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" />
+    </svg>
+  )
+}
 
 export default ShowcaseSection;

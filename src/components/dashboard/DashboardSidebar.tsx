@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import logo from "@/assets/logo.png";
 import {
   LayoutDashboard,
   BookOpen,
@@ -37,10 +38,7 @@ const DashboardSidebar = () => {
       {/* Logo */}
       <div className="p-6">
         <Link to="/" className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center">
-            <span className="text-accent-foreground font-bold text-lg">V</span>
-          </div>
-          <span className="text-xl font-bold text-foreground tracking-tight">VibeAI</span>
+          <img src={logo} alt="VibeAI Logo" className="h-20 w-auto object-contain hover:scale-105 transition-transform duration-300" />
         </Link>
       </div>
 

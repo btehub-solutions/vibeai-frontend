@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import logo from "@/assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 import Navbar from "@/components/landing/Navbar";
@@ -140,9 +141,7 @@ const Login = () => {
           <div className="backdrop-blur-xl bg-card/30 border border-white/10 shadow-2xl rounded-3xl overflow-hidden">
             <div className="p-8 md:p-10">
               <div className="text-center mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-accent/20">
-                  <span className="text-white font-bold text-xl">V</span>
-                </div>
+                  <img src={logo} alt="VibeAI Logo" className="h-32 w-auto object-contain mx-auto mb-6 hover:scale-105 transition-transform duration-300" />
                 <h1 className="text-2xl font-bold text-foreground tracking-tight">Welcome to VibeAI</h1>
                 <p className="text-muted-foreground mt-2 text-sm">Your gateway to advanced AI learning</p>
               </div>

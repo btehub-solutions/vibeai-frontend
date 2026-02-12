@@ -1,5 +1,5 @@
+import React, { useState } from "react";
 import { Bell, Search, X } from "lucide-react";
-import { useState } from "react";
 import { User } from "@supabase/supabase-js";
 
 interface DashboardHeaderProps {
