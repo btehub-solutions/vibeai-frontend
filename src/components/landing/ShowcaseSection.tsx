@@ -44,7 +44,7 @@ const ShowcaseSection = () => {
       title: "AI-Powered Learning",
       description: "Our platform adapts to your learning style. Stuck on a concept? Our AI tutor explains it in simple terms, even using Pidgin or local analogies if you prefer.",
       icon:  BrainIcon,
-      image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=600&fit=crop&q=80", // Black man using laptop
+      image: "/images/landing/woman-coding-night.jpg",
       stats: [
         { label: "Personalized", value: "100%" },
         { label: "Languages", value: "3+" }
@@ -54,7 +54,7 @@ const ShowcaseSection = () => {
       title: "Project Workspace",
       description: "Don't just watch videos. Build real AI apps in our cloud workspace. No high-end laptop needed — everything runs in your browser.",
       icon: Terminal,
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop&q=80", // Diverse team planning
+      image: "/images/landing/dev-workspace.jpg",
       stats: [
         { label: "Setup Time", value: "0s" },
         { label: "GPU Access", value: "Free" }
@@ -64,7 +64,7 @@ const ShowcaseSection = () => {
       title: "Community Hub",
       description: "Connect with mentors and peers. Share your projects, get feedback, and find co-founders for your next big idea.",
       icon: Share2,
-      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop&q=80", // Diverse community group
+      image: "/images/landing/team-group-photo.jpg",
       stats: [
         { label: "Active Members", value: "2.5k+" },
         { label: "Daily Events", value: "5+" }

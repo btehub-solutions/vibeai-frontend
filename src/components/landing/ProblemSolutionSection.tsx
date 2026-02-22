@@ -5,25 +5,25 @@ const showcaseItems = [
   { 
     title: "ChatGPT Mastery", 
     description: "Master the world's most popular AI tool — with practical global use cases",
-    image: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=600&h=800&fit=crop&q=80",
+    image: "/images/landing/woman-coding-night.jpg",
     tag: "Most Popular"
   },
   { 
     title: "Prompt Engineering", 
     description: "The skill every global professional needs right now",
-    image: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=600&h=800&fit=crop&q=80",
+    image: "/images/landing/pair-programming.jpg",
     tag: "Trending"
   },
   { 
     title: "AI for Business", 
     description: "Transform your growing business with smart AI tools",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=800&fit=crop&q=80",
+    image: "/images/landing/coworking-space.jpg",
     tag: "New"
   },
   { 
     title: "Creative AI Tools", 
     description: "Design, write, and create content 10x faster for global audiences",
-    image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&h=800&fit=crop&q=80",
+    image: "/images/landing/team-coding-collab.jpg",
     tag: "Essential"
   },
 ];

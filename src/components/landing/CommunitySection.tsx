@@ -6,14 +6,14 @@ import {
 } from "lucide-react";
 
 const communityMembers = [
-  { name: "Sarah", location: "Sydney", image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?w=100&h=100&fit=crop&q=80" },
-  { name: "Chidi", location: "Abuja", image: "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=100&h=100&fit=crop&q=80" },
-  { name: "Fatima", location: "Kano", image: "https://images.unsplash.com/photo-1611432579699-484f7990b127?w=100&h=100&fit=crop&q=80" },
-  { name: "Emeka", location: "PH", image: "https://images.unsplash.com/photo-1507152927220-18c1d3315b37?w=100&h=100&fit=crop&q=80" },
-  { name: "Ngozi", location: "Enugu", image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&fit=crop&q=80" },
-  { name: "Tunde", location: "Ibadan", image: "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=100&h=100&fit=crop&q=80" },
-  { name: "Amina", location: "Kaduna", image: "https://images.unsplash.com/photo-1594361513929-3bae8f108399?w=100&h=100&fit=crop&q=80" },
-  { name: "Segun", location: "Abeokuta", image: "https://images.unsplash.com/photo-1618886614638-80e3c103d31a?w=100&h=100&fit=crop&q=80" },
+  { name: "Sarah", location: "Sydney", image: "/images/landing/woman-laptop-outdoor.jpg" },
+  { name: "Chidi", location: "Abuja", image: "/images/landing/classroom-mentoring.jpg" },
+  { name: "Fatima", location: "Kano", image: "/images/landing/tech-hub-learning.jpg" },
+  { name: "Emeka", location: "PH", image: "/images/landing/pair-programming.jpg" },
+  { name: "Ngozi", location: "Enugu", image: "/images/landing/woman-coding-night.jpg" },
+  { name: "Tunde", location: "Ibadan", image: "/images/landing/dev-workspace.jpg" },
+  { name: "Amina", location: "Kaduna", image: "/images/landing/computer-training.jpg" },
+  { name: "Segun", location: "Abeokuta", image: "/images/landing/happy-students-laptops.jpg" },
 ];
 
 const communityFeatures = [
@@ -101,8 +101,8 @@ const CommunitySection = () => {
           {/* Community hero image — group */}
           <div className="relative rounded-2xl md:rounded-3xl overflow-hidden aspect-[16/7] border border-white/[0.06]">
             <img
-              src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=1200&h=500&fit=crop&q=80"
-              alt="VibeAI community of global learners collaborating"
+              src="/images/landing/students-thumbsup.jpg"
+              alt="VibeAI community of enthusiastic learners"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-transparent" />
