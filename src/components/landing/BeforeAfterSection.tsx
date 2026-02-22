@@ -12,13 +12,13 @@ const beforeAfter = [
     icon: Clock,
   },
   {
-    before: "Pays ₦200K+ for foreign AI courses priced in dollars",
-    after: "Accesses premium AI education starting free — in Naira",
+    before: "Pays thousands of dollars for exclusive AI education",
+    after: "Accesses premium AI education starting free — globally accessible",
     icon: DollarSign,
   },
   {
     before: "Feels overwhelmed by AI jargon and hype",
-    after: "Understands AI practically through guided Nigerian examples",
+    after: "Understands AI practically through guided real-world examples",
     icon: Brain,
   },
   {
@@ -61,7 +61,7 @@ const BeforeAfterSection = () => {
           </h2>
           <p className="text-base md:text-body-lg text-muted-foreground leading-relaxed">
             It's not about replacing you. It's about upgrading you. See the real, everyday difference 
-            AI fluency makes for Nigerians just like you.
+            AI fluency makes for professionals just like you.
           </p>
         </div>
 
@@ -81,7 +81,7 @@ const BeforeAfterSection = () => {
             <div className="relative h-44 md:h-56 overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=800&h=400&fit=crop&q=80"
-                alt="Frustrated Nigerian professional before AI fluency"
+                alt="Frustrated professional before AI fluency"
                 className="w-full h-full object-cover opacity-60"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-red-950/30" />
@@ -128,7 +128,7 @@ const BeforeAfterSection = () => {
             <div className="relative h-44 md:h-56 overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=800&h=400&fit=crop&q=80"
-                alt="Confident Nigerian professionals after AI fluency training"
+                alt="Confident professionals after AI fluency training"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-emerald-950/20" />

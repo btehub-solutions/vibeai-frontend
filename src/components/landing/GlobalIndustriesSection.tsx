@@ -29,7 +29,7 @@ const industries = [
   {
     icon: Landmark,
     title: "Fintech & Banking",
-    story: "Nigeria leads Africa's fintech revolution. AI is powering fraud detection at banks like GTBank, enabling smart lending at Carbon, and driving personalized banking for 200M+ Nigerians. Flutterwave, Paystack, and Moniepoint are using AI to process billions in transactions.",
+    story: "The global financial sector is transforming rapidly. AI is powering real-time fraud detection at major banks, enabling smart cross-border lending, and driving personalized wealth management for billions globally.",
     stat: "14",
     statSuffix: "B+",
     statLabel: "Fintech funding raised",
@@ -40,11 +40,11 @@ const industries = [
   },
   {
     icon: Film,
-    title: "Nollywood & Creative",
-    story: "Nollywood — the world's second-largest film industry — is embracing AI for scriptwriting, VFX, colour grading, and content distribution. Nigerian creators on YouTube and TikTok use AI to produce content 10x faster, reaching audiences across Africa and the diaspora.",
-    stat: "6",
-    statSuffix: ".4B",
-    statLabel: "Nollywood annual value",
+    title: "Creative & Media",
+    story: "The entertainment industry is embracing AI for scriptwriting, VFX, colour grading, and global content distribution. Creators worldwide are using AI to produce high-quality content 10x faster, reaching massive international audiences.",
+    stat: "2.5",
+    statSuffix: "T",
+    statLabel: "Media & Entertainment value",
     statPrefix: "$",
     image: "https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=800&h=600&fit=crop&q=80",
     color: "purple",
@@ -52,11 +52,11 @@ const industries = [
   },
   {
     icon: Sprout,
-    title: "Agriculture",
-    story: "70% of Nigeria's workforce depends on agriculture, yet productivity remains low. AI-powered crop monitoring, weather prediction, and market pricing apps like Farmcrowdy and ThriveAgric are helping smallholder farmers increase yields by up to 30% and access fair markets.",
-    stat: "70",
+    title: "Global Agriculture",
+    story: "Millions worldwide depend on agriculture, but climate challenges threaten yields. AI-powered crop monitoring, precise weather prediction, and smart supply chain tools are helping farmers increase yields by up to 30% sustainably.",
+    stat: "30",
     statSuffix: "%",
-    statLabel: "workforce in agriculture",
+    statLabel: "increase in global crop yields",
     statPrefix: "",
     image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop&q=80",
     color: "accent",
@@ -65,9 +65,9 @@ const industries = [
   {
     icon: ShoppingBag,
     title: "E-Commerce & Logistics",
-    story: "Jumia, Konga, and hundreds of SMEs are using AI for dynamic pricing, customer segmentation, and last-mile delivery optimization. In a country where logistics is the biggest challenge, AI is cutting delivery times by 40% and enabling small businesses to compete nationally.",
-    stat: "75",
-    statSuffix: "B",
+    story: "Global retailers and SMEs are leveraging AI for dynamic pricing, customer segmentation, and autonomous supply chain optimization. AI is cutting delivery times by up to 40%, enabling businesses of all sizes to compete internationally.",
+    stat: "6",
+    statSuffix: "T",
     statLabel: "e-commerce market by 2025",
     statPrefix: "$",
     image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop&q=80",
@@ -83,7 +83,7 @@ const colorMap: Record<string, { text: string; bg: string; border: string; glow:
   amber: { text: "text-amber-400", bg: "bg-amber-500/20", border: "border-amber-500/30", glow: "rgba(255,180,50,0.15)" },
 };
 
-const NigerianIndustriesSection = () => {
+const GlobalIndustriesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -108,15 +108,14 @@ const NigerianIndustriesSection = () => {
             <span className="text-xs md:text-sm text-emerald-400 font-medium tracking-wide uppercase">Chapter 4 — The Opportunity</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-display-md lg:text-display-lg text-foreground mb-4 md:mb-6 font-bold tracking-tight max-w-4xl">
-            Nigeria's industries are{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-accent to-cyan-400">
-              ready for AI.
+              Global industries
             </span>{" "}
-            Are you?
+            are ready for AI. Are you?
           </h2>
           <p className="text-base md:text-body-lg text-muted-foreground max-w-2xl leading-relaxed mb-12 md:mb-20">
-            From Lagos to Kano, from Abuja to Port Harcourt — every major Nigerian industry 
-            is being transformed by AI. The professionals who understand AI will lead the next decade.
+            From New York to London, from Tokyo to Sydney — every major industry 
+            worldwide is being transformed by AI. The professionals who understand AI will lead the next decade.
           </p>
         </div>
 
@@ -142,7 +141,7 @@ const NigerianIndustriesSection = () => {
                 <div className="relative h-44 md:h-56 overflow-hidden">
                   <img
                     src={industry.image}
-                    alt={`AI in Nigerian ${industry.title}`}
+                    alt={`AI in ${industry.title}`}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
@@ -200,4 +199,4 @@ const NigerianIndustriesSection = () => {
   );
 };
 
-export default NigerianIndustriesSection;
+export default GlobalIndustriesSection;

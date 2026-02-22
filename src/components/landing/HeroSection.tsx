@@ -80,7 +80,7 @@ const HeroSection = () => {
           <div className="animate-text-reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 hover:border-accent/30 hover:bg-accent/5 transition-all duration-500 group cursor-default">
             <Sparkles className="w-4 h-4 text-accent group-hover:animate-spin" />
             <span className="text-xs md:text-sm text-muted-foreground group-hover:text-accent transition-colors">
-              Nigeria's #1 AI Fluency Platform
+              The World's #1 AI Fluency Platform
             </span>
           </div>
 
@@ -107,7 +107,7 @@ const HeroSection = () => {
 
           {/* Subheadline */}
           <p className="animate-text-reveal animate-delay-200 text-lg md:text-body-lg text-muted-foreground/90 max-w-2xl mb-8 md:mb-12 leading-relaxed">
-            AI is reshaping every industry. Don't get left behind. VibeAI gives Nigerians
+            AI is reshaping every industry. Don't get left behind. VibeAI gives professionals
             the skills, tools, and confidence to thrive in the AI-powered future.
           </p>
 
@@ -143,7 +143,7 @@ const HeroSection = () => {
               <div className="flex -space-x-2">
                 {[...Array(4)].map((_, i) => (
                   <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-accent/40 to-emerald-500/40 border-2 border-background flex items-center justify-center text-[10px] font-bold text-accent">
-                    {['AO', 'IK', 'NG', 'OJ'][i]}
+                    {['JD', 'MS', 'AK', 'JL'][i]}
                   </div>
                 ))}
               </div>
@@ -152,7 +152,7 @@ const HeroSection = () => {
             <div className="hidden sm:block w-px h-4 bg-white/20" />
             <span className="hidden sm:inline">⭐ 4.9 rating</span>
             <div className="hidden sm:block w-px h-4 bg-white/20" />
-            <span className="hidden sm:inline">🇳🇬 Made for Nigeria</span>
+            <span className="hidden sm:inline">🌍 Global Community</span>
           </div>
         </div>
       </div>

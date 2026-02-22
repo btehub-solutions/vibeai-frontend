@@ -29,27 +29,27 @@ const AIExperienceSection = () => {
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-display-md text-foreground mb-6 md:mb-8">
-              Real Nigerians.{" "}
+              Real professionals.{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-emerald-400">Real learning.</span>
             </h2>
             
             <div className="space-y-4 md:space-y-6 text-sm md:text-body-md text-muted-foreground">
               <p>
-                AI can feel abstract. We make it tangible. Our content shows <span className="text-foreground font-medium">real Nigerian professionals</span>
-                {" "}using real tools to solve real problems — in the Nigerian context.
+                AI can feel abstract. We make it tangible. Our content shows <span className="text-foreground font-medium">real professionals</span>
+                {" "}using real tools to solve real problems — in the real world context.
               </p>
               <p>
-                Watch a Lagos product manager use ChatGPT for market research. See an Abuja entrepreneur 
-                automate their customer service. Learn from a Nollywood director using AI for post-production.
+                Watch a tech hub product manager use ChatGPT for market research. See a startup entrepreneur 
+                automate their customer service. Learn from an indie film director using AI for post-production.
               </p>
             </div>
 
             {/* Feature list with glassmorphism cards */}
             <div className="mt-8 md:mt-12 space-y-3 md:space-y-4">
               {[
-                { text: "Video walkthroughs by Nigerian AI practitioners", icon: CheckCircle },
-                { text: "Hands-on projects using real Nigerian business cases", icon: CheckCircle },
-                { text: "Community of learners from Lagos to Kano", icon: CheckCircle },
+                { text: "Video walkthroughs by global AI practitioners", icon: CheckCircle },
+                { text: "Hands-on projects using real global business cases", icon: CheckCircle },
+                { text: "Community of learners worldwide", icon: CheckCircle },
               ].map((feature, index) => (
                 <div 
                   key={index} 
@@ -71,7 +71,7 @@ const AIExperienceSection = () => {
               transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.2s"
             }}
           >
-            {/* Main image — Nigerian tech collaborative */}
+            {/* Main image — Tech collaborative */}
             <div 
               className="relative rounded-2xl md:rounded-3xl overflow-hidden aspect-[4/3] border border-white/[0.08] transition-all duration-700 group cursor-pointer"
               style={{
@@ -82,7 +82,7 @@ const AIExperienceSection = () => {
             >
               <img
                 src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&h=600&fit=crop&q=80"
-                alt="Nigerian professionals learning AI in a collaborative workshop setting"
+                alt="Professionals learning AI in a collaborative workshop setting"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
@@ -98,37 +98,37 @@ const AIExperienceSection = () => {
               <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
 
-            {/* Floating secondary image — Nigerian professional using laptop */}
+            {/* Floating secondary image — Professional using laptop */}
             <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-4 md:-bottom-8 md:-left-8 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-xl md:rounded-2xl overflow-hidden border border-white/[0.1] shadow-2xl backdrop-blur-sm">
               <img
                 src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=400&h=400&fit=crop&q=80"
-                alt="Nigerian professional using AI tools on laptop"
+                alt="Professional using AI tools on laptop"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
             </div>
 
-            {/* Floating notification card — Nigerian name */}
+            {/* Floating notification card — Name */}
             <div className="absolute -top-2 -right-1 sm:-top-3 sm:-right-2 md:-top-4 md:-right-4 backdrop-blur-xl bg-white/[0.05] border border-white/[0.1] p-2 sm:p-3 md:p-4 max-w-[140px] sm:max-w-[170px] md:max-w-[200px] animate-float rounded-xl md:rounded-2xl shadow-2xl">
               <div className="flex items-center gap-2 md:gap-3">
                 <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-accent/30 to-emerald-500/30 border border-accent/30 flex items-center justify-center flex-shrink-0">
-                  <span className="text-accent font-bold text-xs md:text-sm">AO</span>
+                  <span className="text-accent font-bold text-xs md:text-sm">JS</span>
                 </div>
                 <div className="min-w-0">
-                  <p className="font-medium text-foreground text-xs md:text-sm truncate">Adaeze just completed</p>
+                  <p className="font-medium text-foreground text-xs md:text-sm truncate">Jessica just completed</p>
                   <p className="text-[10px] md:text-xs text-accent truncate">Prompt Engineering ✨</p>
                 </div>
               </div>
             </div>
 
-            {/* Rating card — Nigerian learner */}
+            {/* Rating card — Learner */}
             <div className="absolute bottom-4 right-2 sm:bottom-6 sm:right-4 md:bottom-8 md:right-8 backdrop-blur-xl bg-white/[0.05] border border-white/[0.1] p-3 md:p-4 rounded-xl animate-float shadow-xl" style={{ animationDelay: '1.5s' }}>
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-3 h-3 md:w-4 md:h-4 text-accent fill-accent" />
                 ))}
               </div>
-              <p className="text-[10px] md:text-xs text-muted-foreground mt-1">"Changed my career!" — Chidi, Lagos</p>
+              <p className="text-[10px] md:text-xs text-muted-foreground mt-1">"Changed my career!" — David, London</p>
             </div>
           </div>
         </div>

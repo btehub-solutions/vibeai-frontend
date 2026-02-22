@@ -4,25 +4,25 @@ import { useInView } from "framer-motion";
 const showcaseItems = [
   { 
     title: "ChatGPT Mastery", 
-    description: "Master the world's most popular AI tool — with Nigerian use cases",
+    description: "Master the world's most popular AI tool — with practical global use cases",
     image: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=600&h=800&fit=crop&q=80",
     tag: "Most Popular"
   },
   { 
     title: "Prompt Engineering", 
-    description: "The skill every professional in Lagos to Kano needs",
+    description: "The skill every global professional needs right now",
     image: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=600&h=800&fit=crop&q=80",
     tag: "Trending"
   },
   { 
     title: "AI for Business", 
-    description: "Transform your Nigerian business with smart AI tools",
+    description: "Transform your growing business with smart AI tools",
     image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=800&fit=crop&q=80",
     tag: "New"
   },
   { 
     title: "Creative AI Tools", 
-    description: "Design, write, and create content 10x faster for Nollywood and beyond",
+    description: "Design, write, and create content 10x faster for global audiences",
     image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&h=800&fit=crop&q=80",
     tag: "Essential"
   },
@@ -53,7 +53,7 @@ const ProblemSolutionSection = () => {
           </h2>
           <p className="text-xl md:text-body-lg text-muted-foreground/80 max-w-2xl leading-relaxed">
             From zero to hero. Master the tools that are reshaping the world — 
-            with courses designed by Nigerians, for Nigerians.
+            with courses designed for the global modern workforce.
           </p>
         </div>
 

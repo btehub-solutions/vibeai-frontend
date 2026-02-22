@@ -11,7 +11,9 @@ import { toast } from "sonner";
 import { supabase } from "@/lib/supabase";
 import ReactMarkdown from 'react-markdown';
 import { Textarea } from "@/components/ui/textarea";
-
+import { Input } from "@/components/ui/input";
+import { generateLessonContent } from "@/services/ai-course-generator";
+import { Loader2, Key } from "lucide-react";
 const LessonPlayer = () => {
   const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
@@ -21,6 +23,10 @@ const LessonPlayer = () => {
   const [quizScore, setQuizScore] = useState(0);
   const [notes, setNotes] = useState("");
   const [showNotes, setShowNotes] = useState(false);
+  const [dynamicContent, setDynamicContent] = useState<string | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [needsApiKey, setNeedsApiKey] = useState(false);
+  const [apiKeyInput, setApiKeyInput] = useState("");
 
   const course = getCourseMetadata(courseId || "");
   
@@ -43,6 +49,57 @@ const LessonPlayer = () => {
     localStorage.setItem(`lesson-notes-${lessonId}`, notes);
     toast.success("Notes saved!");
   };
+
+  const fetchAiContent = async (overrideKey?: string) => {
+    setIsGenerating(true);
+    setNeedsApiKey(false);
+    try {
+      if (overrideKey) {
+        localStorage.setItem('GEMINI_API_KEY', overrideKey);
+      }
+      const content = await generateLessonContent(
+        course?.title || "VibeAI Course",
+        currentLesson.title,
+        currentLesson.objectives
+      );
+      setDynamicContent(content);
+      localStorage.setItem(`ai-lesson-cache-${currentLesson.id}`, content);
+    } catch (err: any) {
+      if (err.message?.includes("Missing Gemini API Key") || err.message?.includes("API key not valid")) {
+        setNeedsApiKey(true);
+      } else {
+        toast.error("Could not generate AI content. Ensure your key is valid and has sufficient quota.");
+      }
+      setDynamicContent(null);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  // Generate missing content dynamically
+  useEffect(() => {
+    if (!currentLesson || currentLesson.type === 'quiz') {
+      setDynamicContent(null);
+      setIsGenerating(false);
+      setNeedsApiKey(false);
+      return;
+    }
+
+    if (currentLesson.content) {
+      setDynamicContent(currentLesson.content);
+      return;
+    }
+
+    const cachedKey = `ai-lesson-cache-${currentLesson.id}`;
+    const cached = localStorage.getItem(cachedKey);
+    
+    if (cached) {
+      setDynamicContent(cached);
+      return;
+    }
+
+    fetchAiContent();
+  }, [lessonId, currentLesson, course]);
 
   const handleQuizSubmit = () => {
     if (!currentLesson.questions) return;
@@ -408,7 +465,34 @@ const LessonPlayer = () => {
                 </div>
               ) : (
                 <div className="prose prose-invert max-w-none">
-                  {currentLesson.content ? (
+                  {isGenerating ? (
+                    <div className="flex flex-col items-center justify-center py-16 text-muted-foreground animate-in fade-in duration-500">
+                      <Loader2 className="w-12 h-12 text-accent animate-spin mb-4" />
+                      <p className="text-lg font-medium">Synthesizing professional teaching materials...</p>
+                      <p className="text-sm opacity-70 mt-2">Our AI is drafting a comprehensive lesson on {currentLesson.title}.</p>
+                    </div>
+                  ) : needsApiKey ? (
+                    <div className="border border-accent/20 bg-accent/5 p-8 rounded-2xl flex flex-col items-center text-center max-w-lg mx-auto my-8">
+                       <Key className="w-12 h-12 text-accent mb-4" />
+                       <h3 className="text-xl font-semibold mb-2 text-foreground">Unlock Dynamic AI Content</h3>
+                       <p className="text-muted-foreground mb-6">Connect your Gemini API Key to let VibeAI generate this entire professional lesson instantly.</p>
+                       <div className="w-full space-y-4">
+                         <Input 
+                            type="password"
+                            placeholder="Enter your Gemini API key..."
+                            value={apiKeyInput}
+                            onChange={(e) => setApiKeyInput(e.target.value)}
+                         />
+                         <Button onClick={() => fetchAiContent(apiKeyInput)} className="w-full bg-accent hover:bg-accent/90 text-white font-semibold flex gap-2">
+                           <Zap size={18} />
+                           Generate Professional Lesson
+                         </Button>
+                       </div>
+                       <p className="text-xs text-muted-foreground mt-4">Your key is stored securely in your browser's local storage and never leaves this tab.</p>
+                    </div>
+                  ) : dynamicContent ? (
+                    <ReactMarkdown>{dynamicContent}</ReactMarkdown>
+                  ) : currentLesson.content ? (
                     <ReactMarkdown>{currentLesson.content}</ReactMarkdown>
                   ) : (
                     <div className="space-y-4">

@@ -4,7 +4,7 @@ export const course3: Course = {
   id: 3,
   title: "Natural Language Processing Mastery",
   description: "Master NLP techniques from tokenization to transformers, with real-world applications.",
-  longDescription: "Explore the fascinating world of Natural Language Processing. Learn how AI understands, processes, and generates human language. Cover core NLP tasks, pipelines, modern tools, and applications including African language processing.",
+  longDescription: "Explore the fascinating world of Natural Language Processing. Move beyond basic chatbots and learn how AI actually reads human language. Cover core NLP pipelines, statistical text representation (TF-IDF), dense vector embeddings (Word2Vec, GloVe), and the profound shift to Attention mechanisms and BERT.",
   progress: 0,
   lessons: 26,
   completedLessons: 0,
@@ -12,104 +12,74 @@ export const course3: Course = {
   category: "Skills",
   prerequisites: ["AI Foundations"],
   learningOutcomes: [
-    "Understand core NLP concepts and techniques",
-    "Build NLP pipelines for text processing",
-    "Apply NLP to real-world problems",
-    "Work with multilingual and low-resource languages"
+    "Clean and normalize raw text using standard NLP pipelines",
+    "Convert text into mathematical distributions using TF-IDF",
+    "Understand how neural networks map semantic meaning via dense embeddings",
+    "Implement bidirectional transformer architectures like BERT"
   ],
   modules: [
     {
-      title: "Module 1: NLP Foundations",
+      title: "Module 1: The NLP Pipeline",
       lessons: [
         { 
           id: "c3-m1-l1",
-          title: "Introduction to Natural Language Processing", 
+          title: "Introduction to NLP and Ambiguity", 
           duration: "20 min",
           type: "reading",
           content: `
-# Introduction to Natural Language Processing (NLP)
+# Reading Between the Lines
 
 NLP is a field of AI that gives machines the ability to read, understand, and derive meaning from human languages.
 
-## What is NLP used for?
+## The Problem of Ambiguity
 
-*   **Sentiment Analysis**: Determining if a review is positive or negative.
-*   **Chatbots**: Conversing with users (e.g., Customer Service).
-*   **Machine Translation**: Converting text from one language to another (e.g., Google Translate).
-*   **Text Summarization**: Automatically generating a summary of a long document.
+If you ask a computer to code "2 + 2", the answer is deterministically 4. 
+But if you feed a computer the sentence: **"I saw the man on the hill with a telescope."**
+*   Did I use a telescope to see the man?
+*   Was the man carrying a telescope?
+*   Was the telescope physically on the hill?
 
-## How does it work?
-
-Natural language is complex and ambiguous. "I saw the man on the hill with a telescope."
-*   Did I have the telescope?
-*   Did the man have the telescope?
-*   Was the telescope on the hill?
-
-NLP algorithms break down language into smaller, more manageable pieces using techniques like tokenization, stemming, and lemmatization.
+Humans use context to instantly resolve ambiguity. NLP algorithms must mathematically break down language to replicate this contextual understanding through Syntax (grammar) and Semantics (meaning).
           `
         },
         { 
           id: "c3-m1-l2",
-          title: "Text Preprocessing Pipeline", 
+          title: "Text Preprocessing", 
           duration: "24 min",
           type: "reading",
           content: `
-# Text Preprocessing Pipeline
+# Cleaning the Data
 
-Before we can feed text into a machine learning model, we must clean and prepare it.
+Before we can feed text into a machine learning model, we must clean and prepare it. Raw text is extremely noisy.
 
-## Key Steps
+## Key Steps in the Pipeline
 
-1.  **Tokenization**: Breaking text into individual words or sub-words ("tokens").
-    *   "I love AI" -> ["I", "love", "AI"]
-2.  **Lowercasing**: Converting all characters to lowercase to treat "Apple" and "apple" as the same word.
-3.  **Stop Word Removal**: Identifying and removing common words that carry little meaning (e.g., "is", "the", "and").
-4.  **Stemming**: Reducing words to their root form by chopping off the suffix (e.g., "running" -> "run").
-5.  **Lemmatization**: Reducing words to their dictionary root form (e.g., "better" -> "good").
-
-## Why pre-process?
-It simplifies the data, reduces noise, and makes the model more accurate and faster.
-          `
-        },
-        { 
-          id: "c3-m1-l3",
-          title: "Part-of-Speech Tagging", 
-          duration: "20 min",
-          type: "reading",
-          content: `
-# Part-of-Speech (POS) Tagging
-
-POS tagging is the process of marking up a word in a text as corresponding to a particular part of speech, based on both its definition and its context.
-
-## Common Tags
-*   **NN**: Noun, singular or mass
-*   **VB**: Verb, base form
-*   **JJ**: Adjective
-*   **RB**: Adverb
-
-## Why is it important?
-It helps in disambiguating words. For example, "book" can be a noun ("read a book") or a verb ("book a flight"). POS tagging tells the computer which one is meant in a given sentence.
+1.  **Tokenization**: Breaking text into individual atomic units (usually words or sub-words).
+    *   *Raw:* "Don't jump!" -> *Tokens:* ["Do", "n't", "jump", "!"]
+2.  **Stop Word Removal**: Filtering out highly frequent words that carry zero semantic weight (e.g., "the", "a", "is", "and"). This shrinks the dataset size.
+3.  **Stemming**: A brute-force algorithmic approach that chops off the ends of words to find the root. ("Running" -> "Run"). It's fast but often results in non-words ("Universe" -> "Univers").
+4.  **Lemmatization**: A dictionary-based approach that maps words back to their actual linguistic root. ("Better" -> "Good"). It is slower but far more accurate than stemming.
           `
         },
         {
-          id: "c3-m1-l4",
+          id: "c3-m1-l3",
           title: "Quiz: NLP Basics",
           duration: "10 min",
           type: "quiz",
           questions: [
             {
               id: "q1",
-              text: "Which process breaks text down into individual words?",
-              options: ["Stemming", "Tokenization", "Lemmatization", "Parsing"],
-              correctAnswer: "B",
-              explanation: "Tokenization is the process of breaking a stream of text up into words, phrases, symbols, or other meaningful elements called tokens."
+              text: "Which text preprocessing technique uses a dictionary to accurately return a word to its base, linguistically correct root?",
+              options: ["Stemming", "Tokenization", "Lemmatization", "Stop Word Removal"],
+              correctAnswer: "C",
+              explanation: "Lemmatization uses a vocabulary and morphological analysis of words, aiming to return the base or dictionary form of a word (the lemma)."
             }
           ]
         }
       ]
     },
     {
-      title: "Module 2: Text Representation",
+      title: "Module 2: Text Representation (Math)",
       lessons: [
         { 
           id: "c3-m2-l1",
@@ -117,97 +87,92 @@ It helps in disambiguating words. For example, "book" can be a noun ("read a boo
           duration: "24 min",
           type: "reading",
           content: `
-# Text Representation: Bag of Words (BoW)
+# Converting Words to Math
 
-Computers don't understand words; they understand numbers. We need to convert text into numerical vectors.
+Neural networks only understand numbers. We must vectorize the text.
 
 ## Bag of Words (BoW)
-Imagine a bag where you throw all the words from a document. You count how many times each word appears.
-*   "The cat sat on the mat" -> {"the": 2, "cat": 1, "sat": 1, "on": 1, "mat": 1}
+Imagine throwing all words from a sentence into a bag and simply counting them.
+*   "The dog chases the cat" -> {"the": 2, "dog": 1, "chase": 1, "cat": 1}
+*   *Flaw:* Count-based methods completely destroy word order and grammar.
 
-**Problem**: It ignores grammar and word order. "The cat chased the dog" and "The dog chased the cat" have the same BoW vector, but opposite meanings.
+## TF-IDF (Term Frequency-Inverse Document Frequency)
+TF-IDF tries to find the most *important* words in a document, not just the most frequent.
+*   **TF (Term Frequency):** How often does the word "Algorithm" appear in Document A? (Say, 10 times. High score).
+*   **IDF (Inverse Document Frequency):** How often does the word "Algorithm" appear across *all 10,000* documents in our database? (Say, it only appears in 5 documents. This makes it rare, giving it a massive multiplier).
 
-## Term Frequency-Inverse Document Frequency (TF-IDF)
-A statistical measure used to evaluate how important a word is to a document in a collection or corpus.
-*   **TF**: How frequently a term occurs in a document.
-*   **IDF**: How rare a term is across all documents.
-*   **Result**: Words that are common in a single document but rare elsewhere get a high score (e.g., "algorithm" in a tech paper). Common words like "the" get a low score.
+Words like "The" have high TF but very low IDF (because they appear everywhere), so their final score is 0. Words like "Algorithm" get high TF and high IDF, telling the model: "This document is highly associated with Algorithms."
           `
         },
         { 
           id: "c3-m2-l2",
-          title: "Word Embeddings: Word2Vec which captures meaning", 
+          title: "Word Embeddings: Capturing Semantic Meaning", 
           duration: "28 min",
           type: "reading",
           content: `
-# Word Embeddings
+# Dense Vector Embeddings
 
-While BoW and TF-IDF capture word frequency, they don't capture **meaning**.
-"King" and "Queen" are just different words to BoW.
+TF-IDF knows that "car" and "automobile" are different words, but it doesn't know they mean the same thing.
 
-## Word2Vec & GloVe
-These algorithms map words to dense vectors of real numbers.
-*   Words with similar meanings map to similar vectors.
-*   Relationships are preserved: vector("King") - vector("Man") + vector("Woman") ≈ vector("Queen").
+## Enter Word2Vec
 
-This was a massive breakthrough in NLP, allowing models to understand semantic relationships.
-          `
-        },
-        {
-          id: "c3-m2-l3",
-          title: "Transformer Architecture & BERT",
-          duration: "30 min",
-          type: "reading",
-          content: `
-# Transformers & BERT
+Word2Vec (created by Google in 2013) is a neural network that predicts a word based on its surrounding neighbors. By doing this millions of times, it creates a 300-dimensional mathematical coordinate (a vector) for every word.
 
-Word embeddings were great, but they had a limitation: a word always had the same vector, regardless of context.
-"I went to the **bank**" vs "I sat on the river **bank**".
+Because words with similar meanings appear in similar contexts, their coordinates end up grouped physically close together in this 300-dimensional space.
 
-## The Transformer (2017)
-Introduced by Google, the Transformer architecture uses a mechanism called **Self-Attention** to weigh the importance of different words in a sentence. It allows the model to look at the entire sentence at once, rather than processing it word by word.
-
-## BERT (Bidirectional Encoder Representations from Transformers)
-BERT reads text in both directions (left-to-right and right-to-left). This allows it to understand the full context of a word.
-It set new records for accuracy on almost every NLP task.
+*   The distance between the coordinate for "Cat" and "Dog" is very small.
+*   You can do math on meanings: \`Vector("King") - Vector("Man") + Vector("Woman")\` lands exactly on the coordinate for \`"Queen"\`.
           `
         }
       ]
     },
     {
-      title: "Module 3: NLP Applications",
+      title: "Module 3: The Transformer Shift",
       lessons: [
         {
           id: "c3-m3-l1",
-          title: "Building a Sentiment Analyzer",
+          title: "Contextual Embeddings with BERT",
           duration: "28 min",
           type: "reading",
           content: `
-# Sentiment Analysis
+# The Problem with Word2Vec
 
-Sentiment Analysis is the task of classifying the polarity of a given text.
-*   **Positive**: "I loved this movie!"
-*   **Negative**: "This was a terrible experience."
-*   **Neutral**: "I arrived at 5pm."
+Word2Vec assigns a single, static vector to every word. 
+But consider the word "Bank":
+1.  "I deposited money at the **bank**."
+2.  "I sat on the river **bank**."
 
-## Challenge
-Sarcasm is difficult for machines. "Oh great, my flight is delayed again."
-A simple model sees "great" and thinks positive. A transformer model understands the context.
+Word2Vec averaged these two meanings together, meaning its vector for "bank" was always slightly inaccurate.
+
+## BERT (Bidirectional Encoder Representations from Transformers)
+Google revolutionized search in 2018 with BERT. 
+BERT is *contextual*. It reads the entire sentence forwards and backwards (Bidirectional) simultaneously using the Transformer's Attention mechanism. 
+
+When it sees the word "bank", it looks at "deposited" and "money" and generates a temporary, dynamic math vector representing a *financial institution*. When it sees "river", it generates a completely different vector for *landmass*.
           `
+        },
+         {
+          id: "c3-m3-l2",
+          title: "Quiz: Advanced NLP",
+          duration: "10 min",
+          type: "quiz",
+          questions: [
+            {
+              id: "q1",
+              text: "What specific limitation of Word2Vec did BERT solve?",
+              options: ["Word2Vec was too slow to train", "Word2Vec generated static embeddings that could not distinguish between words with multiple meanings (polysemy)", "Word2Vec could not handle languages other than English", "Word2Vec could not do vector mathematics"],
+              correctAnswer: "B",
+              explanation: "BERT generates contextual embeddings dynamically based on the surrounding words in the sentence, solving the polysemy problem."
+            }
+          ]
         }
       ]
     }
   ],
   projects: [
     {
-      title: "Mini-Project 1: Sentiment Analysis Dashboard",
-      description: "Build a sentiment analysis tool for social media posts or product reviews.",
-      duration: "3 hours",
-      difficulty: "intermediate"
-    },
-    {
-      title: "Capstone: End-to-End NLP Application",
-      description: "Build a complete NLP solution (e.g., news summarizer, QA system, or translation tool) from data collection to deployment.",
+      title: "Capstone: Semantic Search Engine",
+      description: "Build a search engine that doesn't just match keywords, but uses embedding models (like Sentence-BERT) to return documents that match the semantic meaning of the user's query.",
       duration: "6 hours",
       difficulty: "advanced"
     }

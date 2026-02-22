@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const data = [
+const weeklyData = [
   { name: "Mon", hours: 2.5 },
   { name: "Tue", hours: 3.8 },
   { name: "Wed", hours: 1.5 },
@@ -9,6 +10,13 @@ const data = [
   { name: "Fri", hours: 3.0 },
   { name: "Sat", hours: 5.5 },
   { name: "Sun", hours: 2.0 },
+];
+
+const monthlyData = [
+  { name: "Week 1", hours: 12.5 },
+  { name: "Week 2", hours: 15.8 },
+  { name: "Week 3", hours: 10.5 },
+  { name: "Week 4", hours: 18.2 },
 ];
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -26,15 +34,22 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export function LearningActivityChart() {
+  const [view, setView] = useState("Weekly");
+  const data = view === "Weekly" ? weeklyData : monthlyData;
+
   return (
     <div className="card-elevated p-6 h-full flex flex-col">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-semibold text-foreground">
           Learning Activity
         </h2>
-        <select className="bg-secondary/50 text-xs text-muted-foreground border-none rounded-lg px-2 py-1 outline-none">
-          <option>Weekly</option>
-          <option>Monthly</option>
+        <select 
+          value={view}
+          onChange={(e) => setView(e.target.value)}
+          className="bg-secondary/50 text-xs text-muted-foreground border-none rounded-lg px-2 py-1 outline-none"
+        >
+          <option value="Weekly">Weekly</option>
+          <option value="Monthly">Monthly</option>
         </select>
       </div>
       
@@ -43,8 +58,8 @@ export function LearningActivityChart() {
           <AreaChart data={data} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="colorHours" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
-                <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
+                <stop offset="5%" stopColor="hsl(var(--accent))" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="hsl(var(--accent))" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
@@ -67,7 +82,7 @@ export function LearningActivityChart() {
             <Area
               type="monotone"
               dataKey="hours"
-              stroke="hsl(var(--primary))"
+              stroke="hsl(var(--accent))"
               strokeWidth={3}
               fillOpacity={1}
               fill="url(#colorHours)"

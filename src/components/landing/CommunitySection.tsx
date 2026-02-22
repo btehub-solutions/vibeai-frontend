@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 
 const communityMembers = [
-  { name: "Adaeze", location: "Lagos", image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?w=100&h=100&fit=crop&q=80" },
+  { name: "Sarah", location: "Sydney", image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?w=100&h=100&fit=crop&q=80" },
   { name: "Chidi", location: "Abuja", image: "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=100&h=100&fit=crop&q=80" },
   { name: "Fatima", location: "Kano", image: "https://images.unsplash.com/photo-1611432579699-484f7990b127?w=100&h=100&fit=crop&q=80" },
   { name: "Emeka", location: "PH", image: "https://images.unsplash.com/photo-1507152927220-18c1d3315b37?w=100&h=100&fit=crop&q=80" },
@@ -20,7 +20,7 @@ const communityFeatures = [
   {
     icon: MessageCircle,
     title: "WhatsApp & Discord Communities",
-    description: "Join active groups where learners share tips, ask questions, and celebrate wins together. Connected communities in every major Nigerian city.",
+    description: "Join active groups where learners share tips, ask questions, and celebrate wins together. Connected communities across major global cities.",
     color: "text-emerald-400",
     bg: "bg-emerald-500/10",
     border: "border-emerald-500/20",
@@ -29,7 +29,7 @@ const communityFeatures = [
   {
     icon: Video,
     title: "Weekly Live Sessions",
-    description: "Every Friday, join live AI workshops with Nigerian AI practitioners. Real demos, real projects, real Q&A. Recorded for those who can't attend live.",
+    description: "Every Friday, join live AI workshops with global AI practitioners. Real demos, real projects, real Q&A. Recorded for those who can't attend live.",
     color: "text-purple-400",
     bg: "bg-purple-500/10",
     border: "border-purple-500/20",
@@ -38,7 +38,7 @@ const communityFeatures = [
   {
     icon: BookOpen,
     title: "Study Groups",
-    description: "Pair up with accountability partners. Study groups meet virtually and in-person across Lagos, Abuja, Port Harcourt, and Ibadan. Nobody learns alone at VibeAI.",
+    description: "Pair up with accountability partners. Study groups meet virtually and in-person across major technology hubs globally. Nobody learns alone at VibeAI.",
     color: "text-cyan-400",
     bg: "bg-cyan-500/10",
     border: "border-cyan-500/20",
@@ -47,7 +47,7 @@ const communityFeatures = [
   {
     icon: Award,
     title: "Mentorship Programme",
-    description: "Get matched with experienced AI professionals in Nigeria's tech ecosystem. Monthly 1-on-1 sessions to guide your career transition into AI.",
+    description: "Get matched with experienced AI professionals in the global tech ecosystem. Monthly 1-on-1 sessions to guide your career transition into AI.",
     color: "text-amber-400",
     bg: "bg-amber-500/10",
     border: "border-amber-500/20",
@@ -85,7 +85,7 @@ const CommunitySection = () => {
           </h2>
           <p className="text-base md:text-body-lg text-muted-foreground leading-relaxed max-w-2xl">
             Behind every great learner is a community that lifts them up. VibeAI connects you with 
-            2,500+ Nigerians on the same journey — from Lagos to Kano, Abuja to Port Harcourt.
+            2,500+ professionals globally on the same journey — from London to Sydney, Tokyo to New York.
           </p>
         </div>
 
@@ -98,11 +98,11 @@ const CommunitySection = () => {
             transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.1s"
           }}
         >
-          {/* Community hero image — Black African group */}
+          {/* Community hero image — group */}
           <div className="relative rounded-2xl md:rounded-3xl overflow-hidden aspect-[16/7] border border-white/[0.06]">
             <img
               src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=1200&h=500&fit=crop&q=80"
-              alt="VibeAI community of Nigerian learners collaborating"
+              alt="VibeAI community of global learners collaborating"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-transparent" />
@@ -125,10 +125,10 @@ const CommunitySection = () => {
               </div>
               
               <h3 className="text-xl md:text-3xl font-bold text-foreground">
-                2,500+ Nigerians learning together
+                2,500+ professionals learning together
               </h3>
               <p className="text-sm text-muted-foreground mt-1">
-                Lagos • Abuja • PH • Kano • Ibadan • Enugu • and more
+                New York • London • Tokyo • Dubai • Sydney • Singapore • and more
               </p>
             </div>
             
@@ -181,7 +181,7 @@ const CommunitySection = () => {
         >
           <p className="text-sm text-muted-foreground mb-4">Active communities in</p>
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-            {["🏙️ Lagos", "🏛️ Abuja", "⛽ Port Harcourt", "🕌 Kano", "🌊 Ibadan", "⛰️ Enugu", "🌴 Benin", "🏢 Ilorin"].map((city) => (
+            {["🏙️ New York", "🏛️ London", "⛽ Singapore", "🕌 Dubai", "🌊 Tokyo", "⛰️ Sydney", "🌴 Miami", "🏢 Berlin"].map((city) => (
               <span 
                 key={city} 
                 className="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-xs md:text-sm text-muted-foreground hover:text-accent hover:border-accent/30 transition-all duration-300 cursor-default"

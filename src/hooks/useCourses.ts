@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { CourseMetadata, COURSES_LIST } from "@/data/courses-expanded";
+import { CourseMetadata, COURSES_LIST, getCourseMetadata } from "@/data/courses-expanded";
 import { toast } from "sonner";
 
 export interface CourseWithProgress extends CourseMetadata {
@@ -21,7 +21,10 @@ export const useCourses = () => {
       
       if (!user) {
         // Fallback for non-logged in (shouldn't happen on protected routes)
-        setCourses(COURSES_LIST.map(c => ({ ...c, progress: 0, completed: false, isStarted: false, completedLessons: 0 })));
+        setCourses(COURSES_LIST.map(c => {
+          const courseMeta = getCourseMetadata(c.id);
+          return { ...courseMeta, progress: 0, completed: false, isStarted: false, completedLessons: 0 };
+        }));
         return;
       }
 
@@ -34,11 +37,12 @@ export const useCourses = () => {
       if (error) throw error;
 
       // Map metadata with progress
-      const mergedCourses = COURSES_LIST.map(course => {
+      const mergedCourses = COURSES_LIST.map(c => {
+        const course = getCourseMetadata(c.id);
         const userProgress = userCoursesData?.find(uc => uc.course_id === course.id);
         
         const progress = userProgress?.progress || 0;
-        const completedLessons = Math.floor((progress / 100) * course.totalLessons);
+        const completedLessons = Math.floor((progress / 100) * (course.totalLessons || 0));
 
         return {
           ...course,

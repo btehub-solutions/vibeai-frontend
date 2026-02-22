@@ -152,13 +152,13 @@ const StoryBentoSection = () => {
           </p>
         </div>
 
-        {/* BENTO GRID 1: AI Revolution — with Nigerian context image */}
+        {/* BENTO GRID 1: AI Revolution — with global context image */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mb-20 md:mb-32">
           
-          {/* Large card - AI is Everywhere — now with Nigerian tech scene image */}
+          {/* Large card - AI is Everywhere — now with global tech scene image */}
           <BentoCard span="col-span-2 row-span-2" glowColor="accent" delay={0}>
             <div className="h-full flex flex-col">
-              {/* Image: Nigerian tech scene */}
+              {/* Image: global tech scene */}
               <div className="relative h-44 md:h-56 overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=500&fit=crop&q=80"
@@ -239,7 +239,7 @@ const StoryBentoSection = () => {
           </BentoCard>
         </div>
 
-        {/* ── CHAPTER 2: Nigeria's AI Challenge ── */}
+        {/* ── CHAPTER 2: The Global Challenge ── */}
         <div 
           className="mb-8 md:mb-16"
           style={{
@@ -253,18 +253,18 @@ const StoryBentoSection = () => {
             <span className="text-xs md:text-sm text-red-400 font-medium tracking-wide uppercase">Chapter 2</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-display-md lg:text-display-lg text-foreground mb-4 md:mb-6 font-bold tracking-tight">
-            Nigeria is{" "}
+            The World is{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-orange-400 to-amber-400">
-              falling behind.
+              facing a divide.
             </span>
           </h2>
           <p className="text-base md:text-body-lg text-muted-foreground max-w-2xl leading-relaxed">
-            While the rest of the world races ahead with AI adoption, Nigeria's 220 million people face unique challenges 
+            While the rest of the world races ahead with AI adoption, millions face unique challenges 
             that threaten to widen the digital divide even further.
           </p>
         </div>
 
-        {/* BENTO GRID 2: Nigeria's Challenges — with contextual images */}
+        {/* BENTO GRID 2: Global Challenges — with contextual images */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 mb-20 md:mb-32">
           
           {/* Skills Gap — with image */}
@@ -284,8 +284,8 @@ const StoryBentoSection = () => {
                   Massive Skills Gap
                 </h3>
                 <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                  Over 90% of Nigerian professionals lack basic AI literacy. Most universities 
-                  don't teach practical AI skills.
+                  Over 90% of professionals globally lack basic AI literacy. Most formal 
+                  institutions don't teach practical AI skills yet.
                 </p>
               </div>
             </div>
@@ -308,25 +308,25 @@ const StoryBentoSection = () => {
                   Limited Access
                 </h3>
                 <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                  World-class AI education is priced in dollars, irrelevant to Nigerian 
-                  context, and lacks local payment options.
+                  World-class AI education is often priced out of reach, irrelevant to diverse global 
+                  contexts, and lacks accessible payment options.
                 </p>
               </div>
             </div>
           </BentoCard>
 
-          {/* Wide card - The Consequence — with Nigerian context */}
+          {/* Wide card - The Consequence */}
           <BentoCard span="col-span-2 md:col-span-1 md:row-span-2" glowColor="red" delay={200}>
             <div className="h-full flex flex-col">
               <div className="relative h-40 md:h-48 overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1549463959-1e3093202b54?w=600&h=400&fit=crop&q=80"
-                  alt="Lagos street scene"
+                  alt="City street scene"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-red-950/30" />
                 <div className="absolute bottom-4 left-5 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-black/40 backdrop-blur-xl border border-red-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                  <span className="text-2xl">🇳🇬</span>
+                  <span className="text-2xl">🌍</span>
                 </div>
               </div>
               <div className="p-5 md:p-7 flex-1 flex flex-col justify-between">
@@ -335,7 +335,7 @@ const StoryBentoSection = () => {
                     The Cost of Inaction
                   </h3>
                   <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4">
-                    If Nigeria's 220M people don't bridge the AI gap now, we risk losing an entire generation 
+                    If we don't bridge the AI gap now, we risk losing an entire generation 
                     to technological irrelevance. The jobs of tomorrow require AI fluency today.
                   </p>
                 </div>
@@ -345,19 +345,19 @@ const StoryBentoSection = () => {
                   <div>
                     <div className="flex justify-between text-xs text-muted-foreground mb-1">
                       <span>Global AI Readiness</span>
-                      <span className="text-red-400">Nigeria: 72nd</span>
+                      <span className="text-red-400">Average: 45%</span>
                     </div>
                     <div className="h-2 rounded-full bg-white/5 overflow-hidden">
-                      <div className="h-full w-[35%] rounded-full bg-gradient-to-r from-red-500 to-orange-500 transition-all duration-1000" />
+                      <div className="h-full w-[45%] rounded-full bg-gradient-to-r from-red-500 to-orange-500 transition-all duration-1000" />
                     </div>
                   </div>
                   <div>
                     <div className="flex justify-between text-xs text-muted-foreground mb-1">
-                      <span>Youth Unemployment</span>
-                      <span className="text-amber-400">42.5%</span>
+                      <span>Skills Matching Gap</span>
+                      <span className="text-amber-400">62.0%</span>
                     </div>
                     <div className="h-2 rounded-full bg-white/5 overflow-hidden">
-                      <div className="h-full w-[42%] rounded-full bg-gradient-to-r from-amber-500 to-yellow-500 transition-all duration-1000" />
+                      <div className="h-full w-[62%] rounded-full bg-gradient-to-r from-amber-500 to-yellow-500 transition-all duration-1000" />
                     </div>
                   </div>
                 </div>
@@ -382,8 +382,8 @@ const StoryBentoSection = () => {
                   Outdated Education
                 </h3>
                 <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                  Nigerian universities haven't adapted. Students graduate without practical 
-                  knowledge of the tools employers actually use.
+                  Traditional schooling hasn't adapted. Students graduate without practical 
+                  knowledge of the AI tools employers actually demand.
                 </p>
               </div>
             </div>
@@ -403,11 +403,11 @@ const StoryBentoSection = () => {
               </div>
               <div className="p-4 md:p-6 flex-1">
                 <h3 className="text-base md:text-xl font-bold text-foreground mb-2 group-hover:text-purple-400 transition-colors duration-300">
-                  Brain Drain (Japa)
+                  Global Talent Shift
                 </h3>
                 <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                  Top tech talent 'japas' — leaves Nigeria seeking AI opportunities abroad. 
-                  We can change that by bringing world-class AI education home.
+                  Top technical talent relocates seeking AI opportunities abroad. 
+                  We can bridge this gap by bringing world-class AI education everywhere.
                 </p>
               </div>
             </div>
@@ -435,12 +435,12 @@ const StoryBentoSection = () => {
             Your AI fluency starts here.
           </h2>
           <p className="text-base md:text-body-lg text-muted-foreground max-w-2xl leading-relaxed">
-            We built the platform Nigeria needs — affordable, practical, and designed for real results. 
+            We built the platform the world needs — affordable, practical, and designed for real results. 
             Not theory. Not hype. Real AI skills for real careers.
           </p>
         </div>
 
-        {/* BENTO GRID 3: The VibeAI Solution — with Nigerian imagery */}
+        {/* BENTO GRID 3: The VibeAI Solution — with global imagery */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
           
           {/* Wide feature - Structured Learning — with image */}
@@ -473,18 +473,18 @@ const StoryBentoSection = () => {
             </div>
           </BentoCard>
 
-          {/* Small feature - Naira Pricing */}
+          {/* Small feature - Flexible Pricing */}
           <BentoCard glowColor="emerald" delay={100}>
             <div className="p-5 md:p-6 h-full flex flex-col justify-between min-h-[180px]">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-500">
-                <span className="text-lg md:text-2xl font-bold text-emerald-400">₦</span>
+                <span className="text-lg md:text-2xl font-bold text-emerald-400">$</span>
               </div>
               <div>
                 <h3 className="text-base md:text-lg font-bold text-foreground mb-1 group-hover:text-emerald-400 transition-colors duration-300">
-                  Naira-Friendly
+                  Affordable Access
                 </h3>
                 <p className="text-xs md:text-sm text-muted-foreground">
-                  Priced in Naira. Pay with bank transfer, cards, or USSD. No dollar barriers.
+                  Accessible pricing globally. Pay with bank transfer, cards, or crypto. No exclusive access barriers.
                 </p>
               </div>
             </div>
@@ -501,7 +501,7 @@ const StoryBentoSection = () => {
                   Community-First
                 </h3>
                 <p className="text-xs md:text-sm text-muted-foreground">
-                  Learn alongside 2,500+ Nigerians on the same journey to AI mastery.
+                  Learn alongside 2,500+ professionals globally on the same journey to AI mastery.
                 </p>
               </div>
             </div>
@@ -541,14 +541,14 @@ const StoryBentoSection = () => {
             </div>
           </BentoCard>
 
-          {/* Wide feature - Nigerian Context — with image */}
+          {/* Wide feature - Global Context */}
           <BentoCard span="col-span-2" glowColor="accent" delay={500}>
             <div className="h-full flex flex-col md:flex-row overflow-hidden">
               {/* Image side */}
               <div className="relative w-full md:w-2/5 h-44 md:h-auto overflow-hidden flex-shrink-0">
                 <img
                   src="https://images.unsplash.com/photo-1577962917762-a4deed3883d0?w=600&h=500&fit=crop&q=80"
-                  alt="Black African professionals working together"
+                  alt="Professionals working together"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card md:bg-gradient-to-l md:from-card md:to-transparent" />
@@ -558,15 +558,15 @@ const StoryBentoSection = () => {
               {/* Text side */}
               <div className="p-5 md:p-8 flex-1 relative">
                 <h3 className="text-lg md:text-2xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
-                  Built for the Nigerian Context 🇳🇬
+                  Built for the Global Context 🌍
                 </h3>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4">
-                  Every course, example, and project is designed with Nigeria in mind. We understand 
-                  the local market, challenges, and opportunities. This isn't imported education —
-                  it's homegrown brilliance powered by global technology.
+                  Every course, example, and project is designed with real-world scenarios in mind. We understand 
+                  the rapidly shifting landscape, global challenges, and opportunities. This isn't theoretical education —
+                  it's real-world brilliance powered by global technology.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {["Local Case Studies", "Naira Pricing", "Nigerian Mentors", "Offline Access", "Low-Bandwidth Friendly"].map((tag) => (
+                  {["Real-world Case Studies", "Accessible Pricing", "Global Mentors", "Offline Access", "Low-Bandwidth Friendly"].map((tag) => (
                     <span 
                       key={tag} 
                       className="px-3 py-1 rounded-full text-xs bg-accent/10 border border-accent/20 text-accent font-medium hover:bg-accent/20 transition-colors duration-300"

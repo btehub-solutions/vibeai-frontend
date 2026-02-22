@@ -78,7 +78,7 @@ export const useDashboardData = () => {
         if (error) throw error;
 
         // Process Stats
-        const inProgressCount = userCourses?.filter(c => c.progress > 0 && !c.completed).length || 0;
+        const inProgressCount = userCourses?.filter(c => !c.completed).length || 0;
         const completedCount = userCourses?.filter(c => c.completed).length || 0;
         const totalCourses = userCourses?.length || 0;
         const completionRate = totalCourses > 0 ? Math.round((completedCount / totalCourses) * 100) : 0;
@@ -97,7 +97,7 @@ export const useDashboardData = () => {
 
         // Format Course List
         const formattedPath: UserCourseProgress[] = userCourses
-          ?.filter(c => !c.completed && c.progress > 0)
+          ?.filter(c => !c.completed)
           .map(c => {
             const meta = COURSES_METADATA[c.course_id] || { 
               title: "Unknown Course", 
@@ -198,6 +198,15 @@ function generateRecentActivity(courses: any[]): RecentActivity[] {
         type: 'lesson_completed',
         title: 'Learning Progress',
         description: `${meta.title} - ${course.progress}% complete`,
+        timestamp: course.last_accessed ? new Date(course.last_accessed) : new Date(),
+        icon: 'book'
+      });
+    } else {
+      activities.push({
+        id: `started-${course.id}`,
+        type: 'course_started',
+        title: 'Course Started',
+        description: meta.title,
         timestamp: course.last_accessed ? new Date(course.last_accessed) : new Date(),
         icon: 'book'
       });

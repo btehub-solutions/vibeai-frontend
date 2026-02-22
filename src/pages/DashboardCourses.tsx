@@ -5,8 +5,8 @@ import {
   TrendingUp, Award, Target, ChevronLeft, Filter, SlidersHorizontal,
   CheckCircle2, Circle, ArrowRight, Sparkles, BarChart3
 } from "lucide-react";
-import { useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useMemo, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { CATEGORIES } from "@/data/courses-expanded";
 import { useCourses } from "@/hooks/useCourses";
 import { useUser } from "@/hooks/useUser";
@@ -23,6 +23,8 @@ const DashboardCourses = () => {
   const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>("all");
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
   const [showFilters, setShowFilters] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get("q") || "";
   
   const { loading, courses, startCourse } = useCourses();
   const { user } = useUser();
@@ -42,6 +44,14 @@ const DashboardCourses = () => {
   // Apply all filters and sorting
   const filteredAndSortedCourses = useMemo(() => {
     let filtered = courses;
+
+    // Search filter
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      filtered = filtered.filter(
+        c => c.title.toLowerCase().includes(q) || c.description.toLowerCase().includes(q)
+      );
+    }
 
     // Category filter
     if (activeCategory !== "All") {
@@ -83,7 +93,7 @@ const DashboardCourses = () => {
     });
 
     return sorted;
-  }, [courses, activeCategory, statusFilter, difficultyFilter, sortBy]);
+  }, [courses, activeCategory, statusFilter, difficultyFilter, sortBy, searchQuery]);
 
   const handleStartCourse = async (courseId: string, isStarted: boolean) => {
     if (isStarted) {
@@ -240,6 +250,24 @@ const DashboardCourses = () => {
           subtitle="Explore our curriculum and master new skills"
           user={user}
         />
+
+        {searchQuery && (
+          <div className="mb-8 p-4 rounded-xl bg-accent/10 border border-accent/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2 text-foreground">
+              Search results for <span className="font-bold text-accent">"{searchQuery}"</span>
+            </div>
+            <button 
+              onClick={() => {
+                const newParams = new URLSearchParams(searchParams);
+                newParams.delete("q");
+                setSearchParams(newParams);
+              }}
+              className="text-sm px-3 py-1.5 rounded-lg bg-secondary text-foreground hover:bg-secondary/80 transition-colors"
+            >
+              Clear Search
+            </button>
+          </div>
+        )}
 
         {/* Continue Learning Section */}
         {inProgressCourses.length > 0 && (

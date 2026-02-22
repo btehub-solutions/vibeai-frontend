@@ -49,14 +49,14 @@ const navLinks = [
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-background/80 backdrop-blur-lg border-b border-white/[0.08] shadow-sm"
-          : "bg-transparent py-4"
+          : "bg-transparent py-2"
       }`}
     >
       <div className="container-main">
-        <div className="flex items-center justify-between h-32">
+        <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? "h-16" : "h-20"}`}>
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5">
-            <img src={logo} alt="VibeAI Logo" className="h-28 w-auto object-contain hover:scale-105 transition-transform duration-300" />
+            <img src={logo} alt="VibeAI Logo" className="h-[40px] w-auto object-contain hover:scale-105 transition-transform duration-300" />
           </Link>
 
           {/* Desktop Navigation - Shopify minimal style */}
@@ -115,7 +115,7 @@ const navLinks = [
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-8 border-t border-white/[0.06] bg-background/95 backdrop-blur-xl">
+          <div className="md:hidden py-6 border-t border-white/[0.06] bg-background/95 backdrop-blur-xl">
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
                 <Link

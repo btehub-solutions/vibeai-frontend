@@ -30,8 +30,8 @@ const PricingSection = () => {
     },
     {
       name: "Pro",
-      monthlyPrice: "₦15,000",
-      yearlyPrice: "₦150,000",
+      monthlyPrice: "$15",
+      yearlyPrice: "$150",
       period: billingCycle === "monthly" ? "/mo" : "/yr",
       description: "Full access to everything.",
       icon: Crown,
@@ -50,8 +50,8 @@ const PricingSection = () => {
     },
     {
       name: "Enterprise",
-      monthlyPrice: "₦50,000",
-      yearlyPrice: "₦500,000",
+      monthlyPrice: "$50",
+      yearlyPrice: "$500",
       period: billingCycle === "monthly" ? "/mo" : "/yr",
       description: "For teams serious about AI.",
       icon: Building,

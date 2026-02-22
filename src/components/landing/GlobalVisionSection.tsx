@@ -53,25 +53,25 @@ const BentoCard = ({ children, className = "", delay = 0, span = "" }: { childre
   );
 };
 
-const africanVisionCards = [
+const globalVisionCards = [
   {
     icon: Globe2,
-    title: "Africa's 1.4 Billion People",
-    text: "Africa has the world's youngest population. By 2050, 1 in 4 humans will be African. The continent that masters AI education will lead the century.",
+    title: "A Connected World",
+    text: "The world is moving faster than ever. By mastering AI education today, global citizens will lead the innovations of tomorrow.",
     image: "https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?w=800&h=600&fit=crop&q=80",
     color: "text-cyan-400",
   },
   {
     icon: Rocket,
-    title: "Lagos — Africa's Tech Capital",
-    text: "Yaba is called 'Yabacon Valley' for a reason. Lagos is home to more startups than any city in Africa, and Silicon Valley investors are betting billions on Nigerian innovation.",
+    title: "Global Innovation Hubs",
+    text: "From Silicon Valley to Tokyo, from London to Sydney, innovation is borderless. The tools to build the next big thing are accessible everywhere.",
     image: "https://images.unsplash.com/photo-1618828665011-0abd973f7bb8?w=800&h=600&fit=crop&q=80",
     color: "text-accent",
   },
   {
     icon: Heart,
-    title: "The Hustle Spirit",
-    text: "Nigerians are known worldwide for their resilience and entrepreneurial spirit. Give a Nigerian the right tools, and they'll build something extraordinary. AI is that tool.",
+    title: "The Builder Spirit",
+    text: "Entrepreneurs worldwide possess an incredible drive to create. Give a builder the right AI tools, and they'll create something extraordinary.",
     image: "https://images.unsplash.com/photo-1590845947670-c009801ffa74?w=800&h=600&fit=crop&q=80",
     color: "text-rose-400",
   },
@@ -80,13 +80,13 @@ const africanVisionCards = [
 const learnerProfiles = [
   { icon: Code, title: "Developers", desc: "Build smarter with AI-assisted coding", color: "text-blue-400", bg: "bg-blue-500/10", border: "border-blue-500/20" },
   { icon: BarChart3, title: "Business Owners", desc: "Automate operations, cut costs", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20" },
-  { icon: GraduationCap, title: "Students", desc: "Skills your university won't teach", color: "text-accent", bg: "bg-accent/10", border: "border-accent/20" },
+  { icon: GraduationCap, title: "Students", desc: "Skills for the modern economy", color: "text-accent", bg: "bg-accent/10", border: "border-accent/20" },
   { icon: Palette, title: "Creatives", desc: "Create 10x faster with AI tools", color: "text-purple-400", bg: "bg-purple-500/10", border: "border-purple-500/20" },
   { icon: Stethoscope, title: "Healthcare", desc: "AI diagnostics and patient care", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
   { icon: BarChart3, title: "Marketers", desc: "Copywriting, SEO, analytics with AI", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
 ];
 
-const AfricanVisionSection = () => {
+const GlobalVisionSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -111,24 +111,24 @@ const AfricanVisionSection = () => {
             <span className="text-xs md:text-sm text-cyan-400 font-medium tracking-wide uppercase">Chapter 6 — The Vision</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-display-md lg:text-display-lg text-foreground mb-4 md:mb-6 font-bold tracking-tight max-w-5xl">
-            Africa doesn't just{" "}
+            We don't just{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
               consume AI.
             </span>{" "}
-            Africa will{" "}
+            We will{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-emerald-400 to-cyan-400">
               shape it.
             </span>
           </h2>
           <p className="text-base md:text-body-lg text-muted-foreground max-w-2xl leading-relaxed">
-            This isn't just about catching up. It's about leapfrogging. Africa went from no landlines 
-            to mobile money. The same can happen with AI — if we educate the right people.
+            This isn't just about catching up. It's about leapfrogging into the future. AI is the ultimate equalizer, 
+            and those who learn it today will build the world of tomorrow.
           </p>
         </div>
 
         {/* Vision Bento Grid with images */}
         <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-16 md:mb-24">
-          {africanVisionCards.map((card, index) => (
+          {globalVisionCards.map((card, index) => (
             <BentoCard key={card.title} delay={index * 100}>
               <div className="h-full flex flex-col">
                 {/* Image */}
@@ -172,7 +172,7 @@ const AfricanVisionSection = () => {
             Who is VibeAI for?
           </h3>
           <p className="text-base md:text-lg text-muted-foreground mb-8 md:mb-12 max-w-xl">
-            Whether you're a student in Unilag, a business owner in Onitsha, or a creative in Surulere — 
+            Whether you're a student in New York, a business owner in London, or a creative in Tokyo — 
             VibeAI was built for <span className="text-foreground font-medium">you</span>.
           </p>
           
@@ -204,4 +204,4 @@ const AfricanVisionSection = () => {
   );
 };
 
-export default AfricanVisionSection;
+export default GlobalVisionSection;

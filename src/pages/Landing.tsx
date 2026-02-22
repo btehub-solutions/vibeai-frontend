@@ -1,10 +1,10 @@
 import Navbar from "@/components/landing/Navbar";
 import HeroSection from "@/components/landing/HeroSection";
 import StoryBentoSection from "@/components/landing/StoryBentoSection";
-import NigerianIndustriesSection from "@/components/landing/NigerianIndustriesSection";
+import GlobalIndustriesSection from "@/components/landing/GlobalIndustriesSection";
 import BeforeAfterSection from "@/components/landing/BeforeAfterSection";
 import SuccessStoriesSection from "@/components/landing/SuccessStoriesSection";
-import AfricanVisionSection from "@/components/landing/AfricanVisionSection";
+import GlobalVisionSection from "@/components/landing/GlobalVisionSection";
 import CommunitySection from "@/components/landing/CommunitySection";
 import ProblemSolutionSection from "@/components/landing/ProblemSolutionSection";
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
@@ -25,24 +25,24 @@ const Landing = () => {
         <HeroSection />
 
         {/* ═══ ACT 2: THE STORY ═══ */}
-        {/* Ch1: AI Revolution → Ch2: Nigeria's Challenge → Ch3: VibeAI Solution */}
+        {/* Ch1: AI Revolution → Ch2: Global Challenge → Ch3: VibeAI Solution */}
         <StoryBentoSection />
 
         {/* ═══ ACT 3: THE OPPORTUNITY ═══ */}
-        {/* Ch4: Nigerian industries being transformed by AI */}
-        <NigerianIndustriesSection />
+        {/* Ch4: Global industries being transformed by AI */}
+        <GlobalIndustriesSection />
 
         {/* ═══ ACT 4: THE TRANSFORMATION ═══ */}
         {/* Ch7: Before vs After AI fluency */}
         <BeforeAfterSection />
 
         {/* ═══ ACT 5: THE PROOF ═══ */}
-        {/* Ch5: Real Nigerian success stories */}
+        {/* Ch5: Real professional success stories */}
         <SuccessStoriesSection />
 
         {/* ═══ ACT 6: THE VISION ═══ */}
-        {/* Ch6: Africa's AI future + Who is VibeAI for */}
-        <AfricanVisionSection />
+        {/* Ch6: Global AI future + Who is VibeAI for */}
+        <GlobalVisionSection />
 
         {/* ═══ ACT 7: THE PRODUCT ═══ */}
         {/* Show what we offer — courses, how it works, experience */}
@@ -51,7 +51,7 @@ const Landing = () => {
         <AIExperienceSection />
         
         {/* ═══ ACT 8: THE COMMUNITY ═══ */}
-        {/* Ch8: Community across Nigeria */}
+        {/* Ch8: Global community */}
         <CommunitySection />
 
         {/* ═══ ACT 9: THE ECOSYSTEM ═══ */}

@@ -108,7 +108,7 @@ const FinalCTASection = () => {
 
           {/* Trust indicators */}
           <div className="mt-12 flex flex-wrap items-center justify-center gap-6 md:gap-10 text-sm text-muted-foreground/60">
-            {["🔒 Secure Payments", "🇳🇬 Made in Nigeria", "⚡ Instant Access", "📜 Certificates"].map((item) => (
+            {["🔒 Secure Payments", "🌍 Global Community", "⚡ Instant Access", "📜 Certificates"].map((item) => (
               <span key={item} className="hover:text-foreground transition-colors duration-300 cursor-default">
                 {item}
               </span>

@@ -4,43 +4,43 @@ import { Quote, Star, MapPin, Briefcase, ArrowRight } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Adaeze Okafor",
+    name: "Sarah Jenkins",
     role: "Product Manager",
-    company: "Flutterwave",
-    location: "Lagos",
-    image: "https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?w=400&h=400&fit=crop&q=80",
+    company: "TechFlow",
+    location: "London, UK",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&q=80",
     quote: "Before VibeAI, I was intimidated by AI. Now I use ChatGPT daily to write product specs, analyse user data, and create presentations in half the time. My team thinks I'm a wizard.",
     outcome: "Promoted to Senior PM in 6 months",
     outcomeColor: "text-accent",
     rating: 5,
   },
   {
-    name: "Chidi Nwosu",
+    name: "David Chen",
     role: "Entrepreneur",
-    company: "Lagos Tech Hub",
-    location: "Ikeja, Lagos",
-    image: "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=400&h=400&fit=crop&q=80",
+    company: "Global Logistics Ltd",
+    location: "Singapore",
+    image: "https://images.unsplash.com/photo-1542261777448-23d2a287091c?w=400&h=400&fit=crop&q=80",
     quote: "I run a small logistics company. VibeAI taught me how to use AI for route optimization and customer service chatbots. My operational costs dropped 30% in the first quarter. This isn't just education — it's a business investment.",
     outcome: "30% cost reduction",
     outcomeColor: "text-emerald-400",
     rating: 5,
   },
   {
-    name: "Fatima Abdullahi",
+    name: "Maria Rodriguez",
     role: "Medical Doctor",
-    company: "National Hospital Abuja",
-    location: "Abuja",
-    image: "https://images.unsplash.com/photo-1611432579699-484f7990b127?w=400&h=400&fit=crop&q=80",
+    company: "Central Health Hub",
+    location: "Madrid, Spain",
+    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&q=80",
     quote: "As a doctor, I never thought AI was relevant to me. VibeAI showed me how AI is revolutionising diagnostics, drug discovery, and patient care. I now lead our hospital's AI integration committee.",
     outcome: "Leading hospital AI initiative",
     outcomeColor: "text-cyan-400",
     rating: 5,
   },
   {
-    name: "Emeka Obi",
+    name: "James Wilson",
     role: "Content Creator",
     company: "YouTube (400K subscribers)",
-    location: "Port Harcourt",
+    location: "Austin, TX",
     image: "https://images.unsplash.com/photo-1507152927220-18c1d3315b37?w=400&h=400&fit=crop&q=80",
     quote: "I went from spending 3 days editing a video to finishing in 4 hours. VibeAI taught me Runway, Midjourney, and AI-powered editing workflows. My channel grew 200% because I could post more consistently.",
     outcome: "200% channel growth",
@@ -48,23 +48,23 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: "Ngozi Eze",
+    name: "Priya Patel",
     role: "University Student",
-    company: "University of Lagos",
-    location: "Yaba, Lagos",
+    company: "Tech University",
+    location: "Toronto, Canada",
     image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=400&fit=crop&q=80",
-    quote: "My lecturers don't teach AI. VibeAI filled that gap completely. I now understand prompt engineering, AI ethics, and practical tools that my classmates don't even know exist. I've already landed a tech internship because of these skills.",
+    quote: "My professors don't teach practical AI tools. VibeAI filled that gap completely. I now understand prompt engineering, AI ethics, and practical tools that my classmates don't even know exist. I've already landed a tech internship because of these skills.",
     outcome: "Landed tech internship",
     outcomeColor: "text-amber-400",
     rating: 5,
   },
   {
-    name: "Tunde Bakare",
-    role: "Nollywood Director",
-    company: "Independent Films",
-    location: "Surulere, Lagos",
+    name: "Alex Thompson",
+    role: "Independent Director",
+    company: "Indie Films",
+    location: "Melbourne, Australia",
     image: "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=400&h=400&fit=crop&q=80",
-    quote: "AI is changing Nollywood. With VibeAI, I learned to use AI for storyboarding, colour grading suggestions, and even script analysis. My production quality jumped and my budget stayed the same. This is the future of African cinema.",
+    quote: "AI is changing film production. With VibeAI, I learned to use AI for storyboarding, colour grading suggestions, and even script analysis. My production quality jumped and my budget stayed the same. This is the future of cinema.",
     outcome: "Award-winning short film",
     outcomeColor: "text-accent",
     rating: 5,
@@ -97,13 +97,13 @@ const SuccessStoriesSection = () => {
             <span className="text-xs md:text-sm text-accent font-medium tracking-wide uppercase">Chapter 5 — Real People, Real Results</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-display-md lg:text-display-lg text-foreground mb-4 md:mb-6 font-bold tracking-tight max-w-5xl">
-            Nigerians building their{" "}
+            Professionals building their{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-emerald-400 to-cyan-400">
               AI-powered future.
             </span>
           </h2>
           <p className="text-base md:text-body-lg text-muted-foreground max-w-2xl leading-relaxed">
-            These aren't actors. These are real Nigerians — doctors, filmmakers, students, entrepreneurs — 
+            These aren't actors. These are real professionals — doctors, filmmakers, students, entrepreneurs — 
             who decided to become AI fluent. Here are their stories.
           </p>
         </div>
@@ -186,7 +186,7 @@ const SuccessStoriesSection = () => {
           }}
         >
           <p className="text-muted-foreground mb-4 text-sm md:text-base">
-            Join 2,500+ Nigerians who chose to be AI-ready.
+            Join 2,500+ professionals globally who chose to be AI-ready.
           </p>
           <a href="#pricing" className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all duration-300">
             <span>Start Your Story</span>

@@ -3,8 +3,8 @@ import { Course } from "../course-types";
 export const course5: Course = {
   id: 5,
   title: "Advanced Prompt Engineering",
-  description: "Master advanced prompting techniques, frameworks, and optimization strategies.",
-  longDescription: "Become a prompt engineering expert. Learn advanced techniques like chain-of-thought, tree-of-thought, ReAct, and more. Master prompt frameworks, create reusable templates, and optimize prompts systematically.",
+  description: "Master advanced prompting techniques, frameworks, and programmatic optimization strategies.",
+  longDescription: "Become a prompt engineering expert. Move beyond basic chatbots and learn programmatic prompting. Master advanced techniques like Chain-of-Thought (CoT), Tree-of-Thought (ToT), ReAct, and DSPy to build reliable, scalable AI pipelines that don't break when model versions change.",
   progress: 0,
   lessons: 28,
   completedLessons: 0,
@@ -12,186 +12,159 @@ export const course5: Course = {
   category: "Skills",
   prerequisites: ["LLM Deep Dive"],
   learningOutcomes: [
-    "Master advanced prompting techniques",
-    "Create effective prompt templates",
-    "Optimize prompts systematically",
-    "Build prompt libraries for reuse"
+    "Master multi-step reasoning frameworks (CoT, ToT)",
+    "Build systematic, version-controlled prompt libraries",
+    "Implement programmatic prompting using DSPy",
+    "Design agentic workflows using the ReAct framework"
   ],
   modules: [
     {
-      title: "Module 1: Prompt Engineering Fundamentals",
+      title: "Module 1: Systematic Prompting",
       lessons: [
         { 
           id: "c5-m1-l1",
-          title: "Introduction to Prompting", 
+          title: "The Anatomy of a Production Prompt", 
           duration: "20 min",
           type: "reading",
           content: `
-# What is a Prompt?
+# Moving Beyond ChatGPT
 
-A prompt is the input you provide to an LLM to generate a specific output.
+When chatting with a bot, if it gives a bad answer, you just re-prompt it. But when you build software that relies on an LLM in the background (e.g., an automated email summarizer), the prompt *must* work correctly on the first try, every single time.
 
-## The Art of Prompting
-"Garbage In, Garbage Out." A poorly written prompt will yield a poor response.
+## The 5 Pillars of a Production Prompt
 
-## Prompt Components
-1.  **Instruction**: Specific task you want the model to perform.
-2.  **Context**: Background information or constraints.
-3.  **Input Data**: The input you want it to process.
-4.  **Output Indicator**: The format you want the output in.
-
-**Example**:
-"Summarize the text below in 3 sentences (Instruction). Focus on key financial metrics (Context). Text: [Report] (Input Data). Summary: (Output Indicator)."
+1.  **System Persona (The "Act As"):** Radically changes the internal probability weights. "You are a senior data scientist auditing code for security flaws" yields vastly different results than "Review this code."
+2.  **Context (The Boundary Constraints):** Telling the model what it *cannot* do is as important as telling it what it *must* do. Example: "Rely ONLY on the provided text. Never hallucinate external facts."
+3.  **Instruction (The Task):** Use explicit, imperative verbs. Produce, Extract, Classify, Translate.
+4.  **Few-Shot Examples (The Pattern):** LLMs are pattern matchers. Providing 3 examples of the exact input-output pairing you want reduces hallucination by up to 50%.
+5.  **Output Format (The Schema):** "Return ONLY valid JSON. Do not include markdown formatting or conversational filler."
           `
         },
         { 
           id: "c5-m1-l2",
-          title: "Zero-Shot vs Few-Shot Prompting", 
+          title: "Zero-Shot vs Few-Shot Scaling", 
           duration: "24 min",
           type: "reading",
           content: `
-# Zero-Shot vs Few-Shot Prompting
+# In-Context Learning (Few-Shot)
 
-## Zero-Shot
-Asking the model to do something without any examples.
-"Translate 'cheese' to French." -> "Fromage"
+LLMs learn incredibly well "in-context." This means you don't need to retrain the underlying model; you just show it examples in the prompt.
 
-## Few-Shot (In-Context Learning)
-Providing examples in the prompt to guide the model.
-"Translate English to French:
-Sea otter => Loutre de mer
-Peppermint => Menthe poivrée
-Plush giraffe => Girafe en peluche
-Cheese =>"
+## The Scaling Law of Examples
+*   **Zero-Shot:** "Classify the sentiment of this review." (Works okay for simple tasks).
+*   **One-Shot:** Providing a single example. Greatly improves formatting compliance.
+*   **Few-Shot (5-10 examples):** This is where models learn *logic*. 
 
-**Effectiveness**: Few-shot prompting dramatically improves performance on complex tasks.
+## Dynamic Few-Shotting
+In production, you don't hardcode the same 5 examples. You use a vector database to search for the 5 *most similar* past examples to the current user's input, and inject those into the prompt dynamically before sending it to the LLM.
           `
         },
         {
             id: "c5-m1-l3",
-            title: "Quiz: Basics",
+            title: "Quiz: Production Prompts",
             duration: "10 min",
             type: "quiz",
             questions: [
                 {
                     id: "q1",
-                    text: "What is Few-Shot Prompting?",
-                    options: ["Prompting with zero examples", "Prompting with a few examples", "Prompting with a single example", "None of the above"],
+                    text: "Why is 'Dynamic Few-Shotting' superior to hardcoding examples in a prompt?",
+                    options: ["It saves token costs", "It allows the LLM to see examples that are highly relevant to the specific edge-case the user is asking about", "It prevents the LLM from hallucinating entirely", "It is required by the OpenAI API"],
                     correctAnswer: "B",
-                    explanation: "Providing a few examples (shots) in the prompt helps the model understand the desired output format."
+                    explanation: "By retrieving and injecting examples that closely match the user's current query, the LLM has a highly tailored template for how to respond to that specific scenario."
                 }
             ]
         }
       ]
     },
     {
-      title: "Module 2: Advanced Techniques",
+      title: "Module 2: Advanced Reasoning Frameworks",
       lessons: [
         { 
           id: "c5-m2-l1",
-          title: "Chain-of-Thought (CoT) Prompting", 
+          title: "Chain-of-Thought (CoT) Deep Dive", 
           duration: "28 min",
           type: "reading",
           content: `
-# Chain-of-Thought (CoT) Prompting
+# Chain-of-Thought (CoT)
 
-Chain-of-Thought prompting encourages the model to explain its reasoning step-by-step before giving the final answer.
+Large Language Models do not possess working memory in the way humans do. If you ask an LLM a complex math question and tell it to output *only* the final number, it tries to compute the entire multi-step equation in a single forward pass of its neural network. It will almost certainly fail.
 
-## Standard Prompt
-Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now?
-A: The answer is 11.
+## Forcing the LLM to "Think Out Loud"
 
-## CoT Prompt
-Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now?
-A: Roger started with 5 balls. 2 cans of 3 balls each is 6 balls. 5 + 6 = 11. The answer is 11.
+**Chain-of-Thought** solves this by forcing the model to print its intermediate reasoning steps to the screen before generating the final answer. Because the model can "read" its own previous output, printing the steps effectively acts as a scratchpad working memory.
 
-**Usage**: "Let's think step by step." This simple phrase significantly improves reasoning capabilities.
+*   *Zero-Shot CoT:* "Take a deep breath and work on this problem step-by-step."
+*   *Few-Shot CoT:* Providing examples where the answer includes the full reasoning path.
+
+*Note: In production workflows, you simply hide the "thought" output from the final user, only showing them the final aggregated result.*
           `
         },
         { 
           id: "c5-m2-l2",
-          title: "Tree-of-Thought (ToT) Prompting", 
+          title: "Tree-of-Thought (ToT)", 
           duration: "30 min",
           type: "reading",
           content: `
-# Tree-of-Thought (ToT) Prompting
+# Tree-of-Thought (ToT)
 
-Tree-of-Thought builds on CoT. Instead of a single linear thought process, the model explores multiple branches of reasoning.
+CoT is linear. If the model makes a mistake in step 2, steps 3, 4, and 5 will be wrong (a hallucination cascade).
 
-1.  **Generate Thoughts**: Generate multiple possible next steps.
-2.  **Evaluate States**: Evaluate the progress of each partial solution.
-3.  **Search**: Use BFS (Breadth-First Search) or DFS (Depth-First Search) to find the best path.
+**Tree-of-Thought** models human decision-making by evaluating multiple parallel paths and allowing the model to backtrack.
 
-It allows the model to look ahead and backtrack if necessary.
-          `
-        },
-        { 
-          id: "c5-m2-l3",
-          title: "Generated Knowledge Prompting", 
-          duration: "26 min",
-          type: "reading",
-          content: `
-# Generated Knowledge Prompting
+1.  **Generate:** The LLM generates 3 different possible next steps for solving a problem.
+2.  **Evaluate:** A secondary prompt asks the LLM to rate each of those 3 steps (e.g., "Highly Likely to Succeed", "Dead End").
+3.  **Search:** The system branches down the most promising path. If it hits a dead end, it goes back up the tree to the second-best option.
 
-Sometimes the model needs to retrieve knowledge before answering.
-
-**Technique**:
-1.  Ask the model to generate knowledge about the question.
-2.  Ask the model to answer the question using the generated knowledge.
-
-**Example**:
-Q: Part of golf is trying to get a higher point total than others. Yes or No?
-Knowledge: The objective of golf is to play a set of holes in the least number of strokes.
-Answer: No.
+This is computationally expensive but necessary for complex logical tasks like writing a bug-free script from scratch or solving puzzles.
           `
         }
       ]
     },
     {
-      title: "Module 3: Frameworks",
+      title: "Module 3: Programmatic Prompting (DSPy)",
       lessons: [
         { 
           id: "c5-m3-l1",
-          title: "ReAct: Reasoning + Acting", 
-          duration: "28 min",
+          title: "Compiling Prompts with DSPy", 
+          duration: "35 min",
           type: "reading",
           content: `
-# ReAct (Reasoning + Acting)
+# The End of Manual Prompt Tuning
 
-ReAct combines reasoning (Chain-of-Thought) with action taking (Tool Use).
+Imagine you spend 40 hours crafting the perfect prompt for GPT-4. Then, GPT-5 comes out. Your prompt is now obsolete because GPT-5 reacts to words differently. This is the "fragility" of string-based prompt engineering.
 
-**Process**:
-1.  **Thought**: The model reasons about what to do. "I need to search for the weather in London."
-2.  **Action**: The model executes an action. [Search: "Weather London"]
-3.  **Observation**: The model receives the output. "Result: 15°C, Cloudy."
-4.  **Repeat**: "The weather is 15°C."
+## Enter DSPy (Demonstrate, Search, Predict)
+Developed by Stanford, DSPy shifts prompting from *writing text* to *writing code*. 
+Instead of tweaking adjectives ("Be very very helpful"), you define the **signature** (Input: Question -> Output: SQL Query).
 
-This is the foundation of autonomous agents like AutoGPT.
+You provide DSPy with a dataset of 50 correct Question/SQL pairs. DSPy then automatically "compiles" the optimal prompt. It tests hundreds of prompt variations against your dataset, finding the exact mathematical combination of words that produces the highest accuracy for the specific model you are using. 
+
+If you switch from OpenAI to Anthropic, you just re-compile, and DSPy writes a brand new, optimized prompt specifically for Claude.
           `
         },
         { 
-            id: "c5-m3-l2", // Quiz
-            title: "Quiz: Advanced Techniques",
-            duration: "10 min",
-            type: "quiz",
-            questions: [
-                {
-                    id: "q1",
-                    text: "What is the key phrase often used to trigger Chain-of-Thought reasoning?",
-                    options: ["Thinking Cap On", "Let's think step by step", "Show me the money", "Compute"],
-                    correctAnswer: "B",
-                    explanation: "This zero-shot prompt encourages the model to break down the problem into steps."
-                }
-            ]
+          id: "c5-m3-l2", // Quiz
+          title: "Quiz: Programmatic Prompting",
+          duration: "10 min",
+          type: "quiz",
+          questions: [
+            {
+              id: "q1",
+              text: "What fundamental problem with traditional prompt engineering does DSPy attempt to solve?",
+              options: ["It makes the API calls faster", "It eliminates the fragility of hardcoded text prompts breaking when underlying model versions change", "It reduces the cost of tokens to zero", "It prevents all hallucinations"],
+              correctAnswer: "B",
+              explanation: "DSPy treats prompts as compilable code that can be optimized programmatically against a metric, abstracting away the need to manually tweak text strings."
+            }
+          ]
         }
       ]
     }
   ],
   projects: [
     {
-      title: "Capstone: Advanced Prompt System",
-      description: "Build a sophisticated prompt-based system using chains, agents, or multi-step reasoning.",
-      duration: "6 hours",
+      title: "Capstone: The Self-Optimizing Pipeline",
+      description: "Build a DSPy pipeline that takes a crude baseline prompt and automatically compiles it into a highly optimized, few-shot reasoning chain.",
+      duration: "8 hours",
       difficulty: "advanced"
     }
   ]

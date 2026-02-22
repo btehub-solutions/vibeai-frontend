@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Bell, Search, X } from "lucide-react";
 import { User } from "@supabase/supabase-js";
+import { useNavigate } from "react-router-dom";
 
 interface DashboardHeaderProps {
   title: string;
@@ -36,6 +37,7 @@ const DashboardHeader = ({ title, subtitle, user }: DashboardHeaderProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showNotifications, setShowNotifications] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const navigate = useNavigate();
 
   const notifications = [
     { id: 1, title: "New course available", message: "Check out Advanced Prompt Engineering", time: "2h ago", unread: true },
@@ -48,8 +50,7 @@ const DashboardHeader = ({ title, subtitle, user }: DashboardHeaderProps) => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      // TODO: Implement search functionality
-      console.log("Searching for:", searchQuery);
+      navigate(`/dashboard/courses?q=${encodeURIComponent(searchQuery.trim())}`);
     }
   };
 
