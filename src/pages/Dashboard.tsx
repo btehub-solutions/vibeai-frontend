@@ -22,6 +22,7 @@ import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import { useDashboardData } from "@/hooks/useDashboardData";
 import { LearningActivityChart } from "@/components/dashboard/LearningActivityChart";
 import { DashboardQuickActions } from "@/components/dashboard/DashboardQuickActions";
+import { IntelligencePanel } from "@/components/dashboard/IntelligencePanel";
 
 // Helper function to format time ago
 const timeAgo = (date: Date) => {
@@ -242,8 +243,13 @@ const Dashboard = () => {
                 </motion.div>
               </div>
 
-              {/* Right Sidebar */}
+              {/* Right Sidebar — Intelligence Panel */}
               <div className="space-y-6">
+                {/* AI-Powered Intelligence Panel */}
+                <motion.div variants={item}>
+                  <IntelligencePanel />
+                </motion.div>
+
                 {/* Progress Summary */}
                 <motion.div variants={item} className="card-elevated p-6 bg-gradient-to-b from-card to-secondary/30">
                   <h2 className="text-lg font-semibold text-foreground mb-6">
@@ -299,53 +305,6 @@ const Dashboard = () => {
                         Finished
                       </p>
                     </div>
-                  </div>
-                </motion.div>
-
-                {/* Achievements */}
-                <motion.div variants={item} className="card-elevated p-6">
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-lg font-semibold text-foreground">
-                      Achievements
-                    </h2>
-                    <Link to="/dashboard/settings" className="text-xs text-accent hover:underline">View All</Link>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    {achievements.slice(0, 3).map((achievement) => (
-                      <div
-                        key={achievement.id}
-                        className={`flex items-center gap-4 p-3 rounded-xl border transition-all ${
-                          achievement.achieved
-                            ? "bg-accent/5 border-accent/20"
-                            : "bg-secondary/20 border-white/5 opacity-70"
-                        }`}
-                      >
-                        <div
-                          className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${
-                            achievement.achieved
-                              ? "bg-accent/20 text-accent"
-                              : "bg-muted text-muted-foreground"
-                          }`}
-                        >
-                          {achievement.icon === "award" && <Award size={18} />}
-                          {achievement.icon === "trophy" && <Trophy size={18} />}
-                          {achievement.icon === "clock" && <Clock size={18} />}
-                          {achievement.icon === "flame" && <Flame size={18} />}
-                          {achievement.icon === "target" && <Target size={18} />}
-                        </div>
-                        <div>
-                          <p className="font-medium text-sm text-foreground">{achievement.title}</p>
-                          {achievement.achieved ? (
-                             <p className="text-[10px] text-accent font-medium uppercase tracking-wider mt-0.5">Unlocked</p>
-                          ) : (
-                            <div className="w-24 h-1.5 bg-muted rounded-full mt-2 overflow-hidden">
-                               <div className="h-full bg-muted-foreground/50 w-1/2" style={{ width: `${achievement.progress}%` }} />
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    ))}
                   </div>
                 </motion.div>
 

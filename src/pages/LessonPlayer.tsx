@@ -6,7 +6,7 @@ import {
   CheckCircle2, XCircle, AlertCircle, Lightbulb, Clock, Brain, ImageIcon
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/lib/supabase";
 import ReactMarkdown from 'react-markdown';
@@ -15,6 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { generateLessonContent } from "@/services/ai-course-generator";
 import { Loader2, Key } from "lucide-react";
+import { useIntelligence } from "@/hooks/useIntelligence";
 
 // Split content on [IMAGE: ...] markers and render as alternating markdown + visual cards
 const renderLessonContent = (content: string) => {
@@ -68,6 +69,10 @@ const LessonPlayer = () => {
   const [needsApiKey, setNeedsApiKey] = useState(false);
   const [apiKeyInput, setApiKeyInput] = useState("");
 
+  // ── Intelligence Engine Integration ────────────────────────────
+  const intelligence = useIntelligence();
+  const lessonStartTime = useRef<number>(Date.now());
+
   const course = getCourseMetadata(courseId || "");
   
   // Flatten modules to find current lesson
@@ -78,15 +83,33 @@ const LessonPlayer = () => {
   const nextLesson = allLessons[currentIndex + 1];
   const prevLesson = allLessons[currentIndex - 1];
 
+  // Initialize intelligence engine & record lesson start
+  useEffect(() => {
+    const initIntelligence = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        intelligence.initialize(user.id);
+        if (courseId && lessonId) {
+          intelligence.recordLessonStart(courseId, lessonId);
+          lessonStartTime.current = Date.now();
+        }
+      }
+    };
+    initIntelligence();
+  }, [courseId, lessonId]);
+
   // Load saved notes
   useEffect(() => {
     const savedNotes = localStorage.getItem(`lesson-notes-${lessonId}`);
     if (savedNotes) setNotes(savedNotes);
   }, [lessonId]);
 
-  // Save notes
+  // Save notes + record note event
   const handleSaveNotes = () => {
     localStorage.setItem(`lesson-notes-${lessonId}`, notes);
+    if (courseId && lessonId) {
+      intelligence.recordNoteTaken(courseId, lessonId);
+    }
     toast.success("Notes saved!");
   };
 
@@ -154,6 +177,11 @@ const LessonPlayer = () => {
     const score = Math.round((correct / currentLesson.questions.length) * 100);
     setQuizScore(score);
     setQuizSubmitted(true);
+
+    // Record quiz submission to intelligence engine
+    if (courseId && lessonId) {
+      intelligence.recordQuizSubmit(courseId, lessonId, score);
+    }
     
     if (score >= 70) {
       toast.success(`Great job! You scored ${score}%`);
@@ -166,6 +194,10 @@ const LessonPlayer = () => {
     setQuizAnswers({});
     setQuizSubmitted(false);
     setQuizScore(0);
+    // Record retake event
+    if (courseId && lessonId) {
+      intelligence.recordQuizRetake(courseId, lessonId);
+    }
   };
 
   const handleComplete = async () => {
@@ -181,6 +213,12 @@ const LessonPlayer = () => {
         toast.error("You need to score at least 70% to proceed. Please retake the quiz.");
         return;
       }
+    }
+
+    // Record lesson completion with time spent to intelligence engine
+    const timeSpentSeconds = Math.round((Date.now() - lessonStartTime.current) / 1000);
+    if (lessonId) {
+      intelligence.recordLessonComplete(courseId, lessonId, timeSpentSeconds);
     }
 
     const newProgress = Math.min(100, Math.round(((currentIndex + 1) / allLessons.length) * 100));
@@ -201,6 +239,7 @@ const LessonPlayer = () => {
       setTimeout(() => {
         navigate(`/dashboard/courses/${courseId}/lessons/${nextLesson.id}`);
         setComplete(false);
+        lessonStartTime.current = Date.now(); // Reset timer
       }, 1500);
     } else {
       toast.success("Course completed! Congratulations! 🎉");
