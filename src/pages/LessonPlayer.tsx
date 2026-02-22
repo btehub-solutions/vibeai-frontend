@@ -16,31 +16,43 @@ import { Input } from "@/components/ui/input";
 import { generateLessonContent } from "@/services/ai-course-generator";
 import { Loader2, Key } from "lucide-react";
 
-// Pre-process markdown content to convert [IMAGE: ...] markers into renderable visual cards
-const processContent = (content: string): string => {
-  return content.replace(
-    /\[IMAGE:\s*(.*?)\]/gi,
-    (_match, desc: string) => {
-      const trimmed = desc.trim();
-      return `\n\n---\n\n🖼️ **Visual: ${trimmed}**\n\n---\n\n`;
-    }
-  );
-};
+// Split content on [IMAGE: ...] markers and render as alternating markdown + visual cards
+const renderLessonContent = (content: string) => {
+  const IMAGE_REGEX = /\[IMAGE:\s*(.*?)\]/gi;
+  const segments: Array<{ type: 'text' | 'image'; value: string }> = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
 
-// Visual Card component rendered inline
-const VisualCard = ({ description }: { description: string }) => (
-  <div className="my-6 rounded-xl border border-accent/30 bg-gradient-to-br from-accent/5 via-purple-500/5 to-blue-500/5 p-5 not-prose">
-    <div className="flex items-start gap-4">
-      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center">
-        <ImageIcon className="w-6 h-6 text-accent" />
-      </div>
-      <div className="flex-1 min-w-0">
-        <p className="text-xs font-bold uppercase tracking-widest text-accent mb-1">Visual Reference</p>
-        <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
-      </div>
-    </div>
-  </div>
-);
+  while ((match = IMAGE_REGEX.exec(content)) !== null) {
+    if (match.index > lastIndex) {
+      segments.push({ type: 'text', value: content.slice(lastIndex, match.index) });
+    }
+    segments.push({ type: 'image', value: match[1].trim() });
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < content.length) {
+    segments.push({ type: 'text', value: content.slice(lastIndex) });
+  }
+
+  return segments.map((seg, i) => {
+    if (seg.type === 'image') {
+      return (
+        <div key={i} className="my-8 rounded-xl border border-accent/30 bg-gradient-to-br from-accent/5 via-purple-500/5 to-blue-500/5 p-5 not-prose">
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center">
+              <ImageIcon className="w-6 h-6 text-accent" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-bold uppercase tracking-widest text-accent mb-1.5">Visual Reference</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{seg.value}</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return <ReactMarkdown key={i} remarkPlugins={[remarkGfm]}>{seg.value}</ReactMarkdown>;
+  });
+};
 
 const LessonPlayer = () => {
   const { courseId, lessonId } = useParams();
@@ -519,31 +531,9 @@ const LessonPlayer = () => {
                        <p className="text-xs text-muted-foreground mt-4">Your key is stored securely in your browser's local storage and never leaves this tab.</p>
                     </div>
                   ) : dynamicContent ? (
-                    <ReactMarkdown 
-                      remarkPlugins={[remarkGfm]}
-                      components={{
-                        strong: ({ children }) => {
-                          const text = String(children);
-                          if (text.startsWith('Visual: ')) {
-                            return <VisualCard description={text.replace('Visual: ', '')} />;
-                          }
-                          return <strong>{children}</strong>;
-                        }
-                      }}
-                    >{processContent(dynamicContent)}</ReactMarkdown>
+                    <>{renderLessonContent(dynamicContent)}</>
                   ) : currentLesson.content ? (
-                    <ReactMarkdown 
-                      remarkPlugins={[remarkGfm]}
-                      components={{
-                        strong: ({ children }) => {
-                          const text = String(children);
-                          if (text.startsWith('Visual: ')) {
-                            return <VisualCard description={text.replace('Visual: ', '')} />;
-                          }
-                          return <strong>{children}</strong>;
-                        }
-                      }}
-                    >{processContent(currentLesson.content)}</ReactMarkdown>
+                    <>{renderLessonContent(currentLesson.content)}</>
                   ) : (
                     <div className="space-y-4">
                       <p className="text-lg leading-relaxed">
