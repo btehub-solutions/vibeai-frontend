@@ -3,7 +3,7 @@ import { getCourseMetadata } from "@/data/courses-expanded";
 import { 
   ArrowLeft, ChevronLeft, ChevronRight, CheckCircle, Play, FileText, 
   HelpCircle, Target, Zap, BookOpen, Award, StickyNote, Download,
-  CheckCircle2, XCircle, AlertCircle, Lightbulb, Clock, Brain
+  CheckCircle2, XCircle, AlertCircle, Lightbulb, Clock, Brain, ImageIcon
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
@@ -15,6 +15,33 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { generateLessonContent } from "@/services/ai-course-generator";
 import { Loader2, Key } from "lucide-react";
+
+// Pre-process markdown content to convert [IMAGE: ...] markers into renderable visual cards
+const processContent = (content: string): string => {
+  return content.replace(
+    /\[IMAGE:\s*(.*?)\]/gi,
+    (_match, desc: string) => {
+      const trimmed = desc.trim();
+      return `\n\n---\n\n🖼️ **Visual: ${trimmed}**\n\n---\n\n`;
+    }
+  );
+};
+
+// Visual Card component rendered inline
+const VisualCard = ({ description }: { description: string }) => (
+  <div className="my-6 rounded-xl border border-accent/30 bg-gradient-to-br from-accent/5 via-purple-500/5 to-blue-500/5 p-5 not-prose">
+    <div className="flex items-start gap-4">
+      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center">
+        <ImageIcon className="w-6 h-6 text-accent" />
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className="text-xs font-bold uppercase tracking-widest text-accent mb-1">Visual Reference</p>
+        <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+      </div>
+    </div>
+  </div>
+);
+
 const LessonPlayer = () => {
   const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
@@ -465,7 +492,7 @@ const LessonPlayer = () => {
                   )}
                 </div>
               ) : (
-                <div className="prose prose-invert max-w-none">
+                <div className="prose prose-invert max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-li:text-muted-foreground prose-a:text-accent prose-code:text-accent prose-hr:border-border">
                   {isGenerating ? (
                     <div className="flex flex-col items-center justify-center py-16 text-muted-foreground animate-in fade-in duration-500">
                       <Loader2 className="w-12 h-12 text-accent animate-spin mb-4" />
@@ -492,9 +519,31 @@ const LessonPlayer = () => {
                        <p className="text-xs text-muted-foreground mt-4">Your key is stored securely in your browser's local storage and never leaves this tab.</p>
                     </div>
                   ) : dynamicContent ? (
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{dynamicContent.replace(/\[IMAGE:\s*(.*?)\]/gi, (match, desc) => `![${desc.trim()}](https://image.pollinations.ai/prompt/${encodeURIComponent(desc.trim() + " clean minimalist educational vector UI diagram no text format")}?nologo=true)\n\n*${desc.trim()}*`)}</ReactMarkdown>
+                    <ReactMarkdown 
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        strong: ({ children }) => {
+                          const text = String(children);
+                          if (text.startsWith('Visual: ')) {
+                            return <VisualCard description={text.replace('Visual: ', '')} />;
+                          }
+                          return <strong>{children}</strong>;
+                        }
+                      }}
+                    >{processContent(dynamicContent)}</ReactMarkdown>
                   ) : currentLesson.content ? (
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{currentLesson.content.replace(/\[IMAGE:\s*(.*?)\]/gi, (match, desc) => `![${desc.trim()}](https://image.pollinations.ai/prompt/${encodeURIComponent(desc.trim() + " clean minimalist educational vector UI diagram no text format")}?nologo=true)\n\n*${desc.trim()}*`)}</ReactMarkdown>
+                    <ReactMarkdown 
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        strong: ({ children }) => {
+                          const text = String(children);
+                          if (text.startsWith('Visual: ')) {
+                            return <VisualCard description={text.replace('Visual: ', '')} />;
+                          }
+                          return <strong>{children}</strong>;
+                        }
+                      }}
+                    >{processContent(currentLesson.content)}</ReactMarkdown>
                   ) : (
                     <div className="space-y-4">
                       <p className="text-lg leading-relaxed">
