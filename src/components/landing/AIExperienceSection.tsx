@@ -81,8 +81,8 @@ const AIExperienceSection = () => {
               onMouseLeave={() => setIsVideoHovered(false)}
             >
               <img
-                src="/images/landing/woman-coding-night.jpg"
-                alt="Professional learning AI in an immersive environment"
+                src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&h=600&fit=crop&q=80"
+                alt="Professionals learning AI in a collaborative workshop setting"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
@@ -101,8 +101,8 @@ const AIExperienceSection = () => {
             {/* Floating secondary image — Professional using laptop */}
             <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-4 md:-bottom-8 md:-left-8 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-xl md:rounded-2xl overflow-hidden border border-white/[0.1] shadow-2xl backdrop-blur-sm">
               <img
-                src="/images/landing/classroom-mentoring.jpg"
-                alt="Professional being mentored on AI tools"
+                src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=400&h=400&fit=crop&q=80"
+                alt="Professional using AI tools on laptop"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />

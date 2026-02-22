@@ -80,8 +80,8 @@ const BeforeAfterSection = () => {
             {/* Before header image — frustrated Black professional */}
             <div className="relative h-44 md:h-56 overflow-hidden">
               <img
-                src="/images/landing/team-coding-collab.jpg"
-                alt="Professionals working intensely before AI fluency"
+                src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=800&h=400&fit=crop&q=80"
+                alt="Frustrated professional before AI fluency"
                 className="w-full h-full object-cover opacity-60"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-red-950/30" />
@@ -127,8 +127,8 @@ const BeforeAfterSection = () => {
             {/* After header image — confident Black professionals */}
             <div className="relative h-44 md:h-56 overflow-hidden">
               <img
-                src="/images/landing/happy-students-laptops.jpg"
-                alt="Happy professionals thriving with AI fluency"
+                src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=800&h=400&fit=crop&q=80"
+                alt="Confident professionals after AI fluency training"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-emerald-950/20" />

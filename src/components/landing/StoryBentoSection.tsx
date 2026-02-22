@@ -161,8 +161,8 @@ const StoryBentoSection = () => {
               {/* Image: global tech scene */}
               <div className="relative h-44 md:h-56 overflow-hidden">
                 <img
-                  src="/images/landing/classroom-mentoring.jpg"
-                  alt="Professionals collaborating and mentoring on AI solutions"
+                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=500&fit=crop&q=80"
+                  alt="Black professionals collaborating on AI solutions"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
@@ -272,8 +272,8 @@ const StoryBentoSection = () => {
             <div className="h-full flex flex-col">
               <div className="relative h-32 md:h-40 overflow-hidden">
                 <img
-                  src="/images/landing/tech-hub-learning.jpg"
-                  alt="Students learning in a modern tech hub"
+                  src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&h=300&fit=crop&q=80"
+                  alt="Black students in a classroom"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-red-950/20" />
@@ -296,8 +296,8 @@ const StoryBentoSection = () => {
             <div className="h-full flex flex-col">
               <div className="relative h-32 md:h-40 overflow-hidden">
                 <img
-                  src="/images/landing/computer-training.jpg"
-                  alt="Learners accessing computer training"
+                  src="https://images.unsplash.com/photo-1569420951336-7bf7d1c68437?w=600&h=300&fit=crop&q=80"
+                  alt="Market scene reflecting economic factors"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-amber-950/20" />
@@ -320,8 +320,8 @@ const StoryBentoSection = () => {
             <div className="h-full flex flex-col">
               <div className="relative h-40 md:h-48 overflow-hidden">
                 <img
-                  src="/images/landing/pair-programming.jpg"
-                  alt="Developers pair programming on AI projects"
+                  src="https://images.unsplash.com/photo-1549463959-1e3093202b54?w=600&h=400&fit=crop&q=80"
+                  alt="City street scene"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-red-950/30" />
@@ -370,8 +370,8 @@ const StoryBentoSection = () => {
             <div className="h-full flex flex-col">
               <div className="relative h-32 md:h-40 overflow-hidden">
                 <img
-                  src="/images/landing/woman-laptop-outdoor.jpg"
-                  alt="Woman studying AI on her laptop"
+                  src="https://images.unsplash.com/photo-1534067783741-512d0deaf5de?w=600&h=300&fit=crop&q=80"
+                  alt="Student studying with focus"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-blue-950/20" />
@@ -394,8 +394,8 @@ const StoryBentoSection = () => {
             <div className="h-full flex flex-col">
               <div className="relative h-32 md:h-40 overflow-hidden">
                 <img
-                  src="/images/landing/dev-workspace.jpg"
-                  alt="Developers working in a modern workspace"
+                  src="https://images.unsplash.com/photo-1581007871115-f14bc016e0a4?w=600&h=300&fit=crop&q=80"
+                  alt="Airport scene"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-purple-950/20" />
@@ -448,8 +448,8 @@ const StoryBentoSection = () => {
             <div className="h-full flex flex-col">
               <div className="relative h-40 md:h-48 overflow-hidden">
                 <img
-                  src="/images/landing/coworking-space.jpg"
-                  alt="Learners in a coworking space studying AI"
+                  src="https://images.unsplash.com/photo-1542385151-efd9000e85a4?w=800&h=400&fit=crop&q=80"
+                  alt="Black student working on laptop"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
@@ -547,8 +547,8 @@ const StoryBentoSection = () => {
               {/* Image side */}
               <div className="relative w-full md:w-2/5 h-44 md:h-auto overflow-hidden flex-shrink-0">
                 <img
-                  src="/images/landing/team-group-photo.jpg"
-                  alt="VibeAI team of professionals and learners"
+                  src="https://images.unsplash.com/photo-1577962917762-a4deed3883d0?w=600&h=500&fit=crop&q=80"
+                  alt="Professionals working together"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card md:bg-gradient-to-l md:from-card md:to-transparent" />
