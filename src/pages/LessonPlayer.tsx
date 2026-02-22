@@ -492,9 +492,9 @@ const LessonPlayer = () => {
                        <p className="text-xs text-muted-foreground mt-4">Your key is stored securely in your browser's local storage and never leaves this tab.</p>
                     </div>
                   ) : dynamicContent ? (
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{dynamicContent.replace(/\[IMAGE:\s*(.*?)\]/gi, (match, desc) => `![${desc.trim()}](https://image.pollinations.ai/prompt/${encodeURIComponent(desc.trim() + " clean minimalist educational vector UI diagram no text format")}?width=800&height=400&nologo=true)\n\n*${desc.trim()}*`)}</ReactMarkdown>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{dynamicContent.replace(/\[IMAGE:\s*(.*?)\]/gi, (match, desc) => `![${desc.trim()}](https://pollinations.ai/p/${encodeURIComponent(desc.trim() + " clean minimalist educational vector UI diagram no text format")}?width=800&height=400&nologo=true)\n\n*${desc.trim()}*`)}</ReactMarkdown>
                   ) : currentLesson.content ? (
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{currentLesson.content.replace(/\[IMAGE:\s*(.*?)\]/gi, (match, desc) => `![${desc.trim()}](https://image.pollinations.ai/prompt/${encodeURIComponent(desc.trim() + " clean minimalist educational vector UI diagram no text format")}?width=800&height=400&nologo=true)\n\n*${desc.trim()}*`)}</ReactMarkdown>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{currentLesson.content.replace(/\[IMAGE:\s*(.*?)\]/gi, (match, desc) => `![${desc.trim()}](https://pollinations.ai/p/${encodeURIComponent(desc.trim() + " clean minimalist educational vector UI diagram no text format")}?width=800&height=400&nologo=true)\n\n*${desc.trim()}*`)}</ReactMarkdown>
                   ) : (
                     <div className="space-y-4">
                       <p className="text-lg leading-relaxed">
