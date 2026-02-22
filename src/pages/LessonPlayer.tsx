@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/lib/supabase";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { generateLessonContent } from "@/services/ai-course-generator";
@@ -491,9 +492,9 @@ const LessonPlayer = () => {
                        <p className="text-xs text-muted-foreground mt-4">Your key is stored securely in your browser's local storage and never leaves this tab.</p>
                     </div>
                   ) : dynamicContent ? (
-                    <ReactMarkdown>{dynamicContent}</ReactMarkdown>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{dynamicContent.replace(/\[IMAGE:\s*(.*?)\]/gi, (match, desc) => `![${desc.trim()}](https://image.pollinations.ai/prompt/${encodeURIComponent(desc.trim() + " clean minimalist educational vector UI diagram no text format")}?width=800&height=400&nologo=true)\n\n*${desc.trim()}*`)}</ReactMarkdown>
                   ) : currentLesson.content ? (
-                    <ReactMarkdown>{currentLesson.content}</ReactMarkdown>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{currentLesson.content.replace(/\[IMAGE:\s*(.*?)\]/gi, (match, desc) => `![${desc.trim()}](https://image.pollinations.ai/prompt/${encodeURIComponent(desc.trim() + " clean minimalist educational vector UI diagram no text format")}?width=800&height=400&nologo=true)\n\n*${desc.trim()}*`)}</ReactMarkdown>
                   ) : (
                     <div className="space-y-4">
                       <p className="text-lg leading-relaxed">
