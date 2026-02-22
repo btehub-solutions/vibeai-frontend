@@ -26,138 +26,155 @@ export const course1: Course = {
           title: "What is Artificial Intelligence?", 
           duration: "18 min",
           type: "reading",
-          objectives: ["Define AI in simple terms", "Understand the difference between AI and automation"],
           content: `
-# What is Artificial Intelligence?
+# MODULE 1 — Introduction to Artificial Intelligence
+**Learning Objectives:**
+* Define Artificial Intelligence and distinguish it from basic automation.
+* Trace the historical evolution of AI from the Turing Test to modern Deep Learning.
+* Differentiate between Narrow, General, and Super AI.
 
+---
+
+## Lesson 1 — What is Artificial Intelligence?
+
+### Definition / Explanation:
+
+**Point 1: Simulating Intelligence**
 Artificial Intelligence (AI) is the simulation of human intelligence processes by machines, especially computer systems. These processes include learning (the acquisition of information and rules for using the information), reasoning (using rules to reach approximate or definite conclusions), and self-correction.
 
-## Key Components of AI
+**Point 2: AI vs. Automation**
+It is common to confuse AI with simple automation, but there is a crucial difference:
+*   **Automation:** Follows a strict set of pre-defined rules. It does exactly what it is told to do, every single time. It cannot handle unexpected situations gracefully.
+*   **AI:** Can dynamically adapt. It can learn from new data and handle situations it hasn't explicitly been programmed for by estimating probabilities.
 
-1.  **Learning**: The ability to improve performance based on experience.
-2.  **Reasoning**: The ability to draw inferences appropriate to the situation.
-3.  **Problem Solving**: The ability to use data to solve complex problems.
-4.  **Perception**: The ability to interpret sensory input (like images or speech).
-5.  **Language Understanding**: The ability to understand and generate human language.
+### Key Points:
+*   **Learning:** The ability to improve performance based on experience (data).
+*   **Reasoning:** The ability to draw inferences appropriate to the situation.
+*   **Perception:** The ability to interpret sensory input (like image recognition or speech-to-text navigation).
+*   **The New Electricity:** As Andrew Ng stated, AI is positioned to transform every major industry in the same way electricity did a century ago.
 
-## AI vs. Automation
+### Examples / Use Cases:
 
-It's common to confuse AI with simple automation. Here is the key difference:
+*   **Example 1: The Email Filter:** A basic automation rule says "If sender is Bob, move to folder." An AI spam filter reads millions of emails, learns the subtle nuances of deceptive language, and automatically filters out scam emails without a human ever defining what the scam was.
 
-*   **Automation** follows a strict set of pre-defined rules. It does exactly what it is told to do, every single time. It cannot handle unexpected situations.
-*   **AI** can adapt. It can learn from new data and handle situations it hasn't explicitly been programmed for.
+### Visuals:
 
-> "AI is the new electricity. Just as electricity transformed almost everything 100 years ago, today I have a hard time thinking of an industry that I don't think AI will transform in the next several years." - Andrew Ng
-          `,
-          activity: "Identify AI vs non-AI systems in daily life",
-          quiz: "5-question multiple choice on AI basics"
+[IMAGE: A comparative diagram. Left side shows "Automation" as a rigid, straight gear pathway. Right side shows "AI" as a branching, glowing neural network adapting to different inputs.]
+
+### Implementation / Hands-On:
+
+*   **Step 1:** Look at the software on your smartphone.
+*   **Step 2:** Identify three applications that are simply "Automation" (e.g., the standard Calculator app).
+*   **Step 3:** Identify three applications that utilize "AI" (e.g., FaceID unlocking, predictive keyboard text, map routing algorithms) and explain why a rigid rule couldn't accomplish them.
+
+### Summary / Key Takeaways:
+
+*   AI simulates human cognitive functions like learning and problem-solving.
+*   Unlike automation, AI adapts to novel data without explicit reprogramming.
+*   We use AI daily in ways that have become totally invisible to us.
+
+### Optional Exercises / Prompts:
+
+*   **Exercise 1:** Write a short paragraph explaining how a self-driving car represents both "Perception" and "Reasoning."
+          `
         },
         { 
           id: "c1-m1-l2",
-          title: "The History of AI: From Turing to Today", 
+          title: "The History of AI", 
           duration: "22 min",
           type: "reading",
-          objectives: ["Trace AI's evolution from the 1950s to present", "Understand key milestones in AI development"],
           content: `
-# The History of AI
+## Lesson 2 — The History of AI
 
-The journey of Artificial Intelligence is a fascinating story of ambition, setbacks, and breakthroughs.
+### Definition / Explanation:
 
-## The Birth of AI (1950-1956)
+**Point 1: The Birth of the Field**
+The journey of Artificial Intelligence is a fascinating cycle of massive ambition, technological setbacks, and recent profound breakthroughs. The term "Artificial Intelligence" was formally coined at the Dartmouth Conference in 1956, marking the birth of the field.
 
-*   **1950**: Alan Turing publishes "Computing Machinery and Intelligence," proposing the famous **Turing Test** to determine if a machine can exhibit intelligent behavior.
-*   **1956**: The term "Artificial Intelligence" is coined at the **Dartmouth Conference**, widely considered the birth of the field.
+**Point 2: The Turing Test**
+In 1950, Alan Turing published "Computing Machinery and Intelligence," proposing the famous **Turing Test**—a theoretical benchmark to determine if a machine can exhibit intelligent behavior indistinguishable from a human in text-based conversation.
 
-## The Golden Years (1956-1974)
+### Key Points:
+*   **The AI Winters (1974-1980, 1987-1993):** Periods where funding and public interest completely dried up due to researchers overpromising capabilities while lacking the necessary hardware compute power.
+*   **The Boom (1993-2011):** Marked by highly specific milestone victories: IBM's Deep Blue defeating world chess champion Garry Kasparov (1997) and IBM's Watson winning Jeopardy! (2011).
+*   **The Deep Learning Era (2012-Present):** With the explosion of Internet data and the repurposing of graphical GPUs for parallel mathematics, Deep Learning neural networks finally became viable, leading to modern Generative AI like ChatGPT.
 
-Researchers developed programs that could solve algebra word problems, prove geometric theorems, and learn to speak English. There was immense optimism.
+### Examples / Use Cases:
 
-## The AI Winters (1974-1980, 1987-1993)
+*   **Example 1: The ImageNet Milestone:** In 2012, a neural network named AlexNet dominated the ImageNet visual recognition competition, proving decisively that Deep Learning combined with GPU hardware was the future of AI, ending the era of hand-coded feature extraction.
 
-Due to inflated expectations and lack of computational power, funding dried up. These periods of reduced funding and interest are known as "AI Winters."
+### Visuals:
 
-## The Boom (1993-2011)
+[IMAGE: A timeline graphic. Key nodes: 1950 (Turing Test) -> 1956 (Dartmouth) -> 1980s (AI Winter) -> 1997 (Deep Blue) -> 2012 (Deep Learning boom) -> 2022 (Generative AI).]
 
-*   **1997**: IBM's **Deep Blue** defeats world chess champion Garry Kasparov.
-*   **2011**: IBM's **Watson** wins Jeopardy!.
+### Implementation / Hands-On:
 
-## The Deep Learning Era (2012-Present)
+*   **Step 1:** Search online for an interactive "Turing Test" chatbot (like the Loebner Prize winners or a modern LLM).
+*   **Step 2:** Attempt to "break" the bot by asking it highly contextual, nuanced questions that require human common sense (e.g., "If I drop a bowling ball on a feather, what breaks?"). Notice how modern algorithms handle it.
 
-With the explosion of data and GPU power, Deep Learning took center stage.
-*   **2012**: AlexNet dominates the ImageNet competition.
-*   **2016**: Google's **AlphaGo** defeats Go champion Lee Sedol.
-*   **2022**: OpenAI releases **ChatGPT**, bringing Generative AI to the masses.
-          `,
-          activity: "Create a timeline of major AI breakthroughs",
-          quiz: "Match historical events with their significance"
+### Summary / Key Takeaways:
+
+*   AI is not a new concept; its foundations date back to the 1950s.
+*   Progress was stalled for decades by a lack of computational hardware.
+*   Modern GPUs and massive data sets unlocked the current Deep Learning era.
+
+### Optional Exercises / Prompts:
+
+*   **Exercise 1:** Act as a historian. Write a brief explanation as to why an "AI Winter" occurs, and what prevents us from entering another one today.
+          `
         },
         { 
           id: "c1-m1-l3",
-          title: "Types of AI: Narrow, General, and Super AI", 
+          title: "Types of AI", 
           duration: "20 min",
           type: "reading",
-          objectives: ["Differentiate between ANI, AGI, and ASI", "Identify current AI capabilities and limitations"],
           content: `
-# Types of AI
+## Lesson 3 — Types of AI
 
-AI is generally categorized into three types based on capability:
+### Definition / Explanation:
 
-## 1. Artificial Narrow Intelligence (ANI)
-*   **Definition**: AI designed to perform a specific task.
-*   **Examples**: Siri, Alexa, Google Search, Facial Recognition, Self-driving cars.
-*   **Status**: This is the **only** type of AI that exists today.
+**Point 1: The Spectrum of Capability**
+We categorize AI primarily by its scope of intellectual capability, separating what actually exists today from what exists purely in theory and science fiction.
 
-## 2. Artificial General Intelligence (AGI)
-*   **Definition**: AI that possesses the ability to understand, learn, and apply knowledge across a wide variety of tasks, similar to a human.
-*   **Status**: Theoretical. We do not yet have AGI.
+**Point 2: Narrow, General, and Super Intelligence**
+*   **Artificial Narrow Intelligence (ANI):** AI designed to perform one specific task brilliantly.
+*   **Artificial General Intelligence (AGI):** Theoretical AI that possesses the ability to understand, learn, and apply knowledge across any wide variety of tasks, completely on par with a human being.
+*   **Artificial Super Intelligence (ASI):** Highly theoretical AI that vastly surpasses human physical and intellectual limits in all aspects (creativity, general wisdom, scientific problem-solving).
 
-## 3. Artificial Super Intelligence (ASI)
-*   **Definition**: AI that surpasses human intelligence in all aspects—creativity, general wisdom, and problem-solving.
-*   **Status**: Highly theoretical and a subject of much debate.
+### Key Points:
+*   **We Only Have ANI:** It is critical to understand that every single AI in existence today—from Siri to the algorithm driving a Tesla, to ChatGPT—is an example of Artificial Narrow Intelligence. They cannot transfer their skills to unrelated domains.
+*   **Weak vs. Strong AI:** 'Weak' AI essentially simulates thinking (it acts *as if* it thinks, but is just math). 'Strong' AI implies the machine actually possesses a mind, consciousness, and subjective experience (currently theoretical).
 
-## Weak AI vs. Strong AI
-*   **Weak AI** simulates thinking (it acts *as if* it thinks).
-*   **Strong AI** actually has a mind and consciousness.
-          `,
-          activity: "Categorize real-world AI systems by type",
-          quiz: "Classification exercise with examples"
+### Examples / Use Cases:
+
+*   **Example 1: The Limits of ANI:** An AI trained exclusively to detect tumors in MRI scans might be 20% more accurate than the world's best doctors. But if you ask that exact same cutting-edge AI to play a game of tic-tac-toe, it will crash immediately, because it is hyper-narrow.
+
+### Visuals:
+
+[IMAGE: A concentric circle diagram. The innermost, smallest circle is ANI (Current Reality). The middle circle is AGI (Human-level). The massive outer circle is ASI (Super-intelligence).]
+
+### Implementation / Hands-On:
+
+*   **Step 1:** Define the core task of Netflix's recommendation engine.
+*   **Step 2:** Define the core task of Boston Dynamics' balancing robots.
+*   **Step 3:** Explain why neither of these highly advanced systems qualifies as AGI.
+
+### Summary / Key Takeaways:
+
+*   All modern AI systems are 'Narrow' (ANI), regardless of how impressive they seem.
+*   AGI represents the benchmark of achieving broad, human-level contextual reasoning across multiple disciplines.
+*   ASI is an intelligence explosion beyond human comprehension.
+
+### Optional Exercises / Prompts:
+
+*   **Exercise 1:** If a developer claims they have built an AGI system, list three incredibly diverse tasks you would demand it perform to prove its 'General' intelligence.
+          `
         },
         { 
           id: "c1-m1-l4",
-          title: "AI vs Traditional Programming", 
-          duration: "25 min",
-          type: "reading",
-          objectives: ["Understand rule-based vs learning-based systems", "Recognize when to use AI vs traditional code"],
-          content: `
-# AI vs. Traditional Programming
-
-To understand AI, we must understand how it differs from the software we've been building for decades.
-
-## Traditional Programming (Rule-Based)
-In traditional programming, the developer explicitly writes the rules.
-*   **Input**: Data + Rules
-*   **Output**: Answers
-
-**Example**: A program to calculate taxes. You write the exact tax brackets and formulas.
-
-## Machine Learning (AI)
-In Machine Learning, the system *learns* the rules from data.
-*   **Input**: Data + Answers (History)
-*   **Output**: Rules (The Model)
-
-**Example**: Trying to teach a computer to recognize a cat.
-*   **Traditional**: "If it has triangular ears, and whiskers, and fur..." (Too complex, too many exceptions).
-*   **AI**: Show the computer 10,000 photos of cats and 10,000 photos of dogs. The algorithm figures out the patterns itself.
-          `,
-          activity: "Compare solutions for the same problem using both approaches",
-          quiz: "Scenario-based decision making"
-        },
-        { 
-          id: "c1-m1-l5",
           title: "Quiz: Module 1 Knowledge Check", 
           duration: "15 min",
           type: "quiz",
-          objectives: ["Assess understanding of basic AI concepts"],
           questions: [
             {
               id: "q1",
@@ -177,229 +194,180 @@ In Machine Learning, the system *learns* the rules from data.
               options: ["Alan Turing", "Elon Musk", "Bill Gates", "Ada Lovelace"],
               correctAnswer: "A",
               explanation: "Alan Turing proposed the Turing Test in his 1950 paper 'Computing Machinery and Intelligence'."
-            },
-            {
-              id: "q3",
-              text: "What is the main difference between traditional programming and machine learning?",
-              options: [
-                "Traditional programming uses data, while machine learning does not",
-                "Traditional programming is faster than machine learning",
-                "In traditional programming, rules are explicitly programmed; in ML, the system learns rules from data",
-                "There is no difference"
-              ],
-              correctAnswer: "C",
-              explanation: "The core difference is that ML algorithms learn patterns and rules from data rather than following explicitly programmed instructions."
             }
           ]
         }
       ]
     },
     {
-      title: "Module 2: AI Applications Across Industries",
+      title: "Module 2: AI Applications",
       lessons: [
         { 
           id: "c1-m2-l1",
-          title: "AI in Healthcare", 
+          title: "AI in Healthcare and Finance", 
           duration: "20 min",
           type: "reading",
-          objectives: ["Explore medical imaging AI", "Understand drug discovery applications"],
           content: `
-# AI in Healthcare
+# MODULE 2 — AI Applications
+**Learning Objectives:**
+* Identify specific, high-impact AI use cases in the Healthcare sector.
+* Understand how algorithmic trading and anomaly detection power modern Finance.
+* Analyze the hidden AI mechanics driving E-commerce engagement.
 
-Healthcare is one of the most promising fields for AI application, with the potential to save lives and reduce costs.
+---
 
-## Key Applications
+## Lesson 1 — AI in Healthcare and Finance
 
-### 1. Medical Imaging & Diagnostics
-AI algorithms can analyze X-rays, MRIs, and CT scans with accuracy comparable to or exceeding human radiologists.
-*   **Example**: Detecting early signs of lung cancer or diabetic retinopathy.
+### Definition / Explanation:
 
-### 2. Drug Discovery
-Developing a new drug takes roughly 12 years and costs billions. AI can simulate molecular interactions to identify promising drug candidates much faster.
-*   **Example**: AlphaFold predicting protein structures.
+**Point 1: The Healthcare Revolution**
+Healthcare is perhaps the most critical field for AI application, shifting medicine from reactive treatments to proactive, data-driven prevention. AI handles vast amounts of unstructured data (Doctor's notes, 3D body scans, genetic sequences) that humans cannot process manually at scale.
 
-### 3. Personalized Medicine
-AI can analyze a patient's genetic makeup and medical history to recommend personalized treatment plans.
+**Point 2: The Financial Nerve Center**
+The finance sector was the earliest massive adopter of AI, relying heavily on its ability to process mathematical probabilities and spot anomalies in data streams at nanosecond speeds.
 
-### 4. Virtual Health Assistants
-Chatbots and virtual assistants can provide 24/7 support, answering patient questions and scheduling appointments.
-          `,
-          activity: "Case study analysis of AI in radiology"
+### Key Points:
+*   **Medical Imaging (Healthcare):** Deep learning algorithms analyze X-rays and MRIs to detect micro-tumors or lung anomalies months before a human radiologist could spot them.
+*   **Drug Discovery (Healthcare):** Platforms like AlphaFold simulate millions of molecular and protein interactions computationally, shrinking the time it takes to discover viable new drugs from 10 years to a few months.
+*   **Fraud Detection (Finance):** Anomalous spending detection. If a card normally buys coffee in New York and suddenly buys 10 laptops in another country, the AI flags the statistical behavioral deviation instantly.
+*   **Algorithmic Trading (Finance):** Quantitative agents execute massive stock trades at speeds impossible for humans, analyzing thousands of data points (news sentiment, weather, minor price fluctuations) simultaneously.
+
+### Examples / Use Cases:
+
+*   **Example 1: Personalized Medicine:** An AI system cross-references a specific patient's sequenced DNA against millions of medical journals to recommend a highly personalized cancer treatment plan, rather than a generic chemotherapy approach.
+
+### Visuals:
+
+[IMAGE: A dual-panel dashboard. Left panel shows an AI bounding box successfully identifying an anomaly in a chest X-Ray. Right panel shows a financial graph with a massive red 'Anomaly Detected' spike indicating a fraudulent transaction block.]
+
+### Implementation / Hands-On:
+
+*   **Step 1:** Investigate your own banking app.
+*   **Step 2:** Find the "Spending Insights" or "Categorization" feature (where it automatically knows a purchase was 'Dining' or 'Travel'). Recognize that this is a classification algorithm at work.
+
+### Summary / Key Takeaways:
+
+*   AI in healthcare drastically increases diagnostic accuracy and speed.
+*   Financial AI secures the global economy via anomaly detection and predictive risk scoring.
+*   Both fields rely heavily on AI's ability to process datasets too large for human comprehension.
+
+### Optional Exercises / Prompts:
+
+*   **Exercise 1:** Write a brief ethical argument regarding AI in Healthcare: If an AI diagnostics tool is 99% accurate, but a human doctor is 95% accurate, who is legally liable when the AI makes that 1% mistake?
+          `
         },
         { 
           id: "c1-m2-l2",
-          title: "AI in Finance", 
-          duration: "22 min",
-          type: "reading",
-          objectives: ["Learn about algorithmic trading", "Understand fraud detection systems"],
-          content: `
-# AI in Finance
-
-The finance sector was an early adopter of AI, using it for everything from high-frequency trading to customer service.
-
-## Key Applications
-
-### 1. Fraud Detection
-AI systems analyze millions of transactions in real-time to spot unusual patterns that indicate fraud.
-*   **Mechanism**: Anomaly detection algorithms flag transactions that deviate from a user's typical behavior.
-
-### 2. Algorithmic Trading
-AI-driven quantitative trading strategies execute trades at speeds and volumes impossible for humans, analyzing market data to predict price movements.
-
-### 3. Credit Scoring
-AI can assess creditworthiness by analyzing alternative data sources (e.g., utility payments, rental history) to provide loans to unbanked populations.
-
-### 4. Robo-Advisors
-Automated platforms provide financial advice and portfolio management with minimal human intervention.
-          `,
-          activity: "Analyze a fraud detection scenario"
-        },
-        { 
-          id: "c1-m2-l3",
           title: "AI in E-commerce", 
           duration: "18 min",
           type: "reading",
-          objectives: ["Explore recommendation systems", "Understand inventory optimization"],
           content: `
-# AI in E-commerce
+## Lesson 2 — AI in E-commerce
 
-If you've ever bought something because Amazon "suggested" it, you've interacted with retail AI.
+### Definition / Explanation:
 
-## Key Applications
+**Point 1: The Invisible Salesperson**
+If you have ever bought an item online because a website "suggested" it to you alongside your main purchase, you have been successfully influenced by retail AI. E-commerce platforms use AI to maximize User Lifetime Value.
 
-### 1. Recommendation Engines
-The most visible application. "Customers who bought this also bought..."
-*   **Impact**: Netflix estimates its recommendation engine saves it $1 billion per year by reducing churn.
+**Point 2: Dynamic Logistics**
+Behind the scenes, AI is the backbone of global supply chains, predicting exactly how much inventory a warehouse needs on any given day based on complex external variables.
 
-### 2. Visual Search
-Allows users to upload a photo of a product (like a pair of shoes) to find similar items in the catalog.
+### Key Points:
+*   **Recommendation Engines:** Algorithms that analyze your past clicks, dwell time, and purchase history, comparing you against millions of similar users to predict what you are statistically most likely to buy next.
+*   **Dynamic Pricing:** AI continuously adjusts prices in real-time based on supply, demand, competitor prices, and even the user's perceived willingness to pay (heavily used in airlines and ride-sharing).
+*   **Visual Search:** Allowing users to upload a photo of a physical item (like a jacket on the street) and using Computer Vision to instantly map that image to visually similar products in the store's backend catalog.
 
-### 3. Inventory Management
-AI predicts demand for products based on trends, weather, and historical data, optimizing stock levels and reducing waste.
+### Examples / Use Cases:
 
-### 4. Dynamic Pricing
-AI adjusts prices in real-time based on demand, competition, and other factors (common in airline tickets and ride-sharing).
-          `,
-          activity: "Design a simple recommendation flow"
-        },
-        { 
-            id: "c1-m2-l4", // Adding Quiz for Module 2
-            title: "Quiz: Module 2 Knowledge Check",
-            duration: "15 min",
-            type: "quiz",
-            completed: false,
-            questions: [
-                {
-                    id: "q1",
-                    text: "How does AI help in drug discovery?",
-                    options: [
-                        "By replacing all human doctors",
-                        "By manufacturing drugs directly",
-                        "By simulating molecular interactions to identify candidates faster",
-                        "It doesn't help"
-                    ],
-                    correctAnswer: "C",
-                    explanation: "AI accelerates drug discovery by modeling how molecules interact, predicting which ones are likely to be effective as drugs."
-                },
-                {
-                    id: "q2",
-                    text: "What is a primary use of AI in e-commerce?",
-                    options: [
-                        "Creating physical products",
-                        "Recommendation engines",
-                        "Driving delivery trucks (only)",
-                        "Printing receipts"
-                    ],
-                    correctAnswer: "B",
-                    explanation: "Recommendation engines are key in e-commerce, helping suggest products users are likely to buy."
-                }
-            ]
+*   **Example 1: Amazon's Anticipatory Shipping:** Amazon uses predictive AI to essentially forecast that a specific neighborhood will order a high volume of a particular item next week (e.g., snow shovels before a storm). They mathematically route that inventory to the local warehouse *before* anyone even clicks "buy," enabling same-day shipping.
+
+### Visuals:
+
+[IMAGE: A conceptual mockup of a user's screen showing a pair of shoes, with a glowing algorithmic web pointing down to a "Customers also bought" section displaying heavily correlated accessories.]
+
+### Implementation / Hands-On:
+
+*   **Step 1:** Go to Amazon or YouTube.
+*   **Step 2:** Look at the front page recommendations. Log out, or open an Incognito window, and go to the same page.
+*   **Step 3:** Compare the "Cold Start" generic recommendations against the highly personalized AI-driven recommendations tied to your profile's historical data vector.
+
+### Summary / Key Takeaways:
+
+*   E-commerce relies on AI to personalize the shopping experience at scale.
+*   Recommendation engines drive massive percentages of total retail revenue.
+*   Predictive AI optimizes the physical supply chain and dynamically adjusts pricing for maximum profit.
+
+### Optional Exercises / Prompts:
+
+*   **Exercise 1:** Act as an E-commerce product manager. Write a scenario explaining how you would combine "Dynamic Pricing" and "Recommendation Engines" to sell excess inventory to a specific demographic quickly.
+          `
         }
       ]
     },
     {
-        title: "Module 3: Core AI Concepts",
-        lessons: [
-            {
-                id: "c1-m3-l1",
-                title: "Understanding Data",
-                duration: "20 min",
-                type: "reading",
-                objectives: ["Learn about structured vs unstructured data"],
-                content: `
-# Understanding Data: The Fuel of AI
+      title: "Module 3: Core Concepts",
+      lessons: [
+        { 
+          id: "c1-m3-l1",
+          title: "Understanding Data & Machine Learning", 
+          duration: "25 min",
+          type: "reading",
+          content: `
+# MODULE 3 — Core Concepts
+**Learning Objectives:**
+* Differentiate between Structured and Unstructured data.
+* Grasp the core definitions of Supervised, Unsupervised, and Reinforcement Learning.
+* Understand the absolute dependency of AI algorithms on data quality.
 
-AI models are only as good as the data they are trained on.
+---
 
-## Types of Data
+## Lesson 1 — Understanding Data & Machine Learning
 
-### 1. Structured Data
-Highly organized data that fits easily into spreadsheets or relational databases.
-*   **Examples**: Names, dates, addresses, credit card numbers, stock prices.
-*   **Usage**: Easily searchable and analyzable by traditional algorithms.
+### Definition / Explanation:
 
-### 2. Unstructured Data
-Data that does not have a pre-defined data model or organization.
-*   **Examples**: Text documents, emails, social media posts, images, audio, video.
-*   **Usage**: Requires advanced AI (NLP, Computer Vision) to process.
+**Point 1: The Fuel of AI**
+AI models are merely mathematical engines. Data is the fuel. "Garbage In, Garbage Out" is the ultimate law of AI; if your training data is biased, incomplete, or inaccurate, your resulting AI model will be functionally useless, regardless of how advanced the algorithm is.
 
-## Data Quality
-"Garbage In, Garbage Out." If your training data is biased or inaccurate, your AI model will be too.
-                `
-            },
-            {
-                id: "c1-m3-l2",
-                title: "Introduction to Machine Learning",
-                duration: "25 min",
-                type: "reading",
-                content: `
-# Introduction to Machine Learning
+**Point 2: Structured vs. Unstructured Data**
+*   **Structured Data:** Highly organized tabular data. Fits perfectly into rows and columns (Excel, SQL). Examples: Pricing histories, Zip codes, Age demographics.
+*   **Unstructured Data:** Messy, organically generated data. Does not fit into tables. Examples: Photographs, audio recordings, unstructured text documents, raw video files. Modern Deep Learning's greatest achievement is its ability to finally process Unstructured Data.
 
-Machine Learning (ML) is the subset of AI that focuses on building systems that learn from data.
+### Key Points:
+*   **Supervised Learning:** The AI is trained on data that has already been labeled by humans. (e.g., Feeding the model pictures tagged explicitly as 'Cat' or 'Dog'). It learns to predict the label for new data.
+*   **Unsupervised Learning:** The AI is fed a massive pile of unlabeled data and told to mathematically discover hidden groupings or patterns on its own (e.g., automatically segmenting a customer base into 3 distinct purchasing personas without being told what those personas are).
+*   **Reinforcement Learning:** The AI learns via trial and error in a simulated environment. It takes actions, receives a positive "reward" for good actions and a "penalty" for bad actions, eventually learning the optimal strategy (used in robotics and game-playing AI).
 
-## Three Main Types of ML
+### Examples / Use Cases:
 
-1.  **Supervised Learning**: The AI is trained on labeled data.
-    *   *Analogy*: Teaching a child with flashcards. "This is a cat." "This is a dog."
-    *   *Use Cases*: Spam filtering, image recognition.
+*   **Example 1: The Unstructured Breakthrough:** 20 years ago, a bank could easily run an algorithm on numerical credit scores (Structured). Today, a bank can point a Deep Learning Vision model at a scanned, handwritten paper check (Unstructured) and the AI can extract the payee and amount flawlessly.
 
-2.  **Unsupervised Learning**: The AI looks for patterns in unlabeled data.
-    *   *Analogy*: Giving a child a pile of blocks and letting them sort them by shape or color without instructions.
-    *   *Use Cases*: Customer segmentation, anomaly detection.
+### Visuals:
 
-3.  **Reinforcement Learning**: The AI learns through trial and error, receiving rewards or penalties.
-    *   *Analogy*: Training a dog with treats.
-    *   *Use Cases*: Gaming (AlphaGo), robotics navigation.
-                `
-            },
-            {
-                id: "c1-m3-l3",
-                title: "Quiz: Core Concepts",
-                duration: "10 min",
-                type: "quiz",
-                questions: [
-                    {
-                        id: "q1",
-                        text: "Which type of machine learning involves labeled data?",
-                        options: ["Supervised Learning", "Unsupervised Learning", "Reinforcement Learning", "Deep Learning"],
-                        correctAnswer: "A",
-                        explanation: "Supervised learning uses labeled datasets to train algorithms to classify data or predict outcomes."
-                    }
-                ]
-            }
-        ]
+[IMAGE: A visual sorting diagram. A pile of diverse raw data at the top. Three paths split down: 1. (Labeled data -> Supervised Learning), 2. (Unlabeled data -> Unsupervised Clustering), 3. (Robot in a maze -> Reinforcement Learning).]
+
+### Implementation / Hands-On:
+
+*   **Step 1:** Look at the files currently on your computer desktop.
+*   **Step 2:** Categorize them. Which ones are Structured (spreadsheets, CSVs) and which ones are Unstructured (JPEGs, MP4s, PDFs)? Understand that until recently, AI could only "see" the structured ones.
+
+### Summary / Key Takeaways:
+
+*   Data quality dictates AI quality. 
+*   Deep Learning unlocked the ability to process unstructured reality (vision, text, sound).
+*   Machine Learning is broadly divided into Supervised (labels), Unsupervised (patterns), and Reinforcement (trial-and-error) paradigms.
+
+### Optional Exercises / Prompts:
+
+*   **Exercise 1:** Write out a hypothetical scenario where you train a robotic vacuum cleaner using Reinforcement Learning. Define exactly what gives it a "Reward" (+1 point) and what gives it a "Penalty" (-1 point) to ensure it cleans the room efficiently without breaking things.
+          `
+        }
+      ]
     }
   ],
   projects: [
     {
-      title: "Mini-Project 1: AI Use Case Analysis",
+      title: "Mini-Project: AI Use Case Analysis",
       description: "Research and present an AI application in an industry of your choice, analyzing its impact, benefits, and challenges.",
-      duration: "2 hours",
-      difficulty: "beginner"
-    },
-    {
-      title: "Mini-Project 2: Ethics Case Study",
-      description: "Analyze a real-world AI ethics dilemma and propose solutions to address bias, privacy, or fairness concerns.",
       duration: "2 hours",
       difficulty: "beginner"
     },

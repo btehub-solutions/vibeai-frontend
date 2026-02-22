@@ -27,28 +27,52 @@ export const course9: Course = {
           duration: "20 min",
           type: "reading",
           content: `
-# Coding is Changing Forever
+# MODULE 1 — AI Coding Fundamentals
+**Learning Objectives:**
+* Differentiate between traditional manual programming and the new "vibe coding" paradigm.
+* Understand the role shift from "typist" to "architect".
+* Set up a modern AI-native development environment.
 
-"It's not about replacing programmers. It's about augmenting them."
+---
 
-The role of a software engineer is undergoing a massive transformation. Historically, coding involved a tremendous amount of manual labor: memorizing syntax, writing boilerplate codes, spending hours on StackOverflow, and hunting down missing semicolons.
+## Lesson 1 — The Shift to AI-Assisted Coding
 
-With the advent of Large Language Models (LLMs) tuned for code (like OpenAI's Codex and Anthropic's Claude 3.5 Sonnet), the paradigm has shifted.
+### Definition / Explanation:
 
-## The Old Way vs The New Way
+**Point 1: The End of Syntactic Labor**
+The role of a software engineer is undergoing a massive transformation. Historically, coding involved a tremendous amount of manual labor: memorizing exact language syntaxes, writing repetitive boilerplate codes (like getters and setters), and spending hours on StackOverflow hunting down missing semicolons. 
 
-### 📉 The Old Way (Manual Typing)
-*   **Time-consuming Research:** Reading complex documentation for hours before writing a single line of code.
-*   **Boilerplate Fatigue:** Writing repetitive code structures (getters, setters, loops, Redux slices).
-*   **Syntactic Struggles:** Losing hours to minor syntax errors or missing brackets.
+**Point 2: The Rise of Intent**
+With the advent of Large Language Models (LLMs) specifically trained on code repositories (like OpenAI's Codex and Anthropic's Claude 3.5 Sonnet), the paradigm has shifted. "Vibe Coding" refers to an almost conversational workflow where you write natural language prompts and the AI translates your pure intent into functioning code.
 
-### 📈 The New Way ("Vibe Coding")
-*   **Intent-Driven:** Describing *what* you want the code to do in plain English.
-*   **Instant Prototyping:** Generating entire functions, components, and tests instantly.
-*   **Architectural Focus:** Your role shifts from being a "Typist" to being an "Architect" and "Reviewer." You design the system, review the AI's output, guide it, and iterate.
+### Key Points:
+*   **Intent-Driven:** You describe *what* you want the code to do in plain English, rather than manually typing *how* it should do it.
+*   **Instant Prototyping:** Entire functions, complex React components, and comprehensive unit test suites can be generated instantly.
+*   **Architectural Focus:** You transition from being a syntactical "Typist" to being the "Architect" and "Reviewer." Your job is to design the system, review the AI's output, guide it, and iterate.
 
-## What is "Vibe Coding"?
-Coined by the tech community, "Vibe Coding" refers to an almost conversational workflow where you write natural language prompts and comments, and the AI translates your thoughts into functioning code. The "vibe" is the seamless synchrony between human intent and machine execution.
+### Examples / Use Cases:
+
+*   **Example 1: The Old Way (Manual Typing):** Spending an hour reading complex Redux documentation just to wire up a basic state management slice for a single variable.
+*   **Example 2: The New Way (Vibe Coding):** Pressing a hotkey and typing: "Generate a Redux slice managing the user's authentication state with login and logout actions" and receiving perfect code in 5 seconds.
+
+### Visuals:
+
+[IMAGE: An infographic comparing 'The Old Way' (a stressed developer surrounded by open browser tabs of documentation) with 'The New Way' (a relaxed developer acting as an orchestrator, communicating intent to an AI engine).]
+
+### Implementation / Hands-On:
+
+*   **Step 1:** Reflect on a recent coding task that felt incredibly tedious and repetitive.
+*   **Step 2:** Write down the English instructions you would give to an intern to complete that exact same task.
+*   **Step 3:** Paste those instructions into an LLM (like ChatGPT or Claude) and review the code it generates based purely on your natural language.
+
+### Summary / Key Takeaways:
+
+*   AI coding assistants are not meant to replace engineers, but to drastically augment them by removing boilerplate labor.
+*   The essential skill of the modern developer is communicating clear intent and architectural vision, not memorizing syntax.
+
+### Optional Exercises / Prompts:
+
+*   **Exercise 1:** Identify three repetitive tasks in your current codebase that could be fully delegated to an AI assistant.
           `
         },
         { 
@@ -57,22 +81,48 @@ Coined by the tech community, "Vibe Coding" refers to an almost conversational w
           duration: "25 min",
           type: "reading",
           content: `
-# Tools of the Trade
+## Lesson 2 — Setup: GitHub Copilot & Cursor
 
-To code with AI, you need the right environment. We will focus on the two most impactful tools in the modern developer's arsenal: **GitHub Copilot** and **Cursor**.
+### Definition / Explanation:
 
-## GitHub Copilot: The OG AI Pair Programmer
-GitHub Copilot is an extension for IDEs like VS Code, IntelliJ, and Visual Studio.
+**Point 1: Essential Tooling**
+To code effectively with AI, you can't rely on copy-pasting code blocks from a browser tab back and forth into your IDE. You need AI deeply integrated into your environment so it has context of your active files. The two leading tools are GitHub Copilot and Cursor.
 
-*   **Ghost Text Autocomplete:** Copilot shines in predicting what you want to write next. As you type, it offers multi-line autocomplete suggestions in grey text. E.g., if you type \`function calculateDistance(x1, y1, x2, y2) {\`, Copilot will instantly generate the Pythagorean theorem formula.
-*   **Copilot Chat:** A conversational interface directly in your sidebar where you can highlight code and ask, "Explain this to me," or "Write unit tests for this function."
+**Point 2: Two Distinct Paradigms**
+GitHub Copilot is an *extension* that adds autocomplete capabilities into existing IDEs like VS Code or IntelliJ. Cursor, conversely, is an entirely *AI-native IDE* built specifically to allow LLMs to index and edit your entire codebase autonomously.
 
-## Cursor: The AI-Native IDE
-Cursor is a completely custom fork of VS Code built entirely around AI. It is currently considered the gold standard for "vibe coding."
+### Key Points:
+*   **GitHub Copilot (Ghost Text):** Excels at inline autocomplete. As you type a function name (e.g., \`function calculateDistance(x, y)\`), it predicts the body of the function in grey "ghost" text that you can accept with the Tab key.
+*   **Cursor (Cmd+K Generation):** Highlight any block of code, press Cmd+K, and type an instruction like *"Make this table responsive and add Tailwind classes for a dark mode."* The AI rewrites the code directly in your file.
+*   **Global Context (Cursor Composer):** Truly advanced tools can index your entire repository. You can instruct Cursor to "Add a new 'Settings' page" and it will create the frontend component, wire the route, and update the backend API file simultaneously.
 
-*   **Command+K (Cmd+K):** The magic shortcut. Highlight code, hit Cmd+K, and type instructions. E.g., *"Make this button responsive and change it to dark mode."* Cursor will generate a unified diff for you to Accept or Reject.
-*   **Global Context (Codebase Indexing):** Unlike standard extensions, Cursor indexes your entire codebase. You can ask Cursor Chat (Cmd+L), *"Where is the authentication logic handled?"* and it will scan dozens of files it knows about to give you an accurate answer.
-*   **Composer:** A powerful feature that allows the AI to edit multiple files simultaneously across your project, building whole features end-to-end.
+### Examples / Use Cases:
+
+*   **Example 1: Using Copilot:** A developer types a comment \`// fetch latest weather data\` and hits enter. Copilot instantly writes the \`fetch()\` request using async/await.
+*   **Example 2: Using Cursor Composer:** A developer types "Implement user authentication via Supabase" and Composer edits 7 different files across the frontend, auth middleware, and utility folders all at once.
+
+### Visuals:
+
+[IMAGE: A side-by-side screenshot comparison. Left: GitHub Copilot showing inline grey text autocomplete. Right: Cursor showing its "Cmd+K" prompt bar hovering over a highlighted block of code.]
+
+[IMAGE: A diagram showing how Cursor's Global Context indexes every file in a repository to provide accurate answers about the architecture.]
+
+### Implementation / Hands-On:
+
+*   **Step 1:** Download and install the Cursor IDE.
+*   **Step 2:** Open an existing project (Cursor can import all your VS Code extensions and settings).
+*   **Step 3:** Highlight a function, press Cmd+K, and instruct the AI to: "Add comprehensive JSDoc comments to this code." 
+*   **Step 4:** Review the unified diff and accept the changes.
+
+### Summary / Key Takeaways:
+
+*   Integrating AI directly into your IDE is mandatory for high-speed "vibe coding."
+*   GitHub Copilot specializes in highly accurate, micro-level autocomplete.
+*   Cursor specializes in macro-level, codebase-wide generation and refactoring.
+
+### Optional Exercises / Prompts:
+
+*   **Exercise 1:** If using Cursor, press Cmd+L (Cursor Chat) and ask: "Where is the authentication logic handled in this project, and how can I add a new OAuth provider?"
           `
         },
         {
@@ -83,17 +133,17 @@ Cursor is a completely custom fork of VS Code built entirely around AI. It is cu
           questions: [
             {
               id: "q1",
-              text: "Which IDE is specifically built as a fork of VS Code with deep AI integration as its primary feature?",
-              options: ["Cursor", "WebStorm", "Visual Studio Community", "Sublime Text"],
-              correctAnswer: "A",
-              explanation: "Cursor is a dedicated fork of VS Code designed specifically for AI-native coding workflows and entire codebase context tracking."
+              text: "Which tool is built as an entirely custom fork of VS Code focusing on deep, codebase-wide AI integration?",
+              options: ["GitHub Copilot", "Cursor", "WebStorm", "Visual Studio Community"],
+              correctAnswer: "B",
+              explanation: "Cursor is a dedicated fork of VS Code designed specifically for AI-native coding workflows, including full-repo context indexing."
             },
             {
               id: "q2",
               text: "What does the term 'Vibe Coding' primarily refer to?",
               options: ["Coding while listening to music", "Using natural language intent to guide AI assistants in generating code", "Writing code using only the VIM editor", "A specific frontend framework"],
               correctAnswer: "B",
-              explanation: "Vibe coding is the modern workflow of using natural language and intent-based prompting to guide an AI in writing the underlying code."
+              explanation: "Vibe coding is the modern workflow of using natural language statements of intent to instruct an AI to write the underlying logic and syntax."
             }
           ]
         }
@@ -108,28 +158,56 @@ Cursor is a completely custom fork of VS Code built entirely around AI. It is cu
           duration: "28 min",
           type: "reading",
           content: `
-# Prompting for Code
+# MODULE 2 — Prompt-Driven Development
+**Learning Objectives:**
+* Structure precise and reliable prompts for code generation.
+* Utilize codebase context tags effectively.
+* Leverage AI as an advanced debugging and refactoring engine.
 
-Generating reliable code using AI is not magic; it requires structured, precise prompting. Poor prompts lead to hallucinated logic and buggy code. 
+---
 
-## The Anatomy of an Excellent Code Prompt
+## Lesson 1 — Writing Effective Code Prompts
 
-1.  **State the Goal clearly:** Don't be vague.
-    *   ❌ *Bad:* "Make a signup component."
-    *   ✅ *Good:* "Create a responsive React signup component."
-2.  **Define constraints and technologies:** 
-    *   ✅ *Good:* "Use functional React components, TypeScript interfaces, and Tailwind CSS for styling."
-3.  **Provide Context (@ files):** In IDEs like Cursor, use the '@' symbol to reference existing files so the AI knows your design patterns.
-    *   ✅ *Good:* "Follow the styling patterns established in @Button.tsx and @Theme.ts."
-4.  **Define inputs and expected outputs (for logic):**
-    *   ✅ *Good:* "Write a function that accepts an array of User objects and returns a sorted array based on their 'lastLogin' timestamp, descending."
+### Definition / Explanation:
 
-## The Iterative Approach
+**Point 1: The Precision Requirement**
+Generating reliable, production-ready code using AI is not magic; it requires structured, precise prompting. Poor, vague prompts lead to hallucinated logic, deprecated libraries, and buggy code. The AI is only as good as the specificity of your instructions.
 
-Never expect perfection on the first try. Code prompting is highly iterative:
-1.  **Prompt 1 (Foundation):** "Generate a basic HTML table displaying user data."
-2.  **Prompt 2 (Styling):** "Now, add Tailwind classes to make it look modern with striped rows."
-3.  **Prompt 3 (Interactivity):** "Add sorting capabilities when clicking the headers."
+**Point 2: The Anatomy of an Excellent Prompt**
+To prevent the LLM from making assumptions, your prompt must explicitly state the goal, define the exact technologies/versions to use, provide existing files as architectural context, and outline the expected inputs and outputs.
+
+### Key Points:
+*   **State the Goal clearly:** Don't be vague. (❌ Bad: "Make a signup component." | ✅ Good: "Create a scalable, responsive React signup component.")
+*   **Define constraints and technologies:** Explicitly name your stack. (✅ Good: "Use functional React components, TypeScript interfaces, and Tailwind CSS for styling.")
+*   **Provide Context (@ symbols):** In IDEs like Cursor, use the '@' symbol to reference existing files so the AI mirrors your established design patterns. (✅ Good: "Follow the styling patterns established in @Button.tsx.")
+*   **The Iterative Approach:** Never expect architectural perfection on the first try. Generate the foundation, review, and then prompt again for styling, and finally interactivity.
+
+### Examples / Use Cases:
+
+*   **Example 1: Initial Foundation:** "Generate a basic HTML table component displaying user data representing Name, Email, and Roles."
+*   **Example 2: Refining Styling:** "Now, add Tailwind classes to make the table look modern, with striped rows and a sticky header."
+*   **Example 3: Adding Logic:** "Add sorting capabilities so that clicking the header of the 'Email' column alphabetizes the dataset."
+
+### Visuals:
+
+[IMAGE: A flowchart showing 'The Loop of Vibe Coding': 1. Write structured prompt -> 2. AI Generates Diff -> 3. Human Reviews Logic -> 4. Accept/Reject or Refine Prompt -> Back to start.]
+
+### Implementation / Hands-On:
+
+*   **Step 1:** Create an empty file named \`UserProfile.tsx\`.
+*   **Step 2:** Write a multi-line prompt via your AI tool asking it to create the component.
+*   **Step 3:** Ensure your prompt explicitly mentions the framework (React), styling (CSS/Tailwind), and details the specific props (name, avatar URL, bio).
+*   **Step 4:** Generate, review the code, and ask the AI to "Refactor this to include a fallback image if the avatar URL fails to load."
+
+### Summary / Key Takeaways:
+
+*   Vague inputs result in unusable, hallucinated code.
+*   Always define your tools, constraints, and provide relevant context files.
+*   Prompt-driven development is an iterative conversation with the AI, layering complexity step by step.
+
+### Optional Exercises / Prompts:
+
+*   **Exercise 1:** Take a poorly performing prompt you've written in the past, and rewrite it applying the 4 step anatomy (Goal, Constraints, Context, Inputs/Outputs).
           `
         },
         { 
@@ -138,25 +216,47 @@ Never expect perfection on the first try. Code prompting is highly iterative:
           duration: "26 min",
           type: "reading",
           content: `
-# Debugging & Refactoring
+## Lesson 2 — Debugging & Refactoring with AI
 
-AI assistants are arguably more powerful as debuggers and code-reviewers than they are as code generators.
+### Definition / Explanation:
 
-## Rubber Duck Debugging on Steroids
+**Point 1: Rubber Duck Debugging on Steroids**
+While code generation gets all the hype, AI assistants are arguably even more powerful as deep-dive debuggers and senior-level code-reviewers. When you encounter vague console errors, the AI can cross-reference the stack trace against your actual file logic instantaneously.
 
-When you hit a bug, instead of spending hours scratching your head, feed the context to the AI:
-1.  **Copy the exact error stack trace.**
-2.  **Highlight the relevant code block.**
-3.  Prompt: *"I am getting this TypeError: Cannot read property 'map' of undefined. Why is this happening and how do I fix it?"*
+**Point 2: Modernization and Optimization**
+Beyond fixing broken code, AI excels at improving working code. You can mandate the AI to refactor outdated legacy patterns into modern standards, or instruct it to optimize algorithms from O(n^2) nested loops into highly performant O(n) Hash Maps.
 
-**Expected AI Behavior:** The AI will immediately spot that you are likely mapping over an array before it has received data from an asynchronous API call. It will suggest adding optional chaining (e.g., \`data?.map()\`) or a loading state.
+### Key Points:
+*   **Automated Error Resolution:** Paste the exact error stack trace to the AI alongside the breaking code block for an instant diagnosis.
+*   **Modernizing Legacy Frameworks:** Feed the AI an old Class-based React component and ask it to convert it to a modern Functional component utilizing hooks.
+*   **Instant Documentation:** Highlight complex, undocumented files and instruct the AI to "Add comprehensive JSDoc comments detailing parameters, return types, and potential side-effects."
+*   **Security Auditing:** Ask the AI to act as a "Red Team Engineer" and review your SQL queries or Authentication logic for injection flaws or vulnerabilities.
 
-## Refactoring Legacy Code
+### Examples / Use Cases:
 
-You can use AI to modernize older codebases or improve time/space complexities:
-*   **Modernization:** *"Convert this legacy React Class component into a modern Functional component using Hooks (useState, useEffect)."*
-*   **Optimization:** *"This nested loop is O(n^2) time complexity. Refactor this algorithm to use a Hash Map for O(n) performance."*
-*   **Documentation:** *"Add JSDoc comments to all the functions in this file, explaining their parameters, return types, and potential side-effects."*
+*   **Example 1: The Race Condition Bug:** A developer hits a \`TypeError: Cannot read property 'map' of undefined\` error. The developer feeds the code to the AI. The AI identifies that the mapping function is executing before the asynchronous API call finishes, and suggests implementing optional chaining (\`data?.map()\`) and a loading state.
+*   **Example 2: Refactoring Speed:** "Refactor this 300-line monolithic controller into three smaller, distinct utility functions."
+
+### Visuals:
+
+[IMAGE: A screenshot split-view. Top: A dense block of messy, uncommented legacy code throwing a red console error. Bottom: The AI's proposed fix showing the refactored, cleanly commented code with the bug resolved in green syntax highlighting.]
+
+### Implementation / Hands-On:
+
+*   **Step 1:** Find a messy, overly complex function in an old project.
+*   **Step 2:** Highlight it and ask the AI: "Explain what this code does in plain English."
+*   **Step 3:** Next, prompt: "Refactor this to be more performant and readable. Use modern ES6 syntax (like destructuring and arrow functions)."
+*   **Step 4:** Review the changes and run your tests to verify it didn't break functionality.
+
+### Summary / Key Takeaways:
+
+*   AI is faster at pinpointing standard coding errors than manual stack trace hunting.
+*   It serves as an excellent tool for paying down technical debt and continuously refactoring.
+*   When a bug occurs, feed the AI both the raw error message and the surrounding context files.
+
+### Optional Exercises / Prompts:
+
+*   **Exercise 1:** Trigger an intentional error in your code (e.g., misname a variable). Copy the terminal output, paste it to your AI assistant, and see if it can point out exactly which line you sabotaged without telling it.
           `
         }
       ]
@@ -170,31 +270,54 @@ You can use AI to modernize older codebases or improve time/space complexities:
           duration: "40 min",
           type: "reading",
           content: `
-# Speed Running Development
+# MODULE 3 — Rapid Prototyping
+**Learning Objectives:**
+* Apply vibe coding workflows sequentially across the full stack.
+* Architect robust data schemas rapidly.
+* Bootstrap production-ready Minimum Viable Products in hours.
 
-With tools like Cursor, Next.js, and Supabase (or Firebase), you can bootstrap fullstack projects almost instantly. What used to take a whole weekend of setting up boilerplate can now be done in an hour.
+---
 
-## The AI-Assisted Prototyping Workflow
+## Lesson 1 — Building a Full-Stack App in 1 Hour
 
-Follow this logical sequence to map out an application quickly:
+### Definition / Explanation:
 
-### 1. The Database & Schema Layer
-Start at the foundation. 
-*   **Prompt:** *"I am building a project management app. Design a SQL schema for Users, Projects, and Tasks with foreign key relationships. Tasks should have a status enum (Todo, In Progress, Done)."*
+**Point 1: Speed-Running Development**
+With tools like Cursor combined with high-velocity frameworks (Next.js, Supabase, Tailwind), you can bootstrap full-stack architectures almost instantly. Projects that historically required a full engineering weekend to merely set up the database and routing boilerplates can now be spun up in an hour.
 
-### 2. The Backend / API Layer
-Once the schema is established, you need routes.
-*   **Prompt:** *"Based on the schema we just created, generate Next.js API route handlers to perform CRUD operations on the Tasks table using Prisma ORM."*
+**Point 2: Ground-Up Orchestration**
+The key to building massive apps quickly with AI is proceeding in a logical vertical sequence: Database -> Backend APIs -> Frontend UI. If you ask the AI to build the entire app at once, it will hallucinate dependencies. If you stay in the Architect role and guide it step-by-step up the stack, you leverage its speed while maintaining structural integrity.
 
-### 3. The Frontend Core
-Now, bind the data to a UI.
-*   **Prompt:** *"Create a React dashboard component using Tailwind CSS. It should fetch the Tasks from the API we just made, and display them in three columns based on their status."*
+### Key Points:
+*   **Step 1: The Database Layer:** Begin by defining a strong, relational structural foundation (e.g., "Design a SQL schema using Prisma for Users, Projects, and Tasks with a 1-to-many relationship.").
+*   **Step 2: The API/Routing Layer:** Once schemas exist, prompt the AI to generate the CRUD (Create, Read, Update, Delete) routes targeting that exact schema.
+*   **Step 3: The Frontend Core:** Ask the AI to create UI components that consume the specific API routes it just designed.
+*   **Step 4: Polish & Edge Cases:** Focus on loading states, error toast notifications, and dark-mode styling only after the core data pipelines operate correctly.
 
-### 4. Polish and Edge Cases
-*   **Prompt:** *"Add a sleek dark mode toggle using Context provider."*
-*   **Prompt:** *"Handle loading states with skeleton loaders and create a toast notification for error handling if the API fails."*
+### Examples / Use Cases:
 
-By staying in the architect role and guiding the AI step-by-step up the stack, you leverage the machine's speed while maintaining structural integrity.
+*   **Example 1: The AI Bootstrapping Workflow:** An entrepreneur wants to build a project management tool. They first use the AI to generate the Supabase migration files. Second, they use it to write server actions fetching the board data. Lastly, they prompt the AI to build a drag-and-drop Kanban board React component styled perfectly with Tailwind.
+
+### Visuals:
+
+[IMAGE: An architectural layer cake diagram showing the AI workflow. Base Layer: 'DB Schema Generation'. Middle Layer: 'API Route Creation'. Top Layer: 'Frontend UI Rendering', indicating the structured path of rapid app building.]
+
+### Implementation / Hands-On:
+
+*   **Step 1:** Define the core idea of an app you want to build (e.g., A minimalist Habit Tracker).
+*   **Step 2:** Prompt your IDE AI to generate the database schema (e.g., "Write a Prisma schema for a User who has multiple Habits. A Habit tracks the title, frequency, and an array of completion dates.").
+*   **Step 3:** Direct the AI to create a serverless API function to "Fetch all habits for a specific user ID."
+*   **Step 4:** Ask the AI to build a React Card component that displays a Habit's title and a button to mark it 'done'.
+
+### Summary / Key Takeaways:
+
+*   "Vibe Coding" unlocks unprecedented speed for solo developers.
+*   Never prompt an AI to "Build a whole app." Build sequentially upward from the database.
+*   Manage the AI's context window. Provide it only the files relevant to the specific layer you are currently having it code.
+
+### Optional Exercises / Prompts:
+
+*   **Exercise 1:** Use Cursor Composer (or an equivalent multi-file agent) to give the prompt: "I need a 'Contact Us' page. Build the frontend form UI, the server-side API route that handles the POST request, and add basic email validation logic. Update my navigation bar file to include a link to this new page."
           `
         }
       ]
