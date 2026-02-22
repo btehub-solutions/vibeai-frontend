@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { generateLessonContent } from "@/services/ai-course-generator";
 import { Loader2, Key } from "lucide-react";
 import { useIntelligence } from "@/hooks/useIntelligence";
+import { findCourseImage } from "@/data/course-images";
 
 // Split content on [IMAGE: ...] markers and render as alternating markdown + visual cards
 const renderLessonContent = (content: string) => {
@@ -37,14 +38,65 @@ const renderLessonContent = (content: string) => {
 
   return segments.map((seg, i) => {
     if (seg.type === 'image') {
+      const imagePath = findCourseImage(seg.value);
+      
+      if (imagePath) {
+        // Render actual generated image
+        return (
+          <div key={i} className="my-8 not-prose">
+            <div className="rounded-2xl overflow-hidden border border-accent/20 bg-gradient-to-br from-accent/5 via-purple-500/5 to-blue-500/5 shadow-lg shadow-accent/5">
+              <div className="relative">
+                <img 
+                  src={imagePath} 
+                  alt={seg.value}
+                  className="w-full h-auto object-contain max-h-[500px] bg-black/20"
+                  loading="lazy"
+                  onError={(e) => {
+                    // Fallback: hide the img and show description instead
+                    const container = (e.target as HTMLElement).closest('.rounded-2xl');
+                    if (container) {
+                      (e.target as HTMLElement).style.display = 'none';
+                      const fallback = container.querySelector('.image-fallback');
+                      if (fallback) (fallback as HTMLElement).style.display = 'flex';
+                    }
+                  }}
+                />
+                {/* Fallback if image fails to load */}
+                <div className="image-fallback hidden items-center gap-4 p-6">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center">
+                    <ImageIcon className="w-6 h-6 text-accent" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-bold uppercase tracking-widest text-accent mb-1.5">Visual Reference</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{seg.value}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="px-5 py-3 border-t border-accent/10 bg-gradient-to-r from-accent/5 to-transparent">
+                <div className="flex items-center gap-2">
+                  <ImageIcon className="w-4 h-4 text-accent flex-shrink-0" />
+                  <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">{seg.value}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+      
+      // Fallback: enhanced visual reference card for images not yet generated
       return (
-        <div key={i} className="my-8 rounded-xl border border-accent/30 bg-gradient-to-br from-accent/5 via-purple-500/5 to-blue-500/5 p-5 not-prose">
-          <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center">
-              <ImageIcon className="w-6 h-6 text-accent" />
+        <div key={i} className="my-8 rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/5 via-purple-500/5 to-blue-500/5 p-6 not-prose overflow-hidden relative">
+          {/* Decorative background pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-4 right-4 w-32 h-32 rounded-full bg-accent blur-3xl" />
+            <div className="absolute bottom-4 left-4 w-24 h-24 rounded-full bg-purple-500 blur-3xl" />
+          </div>
+          <div className="relative flex items-start gap-4">
+            <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-accent/20 to-purple-500/20 flex items-center justify-center border border-accent/10">
+              <ImageIcon className="w-7 h-7 text-accent" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-xs font-bold uppercase tracking-widest text-accent mb-1.5">Visual Reference</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-accent mb-2">📊 Visual Diagram</p>
               <p className="text-sm text-muted-foreground leading-relaxed">{seg.value}</p>
             </div>
           </div>
