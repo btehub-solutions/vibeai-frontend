@@ -23,6 +23,7 @@ import { useDashboardData } from "@/hooks/useDashboardData";
 import { LearningActivityChart } from "@/components/dashboard/LearningActivityChart";
 import { DashboardQuickActions } from "@/components/dashboard/DashboardQuickActions";
 import { IntelligencePanel } from "@/components/dashboard/IntelligencePanel";
+import { ConsultationCard } from "@/components/dashboard/ConsultationCard";
 
 // Helper function to format time ago
 const timeAgo = (date: Date) => {
@@ -248,6 +249,11 @@ const Dashboard = () => {
                 {/* AI-Powered Intelligence Panel */}
                 <motion.div variants={item}>
                   <IntelligencePanel />
+                </motion.div>
+
+                {/* Consultation Card */}
+                <motion.div variants={item}>
+                  <ConsultationCard />
                 </motion.div>
 
                 {/* Progress Summary */}

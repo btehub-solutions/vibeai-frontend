@@ -15,7 +15,7 @@ import DashboardToolDetail from "./pages/DashboardToolDetail";
 import DashboardAnnouncements from "./pages/DashboardAnnouncements";
 import DashboardSchedule from "./pages/DashboardSchedule";
 import DashboardSettings from "./pages/DashboardSettings";
-import Testimonials from "./pages/Testimonials";
+import DashboardConsultation from "./pages/DashboardConsultation";
 import NotFound from "./pages/NotFound";
 import Chat from "./pages/Chat";
 
@@ -30,7 +30,6 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/chat" element={<Chat />} />
           
           {/* Protected Dashboard Routes */}
@@ -44,6 +43,7 @@ const App = () => (
             <Route path="/dashboard/announcements" element={<DashboardAnnouncements />} />
             <Route path="/dashboard/schedule" element={<DashboardSchedule />} />
             <Route path="/dashboard/settings" element={<DashboardSettings />} />
+            <Route path="/dashboard/consultation" element={<DashboardConsultation />} />
           </Route>
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

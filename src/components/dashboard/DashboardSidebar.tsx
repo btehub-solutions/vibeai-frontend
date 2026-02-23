@@ -10,6 +10,7 @@ import {
   LogOut,
   Menu,
   X,
+  MessageSquare,
 } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
@@ -20,6 +21,7 @@ const navItems = [
   { name: "AI Tools", href: "/dashboard/tools", icon: Sparkles },
   { name: "Announcements", href: "/dashboard/announcements", icon: Bell },
   { name: "Schedule", href: "/dashboard/schedule", icon: Calendar },
+  { name: "Consultation", href: "/dashboard/consultation", icon: MessageSquare },
 ];
 
 const DashboardSidebar = () => {

@@ -96,13 +96,13 @@ const DashboardSettings = () => {
             <div className="space-y-4 text-sm text-muted-foreground">
                 <div className="flex items-center justify-between p-4 rounded-lg bg-secondary/30">
                     <span>Email Notifications</span>
-                    <div className="w-10 h-6 bg-accent rounded-full relative cursor-pointer opacity-80">
+                    <div className="w-10 h-6 bg-accent rounded-full relative cursor-pointer opacity-80" onClick={() => toast.success("Email preferences updated!")}>
                         <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
                     </div>
                 </div>
                 <div className="flex items-center justify-between p-4 rounded-lg bg-secondary/30">
                     <span>Dark Mode</span>
-                    <div className="w-10 h-6 bg-accent rounded-full relative cursor-pointer opacity-80">
+                    <div className="w-10 h-6 bg-accent rounded-full relative cursor-pointer opacity-80" onClick={() => toast.success("Theme preferences updated!")}>
                         <div className="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
                     </div>
                 </div>

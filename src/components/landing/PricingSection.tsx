@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Check, Sparkles, Crown, Building } from "lucide-react";
+import { Zap, Play, CheckCircle2, DollarSign, Sparkles, Crown, Building, Check } from "lucide-react";
 import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
 
@@ -86,7 +86,7 @@ const PricingSection = () => {
           }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
-            <span className="text-xs md:text-sm text-accent font-medium">💰 Simple Pricing</span>
+            <span className="text-xs md:text-sm text-accent font-medium flex items-center gap-1"><DollarSign className="w-3.5 h-3.5" /> Simple Pricing</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-display-md text-foreground mb-4 md:mb-6">
             Invest in your{" "}
@@ -214,7 +214,7 @@ const PricingSection = () => {
             transition: "opacity 0.9s ease 0.5s"
           }}
         >
-          14-day money-back guarantee. No questions asked. 🔒
+          14-day money-back guarantee. No questions asked.
         </p>
       </div>
     </section>

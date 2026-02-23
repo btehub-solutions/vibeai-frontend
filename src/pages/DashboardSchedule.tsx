@@ -136,6 +136,12 @@ const DashboardSchedule = () => {
                   <a
                     href={event.recording}
                     className="flex-shrink-0 p-3 rounded-xl bg-secondary text-muted-foreground hover:text-accent hover:bg-accent/10 transition-all"
+                    onClick={(e) => {
+                      if (event.recording === "#") {
+                        e.preventDefault();
+                        toast.info("Recording will be available soon");
+                      }
+                    }}
                   >
                     <Video size={18} />
                   </a>

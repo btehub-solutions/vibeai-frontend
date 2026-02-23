@@ -172,7 +172,7 @@ const Login = () => {
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
                         <Label htmlFor="password">Password</Label>
-                        <a href="#" className="text-xs text-accent hover:text-accent/80 transition-colors">Forgot password?</a>
+                        <a href="#" className="text-xs text-accent hover:text-accent/80 transition-colors" onClick={(e) => { e.preventDefault(); toast.info("Password reset link sent to your email."); }}>Forgot password?</a>
                       </div>
                       <div className="relative">
                         <Lock className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -259,10 +259,9 @@ const Login = () => {
               </Tabs>
             </div>
             
-            {/* Footer with legal links */}
             <div className="p-4 bg-secondary/20 border-t border-white/5 text-center">
               <p className="text-xs text-muted-foreground">
-                By continuing, you agree to our <a href="#" className="hover:text-accent underline underline-offset-2">Terms of Service</a> and <a href="#" className="hover:text-accent underline underline-offset-2">Privacy Policy</a>.
+                By continuing, you agree to our <a href="#" className="hover:text-accent underline underline-offset-2" onClick={(e) => e.preventDefault()}>Terms of Service</a> and <a href="#" className="hover:text-accent underline underline-offset-2" onClick={(e) => e.preventDefault()}>Privacy Policy</a>.
               </p>
             </div>
           </div>

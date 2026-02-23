@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-import { Code2, Layers, Rocket } from "lucide-react";
+import { Code2, Layers, Rocket, CheckCircle2 } from "lucide-react";
 
 const DevToolsSection = () => {
   const ref = useRef(null);
@@ -110,9 +110,9 @@ const DevToolsSection = () => {
               {/* Terminal content */}
               <div className="p-2 md:p-4 font-mono text-[8px] md:text-xs space-y-1">
                 <p className="text-muted-foreground">? Your course name?</p>
-                <p className="text-accent">✓ prompt-engineering-101</p>
+                <p className="text-accent flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5" /> prompt-engineering-101</p>
                 <p className="text-white/60 mt-1 md:mt-2 hidden sm:block">── success ──────────</p>
-                <p className="text-emerald-400">Course is ready to learn! 🚀</p>
+                <p className="text-emerald-400">Course is ready to learn!</p>
               </div>
             </div>
 

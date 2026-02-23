@@ -19,7 +19,7 @@ const testimonials = [
     role: "Entrepreneur",
     company: "Global Logistics Ltd",
     location: "Singapore",
-    image: "https://images.unsplash.com/photo-1542261777448-23d2a287091c?w=400&h=400&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&q=80",
     quote: "I run a small logistics company. VibeAI taught me how to use AI for route optimization and customer service chatbots. My operational costs dropped 30% in the first quarter. This isn't just education — it's a business investment.",
     outcome: "30% cost reduction",
     outcomeColor: "text-emerald-400",

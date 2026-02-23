@@ -101,7 +101,7 @@ const CommunitySection = () => {
           {/* Community hero image — group */}
           <div className="relative rounded-2xl md:rounded-3xl overflow-hidden aspect-[16/7] border border-white/[0.06]">
             <img
-              src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=1200&h=500&fit=crop&q=80"
+              src="/images/landing/community-hero.jpg"
               alt="VibeAI community of global learners collaborating"
               className="w-full h-full object-cover"
             />
@@ -181,7 +181,7 @@ const CommunitySection = () => {
         >
           <p className="text-sm text-muted-foreground mb-4">Active communities in</p>
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-            {["🏙️ New York", "🏛️ London", "⛽ Singapore", "🕌 Dubai", "🌊 Tokyo", "⛰️ Sydney", "🌴 Miami", "🏢 Berlin"].map((city) => (
+            {["New York", "London", "Singapore", "Dubai", "Tokyo", "Sydney", "Miami", "Berlin"].map((city) => (
               <span 
                 key={city} 
                 className="px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-xs md:text-sm text-muted-foreground hover:text-accent hover:border-accent/30 transition-all duration-300 cursor-default"

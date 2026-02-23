@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ArrowUpRight, Sparkles, Code2, PenTool, BarChart3, Video, Megaphone } from "lucide-react";
 
@@ -101,10 +102,10 @@ const AIToolsSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-             <button className="hidden md:flex items-center gap-2 text-accent border border-accent/20 px-6 py-3 rounded-full hover:bg-accent/10 transition-all font-medium group">
+             <Link to="/dashboard/tools" className="hidden md:flex items-center gap-2 text-accent border border-accent/20 px-6 py-3 rounded-full hover:bg-accent/10 transition-all font-medium group">
                 View All Tools 
                 <ArrowUpRight size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-             </button>
+             </Link>
           </motion.div>
         </div>
 
@@ -160,9 +161,9 @@ const AIToolsSection = () => {
                    
                   <div className="pt-6 border-t border-white/[0.06] flex items-center justify-between">
                      <span className="text-sm font-semibold text-white/80">{tool.stat}</span>
-                     <button className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white/40 group-hover:bg-accent group-hover:text-accent-foreground transition-all">
+                     <Link to="/dashboard/tools" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white/40 group-hover:bg-accent group-hover:text-accent-foreground transition-all">
                         <ArrowUpRight size={16} />
-                     </button>
+                     </Link>
                   </div>
                 </div>
               </motion.div>
@@ -171,9 +172,9 @@ const AIToolsSection = () => {
         </motion.div>
         
         <div className="mt-12 text-center md:hidden">
-           <button className="flex items-center justify-center w-full gap-2 text-accent border border-accent/20 px-6 py-3 rounded-full hover:bg-accent/10 transition-all">
+           <Link to="/dashboard/tools" className="flex items-center justify-center w-full gap-2 text-accent border border-accent/20 px-6 py-3 rounded-full hover:bg-accent/10 transition-all">
              View All Tools <ArrowUpRight size={18} />
-          </button>
+          </Link>
         </div>
       </div>
     </section>

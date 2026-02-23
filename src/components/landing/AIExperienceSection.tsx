@@ -81,7 +81,7 @@ const AIExperienceSection = () => {
               onMouseLeave={() => setIsVideoHovered(false)}
             >
               <img
-                src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&h=600&fit=crop&q=80"
+                src="/images/landing/workshop-collab.jpg"
                 alt="Professionals learning AI in a collaborative workshop setting"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -101,7 +101,7 @@ const AIExperienceSection = () => {
             {/* Floating secondary image — Professional using laptop */}
             <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-4 md:-bottom-8 md:-left-8 w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-xl md:rounded-2xl overflow-hidden border border-white/[0.1] shadow-2xl backdrop-blur-sm">
               <img
-                src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=400&h=400&fit=crop&q=80"
+                src="/images/landing/solo-laptop.jpg"
                 alt="Professional using AI tools on laptop"
                 className="w-full h-full object-cover"
               />
@@ -116,7 +116,7 @@ const AIExperienceSection = () => {
                 </div>
                 <div className="min-w-0">
                   <p className="font-medium text-foreground text-xs md:text-sm truncate">Jessica just completed</p>
-                  <p className="text-[10px] md:text-xs text-accent truncate">Prompt Engineering ✨</p>
+                  <p className="text-[10px] md:text-xs text-accent truncate">Prompt Engineering</p>
                 </div>
               </div>
             </div>

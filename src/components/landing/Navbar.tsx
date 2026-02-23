@@ -41,7 +41,6 @@ const navLinks = [
     { name: "Learning", href: "/#how-it-works" },
     { name: "AI Chat", href: "/chat" },
     { name: "Pricing", href: "/#pricing" },
-    { name: "Testimonials", href: "/testimonials" },
   ];
 
   return (
@@ -53,10 +52,9 @@ const navLinks = [
       }`}
     >
       <div className="container-main">
-        <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? "h-16" : "h-20"}`}>
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5">
-            <img src={logo} alt="VibeAI Logo" className="h-[40px] w-auto object-contain hover:scale-105 transition-transform duration-300" />
+        <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? "h-20 md:h-24" : "h-24 md:h-28"}`}>
+          <Link to="/" className="flex items-center gap-2.5 py-1">
+            <img src={logo} alt="VibeAI Logo" className="h-20 md:h-24 w-auto object-contain hover:scale-105 transition-transform duration-300" />
           </Link>
 
           {/* Desktop Navigation - Shopify minimal style */}

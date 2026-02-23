@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Play, Sparkles, ArrowRight } from "lucide-react";
+import { Play, Sparkles, ArrowRight, Star, Globe2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const rotatingWords = [
@@ -76,13 +76,7 @@ const HeroSection = () => {
       <div className="relative z-10 container-main pt-24 pb-16 md:pt-32 md:pb-24">
         <div className="max-w-5xl mx-auto text-center md:text-left md:ml-0">
           
-          {/* Badge */}
-          <div className="animate-text-reveal inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 hover:border-accent/30 hover:bg-accent/5 transition-all duration-500 group cursor-default">
-            <Sparkles className="w-4 h-4 text-accent group-hover:animate-spin" />
-            <span className="text-xs md:text-sm text-muted-foreground group-hover:text-accent transition-colors">
-              The World's #1 AI Fluency Platform
-            </span>
-          </div>
+
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-display-lg lg:text-display-xl text-foreground mb-6 md:mb-8 font-bold tracking-tight leading-[0.9]">
@@ -150,9 +144,9 @@ const HeroSection = () => {
               <span>2,500+ learners</span>
             </div>
             <div className="hidden sm:block w-px h-4 bg-white/20" />
-            <span className="hidden sm:inline">⭐ 4.9 rating</span>
+            <span className="hidden sm:inline flex items-center justify-center gap-1.5"><Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" /> 4.9 rating</span>
             <div className="hidden sm:block w-px h-4 bg-white/20" />
-            <span className="hidden sm:inline">🌍 Global Community</span>
+            <span className="hidden sm:inline flex items-center justify-center gap-1.5"><Globe2 className="w-3.5 h-3.5 text-cyan-400" /> Global Community</span>
           </div>
         </div>
       </div>

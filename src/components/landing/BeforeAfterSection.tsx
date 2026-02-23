@@ -80,7 +80,7 @@ const BeforeAfterSection = () => {
             {/* Before header image — frustrated Black professional */}
             <div className="relative h-44 md:h-56 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=800&h=400&fit=crop&q=80"
+                src="/images/landing/before_frustrated.png"
                 alt="Frustrated professional before AI fluency"
                 className="w-full h-full object-cover opacity-60"
               />
@@ -127,7 +127,7 @@ const BeforeAfterSection = () => {
             {/* After header image — confident Black professionals */}
             <div className="relative h-44 md:h-56 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?w=800&h=400&fit=crop&q=80"
+                src="/images/landing/after_confident.png"
                 alt="Confident professionals after AI fluency training"
                 className="w-full h-full object-cover"
               />

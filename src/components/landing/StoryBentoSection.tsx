@@ -161,7 +161,7 @@ const StoryBentoSection = () => {
               {/* Image: global tech scene */}
               <div className="relative h-44 md:h-56 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=500&fit=crop&q=80"
+                  src="/images/landing/ai_is_present.png"
                   alt="Black professionals collaborating on AI solutions"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
@@ -272,7 +272,7 @@ const StoryBentoSection = () => {
             <div className="h-full flex flex-col">
               <div className="relative h-32 md:h-40 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&h=300&fit=crop&q=80"
+                  src="/images/landing/classroom-mentoring.jpg"
                   alt="Black students in a classroom"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70"
                 />
@@ -296,7 +296,7 @@ const StoryBentoSection = () => {
             <div className="h-full flex flex-col">
               <div className="relative h-32 md:h-40 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1569420951336-7bf7d1c68437?w=600&h=300&fit=crop&q=80"
+                  src="/images/landing/computer-training.jpg"
                   alt="Market scene reflecting economic factors"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70"
                 />
@@ -320,13 +320,13 @@ const StoryBentoSection = () => {
             <div className="h-full flex flex-col">
               <div className="relative h-40 md:h-48 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1549463959-1e3093202b54?w=600&h=400&fit=crop&q=80"
+                  src="/images/landing/coworking-space.jpg"
                   alt="City street scene"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-red-950/30" />
                 <div className="absolute bottom-4 left-5 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-black/40 backdrop-blur-xl border border-red-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                  <span className="text-2xl">🌍</span>
+                  <span className="text-2xl text-emerald-400"><Globe2 /></span>
                 </div>
               </div>
               <div className="p-5 md:p-7 flex-1 flex flex-col justify-between">
@@ -370,7 +370,7 @@ const StoryBentoSection = () => {
             <div className="h-full flex flex-col">
               <div className="relative h-32 md:h-40 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1534067783741-512d0deaf5de?w=600&h=300&fit=crop&q=80"
+                  src="/images/landing/woman-laptop-outdoor.jpg"
                   alt="Student studying with focus"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70"
                 />
@@ -394,7 +394,7 @@ const StoryBentoSection = () => {
             <div className="h-full flex flex-col">
               <div className="relative h-32 md:h-40 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1581007871115-f14bc016e0a4?w=600&h=300&fit=crop&q=80"
+                  src="/images/landing/tech-hub-learning.jpg"
                   alt="Airport scene"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70"
                 />
@@ -448,7 +448,7 @@ const StoryBentoSection = () => {
             <div className="h-full flex flex-col">
               <div className="relative h-40 md:h-48 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1542385151-efd9000e85a4?w=800&h=400&fit=crop&q=80"
+                  src="/images/landing/structured_ai_paths.png"
                   alt="Black student working on laptop"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
@@ -547,7 +547,7 @@ const StoryBentoSection = () => {
               {/* Image side */}
               <div className="relative w-full md:w-2/5 h-44 md:h-auto overflow-hidden flex-shrink-0">
                 <img
-                  src="https://images.unsplash.com/photo-1577962917762-a4deed3883d0?w=600&h=500&fit=crop&q=80"
+                  src="/images/landing/built_for_global.png"
                   alt="Professionals working together"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
@@ -558,7 +558,7 @@ const StoryBentoSection = () => {
               {/* Text side */}
               <div className="p-5 md:p-8 flex-1 relative">
                 <h3 className="text-lg md:text-2xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
-                  Built for the Global Context 🌍
+                  Built for the Global Context
                 </h3>
                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4">
                   Every course, example, and project is designed with real-world scenarios in mind. We understand 
