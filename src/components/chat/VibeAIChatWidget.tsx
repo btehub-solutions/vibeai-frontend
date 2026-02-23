@@ -36,7 +36,7 @@ const MessageBubble = memo(({ message }: { message: ChatMessage }) => {
       {!isUser && (
         <div className="flex-shrink-0 mt-0.5">
           <div className="w-7 h-7 rounded-full bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20 flex items-center justify-center overflow-hidden shadow-md shadow-accent/10">
-            <img src="/favicon.png" alt="VibeAI" className="w-4 h-4 object-contain" />
+            <img src={logo} alt="VibeAI" className="w-5 h-5 object-contain" />
           </div>
         </div>
       )}
@@ -134,7 +134,7 @@ const ThinkingIndicator = memo(({ contextIndicator }: { contextIndicator: string
   >
     <div className="flex-shrink-0 mt-0.5">
       <div className="w-7 h-7 rounded-full bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20 flex items-center justify-center overflow-hidden">
-        <img src="/favicon.png" alt="VibeAI" className="w-4 h-4 object-contain animate-pulse" />
+        <img src={logo} alt="VibeAI" className="w-5 h-5 object-contain animate-pulse" />
       </div>
     </div>
     <div className="bg-white/[0.06] border border-white/[0.08] px-3.5 py-2.5 rounded-2xl rounded-bl-md">
@@ -226,7 +226,7 @@ export default function VibeAIChatWidget() {
               ring-2 ring-accent/10 ring-offset-2 ring-offset-background"
             aria-label="Open VibeAI Chat"
           >
-            <img src="/favicon.png" alt="VibeAI" className="w-7 h-7 object-contain drop-shadow-lg" />
+            <img src={logo} alt="VibeAI" className="w-8 h-8 object-contain drop-shadow-lg" />
             <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-background shadow-sm" />
           </motion.button>
         )}
@@ -253,7 +253,7 @@ export default function VibeAIChatWidget() {
             <div className="px-4 py-3 border-b border-white/[0.06] bg-gradient-to-r from-accent/[0.04] to-transparent flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center border border-accent/10 overflow-hidden">
-                  <img src="/favicon.png" alt="VibeAI" className="w-5 h-5 object-contain" />
+                  <img src={logo} alt="VibeAI" className="w-6 h-6 object-contain" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground text-sm leading-tight">VibeAI Mentor</h3>
