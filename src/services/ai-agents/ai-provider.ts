@@ -22,7 +22,7 @@ export async function generateAIResponse(
   options: { maxTokens?: number; temperature?: number; model?: string } = {}
 ): Promise<string> {
   const client = getClient();
-  const model = options.model || 'gemini-1.5-flash';
+  const model = options.model || 'gemini-2.5-flash';
 
   // Build rich conversation context — include more history for better context
   const recentHistory = conversationHistory.slice(-12);
