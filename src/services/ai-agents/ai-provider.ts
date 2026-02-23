@@ -22,7 +22,7 @@ export async function generateAIResponse(
   options: { maxTokens?: number; temperature?: number; model?: string } = {}
 ): Promise<string> {
   const client = getClient();
-  const model = options.model || 'gemini-2.5-flash';
+  const model = options.model || 'gemini-1.5-flash';
 
   // Build rich conversation context — include more history for better context
   const recentHistory = conversationHistory.slice(-12);
@@ -47,10 +47,9 @@ export async function generateAIResponse(
   } catch (error) {
     console.error('[VibeAI Provider] Error:', error);
     if (error instanceof Error) {
-      if (error.message.includes('API key')) throw new Error('Invalid API key.');
-      if (error.message.includes('quota') || error.message.includes('rate')) throw new Error('Rate limit reached. Wait a moment.');
+      throw new Error(`AI API Error: ${error.message}`);
     }
-    throw new Error('AI response failed. Please try again.');
+    throw new Error('AI response failed with an unknown error.');
   }
 }
 

@@ -25,7 +25,7 @@ const FullMessage = memo(({ message }: { message: ChatMessage }) => {
       {!isUser && (
         <div className="flex-shrink-0 mt-1">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/15 flex items-center justify-center overflow-hidden shadow-md shadow-accent/10">
-            <img src={logo} alt="VibeAI" className="w-6 h-6 object-contain" />
+            <img src="/favicon.png" alt="VibeAI" className="w-5 h-5 object-contain" />
           </div>
         </div>
       )}
@@ -97,7 +97,7 @@ const AIChatInterface = () => {
       <div className="px-5 py-4 border-b border-white/[0.06] bg-gradient-to-r from-accent/[0.04] to-transparent flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center border border-accent/10 overflow-hidden">
-            <img src={logo} alt="VibeAI" className="w-7 h-7 object-contain" />
+            <img src="/favicon.png" alt="VibeAI" className="w-6 h-6 object-contain" />
           </div>
           <div>
             <h3 className="font-semibold text-foreground text-base">VibeAI Mentor</h3>
@@ -119,7 +119,7 @@ const AIChatInterface = () => {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex gap-3 justify-start">
             <div className="flex-shrink-0 mt-1">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/15 flex items-center justify-center overflow-hidden">
-                <img src={logo} alt="VibeAI" className="w-6 h-6 object-contain animate-pulse" />
+                <img src="/favicon.png" alt="VibeAI" className="w-5 h-5 object-contain animate-pulse" />
               </div>
             </div>
             <div className="bg-white/[0.05] border border-white/[0.08] px-5 py-3.5 rounded-2xl rounded-bl-md">

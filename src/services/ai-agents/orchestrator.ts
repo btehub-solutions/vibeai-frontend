@@ -94,12 +94,7 @@ class VibeAIOrchestrator {
       };
     } catch (error) {
       console.error('[VibeAI Orchestrator] Error:', error);
-      return {
-        content: this.getFallbackResponse(message, profile),
-        agentRole: 'tutor',
-        contextIndicator: 'VibeAI Assistant',
-        suggestions: generateAdaptiveSuggestions(profile),
-      };
+      throw error; // Rethrow to surface to the UI
     }
   }
 

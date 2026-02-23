@@ -38,7 +38,7 @@ Format the text beautifully using markdown headers (#, ##, ###), bullet points, 
 Write professionally, without extra conversational padding (do NOT say "Here is your lesson"). Output the markdown content directly starting with a # H1 title.`;
     
     const response = await client.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-1.5-flash',
       contents: prompt,
     });
 
