@@ -147,7 +147,7 @@ const DashboardCourseDetail = () => {
                   </div>
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-white/5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-white/5">
                   <div className="text-center p-4 rounded-xl bg-secondary/30">
                     <Clock className="w-5 h-5 text-accent mx-auto mb-2" />
                     <p className="text-2xl font-bold text-foreground">{course.totalDurationMin}</p>

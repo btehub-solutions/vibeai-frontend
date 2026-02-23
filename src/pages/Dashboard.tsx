@@ -130,7 +130,7 @@ const Dashboard = () => {
             {/* Stats Grid */}
             <motion.div
               variants={item}
-              className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
             >
               {statCards.map((stat, idx) => (
                 <motion.div
@@ -294,7 +294,7 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="text-center p-3 rounded-xl bg-secondary/50 border border-white/5">
                       <p className="text-2xl font-bold text-foreground">
                         {stats.totalCourses}

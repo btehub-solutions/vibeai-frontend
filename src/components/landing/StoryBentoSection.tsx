@@ -153,7 +153,7 @@ const StoryBentoSection = () => {
         </div>
 
         {/* BENTO GRID 1: AI Revolution — with global context image */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mb-20 md:mb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mb-20 md:mb-32">
           
           {/* Large card - AI is Everywhere — now with global tech scene image */}
           <BentoCard span="col-span-2 row-span-2" glowColor="accent" delay={0}>
@@ -265,7 +265,7 @@ const StoryBentoSection = () => {
         </div>
 
         {/* BENTO GRID 2: Global Challenges — with contextual images */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 mb-20 md:mb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 mb-20 md:mb-32">
           
           {/* Skills Gap — with image */}
           <BentoCard glowColor="red" delay={0}>
@@ -441,7 +441,7 @@ const StoryBentoSection = () => {
         </div>
 
         {/* BENTO GRID 3: The VibeAI Solution — with global imagery */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
           
           {/* Wide feature - Structured Learning — with image */}
           <BentoCard span="col-span-2" glowColor="accent" delay={0}>

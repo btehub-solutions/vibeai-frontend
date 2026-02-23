@@ -227,7 +227,7 @@ export function IntelligencePanel() {
           <RiskBadge risk={summary.risk} />
         </div>
 
-        <div className="grid grid-cols-2 gap-3 mb-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
           <div className="p-3 rounded-xl bg-secondary/40 border border-white/5">
             <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Knowledge</p>
             <div className="flex items-end gap-1.5">

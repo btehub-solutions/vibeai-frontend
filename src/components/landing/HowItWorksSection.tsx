@@ -142,7 +142,7 @@ const HowItWorksSection = () => {
 
         {/* Stats row with glassmorphism */}
         <div 
-          className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+          className="mt-16 md:mt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
           style={{
             transform: isInView ? "none" : "translateY(30px)",
             opacity: isInView ? 1 : 0,

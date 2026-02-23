@@ -86,7 +86,7 @@ const DevToolsSection = () => {
                 
                 {/* Main content */}
                 <div className="flex-1 space-y-3 md:space-y-4">
-                  <div className="grid grid-cols-2 gap-2 md:gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
                     <div className="h-12 md:h-20 rounded-lg md:rounded-xl bg-white/5 border border-white/[0.06]" />
                     <div className="h-12 md:h-20 rounded-lg md:rounded-xl bg-white/5 border border-white/[0.06]" />
                   </div>
@@ -123,7 +123,7 @@ const DevToolsSection = () => {
               </div>
               <div className="p-2 md:p-4 mt-1 md:mt-2 space-y-2 md:space-y-3">
                 <div className="h-5 md:h-8 rounded-lg bg-white/10 w-3/4" />
-                <div className="grid grid-cols-2 gap-1.5 md:gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 md:gap-2">
                   <div className="aspect-square rounded-lg bg-accent/20 border border-accent/30" />
                   <div className="aspect-square rounded-lg bg-white/5" />
                   <div className="aspect-square rounded-lg bg-white/5" />

@@ -433,7 +433,7 @@ const DashboardCourses = () => {
             </div>
 
             {/* View & Filter Controls */}
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               {/* Sort Dropdown */}
               <select
                 value={sortBy}

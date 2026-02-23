@@ -164,7 +164,7 @@ const GlobalReachSection = () => {
 
         {/* Bento grid below - Quick facts */}
         <div 
-          className="mt-8 md:mt-16 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5"
+          className="mt-8 md:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5"
           style={{
             transform: isInView ? "none" : "translateY(40px)",
             opacity: isInView ? 1 : 0,

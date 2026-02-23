@@ -176,7 +176,7 @@ const GlobalVisionSection = () => {
             VibeAI was built for <span className="text-foreground font-medium">you</span>.
           </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
             {learnerProfiles.map((profile, i) => (
               <div
                 key={profile.title}
