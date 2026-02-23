@@ -144,7 +144,7 @@ export const ConsultationCard: React.FC = () => {
         message: "",
         preferredChannel: "email",
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
       setErrorMsg("Something went wrong. Please try again or reach out manually.");
     } finally {

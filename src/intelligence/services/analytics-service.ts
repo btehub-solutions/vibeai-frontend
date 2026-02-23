@@ -250,6 +250,7 @@ export function generatePerformanceAnalysis(userId: string): PerformanceAnalysis
 
 // ─── Engagement Score ────────────────────────────────────────────────
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function calculateEngagementScore(profile: LearnerProfile, weekEvents: any[]): number {
   let score = 0;
 

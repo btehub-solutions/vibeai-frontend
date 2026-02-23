@@ -152,7 +152,7 @@ export const useDashboardData = () => {
   return { loading, user, stats, learningPath, recentActivity, achievements };
 };
 
-// Helper function to calculate streak
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function calculateStreak(courses: any[]): number {
   if (!courses || courses.length === 0) return 0;
   
@@ -166,7 +166,7 @@ function calculateStreak(courses: any[]): number {
   return hasRecentActivity ? 3 : 0; // Mock streak
 }
 
-// Helper function to generate recent activity
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function generateRecentActivity(courses: any[]): RecentActivity[] {
   const activities: RecentActivity[] = [];
   

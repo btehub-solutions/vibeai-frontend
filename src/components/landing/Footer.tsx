@@ -15,7 +15,6 @@ const Footer = () => {
       { name: "Careers", href: "#" },
     ],
     Support: [
-      { name: "Help Center", href: "/chat" },
       { name: "Contact", href: "#contact" },
     ],
     Legal: [

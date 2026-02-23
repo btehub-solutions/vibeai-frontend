@@ -19,14 +19,7 @@ export function DashboardQuickActions() {
       color: "from-purple-500/20 to-pink-500/20",
       accent: "text-purple-400",
     },
-    {
-      icon: MessageSquare,
-      title: "Ask AI Assistant",
-      desc: "Get instant answers",
-      to: "/chat",
-      color: "from-emerald-500/20 to-green-500/20",
-      accent: "text-emerald-400",
-    },
+
     {
       icon: Calendar,
       title: "Schedule Session",

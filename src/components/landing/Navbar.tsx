@@ -3,6 +3,7 @@ import logo from "@/assets/logo.png";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { supabase } from "@/lib/supabase";
+import type { User } from "@supabase/supabase-js";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,7 +17,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     // Check active session
@@ -39,7 +40,6 @@ const Navbar = () => {
 const navLinks = [
     { name: "Why VibeAI", href: "/#why" },
     { name: "Learning", href: "/#how-it-works" },
-    { name: "AI Chat", href: "/chat" },
     { name: "Pricing", href: "/#pricing" },
   ];
 

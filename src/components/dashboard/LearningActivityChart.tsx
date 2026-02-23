@@ -19,7 +19,7 @@ const monthlyData = [
   { name: "Week 4", hours: 18.2 },
 ];
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ value: number }>; label?: string }) => {
   if (active && payload && payload.length) {
     return (
       <div className="glass-panel p-3 !bg-black/80 !border-white/10 backdrop-blur-md rounded-xl shadow-xl">

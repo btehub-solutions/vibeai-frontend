@@ -179,8 +179,9 @@ const LessonPlayer = () => {
       );
       setDynamicContent(content);
       localStorage.setItem(`ai-lesson-cache-${currentLesson.id}`, content);
-    } catch (err: any) {
-      if (err.message?.includes("Missing Gemini API Key") || err.message?.includes("API key not valid")) {
+    } catch (err: unknown) {
+      const error = err as Error;
+      if (error.message?.includes("Missing Gemini API Key") || error.message?.includes("API key not valid")) {
         setNeedsApiKey(true);
       } else {
         toast.error("Could not generate AI content. Ensure your key is valid and has sufficient quota.");
@@ -316,20 +317,20 @@ const LessonPlayer = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Top Bar */}
-      <header className="h-16 border-b border-border bg-card/50 backdrop-blur-md flex items-center justify-between px-6 fixed top-0 w-full z-50">
-        <div className="flex items-center gap-2 md:gap-4 flex-1 min-w-0 pr-4">
-          <Button variant="ghost" size="sm" className="px-2 md:px-4 flex-shrink-0" onClick={() => navigate(`/dashboard/courses/${courseId}`)}>
-            <ArrowLeft size={16} className="md:mr-2" />
-            <span className="hidden md:inline">Back to Course</span>
+      <header className="h-14 sm:h-16 border-b border-border bg-card/50 backdrop-blur-md flex items-center justify-between px-3 sm:px-6 fixed top-0 w-full z-50">
+        <div className="flex items-center gap-1.5 sm:gap-4 flex-1 min-w-0 pr-2 sm:pr-4">
+          <Button variant="ghost" size="sm" className="px-1.5 sm:px-4 flex-shrink-0 h-8 sm:h-10" onClick={() => navigate(`/dashboard/courses/${courseId}`)}>
+            <ArrowLeft size={14} className="sm:mr-2" />
+            <span className="hidden sm:inline text-xs sm:text-sm">Back</span>
           </Button>
-          <div className="h-6 w-px bg-border mx-1 md:mx-2 flex-shrink-0" />
-          <h1 className="font-semibold text-xs md:text-sm lg:text-base truncate">{course.title}</h1>
+          <div className="h-5 w-px bg-border mx-0.5 sm:mx-2 flex-shrink-0" />
+          <h1 className="font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base truncate max-w-[120px] sm:max-w-none">{course.title}</h1>
         </div>
-        <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
-          <span className="text-xs text-muted-foreground hidden md:block">
-            Lesson {currentIndex + 1} of {allLessons.length}
+        <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+          <span className="text-[10px] sm:text-xs text-muted-foreground hidden xs:block">
+            {currentIndex + 1}/{allLessons.length}
           </span>
-          <div className="w-16 md:w-32 h-2 bg-secondary rounded-full overflow-hidden flex-shrink-0">
+          <div className="w-12 sm:w-24 md:w-32 h-1.5 sm:h-2 bg-secondary rounded-full overflow-hidden flex-shrink-0">
             <div 
               className="h-full bg-gradient-to-r from-accent to-purple-500 transition-all duration-300" 
               style={{ width: `${((currentIndex) / allLessons.length) * 100}%` }} 

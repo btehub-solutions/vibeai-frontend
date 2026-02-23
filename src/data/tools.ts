@@ -24,48 +24,6 @@ export interface Tool {
 
 export const tools: Tool[] = [
   { 
-    id: 100, 
-    name: "VibeAI Assistant", 
-    category: "Conversational AI", 
-    description: "Your personal AI tutor and assistant, integrated directly into the VibeAI platform.", 
-    longDescription: "VibeAI Assistant is specialized in helping you learn about AI concepts. It has context about your courses and progress, allowing for personalized guidance.",
-    trending: true, 
-    rating: 5.0, 
-    link: "/dashboard/tools/100",
-    isInternal: true,
-    icon: Bot,
-    features: [
-      "Context-aware tutoring",
-      "Code explanation",
-      "Course recommendation",
-      "24/7 Availability"
-    ],
-    pricing: "Free with Subscription",
-    useCases: [
-      "Get help understanding complex AI concepts",
-      "Debug code from your lessons",
-      "Receive personalized course recommendations",
-      "Practice interview questions"
-    ],
-    pros: [
-      "Integrated with your learning progress",
-      "Understands course context",
-      "Always available",
-      "Free for subscribers"
-    ],
-    cons: [
-      "Limited to VibeAI platform",
-      "Requires active subscription"
-    ],
-    bestFor: "Students actively learning AI who want personalized, context-aware assistance",
-    gettingStarted: [
-      "Click 'Start Chat' to begin a conversation",
-      "Ask questions about your current course",
-      "Request code explanations or debugging help",
-      "Get recommendations for next steps in your learning journey"
-    ]
-  },
-  { 
     id: 1, 
     name: "ChatGPT", 
     category: "Conversational AI", 

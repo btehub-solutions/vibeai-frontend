@@ -112,6 +112,7 @@ const DashboardCourses = () => {
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const CourseCard = ({ course, featured = false }: { course: any; featured?: boolean }) => (
     <div
       className={`card-elevated group hover:border-accent/20 transition-all duration-300 flex flex-col cursor-pointer ${
@@ -415,13 +416,13 @@ const DashboardCourses = () => {
         {/* Filters & View Controls */}
         <div className="mb-8">
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between mb-6">
-            {/* Category Pills */}
-            <div className="flex flex-wrap gap-2">
+            {/* Category Pills - Scrollable on mobile */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-2 px-2 md:mx-0 md:px-0 md:flex-wrap no-scrollbar">
               {CATEGORIES.map((category) => (
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  className={`px-4 py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-200 whitespace-nowrap ${
                     activeCategory === category
                       ? "bg-accent text-accent-foreground shadow-lg shadow-accent/20"
                       : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80"

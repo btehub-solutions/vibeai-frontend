@@ -204,7 +204,7 @@ export const VideoWorkflowDiagram: React.FC<DiagramProps> = ({ className }) => (
       <g key={i}>
         <rect x={item.x} y={195} width="210" height="55" rx="8" fill="#EF4444" fillOpacity="0.05" stroke="#EF4444" strokeWidth="1" strokeOpacity="0.3"/>
         <text x={item.x + 105} y={218} fill="#FCA5A5" fontSize="11" fontWeight="bold" textAnchor="middle" fontFamily="system-ui">{item.label}</text>
-        <text x={item.x + 105} y={238" fill="#94A3B8" fontSize="9" textAnchor="middle" fontFamily="system-ui">{item.desc}</text>
+        <text x={item.x + 105} y={238} fill="#94A3B8" fontSize="9" textAnchor="middle" fontFamily="system-ui">{item.desc}</text>
       </g>
     ))}
   </svg>

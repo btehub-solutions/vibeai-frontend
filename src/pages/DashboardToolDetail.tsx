@@ -8,7 +8,6 @@ import {
   Target, ThumbsUp, ThumbsDown, Rocket, Lightbulb, X, Zap
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import AIChatInterface from "@/components/chat/AIChatInterface";
 import { useUser } from "@/hooks/useUser";
 import { useState } from "react";
 
@@ -63,24 +62,7 @@ const DashboardToolDetail = () => {
             user={user}
           />
 
-          {tool.isInternal ? (
-            <div className="mt-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-               <div className="bg-gradient-to-r from-accent/20 to-purple-500/20 p-1 rounded-3xl mb-8">
-                  <div className="bg-background rounded-[22px] p-6 lg:p-10">
-                      <div className="flex items-center gap-4 mb-6">
-                        <div className="p-3 bg-accent/20 rounded-xl">
-                            <Bot className="w-8 h-8 text-accent" />
-                        </div>
-                        <div>
-                            <h2 className="text-2xl font-bold">Interactive Session</h2>
-                            <p className="text-muted-foreground">Start chatting with {tool.name}</p>
-                        </div>
-                      </div>
-                      <AIChatInterface />
-                  </div>
-               </div>
-            </div>
-          ) : null}
+
 
           {/* Tabs Navigation */}
           <div className="flex gap-2 mb-8 overflow-x-auto pb-2">

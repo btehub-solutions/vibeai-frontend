@@ -12,7 +12,7 @@ const FeatureTab = ({
   isActive, 
   onClick 
 }: { 
-  icon: any, 
+  icon: React.ElementType, 
   title: string, 
   isActive: boolean, 
   onClick: () => void 
@@ -175,7 +175,7 @@ const ShowcaseSection = () => {
 };
 
 /* Helper Icon */
-function BrainIcon(props: any) {
+function BrainIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

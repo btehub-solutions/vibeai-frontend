@@ -159,7 +159,7 @@ const StoryBentoSection = () => {
           <BentoCard span="sm:col-span-2 sm:row-span-2" glowColor="accent" delay={0}>
             <div className="h-full flex flex-col">
               {/* Image: global tech scene */}
-              <div className="relative h-36 md:h-56 overflow-hidden">
+              <div className="relative h-48 sm:h-56 overflow-hidden">
                 <img
                   src="/images/landing/ai_is_present.png"
                   alt="Black professionals collaborating on AI solutions"
@@ -270,7 +270,7 @@ const StoryBentoSection = () => {
           {/* Skills Gap — with image */}
           <BentoCard glowColor="red" delay={0}>
             <div className="h-full flex flex-col">
-              <div className="relative h-28 md:h-40 overflow-hidden">
+              <div className="relative h-40 md:h-48 overflow-hidden">
                 <img
                   src="/images/landing/classroom-mentoring.jpg"
                   alt="Black students in a classroom"
@@ -294,7 +294,7 @@ const StoryBentoSection = () => {
           {/* No Access — with image */}
           <BentoCard glowColor="amber" delay={100}>
             <div className="h-full flex flex-col">
-              <div className="relative h-28 md:h-40 overflow-hidden">
+              <div className="relative h-40 md:h-48 overflow-hidden">
                 <img
                   src="/images/landing/computer-training.jpg"
                   alt="Market scene reflecting economic factors"
@@ -318,7 +318,7 @@ const StoryBentoSection = () => {
           {/* Wide card - The Consequence */}
           <BentoCard span="col-span-2 md:col-span-1 md:row-span-2" glowColor="red" delay={200}>
             <div className="h-full flex flex-col">
-              <div className="relative h-32 md:h-48 overflow-hidden">
+              <div className="relative h-48 sm:h-56 overflow-hidden">
                 <img
                   src="/images/landing/coworking-space.jpg"
                   alt="City street scene"
@@ -368,7 +368,7 @@ const StoryBentoSection = () => {
           {/* Disconnected Learning — with image */}
           <BentoCard glowColor="blue" delay={300}>
             <div className="h-full flex flex-col">
-              <div className="relative h-28 md:h-40 overflow-hidden">
+              <div className="relative h-40 md:h-48 overflow-hidden">
                 <img
                   src="/images/landing/woman-laptop-outdoor.jpg"
                   alt="Student studying with focus"
@@ -392,7 +392,7 @@ const StoryBentoSection = () => {
           {/* Brain Drain — with image */}
           <BentoCard glowColor="purple" delay={400}>
             <div className="h-full flex flex-col">
-              <div className="relative h-28 md:h-40 overflow-hidden">
+              <div className="relative h-40 md:h-48 overflow-hidden">
                 <img
                   src="/images/landing/tech-hub-learning.jpg"
                   alt="Airport scene"
