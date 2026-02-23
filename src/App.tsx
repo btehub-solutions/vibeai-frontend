@@ -18,7 +18,7 @@ import DashboardSettings from "./pages/DashboardSettings";
 import DashboardConsultation from "./pages/DashboardConsultation";
 import NotFound from "./pages/NotFound";
 import Chat from "./pages/Chat";
-
+import ScrollToTop from "./components/ScrollToTop";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -27,6 +27,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />

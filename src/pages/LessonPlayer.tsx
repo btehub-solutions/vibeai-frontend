@@ -317,19 +317,19 @@ const LessonPlayer = () => {
     <div className="min-h-screen bg-background flex flex-col">
       {/* Top Bar */}
       <header className="h-16 border-b border-border bg-card/50 backdrop-blur-md flex items-center justify-between px-6 fixed top-0 w-full z-50">
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" onClick={() => navigate(`/dashboard/courses/${courseId}`)}>
-            <ArrowLeft size={16} className="mr-2" />
-            Back to Course
+        <div className="flex items-center gap-2 md:gap-4 flex-1 min-w-0 pr-4">
+          <Button variant="ghost" size="sm" className="px-2 md:px-4 flex-shrink-0" onClick={() => navigate(`/dashboard/courses/${courseId}`)}>
+            <ArrowLeft size={16} className="md:mr-2" />
+            <span className="hidden md:inline">Back to Course</span>
           </Button>
-          <div className="h-6 w-px bg-border mx-2" />
-          <h1 className="font-semibold text-sm md:text-base truncate max-w-[300px]">{course.title}</h1>
+          <div className="h-6 w-px bg-border mx-1 md:mx-2 flex-shrink-0" />
+          <h1 className="font-semibold text-xs md:text-sm lg:text-base truncate">{course.title}</h1>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
           <span className="text-xs text-muted-foreground hidden md:block">
             Lesson {currentIndex + 1} of {allLessons.length}
           </span>
-          <div className="w-32 h-2 bg-secondary rounded-full overflow-hidden">
+          <div className="w-16 md:w-32 h-2 bg-secondary rounded-full overflow-hidden flex-shrink-0">
             <div 
               className="h-full bg-gradient-to-r from-accent to-purple-500 transition-all duration-300" 
               style={{ width: `${((currentIndex) / allLessons.length) * 100}%` }} 
@@ -684,12 +684,12 @@ const LessonPlayer = () => {
             </div>
 
             {/* Footer Actions */}
-            <div className="flex items-center justify-between pt-8 border-t border-border">
+            <div className="flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-border">
               <Button 
                 variant="outline"
                 onClick={() => prevLesson && navigate(`/dashboard/courses/${courseId}/lessons/${prevLesson.id}`)}
                 disabled={!prevLesson}
-                className="min-w-[140px]"
+                className="flex-1 sm:flex-none min-w-[140px]"
               >
                 <ChevronLeft size={16} className="mr-2" />
                 Previous
@@ -697,7 +697,7 @@ const LessonPlayer = () => {
 
               <Button 
                 onClick={handleComplete}
-                className="bg-accent hover:bg-accent/90 text-white min-w-[180px] py-6 text-lg font-semibold shadow-lg shadow-accent/20"
+                className="flex-1 sm:flex-none bg-accent hover:bg-accent/90 text-white min-w-[180px] py-6 text-lg font-semibold shadow-lg shadow-accent/20"
                 disabled={complete}
               >
                 {complete ? (
