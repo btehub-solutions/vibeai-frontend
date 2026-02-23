@@ -120,9 +120,23 @@ export const ConsultationCard: React.FC = () => {
         console.warn("Supabase insertion error (table might not exist yet):", error.message);
       }
 
-      // Simulate sending notification (frontend only Additive)
-      // Send notification to btehubsolutions@gmail.com
-      
+      // Send authentic Email notification using Formsubmit API with exactly requested email
+      await fetch("https://formsubmit.co/ajax/btehubsolutions@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `New Consultation Request: ${selectedOption.title}`,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          preferred_channel: formData.preferredChannel,
+          request_type: selectedOption.title,
+        }),
+      });
+
       setIsSuccess(true);
       setFormData({
         name: "",
