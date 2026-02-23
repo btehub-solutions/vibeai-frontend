@@ -171,7 +171,7 @@ const GlobalReachSection = () => {
             transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.6s"
           }}
         >
-          <div className="col-span-2 md:col-span-1 p-5 md:p-8 rounded-2xl md:rounded-3xl border border-white/[0.06] backdrop-blur-xl transition-all duration-500 hover:border-accent/30 hover:shadow-[0_0_40px_-15px_rgba(180,255,50,0.15)] group" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
+          <div className="sm:col-span-2 md:col-span-1 p-5 md:p-8 rounded-2xl md:rounded-3xl border border-white/[0.06] backdrop-blur-xl transition-all duration-500 hover:border-accent/30 hover:shadow-[0_0_40px_-15px_rgba(180,255,50,0.15)] group" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)' }}>
             <Wifi className="w-6 h-6 text-accent mb-4 group-hover:drop-shadow-[0_0_10px_rgba(180,255,50,0.4)] transition-all duration-300" />
             <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">Always Updated</h3>
             <p className="text-sm text-muted-foreground">Our curriculum updates weekly with the latest AI breakthroughs and tools.</p>

@@ -220,8 +220,7 @@ const StoryBentoSection = () => {
             </div>
           </BentoCard>
 
-          {/* Wide card - AI Fluency */}
-          <BentoCard span="col-span-2" glowColor="purple" delay={300}>
+          <BentoCard span="sm:col-span-2" glowColor="purple" delay={300}>
             <div className="p-5 md:p-8 h-full flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 min-h-[120px] md:min-h-[150px]">
               <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-purple-500/20 to-violet-500/20 border border-purple-500/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
                 <Lightbulb className="w-6 h-6 md:w-8 md:h-8 text-purple-400" />
@@ -316,7 +315,7 @@ const StoryBentoSection = () => {
           </BentoCard>
 
           {/* Wide card - The Consequence */}
-          <BentoCard span="col-span-2 md:col-span-1 md:row-span-2" glowColor="red" delay={200}>
+          <BentoCard span="sm:col-span-2 md:col-span-1 md:row-span-2" glowColor="red" delay={200}>
             <div className="h-full flex flex-col">
               <div className="relative h-48 sm:h-56 overflow-hidden">
                 <img
@@ -444,7 +443,7 @@ const StoryBentoSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 items-start gap-3 md:gap-5">
           
           {/* Wide feature - Structured Learning — with image */}
-          <BentoCard span="col-span-2" glowColor="accent" delay={0}>
+          <BentoCard span="sm:col-span-2" glowColor="accent" delay={0}>
             <div className="h-full flex flex-col">
               <div className="relative h-32 md:h-48 overflow-hidden">
                 <img
@@ -542,7 +541,7 @@ const StoryBentoSection = () => {
           </BentoCard>
 
           {/* Wide feature - Global Context */}
-          <BentoCard span="col-span-2" glowColor="accent" delay={500}>
+          <BentoCard span="sm:col-span-2" glowColor="accent" delay={500}>
             <div className="h-full flex flex-col md:flex-row overflow-hidden">
               {/* Image side */}
               <div className="relative w-full md:w-2/5 h-36 md:h-auto overflow-hidden flex-shrink-0">
