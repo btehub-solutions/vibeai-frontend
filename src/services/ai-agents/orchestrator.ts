@@ -1,11 +1,9 @@
 // ═══════════════════════════════════════════════════════════════════════
 // VibeAI Orchestrator — Multi-Agent Intelligence Router
-// Routes requests to specialized agents, manages response pipeline
 // ═══════════════════════════════════════════════════════════════════════
 
 import {
   AgentRole,
-  AgentRequest,
   AgentResponse,
   ChatMessage,
   LearnerSessionProfile,
@@ -25,16 +23,11 @@ import {
   getSessionProfile,
   analyzeInteraction,
   generateAdaptiveSuggestions,
-  inferExplanationStyle,
   updateSessionProfile,
 } from './session-profile';
 
-// ─── Orchestrator Class ──────────────────────────────────────────────
-
 class VibeAIOrchestrator {
   private currentSessionId: string | null = null;
-
-  // ── Session Management ────────────────────────────────────────────
 
   initSession(userId?: string): string {
     const profile = createSessionProfile(userId);
@@ -55,40 +48,21 @@ class VibeAIOrchestrator {
     this.currentSessionId = id;
   }
 
-  // ── Main Chat Pipeline ────────────────────────────────────────────
-
   async chat(
     message: string,
     conversationHistory: ChatMessage[],
     platformContext: PlatformContext
   ): Promise<AgentResponse> {
-    // Ensure session exists
-    if (!this.currentSessionId) {
-      this.initSession();
-    }
+    if (!this.currentSessionId) this.initSession();
 
     const profile = this.getSession();
-    if (!profile) {
-      throw new Error('Session profile not found');
-    }
+    if (!profile) throw new Error('Session profile not found');
 
     try {
-      // Step 1: Analyze the interaction
-      const analysis = analyzeInteraction(
-        this.currentSessionId!,
-        message,
-        conversationHistory
-      );
+      const analysis = analyzeInteraction(this.currentSessionId!, message, conversationHistory);
 
-      // Step 2: Route to the appropriate agent
-      const decision = await this.routeRequest(
-        message,
-        profile,
-        platformContext,
-        analysis
-      );
+      const decision = await this.routeRequest(message, profile, platformContext, analysis);
 
-      // Step 3: Generate response from the selected agent
       const response = await this.executeAgent(
         decision.primaryAgent,
         message,
@@ -97,11 +71,9 @@ class VibeAIOrchestrator {
         platformContext
       );
 
-      // Step 4: Generate adaptive suggestions
       const updatedProfile = this.getSession()!;
       const suggestions = generateAdaptiveSuggestions(updatedProfile);
 
-      // Step 5: Track concepts explained
       if (analysis.detectedTopic && !updatedProfile.conceptsExplained.includes(analysis.detectedTopic)) {
         updateSessionProfile(this.currentSessionId!, {
           conceptsExplained: [...updatedProfile.conceptsExplained, analysis.detectedTopic],
@@ -122,8 +94,6 @@ class VibeAIOrchestrator {
       };
     } catch (error) {
       console.error('[VibeAI Orchestrator] Error:', error);
-      
-      // Graceful fallback response  
       return {
         content: this.getFallbackResponse(message, profile),
         agentRole: 'tutor',
@@ -133,46 +103,37 @@ class VibeAIOrchestrator {
     }
   }
 
-  // ── Agent Routing ──────────────────────────────────────────────────
-
   private async routeRequest(
     message: string,
     profile: LearnerSessionProfile,
     context: PlatformContext,
     analysis: ReturnType<typeof analyzeInteraction>
   ): Promise<OrchestrationDecision> {
-    // Fast-path routing based on keywords (saves an API call)
     const fastRoute = this.fastRoute(message, context, analysis);
     if (fastRoute) return fastRoute;
 
-    // AI-powered routing for ambiguous requests
     try {
       const orchestratorPrompt = getOrchestratorPrompt(profile, context);
       const decision = await generateStructuredResponse<{
         primaryAgent: AgentRole;
         contextIndicator: string;
-        reasoning: string;
       }>(orchestratorPrompt, message, {
-        primaryAgent: 'tutor',
+        primaryAgent: 'tutor' as AgentRole,
         contextIndicator: 'Learning with VibeAI',
-        reasoning: 'Default routing to tutor',
       });
 
       return {
         primaryAgent: decision.primaryAgent,
         secondaryAgents: [],
         contextIndicator: decision.contextIndicator,
-        reasoning: decision.reasoning,
+        reasoning: 'AI-routed',
       };
     } catch {
-      // Fallback to tutor
       return {
         primaryAgent: 'tutor',
         secondaryAgents: [],
-        contextIndicator: profile.currentTopic 
-          ? `Helping with ${profile.currentTopic}` 
-          : 'Learning with VibeAI',
-        reasoning: 'Fallback routing',
+        contextIndicator: profile.currentTopic ? `Helping with ${profile.currentTopic}` : 'Learning with VibeAI',
+        reasoning: 'Fallback',
       };
     }
   }
@@ -184,76 +145,26 @@ class VibeAIOrchestrator {
   ): OrchestrationDecision | null {
     const msg = message.toLowerCase();
 
-    // Confusion always goes to tutor
     if (analysis.confusionLevel === 'severe' || analysis.confusionLevel === 'moderate') {
-      return {
-        primaryAgent: 'tutor',
-        secondaryAgents: [],
-        contextIndicator: 'Simplifying explanation...',
-        reasoning: 'Confusion detected — routing to tutor for simplified explanation',
-      };
+      return { primaryAgent: 'tutor', secondaryAgents: [], contextIndicator: 'Simplifying...', reasoning: 'confusion' };
     }
-
-    // Quiz/exercise requests
-    if (/\b(quiz|test me|exercise|practice|challenge)\b/i.test(msg)) {
-      return {
-        primaryAgent: 'evaluator',
-        secondaryAgents: [],
-        contextIndicator: 'Creating a learning exercise...',
-        reasoning: 'Quiz/exercise request detected',
-      };
+    if (/\b(quiz|test me|exercise|practice|challenge me)\b/i.test(msg)) {
+      return { primaryAgent: 'evaluator', secondaryAgents: [], contextIndicator: 'Creating exercise...', reasoning: 'quiz request' };
     }
-
-    // Recommendation/path requests
-    if (/\b(recommend|what next|learning path|what should i|suggest|next course|next step)\b/i.test(msg)) {
-      return {
-        primaryAgent: 'strategist',
-        secondaryAgents: [],
-        contextIndicator: 'Planning your learning path...',
-        reasoning: 'Recommendation request detected',
-      };
+    if (/\b(recommend|what next|learning path|what should i|suggest|next course|next step|plan)\b/i.test(msg)) {
+      return { primaryAgent: 'strategist', secondaryAgents: [], contextIndicator: 'Planning your path...', reasoning: 'strategy request' };
     }
-
-    // Tool/news/trend requests
-    if (/\b(tool|trending|news|what's new|latest|ai tool|compare)\b/i.test(msg)) {
-      return {
-        primaryAgent: 'research',
-        secondaryAgents: [],
-        contextIndicator: 'Researching AI trends...',
-        reasoning: 'Research/tool request detected',
-      };
+    if (/\b(tool|trending|news|what's new|latest|compare|chatgpt|claude|midjourney|cursor|copilot|runway|perplexity|elevenlabs)\b/i.test(msg)) {
+      return { primaryAgent: 'research', secondaryAgents: [], contextIndicator: 'Researching...', reasoning: 'tool/research request' };
     }
-
-    // Page-context routing
     if (context.currentPage === 'ai-tools') {
-      return {
-        primaryAgent: 'research',
-        secondaryAgents: [],
-        contextIndicator: context.toolName 
-          ? `Exploring ${context.toolName}` 
-          : 'Exploring AI Tools',
-        reasoning: 'On tools page — routing to research agent',
-      };
+      return { primaryAgent: 'research', secondaryAgents: [], contextIndicator: context.toolName ? `Exploring ${context.toolName}` : 'AI Tools Guide', reasoning: 'tools page' };
     }
-
     if (context.currentPage === 'lesson-player' || context.currentPage === 'course-module') {
-      return {
-        primaryAgent: 'tutor',
-        secondaryAgents: [],
-        contextIndicator: context.lessonTitle 
-          ? `Helping with: ${context.lessonTitle}` 
-          : context.courseTitle 
-            ? `Studying: ${context.courseTitle}` 
-            : 'Course assistance',
-        reasoning: 'On course/lesson page — routing to tutor',
-      };
+      return { primaryAgent: 'tutor', secondaryAgents: [], contextIndicator: context.lessonTitle ? `Lesson: ${context.lessonTitle}` : context.courseTitle ? `Course: ${context.courseTitle}` : 'Course help', reasoning: 'course page' };
     }
-
-    // No fast route — let AI decide
     return null;
   }
-
-  // ── Agent Execution ────────────────────────────────────────────────
 
   private async executeAgent(
     role: AgentRole,
@@ -262,74 +173,38 @@ class VibeAIOrchestrator {
     profile: LearnerSessionProfile,
     context: PlatformContext
   ): Promise<string> {
-    const promptMap: Record<AgentRole, (p: LearnerSessionProfile, c: PlatformContext) => string> = {
-      orchestrator: getOrchestratorPrompt,
+    const promptBuilders: Record<AgentRole, (p: LearnerSessionProfile, c: PlatformContext, h: ChatMessage[]) => string> = {
+      orchestrator: (p, c) => getOrchestratorPrompt(p, c),
       tutor: getTutorPrompt,
       evaluator: getEvaluatorPrompt,
       strategist: getStrategistPrompt,
       research: getResearchPrompt,
     };
 
-    const getPrompt = promptMap[role] || promptMap.tutor;
-    const systemPrompt = getPrompt(profile, context);
+    const buildPrompt = promptBuilders[role] || promptBuilders.tutor;
+    const systemPrompt = buildPrompt(profile, context, history);
 
     return generateAIResponse(systemPrompt, message, history, {
       temperature: role === 'evaluator' ? 0.5 : 0.7,
-      maxTokens: role === 'evaluator' ? 3000 : 2048,
+      maxTokens: 4096,
     });
   }
 
-  // ── Fallback Response ──────────────────────────────────────────────
-
   private getFallbackResponse(message: string, profile: LearnerSessionProfile): string {
-    const greetings = ['hello', 'hi', 'hey', 'good morning', 'good afternoon'];
     const msg = message.toLowerCase();
-
-    if (greetings.some(g => msg.includes(g))) {
-      return `Hello! 👋 Welcome to VibeAI! I'm your personal AI learning mentor. I can help you:\n\n` +
-        `- **Learn AI concepts** step by step\n` +
-        `- **Practice** with exercises and quizzes\n` +
-        `- **Discover trending AI tools**\n` +
-        `- **Plan your learning path**\n\n` +
-        `What would you like to explore today?`;
+    if (['hello', 'hi', 'hey'].some(g => msg.startsWith(g))) {
+      return `Hello! 👋 I'm VibeAI, your AI learning mentor. I can:\n\n- **Teach AI concepts** at your level\n- **Quiz you** with exercises\n- **Recommend courses** and learning paths\n- **Explore AI tools** with you\n\nWhat would you like to learn?`;
     }
-
-    if (profile.currentTopic) {
-      return `I'm here to help you with **${profile.currentTopic}**! ` +
-        `Unfortunately, I had trouble processing that request. ` +
-        `Could you rephrase your question? I want to make sure I give you the best answer possible! 🎯`;
-    }
-
-    return `I'm VibeAI, your AI learning mentor! 🚀 I had a brief hiccup processing your request. ` +
-      `Here's what I can help you with:\n\n` +
-      `- 📚 **Explain AI concepts** at your level\n` +
-      `- 🧪 **Generate quizzes** to test your knowledge\n` +
-      `- 🗺️ **Recommend courses** and learning paths\n` +
-      `- 🔧 **Explore AI tools** from our toolkit\n\n` +
-      `Try asking me something specific, like "What is machine learning?" or "Quiz me on prompt engineering!"`;
+    return `I had a brief connectivity issue. Please try your question again — I'm ready to help! 🎯`;
   }
 
-  // ── Update Dashboard Data ──────────────────────────────────────────
-
-  updateDashboardContext(
-    coursesInProgress: string[],
-    overallProgress: number,
-    streak: number,
-    toolsExplored: string[] = []
-  ): void {
+  updateDashboardContext(coursesInProgress: string[], overallProgress: number, streak: number, toolsExplored: string[] = []): void {
     if (!this.currentSessionId) return;
     updateSessionProfile(this.currentSessionId, {
-      dashboardActivity: {
-        coursesInProgress,
-        overallProgress,
-        streak,
-        toolsExplored,
-      },
+      dashboardActivity: { coursesInProgress, overallProgress, streak, toolsExplored },
     });
   }
 }
-
-// ─── Export Singleton ────────────────────────────────────────────────
 
 export const vibeAIChat = new VibeAIOrchestrator();
 export default vibeAIChat;
