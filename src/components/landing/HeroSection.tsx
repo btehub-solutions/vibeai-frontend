@@ -21,22 +21,35 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+    <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-background pt-24 lg:pt-0">
+      {/* Subtle Background Elements (Desktop) */}
+      <div className="absolute inset-0 z-0 pointer-events-none hidden lg:block">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-accent/10 blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-500/10 blur-[120px]" />
         {/* Subtle grid pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
       </div>
 
-      <div className="relative z-10 container-main pt-24 pb-16 md:pt-32 md:pb-24 flex items-center min-h-[calc(100vh-80px)]">
+      {/* MOBILE BACKGROUND IMAGE: Absolutely positioned behind text on small screens */}
+      {/* This integrates the image perfectly on mobile instead of stacking it below */}
+      <div className="absolute inset-0 z-0 lg:hidden opacity-0 animate-fade-in pointer-events-none">
+        <div className="absolute inset-0 bg-background/80 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent z-10" />
+        <img 
+          src="/hero-image.png" 
+          alt="AI Background" 
+          className="w-full h-full object-cover object-[center_top] opacity-60"
+        />
+      </div>
+
+      {/* Main Content Container */}
+      <div className="relative z-10 container-main py-12 md:py-24 flex items-center min-h-[calc(100vh-80px)]">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center w-full">
           
           {/* Left Column - Content */}
           <div className="max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
             {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-6 animate-fade-in-up backdrop-blur-md">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
@@ -45,9 +58,9 @@ const HeroSection = () => {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-5xl sm:text-6xl md:text-display-lg font-bold tracking-tight leading-[1.1] text-foreground mb-6">
+            <h1 className="text-4xl sm:text-6xl md:text-display-lg font-bold tracking-tight leading-[1.15] text-foreground mb-6">
               <span className="block animate-text-reveal">Be the next</span>
-              <span className="block animate-text-reveal animate-delay-100 relative h-[1.2em] overflow-hidden">
+              <span className="block animate-text-reveal animate-delay-100 relative h-[1.3em] overflow-hidden">
                 <div
                   className="absolute top-0 left-0 w-full transition-transform duration-500 ease-out flex flex-col items-center lg:items-start"
                   style={{
@@ -57,8 +70,8 @@ const HeroSection = () => {
                   {rotatingWords.map((word, index) => (
                     <span 
                       key={index} 
-                      className="block h-[1.2em] text-transparent bg-clip-text bg-gradient-to-r from-accent via-emerald-400 to-teal-400 pb-2"
-                      style={{ height: 'calc(1.2em)' }}
+                      className="block h-[1.3em] text-transparent bg-clip-text bg-gradient-to-r from-accent via-emerald-400 to-teal-400 pb-2 whitespace-nowrap"
+                      style={{ height: 'calc(1.3em)' }}
                     >
                       {word}
                     </span>
@@ -68,16 +81,16 @@ const HeroSection = () => {
             </h1>
 
             {/* Subheadline */}
-            <p className="animate-text-reveal animate-delay-200 text-lg md:text-xl text-muted-foreground/90 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed font-light">
+            <p className="animate-text-reveal animate-delay-200 text-base md:text-xl text-muted-foreground/90 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed font-light drop-shadow-lg">
               AI is reshaping every industry. Don't get left behind. We provide professionals
               the skills, tools, and confidence to thrive alongside AI in the future.
             </p>
 
             {/* CTAs */}
-            <div className="animate-text-reveal animate-delay-300 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <div className="animate-text-reveal animate-delay-300 flex flex-col w-full sm:flex-row items-center justify-center lg:justify-start gap-4">
               <Link
                 to="/dashboard"
-                className="group relative w-full sm:w-auto text-center px-8 py-4 text-lg font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 shadow-[0_0_20px_rgba(180,255,50,0.2)] hover:shadow-[0_0_30px_rgba(180,255,50,0.4)]"
+                className="group relative w-full sm:w-auto text-center px-8 py-4 text-base md:text-lg font-semibold rounded-xl overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(180,255,50,0.2)] hover:shadow-[0_0_30px_rgba(180,255,50,0.4)]"
                 style={{
                   background: 'linear-gradient(135deg, hsl(85 100% 60%), hsl(170 100% 45%))',
                   color: 'hsl(150 60% 5%)',
@@ -92,7 +105,7 @@ const HeroSection = () => {
               
               <a
                 href="#the-story"
-                className="group w-full sm:w-auto text-center px-8 py-4 text-lg rounded-xl border border-white/10 bg-white/5 text-foreground font-medium transition-all duration-300 hover:bg-white/10 hover:border-white/20 flex items-center justify-center gap-2"
+                className="group w-full sm:w-auto text-center px-8 py-4 text-base md:text-lg rounded-xl border border-white/10 bg-white/5 backdrop-blur-md text-foreground font-medium transition-all duration-300 hover:bg-white/10 hover:border-white/20 flex items-center justify-center gap-2"
               >
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
                    <Play className="h-4 w-4" fill="currentColor" />
@@ -117,7 +130,7 @@ const HeroSection = () => {
                 </div>
               </div>
               <div className="hidden sm:block w-px h-8 bg-white/10" />
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 items-center sm:items-start">
                 <span className="flex items-center gap-1.5 font-semibold text-foreground">
                   <Star className="w-4 h-4 text-amber-400 fill-amber-400" /> 4.9/5
                 </span>
@@ -128,8 +141,9 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Column - Visual */}
-          <div className="relative w-full h-[500px] lg:h-[700px] rounded-3xl overflow-hidden opacity-0 animate-fade-in animate-delay-300 shadow-[0_0_40px_-10px_rgba(180,255,50,0.2)] mt-8 lg:mt-0 group border border-white/5 bg-zinc-900/50">
+          {/* Right Column - Visual (Hidden on Mobile, Displayed side-by-side on Desktop) */}
+          {/* This ensures the image is exactly side-by-side on wide screens */}
+          <div className="hidden lg:block relative w-full h-[700px] rounded-3xl overflow-hidden opacity-0 animate-fade-in animate-delay-300 shadow-[0_0_40px_-10px_rgba(180,255,50,0.2)] mt-8 lg:mt-0 group border border-white/5 bg-zinc-900/50">
              {/* Gradient Overlays for Blending */}
              <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-transparent z-10 pointer-events-none" />
              <div className="absolute inset-0 bg-gradient-to-l from-background/40 to-transparent z-10 pointer-events-none" />
