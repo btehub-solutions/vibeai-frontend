@@ -153,13 +153,13 @@ const StoryBentoSection = () => {
         </div>
 
         {/* BENTO GRID 1: AI Revolution — with global context image */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mb-20 md:mb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 items-start gap-3 md:gap-5 mb-12 md:mb-32">
           
           {/* Large card - AI is Everywhere — now with global tech scene image */}
-          <BentoCard span="col-span-2 row-span-2" glowColor="accent" delay={0}>
+          <BentoCard span="sm:col-span-2 sm:row-span-2" glowColor="accent" delay={0}>
             <div className="h-full flex flex-col">
               {/* Image: global tech scene */}
-              <div className="relative h-44 md:h-56 overflow-hidden">
+              <div className="relative h-36 md:h-56 overflow-hidden">
                 <img
                   src="/images/landing/ai_is_present.png"
                   alt="Black professionals collaborating on AI solutions"
@@ -173,7 +173,7 @@ const StoryBentoSection = () => {
                 </div>
               </div>
               
-              <div className="p-5 md:p-8 flex-1 flex flex-col justify-between">
+              <div className="p-5 md:p-8 md:flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="text-xl md:text-3xl font-bold text-foreground mb-3 md:mb-4 group-hover:text-accent transition-colors duration-300">
                     AI is Not the Future. <br />It's the Present.
@@ -196,7 +196,7 @@ const StoryBentoSection = () => {
 
           {/* Small card - Global AI Spend */}
           <BentoCard glowColor="blue" delay={100}>
-            <div className="p-4 md:p-6 h-full flex flex-col justify-between min-h-[170px]">
+            <div className="p-4 md:p-6 md:h-full flex flex-col md:justify-between md:min-h-[170px]">
               <Globe2 className="w-6 h-6 md:w-8 md:h-8 text-blue-400 mb-3 group-hover:drop-shadow-[0_0_12px_rgba(80,160,255,0.5)] transition-all duration-300" />
               <div>
                 <p className="text-2xl md:text-4xl font-bold text-foreground mb-1">
@@ -209,7 +209,7 @@ const StoryBentoSection = () => {
 
           {/* Small card - Jobs Created */}
           <BentoCard glowColor="emerald" delay={200}>
-            <div className="p-4 md:p-6 h-full flex flex-col justify-between min-h-[170px]">
+            <div className="p-4 md:p-6 md:h-full flex flex-col md:justify-between md:min-h-[170px]">
               <BarChart3 className="w-6 h-6 md:w-8 md:h-8 text-emerald-400 mb-3 group-hover:drop-shadow-[0_0_12px_rgba(50,200,120,0.5)] transition-all duration-300" />
               <div>
                 <p className="text-2xl md:text-4xl font-bold text-foreground mb-1">
@@ -222,7 +222,7 @@ const StoryBentoSection = () => {
 
           {/* Wide card - AI Fluency */}
           <BentoCard span="col-span-2" glowColor="purple" delay={300}>
-            <div className="p-5 md:p-8 h-full flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 min-h-[150px]">
+            <div className="p-5 md:p-8 h-full flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 min-h-[120px] md:min-h-[150px]">
               <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-purple-500/20 to-violet-500/20 border border-purple-500/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
                 <Lightbulb className="w-6 h-6 md:w-8 md:h-8 text-purple-400" />
               </div>
@@ -265,12 +265,12 @@ const StoryBentoSection = () => {
         </div>
 
         {/* BENTO GRID 2: Global Challenges — with contextual images */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 mb-20 md:mb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-start gap-3 md:gap-5 mb-12 md:mb-32">
           
           {/* Skills Gap — with image */}
           <BentoCard glowColor="red" delay={0}>
             <div className="h-full flex flex-col">
-              <div className="relative h-32 md:h-40 overflow-hidden">
+              <div className="relative h-28 md:h-40 overflow-hidden">
                 <img
                   src="/images/landing/classroom-mentoring.jpg"
                   alt="Black students in a classroom"
@@ -279,7 +279,7 @@ const StoryBentoSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-red-950/20" />
                 <AlertTriangle className="absolute bottom-3 left-4 w-6 h-6 md:w-8 md:h-8 text-red-400 group-hover:drop-shadow-[0_0_12px_rgba(255,80,80,0.5)] group-hover:animate-bounce transition-all duration-300" />
               </div>
-              <div className="p-4 md:p-6 flex-1">
+              <div className="p-4 md:p-6">
                 <h3 className="text-base md:text-xl font-bold text-foreground mb-2 group-hover:text-red-400 transition-colors duration-300">
                   Massive Skills Gap
                 </h3>
@@ -294,7 +294,7 @@ const StoryBentoSection = () => {
           {/* No Access — with image */}
           <BentoCard glowColor="amber" delay={100}>
             <div className="h-full flex flex-col">
-              <div className="relative h-32 md:h-40 overflow-hidden">
+              <div className="relative h-28 md:h-40 overflow-hidden">
                 <img
                   src="/images/landing/computer-training.jpg"
                   alt="Market scene reflecting economic factors"
@@ -303,7 +303,7 @@ const StoryBentoSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-amber-950/20" />
                 <TrendingDown className="absolute bottom-3 left-4 w-6 h-6 md:w-8 md:h-8 text-amber-400 group-hover:drop-shadow-[0_0_12px_rgba(255,180,50,0.5)] transition-all duration-300" />
               </div>
-              <div className="p-4 md:p-6 flex-1">
+              <div className="p-4 md:p-6">
                 <h3 className="text-base md:text-xl font-bold text-foreground mb-2 group-hover:text-amber-400 transition-colors duration-300">
                   Limited Access
                 </h3>
@@ -318,7 +318,7 @@ const StoryBentoSection = () => {
           {/* Wide card - The Consequence */}
           <BentoCard span="col-span-2 md:col-span-1 md:row-span-2" glowColor="red" delay={200}>
             <div className="h-full flex flex-col">
-              <div className="relative h-40 md:h-48 overflow-hidden">
+              <div className="relative h-32 md:h-48 overflow-hidden">
                 <img
                   src="/images/landing/coworking-space.jpg"
                   alt="City street scene"
@@ -329,7 +329,7 @@ const StoryBentoSection = () => {
                   <span className="text-2xl text-emerald-400"><Globe2 /></span>
                 </div>
               </div>
-              <div className="p-5 md:p-7 flex-1 flex flex-col justify-between">
+              <div className="p-5 md:p-7 md:flex-1 flex flex-col justify-between">
                 <div>
                   <h3 className="text-lg md:text-2xl font-bold text-foreground mb-3 group-hover:text-red-400 transition-colors duration-300">
                     The Cost of Inaction
@@ -368,7 +368,7 @@ const StoryBentoSection = () => {
           {/* Disconnected Learning — with image */}
           <BentoCard glowColor="blue" delay={300}>
             <div className="h-full flex flex-col">
-              <div className="relative h-32 md:h-40 overflow-hidden">
+              <div className="relative h-28 md:h-40 overflow-hidden">
                 <img
                   src="/images/landing/woman-laptop-outdoor.jpg"
                   alt="Student studying with focus"
@@ -377,7 +377,7 @@ const StoryBentoSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-blue-950/20" />
                 <GraduationCap className="absolute bottom-3 left-4 w-6 h-6 md:w-8 md:h-8 text-blue-400 group-hover:drop-shadow-[0_0_12px_rgba(80,160,255,0.5)] transition-all duration-300" />
               </div>
-              <div className="p-4 md:p-6 flex-1">
+              <div className="p-4 md:p-6">
                 <h3 className="text-base md:text-xl font-bold text-foreground mb-2 group-hover:text-blue-400 transition-colors duration-300">
                   Outdated Education
                 </h3>
@@ -392,7 +392,7 @@ const StoryBentoSection = () => {
           {/* Brain Drain — with image */}
           <BentoCard glowColor="purple" delay={400}>
             <div className="h-full flex flex-col">
-              <div className="relative h-32 md:h-40 overflow-hidden">
+              <div className="relative h-28 md:h-40 overflow-hidden">
                 <img
                   src="/images/landing/tech-hub-learning.jpg"
                   alt="Airport scene"
@@ -401,7 +401,7 @@ const StoryBentoSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-purple-950/20" />
                 <Users className="absolute bottom-3 left-4 w-6 h-6 md:w-8 md:h-8 text-purple-400 group-hover:drop-shadow-[0_0_12px_rgba(160,80,255,0.5)] transition-all duration-300" />
               </div>
-              <div className="p-4 md:p-6 flex-1">
+              <div className="p-4 md:p-6">
                 <h3 className="text-base md:text-xl font-bold text-foreground mb-2 group-hover:text-purple-400 transition-colors duration-300">
                   Global Talent Shift
                 </h3>
@@ -441,12 +441,12 @@ const StoryBentoSection = () => {
         </div>
 
         {/* BENTO GRID 3: The VibeAI Solution — with global imagery */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 items-start gap-3 md:gap-5">
           
           {/* Wide feature - Structured Learning — with image */}
           <BentoCard span="col-span-2" glowColor="accent" delay={0}>
             <div className="h-full flex flex-col">
-              <div className="relative h-40 md:h-48 overflow-hidden">
+              <div className="relative h-32 md:h-48 overflow-hidden">
                 <img
                   src="/images/landing/structured_ai_paths.png"
                   alt="Black student working on laptop"
@@ -475,7 +475,7 @@ const StoryBentoSection = () => {
 
           {/* Small feature - Flexible Pricing */}
           <BentoCard glowColor="emerald" delay={100}>
-            <div className="p-5 md:p-6 h-full flex flex-col justify-between min-h-[180px]">
+            <div className="p-5 md:p-6 md:h-full flex flex-col md:justify-between md:min-h-[180px]">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-500">
                 <span className="text-lg md:text-2xl font-bold text-emerald-400">$</span>
               </div>
@@ -492,7 +492,7 @@ const StoryBentoSection = () => {
 
           {/* Small feature - Community */}
           <BentoCard glowColor="cyan" delay={200}>
-            <div className="p-5 md:p-6 h-full flex flex-col justify-between min-h-[180px]">
+            <div className="p-5 md:p-6 md:h-full flex flex-col md:justify-between md:min-h-[180px]">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-500">
                 <Users className="w-5 h-5 md:w-6 md:h-6 text-cyan-400" />
               </div>
@@ -509,7 +509,7 @@ const StoryBentoSection = () => {
 
           {/* Small feature - Practical */}
           <BentoCard glowColor="amber" delay={300}>
-            <div className="p-5 md:p-6 h-full flex flex-col justify-between min-h-[180px]">
+            <div className="p-5 md:p-6 md:h-full flex flex-col md:justify-between md:min-h-[180px]">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-500">
                 <Lightbulb className="w-5 h-5 md:w-6 md:h-6 text-amber-400" />
               </div>
@@ -526,7 +526,7 @@ const StoryBentoSection = () => {
 
           {/* Small feature - Certificates */}
           <BentoCard glowColor="purple" delay={400}>
-            <div className="p-5 md:p-6 h-full flex flex-col justify-between min-h-[180px]">
+            <div className="p-5 md:p-6 md:h-full flex flex-col md:justify-between md:min-h-[180px]">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-500">
                 <GraduationCap className="w-5 h-5 md:w-6 md:h-6 text-purple-400" />
               </div>
@@ -545,7 +545,7 @@ const StoryBentoSection = () => {
           <BentoCard span="col-span-2" glowColor="accent" delay={500}>
             <div className="h-full flex flex-col md:flex-row overflow-hidden">
               {/* Image side */}
-              <div className="relative w-full md:w-2/5 h-44 md:h-auto overflow-hidden flex-shrink-0">
+              <div className="relative w-full md:w-2/5 h-36 md:h-auto overflow-hidden flex-shrink-0">
                 <img
                   src="/images/landing/built_for_global.png"
                   alt="Professionals working together"

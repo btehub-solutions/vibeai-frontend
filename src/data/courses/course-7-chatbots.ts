@@ -60,7 +60,6 @@ A chatbot is a software application designed to simulate human-like conversation
 
 ### Visuals:
 
-[IMAGE: A timeline diagram comparing the three eras of chatbots: Decision Trees (2010), NLP Intent-Based (2016), and Generative AI Agents (2023).]
 
 ### Implementation / Hands-On:
 
@@ -108,7 +107,6 @@ The goal is never to trick a user into thinking they are talking to a human—us
 
 ### Visuals:
 
-[IMAGE: A comparative chat UI mockup. Left side showing a bad bot with a generic "How can I help you?" text box. Right side showing a good bot with clear introductory limitations and structured button choices.]
 
 ### Implementation / Hands-On:
 
@@ -193,7 +191,6 @@ Voiceflow operates on a drag-and-drop canvas. You connect visual "nodes" to repr
 
 ### Visuals:
 
-[IMAGE: A screenshot of a Voiceflow canvas workspace, showing connected nodes with colored logic branches representing a 'Welcome' -> 'Capture Intent' -> 'Conditional Split' workflow.]
 
 ### Implementation / Hands-On:
 
@@ -240,7 +237,6 @@ A massive pain point in the past was deployment. A company might need a bot on t
 
 ### Visuals:
 
-[IMAGE: A diagram showing a central "Bot Logic Hub" branching out to different platform icons (Web Chat, WhatsApp, Messenger, Slack) illustrating Omnichannel deployment translating the same logic into platform-native UIs.]
 
 ### Implementation / Hands-On:
 
@@ -304,7 +300,6 @@ To build a reliable enterprise chatbot, you must use RAG. RAG combines the natur
 
 ### Visuals:
 
-[IMAGE: A complex flow diagram demonstrating the RAG pipeline. User query -> Vector Embedding -> Vector Database Search -> Retrieve Context -> Combine Context + Query into LLM Prompt -> Generate Final Grounded Answer.]
 
 ### Implementation / Hands-On:
 

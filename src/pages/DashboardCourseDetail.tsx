@@ -284,7 +284,15 @@ const DashboardCourseDetail = () => {
                                   {/* Lesson Header */}
                                   <div
                                     className="p-5 flex items-center justify-between cursor-pointer group"
-                                    onClick={() => isUnlocked && toggleLessonExpand(lessonId)}
+                                    onClick={() => {
+                                      if (!isUnlocked) return;
+                                      // Navigate directly to the lesson if it has an ID
+                                      if (lesson.id) {
+                                        navigate(`/dashboard/courses/${courseId}/lessons/${lesson.id}`);
+                                      } else {
+                                        toggleLessonExpand(lessonId);
+                                      }
+                                    }}
                                   >
                                     <div className="flex items-center gap-4 flex-1">
                                       {/* Status Icon */}
@@ -335,9 +343,16 @@ const DashboardCourseDetail = () => {
                                         </div>
                                       </div>
 
-                                      {/* Expand Icon */}
+                                      {/* Expand/Details Toggle */}
                                       {isUnlocked && (lesson.objectives || lesson.activity || lesson.quiz) && (
-                                        <div className="text-muted-foreground group-hover:text-foreground transition-colors">
+                                        <div
+                                          className="text-muted-foreground hover:text-foreground transition-colors p-1 rounded-md hover:bg-white/5"
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                            toggleLessonExpand(lessonId);
+                                          }}
+                                          title="Show lesson details"
+                                        >
                                           {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                                         </div>
                                       )}
@@ -391,7 +406,11 @@ const DashboardCourseDetail = () => {
                                       <button
                                         onClick={(e) => {
                                           e.stopPropagation();
-                                          toast.info(`Starting: ${lesson.title}`);
+                                          if (lesson.id) {
+                                            navigate(`/dashboard/courses/${courseId}/lessons/${lesson.id}`);
+                                          } else {
+                                            toast.info(`Starting: ${lesson.title}`);
+                                          }
                                         }}
                                         className="w-full py-3 rounded-xl bg-accent text-accent-foreground font-semibold hover:bg-accent/90 transition-all flex items-center justify-center gap-2"
                                       >

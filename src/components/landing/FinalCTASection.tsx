@@ -26,7 +26,7 @@ const FinalCTASection = () => {
     <section id="final-cta" className="section-padding bg-background relative overflow-hidden">
       {/* Interactive mouse-follow glow */}
       <div 
-        className="absolute w-[600px] h-[400px] rounded-full opacity-25 blur-[150px] transition-all duration-[2000ms] ease-out hidden md:block"
+        className="absolute w-[600px] h-[400px] rounded-full opacity-25 blur-[150px] transition-all duration-[2000ms] ease-out hidden md:block pointer-events-none"
         style={{
           background: 'radial-gradient(circle, hsl(85 100% 60%) 0%, hsl(170 100% 45%) 40%, transparent 70%)',
           left: `${mousePos.x}%`,
@@ -36,10 +36,10 @@ const FinalCTASection = () => {
       />
 
       {/* Static center glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] md:w-[800px] md:h-[400px] bg-accent/15 blur-[120px] md:blur-[180px] rounded-full animate-pulse" style={{ animationDuration: '4s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] md:w-[800px] md:h-[400px] bg-accent/15 blur-[120px] md:blur-[180px] rounded-full animate-pulse pointer-events-none" style={{ animationDuration: '4s' }} />
       
       {/* Animated border line at top */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent pointer-events-none" />
 
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
@@ -57,7 +57,7 @@ const FinalCTASection = () => {
         ))}
       </div>
       
-      <div className="container-main relative" ref={ref}>
+      <div className="container-main relative z-10" ref={ref}>
         <div 
           className="text-center max-w-4xl mx-auto"
           style={{

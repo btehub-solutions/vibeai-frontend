@@ -68,7 +68,6 @@ To achieve near 100% reliability, you must structure prompts methodically rather
 
 ### Visuals:
 
-[IMAGE: A diagram showing the 5 pillars of a production prompt stacked like building blocks to form a stable foundation for an LLM API call.]
 
 ### Implementation / Hands-On:
 
@@ -120,7 +119,6 @@ The amount of context you provide directly correlates to the accuracy of the out
 
 ### Visuals:
 
-[IMAGE: A graph plotting Prompt Accuracy (Y-axis) against the Number of Examples Provided (X-axis), showing a sharp logarithmic curve that plateaus around 5-8 examples.]
 
 ### Implementation / Hands-On:
 
@@ -195,7 +193,6 @@ Large Language Models do not possess working memory in the way humans do. If you
 
 ### Visuals:
 
-[IMAGE: A comparative flowchart showing a 'Direct Output' request leading to a hallucination, versus a 'CoT Scratchpad' request leading to accurate logic through sequential token generation.]
 
 ### Implementation / Hands-On:
 
@@ -242,7 +239,6 @@ Chain-of-Thought is strictly linear. If the model makes a slight logical mistake
 
 ### Visuals:
 
-[IMAGE: A node-based diagram illustrating ToT: A root node splitting into three thought branches, one branch hitting a red 'Dead End', and the system routing back to pursue a green 'Viable' path.]
 
 ### Implementation / Hands-On:
 
@@ -302,7 +298,6 @@ Developed by researchers at Stanford, DSPy fundamentally shifts prompting from *
 
 ### Visuals:
 
-[IMAGE: A conceptual diagram comparing 'Manual Prompting' (a human agonizing over text adjectives) versus 'DSPy Compilation' (a pipeline where Data + Signatures are compiled into optimized, dynamically generated prompts across different models).]
 
 ### Implementation / Hands-On:
 

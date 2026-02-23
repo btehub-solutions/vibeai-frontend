@@ -59,7 +59,6 @@ AI roles span a wide spectrum from heavily mathematical (building the models) to
 
 ### Visuals:
 
-[IMAGE: A spectrum chart mapping AI roles from 'Highly Technical / Math-Heavy' on the left to 'Strategic / Linguistic-Heavy' on the right, placing ML Engineers, Architects, PMs, and Prompt Engineers accordingly.]
 
 ### Implementation / Hands-On:
 
@@ -108,7 +107,6 @@ Simply linking to a GitHub repository with a basic markdown file is no longer en
 
 ### Visuals:
 
-[IMAGE: A split-screen comparison infographic. Left side: "Old Way" showing a boring resume and terminal code. Right side: "AI Way" showing a visual case study layout with live demo links and impact metrics.]
 
 ### Implementation / Hands-On:
 
@@ -192,7 +190,6 @@ The most lucrative niches exist at the intersection of AI capability and traditi
 
 ### Visuals:
 
-[IMAGE: A Venn diagram showing "Your Past Experience/Domain Knowledge" intersecting with "AI Capabilities," with the center labeled "Your Profitable Niche."]
 
 ### Implementation / Hands-On:
 
@@ -240,7 +237,6 @@ You must decouple your income from your time. Value-based pricing involves charg
 
 ### Visuals:
 
-[IMAGE: A comparative chart diagram. Left side: "Hourly Pricing" showing revenue dropping as AI speeds up coding. Right side: "Value-Based Pricing" showing high flat revenue based on client ROI.]
 
 ### Implementation / Hands-On:
 
@@ -302,9 +298,7 @@ While Silicon Valley obsesses over building Artificial General Intelligence, mas
 
 ### Visuals:
 
-[IMAGE: A workflow diagram illustrating the "80/20 Rule": Raw Data -> AI Processing (80% of work) -> Human Review Interface (20% of work) -> Final Output.]
 
-[IMAGE: An infographic comparing a "Thin Wrapper AI App" (high competition, low defensibility) vs a "Deep Workflow AI Tool" (low competition, high defensibility in a niche industry).]
 
 ### Implementation / Hands-On:
 

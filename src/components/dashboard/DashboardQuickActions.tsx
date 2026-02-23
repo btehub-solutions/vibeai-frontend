@@ -31,7 +31,7 @@ export function DashboardQuickActions() {
       icon: Calendar,
       title: "Schedule Session",
       desc: "Book time with a mentor",
-      to: "/dashboard/schedule",
+      to: "/dashboard/consultation",
       color: "from-amber-500/20 to-orange-500/20",
       accent: "text-amber-400",
     },

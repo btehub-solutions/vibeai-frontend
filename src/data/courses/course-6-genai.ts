@@ -58,9 +58,7 @@ The explosion in GenAI capabilities over the last few years is driven primarily 
 
 ### Visuals:
 
-[IMAGE: A comparative diagram showing an Analytical AI (input -> classification output) versus a Generative AI (noise/prompt input -> completely new image output).]
 
-[IMAGE: An illustration of a GAN architecture demonstrating the Generator and Discriminator fighting in a looping training cycle.]
 
 ### Implementation / Hands-On:
 
@@ -107,9 +105,7 @@ How can a computer turn a sentence into a photograph? It uses a mathematical pro
 
 ### Visuals:
 
-[IMAGE: A series of 5 panels demonstrating the Forward Diffusion process: Panel 1 shows a clear photo, progressively getting noisier until Panel 5 is pure static.]
 
-[IMAGE: A U-Net architecture diagram showing the Latent Space compression process in Stable Diffusion.]
 
 ### Implementation / Hands-On:
 
@@ -192,7 +188,6 @@ A great Midjourney prompt isn't just a standard sentence; it is a structured, gr
 
 ### Visuals:
 
-[IMAGE: A visually stunning grid of 4 Midjourney generations demonstrating 'Cinematic 35mm Photography' styling alongside the exact text prompt used to generate them.]
 
 ### Implementation / Hands-On:
 
@@ -242,9 +237,7 @@ The single biggest problem with foundational Generative AI art is *control*. If 
 
 ### Visuals:
 
-[IMAGE: A three-panel demonstration of ControlNet OpenPose. Left: A source photograph of a man dancing. Middle: The extracted blue/red/green stick figure skeleton. Right: The AI generated output of an astronaut dancing in exactly the same pose.]
 
-[IMAGE: A screenshot of ComfyUI showing a complex node-based diagram routing a text prompt and an image into a K-Sampler block.]
 
 ### Implementation / Hands-On:
 
@@ -303,7 +296,6 @@ Companies like **ElevenLabs** have revolutionized speech synthesis, allowing use
 
 ### Visuals:
 
-[IMAGE: A screenshot of the ElevenLabs generation interface showing text input alongside voice setting sliders for Stability, Similarity, and Style Exaggeration.]
 
 ### Implementation / Hands-On:
 
@@ -352,9 +344,7 @@ The video space is currently the bleeding edge of GenAI research.
 
 ### Visuals:
 
-[IMAGE: A split frame demonstrating a physics hallucination: Frame A shows an AI-generated person holding an intact glass of water. Frame B (2 seconds later) shows the glass morphing seamlessly into the person's hand geometry.]
 
-[IMAGE: A workflow graphic showing: Midjourney Image -> Upscaler -> Runway Image-To-Video Input -> Final Animated MP4 Output.]
 
 ### Implementation / Hands-On:
 

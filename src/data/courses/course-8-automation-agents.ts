@@ -60,9 +60,7 @@ To understand agents, we must look at their core components:
 
 ### Visuals:
 
-[IMAGE: A comparative table illustrating the differences between Chatbots (passive, single-turn, no tools) and AI Agents (active, multi-step, tool-equipped).]
 
-[IMAGE: A workflow diagram illustrating the ReAct (Reason + Act) loop: Observe -> Think -> Act -> Observe Result.]
 
 ### Implementation / Hands-On:
 
@@ -111,7 +109,6 @@ Regardless of the platform, automation relies on three fundamental blocks:
 
 ### Visuals:
 
-[IMAGE: An interface mockup comparing a linear Zapier workflow (straight line of blocks) versus a complex Make scenario with a Router branching out to three different paths.]
 
 ### Implementation / Hands-On:
 
@@ -201,7 +198,6 @@ In LangChain, an Agent involves several orchestrated abstractions working in har
 
 ### Visuals:
 
-[IMAGE: A flowchart showing the LangChain AgentExecutor loop mapping the interaction between the LLM Core, the Tool library, and the Output Parser.]
 
 ### Implementation / Hands-On:
 
@@ -251,7 +247,6 @@ An autonomous goal seeker dynamically breaks down a monumental goal into smaller
 
 ### Visuals:
 
-[IMAGE: A loop diagram illustrating the BabyAGI architecture: Task Prioritizer -> Task Executor -> Result Evaluator -> Task Creator -> Back to Prioritizer.]
 
 ### Implementation / Hands-On:
 
@@ -315,7 +310,6 @@ Systems like **CrewAI** and Microsoft's **AutoGen** solve highly complex busines
 
 ### Visuals:
 
-[IMAGE: A hierarchical flowchart showing a 'Manager Agent' dynamically delegating distinct tasks to a 'Researcher Agent', 'Coder Agent', and 'QA Testing Agent', and reviewing their collective output.]
 
 ### Implementation / Hands-On:
 

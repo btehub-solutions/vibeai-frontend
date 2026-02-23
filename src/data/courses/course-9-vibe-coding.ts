@@ -57,7 +57,6 @@ With the advent of Large Language Models (LLMs) specifically trained on code rep
 
 ### Visuals:
 
-[IMAGE: An infographic comparing 'The Old Way' (a stressed developer surrounded by open browser tabs of documentation) with 'The New Way' (a relaxed developer acting as an orchestrator, communicating intent to an AI engine).]
 
 ### Implementation / Hands-On:
 
@@ -103,9 +102,7 @@ GitHub Copilot is an *extension* that adds autocomplete capabilities into existi
 
 ### Visuals:
 
-[IMAGE: A side-by-side screenshot comparison. Left: GitHub Copilot showing inline grey text autocomplete. Right: Cursor showing its "Cmd+K" prompt bar hovering over a highlighted block of code.]
 
-[IMAGE: A diagram showing how Cursor's Global Context indexes every file in a repository to provide accurate answers about the architecture.]
 
 ### Implementation / Hands-On:
 
@@ -190,7 +187,6 @@ To prevent the LLM from making assumptions, your prompt must explicitly state th
 
 ### Visuals:
 
-[IMAGE: A flowchart showing 'The Loop of Vibe Coding': 1. Write structured prompt -> 2. AI Generates Diff -> 3. Human Reviews Logic -> 4. Accept/Reject or Refine Prompt -> Back to start.]
 
 ### Implementation / Hands-On:
 
@@ -239,7 +235,6 @@ Beyond fixing broken code, AI excels at improving working code. You can mandate 
 
 ### Visuals:
 
-[IMAGE: A screenshot split-view. Top: A dense block of messy, uncommented legacy code throwing a red console error. Bottom: The AI's proposed fix showing the refactored, cleanly commented code with the bug resolved in green syntax highlighting.]
 
 ### Implementation / Hands-On:
 
@@ -300,7 +295,6 @@ The key to building massive apps quickly with AI is proceeding in a logical vert
 
 ### Visuals:
 
-[IMAGE: An architectural layer cake diagram showing the AI workflow. Base Layer: 'DB Schema Generation'. Middle Layer: 'API Route Creation'. Top Layer: 'Frontend UI Rendering', indicating the structured path of rapid app building.]
 
 ### Implementation / Hands-On:
 
