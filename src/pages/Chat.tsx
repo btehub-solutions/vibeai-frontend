@@ -12,8 +12,8 @@ const Chat = () => {
         
         <div className="w-full relative z-10">
           <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">AI Playground</h1>
-            <p className="text-muted-foreground">Test our intelligent assistant in real-time</p>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">AI Learning Mentor</h1>
+            <p className="text-muted-foreground">Your adaptive, context-aware AI tutor powered by multi-agent intelligence</p>
           </div>
           <AIChatInterface />
         </div>

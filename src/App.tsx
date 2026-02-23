@@ -19,6 +19,7 @@ import DashboardConsultation from "./pages/DashboardConsultation";
 import NotFound from "./pages/NotFound";
 import Chat from "./pages/Chat";
 import ScrollToTop from "./components/ScrollToTop";
+import VibeAIChatWidget from "./components/chat/VibeAIChatWidget";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -28,6 +29,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <VibeAIChatWidget />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
