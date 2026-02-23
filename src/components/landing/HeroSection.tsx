@@ -90,14 +90,10 @@ const HeroSection = () => {
             <div className="animate-text-reveal animate-delay-300 flex flex-col w-full sm:flex-row items-center justify-center lg:justify-start gap-4">
               <Link
                 to="/dashboard"
-                className="group relative w-full sm:w-auto text-center px-8 py-4 text-base md:text-lg font-semibold rounded-xl overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(180,255,50,0.2)] hover:shadow-[0_0_30px_rgba(180,255,50,0.4)]"
-                style={{
-                  background: 'linear-gradient(135deg, hsl(85 100% 60%), hsl(170 100% 45%))',
-                  color: 'hsl(150 60% 5%)',
-                }}
+                className="btn-primary group w-full sm:w-auto text-center text-base md:text-lg font-semibold rounded-xl"
               >
-                <span className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-all duration-300" />
                 <span className="relative flex items-center justify-center gap-2">
+                  <Star className="w-5 h-5 hidden sm:block" />
                   Start Your AI Journey
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </span>

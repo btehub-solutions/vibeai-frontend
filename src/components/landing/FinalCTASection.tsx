@@ -90,11 +90,7 @@ const FinalCTASection = () => {
             
             <Link 
               to="/dashboard" 
-              className="relative inline-flex items-center gap-3 text-base md:text-lg px-10 py-5 md:px-14 md:py-6 rounded-full font-bold transition-all duration-500 hover:scale-105 hover:shadow-[0_0_60px_-15px_rgba(180,255,50,0.5)]"
-              style={{
-                background: 'linear-gradient(135deg, hsl(85 100% 60%), hsl(170 100% 45%))',
-                color: 'hsl(150 60% 5%)',
-              }}
+              className="btn-primary flex items-center justify-center gap-3 text-base md:text-lg px-8 py-5 md:px-12 md:py-6 shadow-xl shadow-accent/10"
             >
               <Sparkles className="w-5 h-5" />
               Start Your AI Journey — Free

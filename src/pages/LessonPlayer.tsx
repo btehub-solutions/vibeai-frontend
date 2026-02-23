@@ -376,8 +376,8 @@ const LessonPlayer = () => {
         </aside>
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto p-6 lg:p-12 flex justify-center">
-          <div className="max-w-4xl w-full space-y-8">
+        <div className="flex-1 overflow-y-auto p-3 sm:p-6 lg:p-12 flex justify-center">
+          <div className="max-w-4xl w-full space-y-6 sm:space-y-8">
             {/* Lesson Header */}
             <div>
               <div className="flex items-center gap-3 mb-4">
@@ -389,12 +389,12 @@ const LessonPlayer = () => {
                   {currentLesson.duration}
                 </span>
               </div>
-              <h2 className="text-4xl font-bold mb-4">{currentLesson.title}</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">{currentLesson.title}</h2>
             </div>
 
             {/* Learning Objectives */}
             {currentLesson.objectives && currentLesson.objectives.length > 0 && (
-              <div className="card-elevated p-6 border-l-4 border-accent">
+              <div className="card-elevated p-4 sm:p-6 border-l-4 border-accent">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
                     <Target className="w-5 h-5 text-accent" />
@@ -413,7 +413,7 @@ const LessonPlayer = () => {
             )}
 
             {/* Main Content Viewer */}
-            <div className="card-elevated p-8">
+            <div className="card-elevated p-4 sm:p-6 md:p-8">
               {currentLesson.type === 'video' ? (
                 <div className="space-y-6">
                   <div className="aspect-video bg-black rounded-xl flex items-center justify-center relative overflow-hidden group cursor-pointer">
@@ -642,7 +642,7 @@ const LessonPlayer = () => {
 
             {/* Hands-on Activity */}
             {currentLesson.activity && (
-              <div className="card-elevated p-6 border-l-4 border-blue-500">
+              <div className="card-elevated p-4 sm:p-6 border-l-4 border-blue-500">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
                     <Zap className="w-5 h-5 text-blue-400" />
@@ -654,7 +654,7 @@ const LessonPlayer = () => {
             )}
 
             {/* Notes Section */}
-            <div className="card-elevated p-6">
+            <div className="card-elevated p-4 sm:p-6">
               <button
                 onClick={() => setShowNotes(!showNotes)}
                 className="w-full flex items-center justify-between mb-4"
@@ -684,12 +684,12 @@ const LessonPlayer = () => {
             </div>
 
             {/* Footer Actions */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-border">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 pt-6 sm:pt-8 border-t border-border">
               <Button 
                 variant="outline"
                 onClick={() => prevLesson && navigate(`/dashboard/courses/${courseId}/lessons/${prevLesson.id}`)}
                 disabled={!prevLesson}
-                className="flex-1 sm:flex-none min-w-[140px]"
+                className="w-full sm:w-auto sm:min-w-[140px] py-6 sm:py-6 text-base sm:text-lg"
               >
                 <ChevronLeft size={16} className="mr-2" />
                 Previous
@@ -697,7 +697,7 @@ const LessonPlayer = () => {
 
               <Button 
                 onClick={handleComplete}
-                className="flex-1 sm:flex-none bg-accent hover:bg-accent/90 text-white min-w-[180px] py-6 text-lg font-semibold shadow-lg shadow-accent/20"
+                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-white sm:min-w-[180px] py-6 sm:py-6 text-base sm:text-lg font-semibold shadow-lg shadow-accent/20"
                 disabled={complete}
               >
                 {complete ? (
@@ -707,8 +707,8 @@ const LessonPlayer = () => {
                   </>
                 ) : nextLesson ? (
                   <>
-                    Complete & Continue
-                    <ChevronRight size={18} className="ml-2" />
+                    <span className="truncate">Complete & Continue</span>
+                    <ChevronRight size={18} className="ml-1 sm:ml-2 flex-shrink-0" />
                   </>
                 ) : (
                   <>
