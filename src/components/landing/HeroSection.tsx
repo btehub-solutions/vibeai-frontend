@@ -32,14 +32,29 @@ const HeroSection = () => {
 
       {/* MOBILE BACKGROUND IMAGE: Absolutely positioned behind text on small screens */}
       {/* This integrates the image perfectly on mobile instead of stacking it below */}
-      <div className="absolute inset-0 z-0 lg:hidden opacity-0 animate-fade-in pointer-events-none">
+      <div className="absolute inset-0 z-0 lg:hidden opacity-0 animate-fade-in pointer-events-none overflow-hidden flex items-start justify-center pt-[15vh]">
+        {/* Deep dark overlays to ensure text readability & blend edges */}
         <div className="absolute inset-0 bg-background/80 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-transparent z-10" />
+        
+        {/* We use object-contain so the image "zooms out" and reveals its full width (human and AI faces). 
+            We also include an inline keyframe animation to give it a cinematic slow zoom-out effect on load. */}
         <img 
           src="/hero-image.png" 
           alt="AI Background" 
-          className="w-full h-full object-cover object-[center_top] opacity-60"
+          className="relative w-full h-auto object-contain opacity-60 z-0"
+          style={{ animation: 'mobileZoomOut 12s cubic-bezier(0.2, 0.8, 0.2, 1) forwards' }}
         />
+        <style>
+          {`
+            @keyframes mobileZoomOut {
+              0% { transform: scale(1.5); opacity: 0; filter: blur(4px); }
+              15% { opacity: 0.6; }
+              100% { transform: scale(1); opacity: 0.6; filter: blur(0px); }
+            }
+          `}
+        </style>
       </div>
 
       {/* Main Content Container */}
