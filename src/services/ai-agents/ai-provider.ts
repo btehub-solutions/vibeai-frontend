@@ -1,18 +1,19 @@
 // ═══════════════════════════════════════════════════════════════════════
-// AI Provider — Gemini API integration with rich conversation context
+// AI Provider — OpenAI API integration with rich conversation context
 // ═══════════════════════════════════════════════════════════════════════
 
-import { GoogleGenAI } from '@google/genai';
+import OpenAI from 'openai';
 import { ChatMessage } from './types';
 
-let genAIClient: GoogleGenAI | null = null;
+let openaiClient: OpenAI | null = null;
 
-function getClient(): GoogleGenAI {
-  if (genAIClient) return genAIClient;
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY || localStorage.getItem('GEMINI_API_KEY') || '';
-  if (!apiKey) throw new Error('Missing AI API Key. Set VITE_GEMINI_API_KEY in .env.');
-  genAIClient = new GoogleGenAI({ apiKey });
-  return genAIClient;
+function getClient(): OpenAI {
+  if (openaiClient) return openaiClient;
+  const apiKey = import.meta.env.VITE_OPENAI_API_KEY || localStorage.getItem('OPENAI_API_KEY') || '';
+  
+  if (!apiKey) throw new Error('Missing AI API Key.');
+  openaiClient = new OpenAI({ apiKey, dangerouslyAllowBrowser: true });
+  return openaiClient;
 }
 
 export async function generateAIResponse(
@@ -22,28 +23,32 @@ export async function generateAIResponse(
   options: { maxTokens?: number; temperature?: number; model?: string } = {}
 ): Promise<string> {
   const client = getClient();
-  const model = options.model || 'gemini-2.5-flash';
+  const model = options.model || 'gpt-4o';
 
-  // Build rich conversation context — include more history for better context
-  const recentHistory = conversationHistory.slice(-12);
-  const contextMessages = recentHistory
-    .map(msg => `[${msg.role === 'user' ? 'LEARNER' : 'VIBEAI'}]: ${msg.content}`)
-    .join('\n\n');
+  // Build OpenAI messages array for maximum intelligence context
+  const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
+    { role: 'system', content: systemPrompt }
+  ];
 
-  const fullPrompt = contextMessages
-    ? `${systemPrompt}\n\n--- CONVERSATION SO FAR ---\n${contextMessages}\n\n--- NEW MESSAGE ---\n[LEARNER]: ${userMessage}\n\n[VIBEAI]:`
-    : `${systemPrompt}\n\n[LEARNER]: ${userMessage}\n\n[VIBEAI]:`;
+  // Include recent history
+  const recentHistory = conversationHistory.slice(-15);
+  for (const msg of recentHistory) {
+    messages.push({
+      role: msg.role === 'user' ? 'user' : 'assistant',
+      content: msg.content
+    });
+  }
+
+  messages.push({ role: 'user', content: userMessage });
 
   try {
-    const response = await client.models.generateContent({
+    const response = await client.chat.completions.create({
       model,
-      contents: fullPrompt,
-      config: {
-        maxOutputTokens: options.maxTokens || 4096,
-        temperature: options.temperature || 0.7,
-      },
+      messages,
+      max_tokens: options.maxTokens || 4096,
+      temperature: options.temperature || 0.7,
     });
-    return response.text || 'I apologize, I couldn\'t generate a response. Please try again.';
+    return response.choices[0]?.message?.content || 'I apologize, I couldn\'t generate a response. Please try again.';
   } catch (error) {
     console.error('[VibeAI Provider] Error:', error);
     if (error instanceof Error) {
@@ -58,16 +63,29 @@ export async function generateStructuredResponse<T>(
   userMessage: string,
   fallback: T
 ): Promise<T> {
+  const client = getClient();
   try {
-    const raw = await generateAIResponse(systemPrompt, userMessage, [], { temperature: 0.2, maxTokens: 256 });
+    const response = await client.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [
+        { role: 'system', content: systemPrompt + '\n\nIMPORTANT: Return ONLY a raw, perfectly valid JSON object string. Do not use Markdown code blocks (like ```json). Just the JSON object itself.' },
+        { role: 'user', content: userMessage }
+      ],
+      temperature: 0.2,
+      max_tokens: 1024,
+      response_format: { type: 'json_object' }
+    });
+    
+    const raw = response.choices[0]?.message?.content || '';
     const jsonMatch = raw.match(/\{[\s\S]*\}/);
     if (!jsonMatch) return fallback;
     return JSON.parse(jsonMatch[0]) as T;
-  } catch {
+  } catch (err) {
+    console.error('[VibeAI Provider] Structured Response Error:', err);
     return fallback;
   }
 }
 
 export function isAIAvailable(): boolean {
-  return !!(import.meta.env.VITE_GEMINI_API_KEY || localStorage.getItem('GEMINI_API_KEY'));
+  return true;
 }
