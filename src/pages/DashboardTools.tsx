@@ -46,51 +46,51 @@ const DashboardTools = () => {
         />
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8">
-          <div className="card-elevated p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-3 mb-1 sm:mb-2 text-center sm:text-left">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-accent/20 flex items-center justify-center">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6 mb-8">
+          <div className="card-elevated p-3 sm:p-5">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-1 sm:gap-3 mb-1 sm:mb-2 text-center sm:text-left">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-accent/20 flex items-center justify-center flex-shrink-0">
                 <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
-              <div>
-                <p className="text-xl sm:text-2xl font-bold">{stats.total}</p>
-                <p className="text-[10px] sm:text-xs text-muted-foreground">Total Tools</p>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-bold truncate">{stats.total}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Total Tools</p>
               </div>
             </div>
           </div>
 
-          <div className="card-elevated p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-3 mb-1 sm:mb-2 text-center sm:text-left">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-orange-500/20 flex items-center justify-center">
+          <div className="card-elevated p-3 sm:p-5">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-1 sm:gap-3 mb-1 sm:mb-2 text-center sm:text-left">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-orange-500/20 flex items-center justify-center flex-shrink-0">
                 <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
               </div>
-              <div>
-                <p className="text-xl sm:text-2xl font-bold">{stats.trending}</p>
-                <p className="text-[10px] sm:text-xs text-muted-foreground">Trending</p>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-bold truncate">{stats.trending}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Trending</p>
               </div>
             </div>
           </div>
 
-          <div className="card-elevated p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-3 mb-1 sm:mb-2 text-center sm:text-left">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+          <div className="card-elevated p-3 sm:p-5">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-1 sm:gap-3 mb-1 sm:mb-2 text-center sm:text-left">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
                 <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500" />
               </div>
-              <div>
-                <p className="text-xl sm:text-2xl font-bold">{stats.internal}</p>
-                <p className="text-[10px] sm:text-xs text-muted-foreground">Internal</p>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-bold truncate">{stats.internal}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Internal</p>
               </div>
             </div>
           </div>
 
-          <div className="card-elevated p-4 sm:p-5">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-3 mb-1 sm:mb-2 text-center sm:text-left">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
+          <div className="card-elevated p-3 sm:p-5">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-1 sm:gap-3 mb-1 sm:mb-2 text-center sm:text-left">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0">
                 <Target className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" />
               </div>
-              <div>
-                <p className="text-xl sm:text-2xl font-bold">{stats.categories}</p>
-                <p className="text-[10px] sm:text-xs text-muted-foreground">Categories</p>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-bold truncate">{stats.categories}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">Categories</p>
               </div>
             </div>
           </div>
@@ -150,11 +150,11 @@ const DashboardTools = () => {
         </div>
 
         {/* Tools Grid */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
           {filteredTools.map((tool) => (
             <div
               key={tool.id}
-              className="card-elevated p-5 md:p-6 group hover:border-accent/20 transition-all duration-300 flex flex-col"
+              className="card-elevated p-4 sm:p-6 group hover:border-accent/20 transition-all duration-300 flex flex-col min-w-0"
             >
               <div className="flex items-start justify-between mb-5">
                 <div>

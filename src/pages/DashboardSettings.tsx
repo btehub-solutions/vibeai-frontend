@@ -14,6 +14,7 @@ const DashboardSettings = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
   const [fullName, setFullName] = useState("");
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
     const getUser = async () => {
@@ -44,17 +45,18 @@ const DashboardSettings = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background lg:flex">
-      <DashboardSidebar />
+    <div className="min-h-screen bg-background lg:flex overflow-hidden">
+      <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
-      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full">
+      <main className="flex-1 p-3 sm:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full min-w-0">
         <DashboardHeader
-          title="Settings"
-          subtitle="Manage your account preferences"
+          title="Account Settings"
+          subtitle="Manage preferences"
           user={user}
+          onMenuClick={() => setIsMobileOpen(true)}
         />
 
-        <div className="max-w-xl mt-8 space-y-8">
+        <div className="max-w-xl mt-6 lg:mt-8 space-y-6 lg:space-y-8">
           {/* Profile Section */}
           <div className="card-elevated p-5 md:p-8">
             <h3 className="text-lg md:text-xl font-semibold mb-6">Profile Information</h3>

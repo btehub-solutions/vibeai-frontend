@@ -99,7 +99,7 @@ function RecommendationCard({ rec, index }: { rec: LessonRecommendation; index: 
     >
       <Link
         to={`/dashboard/courses/${rec.courseId}/lessons/${rec.lessonId}`}
-        className="group flex items-start gap-2 sm:gap-3 p-3 sm:p-3.5 rounded-xl bg-secondary/30 hover:bg-secondary/60 border border-white/5 hover:border-accent/20 transition-all"
+        className="group flex items-start gap-2 sm:gap-3 p-2.5 sm:p-3.5 rounded-xl bg-secondary/30 hover:bg-secondary/60 border border-white/5 hover:border-accent/20 transition-all"
       >
         <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${color}`}>
           <TypeIcon size={14} className="sm:w-4 sm:h-4" />
@@ -212,7 +212,7 @@ export function IntelligencePanel() {
       )}
 
       {/* ── Intelligence Dashboard ──────────────────────────────────── */}
-      <div className="card-elevated p-4 sm:p-6 mb-3 sm:mb-6 overflow-hidden min-w-0">
+      <div className="card-elevated p-3 sm:p-6 mb-3 sm:mb-6 overflow-hidden min-w-0">
         <div className="flex items-center gap-3 mb-6">
           <div className="p-2 sm:p-2.5 rounded-xl bg-accent/10 flex-shrink-0">
             <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
@@ -279,7 +279,7 @@ export function IntelligencePanel() {
 
       {/* ── Adaptive Recommendations ─────────────────────────────────── */}
       {path && (
-        <div className="card-elevated p-4 sm:p-6 min-w-0 overflow-hidden">
+        <div className="card-elevated p-3 sm:p-6 min-w-0 overflow-hidden">
           <div className="flex items-center gap-2.5 mb-5">
             <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
               <Sparkles size={16} className="text-purple-400" />

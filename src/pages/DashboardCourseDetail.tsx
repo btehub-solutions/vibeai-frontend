@@ -21,6 +21,7 @@ const DashboardCourseDetail = () => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [expandedLessons, setExpandedLessons] = useState<Set<string>>(new Set());
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const course = getCourseMetadata(courseId || "");
 
@@ -75,9 +76,9 @@ const DashboardCourseDetail = () => {
 
   if (!course || course.title === "Unknown Course") {
     return (
-      <div className="min-h-screen bg-background lg:flex">
-        <DashboardSidebar />
-        <main className="flex-1 p-6 lg:p-10 flex flex-col items-center justify-center">
+      <div className="min-h-screen bg-background lg:flex overflow-hidden">
+        <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
+        <main className="flex-1 p-3 sm:p-10 flex flex-col items-center justify-center min-w-0">
           <h2 className="text-2xl font-bold mb-4">Course not found</h2>
           <Button onClick={() => navigate("/dashboard/courses")}>
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -111,10 +112,10 @@ const DashboardCourseDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background lg:flex">
-      <DashboardSidebar />
+    <div className="min-h-screen bg-background lg:flex overflow-hidden">
+      <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
-      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full">
+      <main className="flex-1 p-3 sm:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full min-w-0">
         <div className="max-w-6xl mx-auto">
           <Button 
             variant="ghost" 
@@ -129,6 +130,7 @@ const DashboardCourseDetail = () => {
             title={course.title}
             subtitle={course.category}
             user={user}
+            onMenuClick={() => setIsMobileOpen(true)}
           />
 
           <div className="grid lg:grid-cols-3 gap-8 mt-8">

@@ -378,7 +378,7 @@ const LessonPlayer = () => {
         </aside>
 
         {/* Content Area */}
-        <div className="flex-1 overflow-x-hidden overflow-y-auto w-full no-scrollbar p-4 sm:p-6 lg:p-12 flex justify-center">
+        <div className="flex-1 overflow-x-hidden overflow-y-auto w-full no-scrollbar p-3 sm:p-6 lg:p-12 flex justify-center">
           <div className="max-w-4xl w-full space-y-6 lg:space-y-8">
             {/* Lesson Header */}
             <div>

@@ -22,6 +22,7 @@ const DashboardSchedule = () => {
   const { user } = useUser();
   const { success, info } = useNotification();
   const [registeredEvents, setRegisteredEvents] = useState<number[]>([]);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const handleRegister = (id: number, title: string) => {
     setRegisteredEvents([...registeredEvents, id]);
@@ -29,19 +30,20 @@ const DashboardSchedule = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background lg:flex">
-      <DashboardSidebar />
+    <div className="min-h-screen bg-background lg:flex overflow-hidden">
+      <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
-      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full">
+      <main className="flex-1 p-3 sm:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full min-w-0">
         <DashboardHeader
           title="Schedule"
-          subtitle="Upcoming programs, workshops, and meetings"
+          subtitle="Upcoming programs and workshops"
           user={user}
+          onMenuClick={() => setIsMobileOpen(true)}
         />
 
         {/* Upcoming Events */}
-        <div className="mb-16">
-          <h2 className="text-xl font-semibold text-foreground mb-8 flex items-center gap-2">
+        <div className="mb-12">
+          <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
             <Calendar className="w-5 h-5 text-accent" />
             Upcoming Events
           </h2>

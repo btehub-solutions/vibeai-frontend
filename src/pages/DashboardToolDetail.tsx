@@ -16,14 +16,15 @@ const DashboardToolDetail = () => {
   const navigate = useNavigate();
   const { user } = useUser();
   const [activeTab, setActiveTab] = useState<"overview" | "usecases" | "proscons" | "start">("overview");
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   
   const tool = tools.find((t) => t.id === Number(toolId));
 
   if (!tool) {
     return (
-      <div className="min-h-screen bg-background lg:flex">
-        <DashboardSidebar />
-        <main className="flex-1 p-6 lg:p-10 flex flex-col items-center justify-center">
+      <div className="min-h-screen bg-background lg:flex overflow-hidden">
+        <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
+        <main className="flex-1 p-3 sm:p-10 flex flex-col items-center justify-center min-w-0">
           <h2 className="text-2xl font-bold mb-4">Tool not found</h2>
           <Button onClick={() => navigate("/dashboard/tools")}>
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -42,24 +43,25 @@ const DashboardToolDetail = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background lg:flex">
-      <DashboardSidebar />
+    <div className="min-h-screen bg-background lg:flex overflow-hidden">
+      <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
-      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full">
+      <main className="flex-1 p-3 sm:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full min-w-0">
         <div className="max-w-5xl mx-auto">
           <Button 
             variant="ghost" 
-            className="mb-6 pl-0 hover:pl-2 transition-all"
+            className="mb-4 sm:mb-6 pl-0 hover:pl-2 transition-all"
             onClick={() => navigate("/dashboard/tools")}
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Tools
           </Button>
-
+ 
           <DashboardHeader
             title={tool.name}
             subtitle={tool.category}
             user={user}
+            onMenuClick={() => setIsMobileOpen(true)}
           />
 
 

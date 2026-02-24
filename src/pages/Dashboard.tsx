@@ -107,14 +107,14 @@ const Dashboard = () => {
       <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
       <main className="flex-1 overflow-x-hidden overflow-y-auto w-full lg:h-screen min-w-0">
-        <div className="max-w-7xl mx-auto p-3 sm:p-6 lg:p-10 space-y-6 sm:space-y-8 min-w-0">
+        <div className="max-w-7xl mx-auto p-2 sm:p-6 lg:p-10 space-y-4 sm:space-y-8 min-w-0">
           <DashboardHeader
-            title={`Welcome back, ${
+            title={`Welcome, ${
               user?.user_metadata?.full_name?.split(" ")[0] ||
               user?.email?.split("@")[0] ||
               "Member"
             }`}
-            subtitle="Ready to level up your AI skills today?"
+            subtitle="Ready to level up your AI skills?"
             user={user}
             onMenuClick={() => setIsMobileOpen(true)}
           />
@@ -123,7 +123,7 @@ const Dashboard = () => {
             variants={container}
             initial="hidden"
             animate="show"
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
           >
             {/* Quick Actions */}
             <motion.div variants={item}>
@@ -133,31 +133,31 @@ const Dashboard = () => {
             {/* Stats Grid */}
             <motion.div
               variants={item}
-              className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4"
             >
               {statCards.map((stat, idx) => (
                 <motion.div
                   whileHover={{ y: -4, scale: 1.02 }}
                   key={stat.label}
-                  className="card-elevated p-4 sm:p-6 transition-all duration-300 border-t border-white/5"
+                  className="card-elevated p-3 sm:p-6 transition-all duration-300 border-t border-white/5 min-w-0"
                 >
-                  <div className="flex items-start justify-between mb-2 sm:mb-4">
+                  <div className="flex items-start justify-between mb-2">
                     <div
-                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl ${stat.bg} flex items-center justify-center`}
+                      className={`w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl ${stat.bg} flex items-center justify-center flex-shrink-0`}
                     >
-                      <stat.icon size={18} className={stat.color} />
+                      <stat.icon size={16} className={stat.color} />
                     </div>
                     {idx === 3 && (
-                      <span className="flex h-2 w-2 sm:h-3 sm:w-3 relative">
+                      <span className="flex h-2 w-2 relative">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 sm:h-3 sm:w-3 bg-orange-500"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
                       </span>
                     )}
                   </div>
-                  <p className="text-xl sm:text-3xl font-bold text-foreground mb-0.5 sm:mb-1 tracking-tight">
+                  <p className="text-lg sm:text-3xl font-bold text-foreground mb-0.5 tracking-tight truncate">
                     {stat.value}
                   </p>
-                  <p className="text-[10px] sm:text-sm text-muted-foreground">{stat.label}</p>
+                  <p className="text-[10px] sm:text-sm text-muted-foreground truncate">{stat.label}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -166,12 +166,12 @@ const Dashboard = () => {
               {/* Main Content Area */}
               <div className="lg:col-span-2 space-y-6">
                 {/* Activity Chart */}
-                <motion.div variants={item} className="h-[300px] md:h-[400px]">
+                <motion.div variants={item} className="h-[280px] sm:h-[350px] md:h-[400px]">
                   <LearningActivityChart />
                 </motion.div>
 
                 {/* Continue Learning */}
-                <motion.div variants={item} className="card-elevated p-4 sm:p-8">
+                <motion.div variants={item} className="card-elevated p-3 sm:p-8">
                   <div className="flex items-center justify-between mb-6 sm:mb-8">
                     <div className="flex items-center gap-2 sm:gap-3">
                       <div className="p-2 rounded-lg bg-accent/10">
@@ -260,12 +260,12 @@ const Dashboard = () => {
                 </motion.div>
 
                 {/* Progress Summary */}
-                <motion.div variants={item} className="card-elevated p-6 bg-gradient-to-b from-card to-secondary/30">
-                  <h2 className="text-lg font-semibold text-foreground mb-6">
+                <motion.div variants={item} className="card-elevated p-3 sm:p-6 bg-gradient-to-b from-card to-secondary/30">
+                  <h2 className="text-lg font-semibold text-foreground mb-4 sm:mb-6">
                     Weekly Goal
                   </h2>
-                  <div className="relative pt-2 flex justify-center mb-8">
-                    <div className="relative w-32 h-32 sm:w-40 sm:h-40">
+                  <div className="relative pt-1 sm:pt-2 flex justify-center mb-6 sm:mb-8">
+                    <div className="relative w-28 h-28 sm:w-40 sm:h-40">
                       <svg className="w-full h-full transform -rotate-90">
                         <circle
                           cx="50%"
@@ -318,8 +318,8 @@ const Dashboard = () => {
                 </motion.div>
 
                 {/* Recent Activity */}
-                <motion.div variants={item} className="card-elevated p-6">
-                  <div className="flex items-center gap-3 mb-6">
+                <motion.div variants={item} className="card-elevated p-3 sm:p-6">
+                  <div className="flex items-center gap-3 mb-4 sm:mb-6">
                     <Activity size={18} className="text-accent" />
                     <h2 className="text-lg font-semibold text-foreground">
                       Recent Activity
@@ -349,8 +349,8 @@ const Dashboard = () => {
                               <Award size={14} className="text-purple-400" />
                             )}
                           </div>
-                          <div className="flex-1 min-w-0 pt-1">
-                            <p className="font-medium text-foreground text-sm leading-tight">
+                          <div className="flex-1 min-w-0 pt-0.5 sm:pt-1">
+                            <p className="font-medium text-foreground text-sm leading-tight truncate">
                               {activity.title}
                             </p>
                             <p className="text-xs text-muted-foreground mt-1">

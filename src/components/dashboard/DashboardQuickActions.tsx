@@ -36,13 +36,13 @@ export function DashboardQuickActions() {
         <Link
           key={index}
           to={action.to}
-          className={`relative group overflow-hidden rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/5 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:border-white/10 bg-gradient-to-br ${action.color} backdrop-blur-sm`}
+          className={`relative group overflow-hidden rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-white/5 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:border-white/10 bg-gradient-to-br ${action.color} backdrop-blur-sm min-w-0`}
         >
           <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
           
-          <div className="relative z-10 flex flex-row sm:flex-col items-center sm:items-start gap-3 sm:gap-4 min-w-0 w-full">
-            <div className={`p-2 sm:p-3 rounded-lg sm:rounded-xl bg-white/10 backdrop-blur-md ${action.accent} group-hover:scale-110 transition-transform flex-shrink-0`}>
-              <action.icon size={20} className="sm:w-6 sm:h-6" />
+          <div className="relative z-10 flex flex-row sm:flex-col items-center sm:items-start gap-2 sm:gap-4 min-w-0 w-full">
+            <div className={`p-1.5 sm:p-3 rounded-lg sm:rounded-xl bg-white/10 backdrop-blur-md ${action.accent} group-hover:scale-110 transition-transform flex-shrink-0`}>
+              <action.icon size={18} className="sm:w-6 sm:h-6" />
             </div>
             
             <div className="min-w-0 flex-1 sm:w-full">

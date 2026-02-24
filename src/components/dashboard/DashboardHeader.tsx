@@ -124,7 +124,7 @@ const DashboardHeader = ({ title, subtitle, user, onMenuClick }: DashboardHeader
                 className="fixed inset-0 z-40" 
                 onClick={() => setShowNotifications(false)}
               />
-              <div className="absolute right-0 top-full mt-2 w-80 bg-card border border-white/[0.06] rounded-xl shadow-2xl z-50 overflow-hidden">
+              <div className="absolute right-0 top-full mt-2 w-[calc(100vw-2rem)] sm:w-80 bg-card border border-white/[0.06] rounded-xl shadow-2xl z-50 overflow-hidden">
                 <div className="p-4 border-b border-white/[0.06] flex items-center justify-between">
                   <h3 className="font-semibold text-foreground">Notifications</h3>
                   <button 

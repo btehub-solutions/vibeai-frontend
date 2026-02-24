@@ -17,6 +17,7 @@ const DashboardAnnouncements = () => {
   const { user } = useUser();
   const { success } = useNotification();
   const [announcements, setAnnouncements] = useState(initialAnnouncements);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const handleDismiss = (id: number) => {
     setAnnouncements((prev) => prev.filter((a) => a.id !== id));
@@ -29,14 +30,15 @@ const DashboardAnnouncements = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background lg:flex">
-      <DashboardSidebar />
+    <div className="min-h-screen bg-background lg:flex overflow-hidden">
+      <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
-      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full">
+      <main className="flex-1 p-3 sm:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full min-w-0">
         <DashboardHeader
           title="Announcements"
-          subtitle="Stay updated with the latest news and updates"
+          subtitle="Stay updated with news"
           user={user}
+          onMenuClick={() => setIsMobileOpen(true)}
         />
 
         <div className="max-w-4xl mx-auto">

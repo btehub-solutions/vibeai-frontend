@@ -38,8 +38,8 @@ export function LearningActivityChart() {
   const data = view === "Weekly" ? weeklyData : monthlyData;
 
   return (
-    <div className="card-elevated p-4 sm:p-6 h-full flex flex-col overflow-hidden">
-      <div className="flex items-center justify-between mb-4 sm:mb-6">
+    <Card className="card-elevated border-none p-3 sm:p-6 min-w-0 overflow-hidden h-full flex flex-col">
+      <CardHeader className="flex flex-row items-center justify-between pb-4 sm:pb-8 space-y-0 px-0">
         <h2 className="text-lg sm:text-xl font-semibold text-foreground">
           Learning Activity
         </h2>
@@ -51,7 +51,7 @@ export function LearningActivityChart() {
           <option value="Weekly">Weekly</option>
           <option value="Monthly">Monthly</option>
         </select>
-      </div>
+      </CardHeader>
       
       <div className="flex-1 w-full min-h-[200px] sm:min-h-[250px] min-w-0">
         <ResponsiveContainer width="99%" height="100%">
@@ -91,6 +91,6 @@ export function LearningActivityChart() {
           </AreaChart>
         </ResponsiveContainer>
       </div>
-    </div>
+    </Card>
   );
 }

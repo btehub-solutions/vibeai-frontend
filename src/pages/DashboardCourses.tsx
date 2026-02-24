@@ -23,6 +23,7 @@ const DashboardCourses = () => {
   const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>("all");
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
   const [showFilters, setShowFilters] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get("q") || "";
   
@@ -242,14 +243,15 @@ const DashboardCourses = () => {
   );
 
   return (
-    <div className="min-h-screen bg-background lg:flex">
-      <DashboardSidebar />
+    <div className="min-h-screen bg-background lg:flex overflow-hidden">
+      <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
-      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full">
+      <main className="flex-1 p-3 sm:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full min-w-0">
         <DashboardHeader
-          title="Courses"
-          subtitle="Explore our curriculum and master new skills"
+          title="Courses Library"
+          subtitle="Explore curriculum and master skills"
           user={user}
+          onMenuClick={() => setIsMobileOpen(true)}
         />
 
         {searchQuery && (
