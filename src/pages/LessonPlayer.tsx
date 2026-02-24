@@ -318,20 +318,20 @@ const LessonPlayer = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Top Bar */}
-      <header className="h-14 sm:h-16 border-b border-border bg-card/50 backdrop-blur-md flex items-center justify-between px-3 sm:px-6 fixed top-0 w-full z-50">
-        <div className="flex items-center gap-1.5 sm:gap-4 flex-1 min-w-0 pr-2 sm:pr-4">
-          <Button variant="ghost" size="sm" className="px-1.5 sm:px-4 flex-shrink-0 h-8 sm:h-10" onClick={() => navigate(`/dashboard/courses/${courseId}`)}>
-            <ArrowLeft size={14} className="sm:mr-2" />
-            <span className="hidden sm:inline text-xs sm:text-sm">Back</span>
+      <header className="h-14 sm:h-16 border-b border-border bg-card/50 backdrop-blur-md flex items-center justify-between px-3 md:px-6 fixed top-0 w-full z-50">
+        <div className="flex items-center gap-1 sm:gap-4 flex-1 min-w-0 pr-2">
+          <Button variant="ghost" size="sm" className="px-2 sm:px-4 flex-shrink-0 h-9" onClick={() => navigate(`/dashboard/courses/${courseId}`)}>
+            <ArrowLeft size={16} className="sm:mr-2" />
+            <span className="hidden sm:inline">Back</span>
           </Button>
-          <div className="h-5 w-px bg-border mx-0.5 sm:mx-2 flex-shrink-0" />
-          <h1 className="font-semibold text-[10px] sm:text-xs md:text-sm lg:text-base truncate max-w-[120px] sm:max-w-none">{course.title}</h1>
+          <div className="h-4 w-px bg-border mx-1 flex-shrink-0" />
+          <h1 className="font-semibold text-xs sm:text-sm md:text-base truncate max-w-[150px] sm:max-w-none">{course.title}</h1>
         </div>
         <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
           <span className="text-[10px] sm:text-xs text-muted-foreground hidden xs:block">
             {currentIndex + 1}/{allLessons.length}
           </span>
-          <div className="w-12 sm:w-24 md:w-32 h-1.5 sm:h-2 bg-secondary rounded-full overflow-hidden flex-shrink-0">
+          <div className="w-16 sm:w-24 md:w-32 h-1.5 sm:h-2 bg-secondary rounded-full overflow-hidden flex-shrink-0">
             <div 
               className="h-full bg-gradient-to-r from-accent to-purple-500 transition-all duration-300" 
               style={{ width: `${((currentIndex) / allLessons.length) * 100}%` }} 
@@ -378,8 +378,8 @@ const LessonPlayer = () => {
         </aside>
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto p-3 sm:p-6 lg:p-12 flex justify-center">
-          <div className="max-w-4xl w-full space-y-6 sm:space-y-8">
+        <div className="flex-1 overflow-y-auto no-scrollbar p-4 sm:p-6 lg:p-12 flex justify-center">
+          <div className="max-w-4xl w-full space-y-6 lg:space-y-8">
             {/* Lesson Header */}
             <div>
               <div className="flex items-center gap-3 mb-4">
@@ -391,7 +391,7 @@ const LessonPlayer = () => {
                   {currentLesson.duration}
                 </span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">{currentLesson.title}</h2>
+              <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold mb-4">{currentLesson.title}</h2>
             </div>
 
             {/* Learning Objectives */}
@@ -415,7 +415,7 @@ const LessonPlayer = () => {
             )}
 
             {/* Main Content Viewer */}
-            <div className="card-elevated p-4 sm:p-6 md:p-8">
+            <div className="card-elevated p-5 sm:p-6 md:p-8">
               {currentLesson.type === 'video' ? (
                 <div className="space-y-6">
                   <div className="aspect-video bg-black rounded-xl flex items-center justify-center relative overflow-hidden group cursor-pointer">
@@ -686,36 +686,36 @@ const LessonPlayer = () => {
             </div>
 
             {/* Footer Actions */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 pt-6 sm:pt-8 border-t border-border">
+            <div className="flex flex-row items-center justify-between gap-3 pt-8 border-t border-border">
               <Button 
                 variant="outline"
                 onClick={() => prevLesson && navigate(`/dashboard/courses/${courseId}/lessons/${prevLesson.id}`)}
                 disabled={!prevLesson}
-                className="w-full sm:w-auto sm:min-w-[140px] py-6 sm:py-6 text-base sm:text-lg"
+                className="flex-1 sm:flex-initial sm:min-w-[120px] h-11 sm:h-12"
               >
-                <ChevronLeft size={16} className="mr-2" />
-                Previous
+                <ChevronLeft size={16} className="sm:mr-2" />
+                <span className="hidden sm:inline">Previous</span>
               </Button>
 
               <Button 
                 onClick={handleComplete}
-                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-white sm:min-w-[180px] py-6 sm:py-6 text-base sm:text-lg font-semibold shadow-lg shadow-accent/20"
+                className="flex-[2] sm:flex-initial bg-accent hover:bg-accent/90 text-white sm:min-w-[200px] h-11 sm:h-12 font-semibold shadow-lg shadow-accent/20"
                 disabled={complete}
               >
                 {complete ? (
                   <>
-                    <CheckCircle className="mr-2 h-5 w-5" />
-                    Completed
+                    <CheckCircle className="mr-2 h-4 w-4" />
+                    Done
                   </>
                 ) : nextLesson ? (
                   <>
-                    <span className="truncate">Complete & Continue</span>
-                    <ChevronRight size={18} className="ml-1 sm:ml-2 flex-shrink-0" />
+                    <span className="truncate">Next Lesson</span>
+                    <ChevronRight size={18} className="ml-1 flex-shrink-0" />
                   </>
                 ) : (
                   <>
-                    <Award className="mr-2 h-5 w-5" />
-                    Complete Course
+                    <Award className="mr-2 h-4 w-4" />
+                    Finish
                   </>
                 )}
               </Button>

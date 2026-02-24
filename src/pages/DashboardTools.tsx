@@ -36,7 +36,7 @@ const DashboardTools = () => {
     <div className="min-h-screen bg-background flex">
       <DashboardSidebar />
 
-      <main className="flex-1 px-4 py-8 lg:p-10 overflow-auto pt-16 lg:pt-10">
+      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-auto w-full">
         <DashboardHeader
           title="AI Tools Library"
           subtitle="Explore and learn about the most impactful AI tools"
@@ -44,7 +44,7 @@ const DashboardTools = () => {
         />
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
           <div className="card-elevated p-5">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
@@ -109,8 +109,8 @@ const DashboardTools = () => {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col md:flex-row gap-4 mb-10">
-          <div className="flex flex-wrap gap-2 flex-1">
+        <div className="flex flex-col md:flex-row gap-4 mb-8">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap no-scrollbar">
             {categories.map((category) => (
               <button
                 key={category}
@@ -152,7 +152,7 @@ const DashboardTools = () => {
           {filteredTools.map((tool) => (
             <div
               key={tool.id}
-              className="card-elevated p-6 group hover:border-accent/20 transition-all duration-300 flex flex-col"
+              className="card-elevated p-5 md:p-6 group hover:border-accent/20 transition-all duration-300 flex flex-col"
             >
               <div className="flex items-start justify-between mb-5">
                 <div>

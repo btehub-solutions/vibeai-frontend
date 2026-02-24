@@ -32,7 +32,7 @@ const DashboardAnnouncements = () => {
     <div className="min-h-screen bg-background flex">
       <DashboardSidebar />
 
-      <main className="flex-1 p-6 lg:p-10 overflow-auto">
+      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-auto w-full">
         <DashboardHeader
           title="Announcements"
           subtitle="Stay updated with the latest news and updates"
@@ -53,34 +53,34 @@ const DashboardAnnouncements = () => {
                 announcements.map((announcement) => (
                     <div
                     key={announcement.id}
-                    className="card-elevated p-8 hover:border-accent/20 transition-all duration-300 relative group"
+                    className="card-elevated p-5 md:p-8 hover:border-accent/20 transition-all duration-300 relative group"
                     >
                     <button 
                         onClick={() => handleDismiss(announcement.id)}
-                        className="absolute top-4 right-4 text-muted-foreground hover:text-foreground opacity-0 group-hover:opacity-100 transition-opacity p-2"
+                        className="absolute top-2 right-2 text-muted-foreground hover:text-foreground opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity p-2"
                         title="Dismiss"
                     >
                         <X size={16} />
                     </button>
 
-                    <div className="flex items-start gap-6">
-                        <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center">
-                        <announcement.icon size={22} className="text-accent" />
+                    <div className="flex flex-col sm:flex-row items-start gap-4 md:gap-6">
+                        <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-accent/10 flex items-center justify-center">
+                        <announcement.icon size={20} className="text-accent" />
                         </div>
 
-                        <div className="flex-1 pr-8">
-                        <div className="flex flex-wrap items-center gap-3 mb-3">
-                            <span className="inline-block px-3 py-1.5 rounded-full text-xs font-medium bg-secondary text-muted-foreground">
+                        <div className="flex-1 pr-0 md:pr-8">
+                        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-2 md:mb-3">
+                            <span className="inline-block px-2.5 py-1 rounded-full text-[10px] md:text-xs font-medium bg-secondary text-muted-foreground">
                             {announcement.type}
                             </span>
-                            <span className="text-sm text-muted-foreground">
+                            <span className="text-xs md:text-sm text-muted-foreground">
                             {announcement.date}
                             </span>
                         </div>
-                        <h3 className="text-xl font-semibold text-foreground mb-3">
+                        <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2 md:mb-3">
                             {announcement.title}
                         </h3>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
                             {announcement.description}
                         </p>
                         </div>

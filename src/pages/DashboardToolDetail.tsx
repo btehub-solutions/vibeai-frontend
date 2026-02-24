@@ -45,7 +45,7 @@ const DashboardToolDetail = () => {
     <div className="min-h-screen bg-background flex">
       <DashboardSidebar />
 
-      <main className="flex-1 p-6 lg:p-10 overflow-auto">
+      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-auto w-full">
         <div className="max-w-5xl mx-auto">
           <Button 
             variant="ghost" 
@@ -65,7 +65,7 @@ const DashboardToolDetail = () => {
 
 
           {/* Tabs Navigation */}
-          <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
+          <div className="flex gap-2 mb-8 overflow-x-auto pb-4 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar scroll-smooth">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
@@ -90,7 +90,7 @@ const DashboardToolDetail = () => {
             <div className="lg:col-span-2 space-y-6">
               {/* Overview Tab */}
               {activeTab === "overview" && (
-                <div className="card-elevated p-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="card-elevated p-5 md:p-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
                   <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
                     <Lightbulb className="w-6 h-6 text-accent" />
                     About {tool.name}
@@ -127,7 +127,7 @@ const DashboardToolDetail = () => {
 
               {/* Use Cases Tab */}
               {activeTab === "usecases" && tool.useCases && (
-                <div className="card-elevated p-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="card-elevated p-5 md:p-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
                   <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
                     <Target className="w-6 h-6 text-blue-500" />
                     Common Use Cases
@@ -152,7 +152,7 @@ const DashboardToolDetail = () => {
                 <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
                   {/* Pros */}
                   {tool.pros && (
-                    <div className="card-elevated p-8">
+                    <div className="card-elevated p-5 md:p-8">
                       <h3 className="text-2xl font-bold mb-6 flex items-center gap-3 text-green-500">
                         <ThumbsUp className="w-6 h-6" />
                         Advantages
@@ -170,7 +170,7 @@ const DashboardToolDetail = () => {
 
                   {/* Cons */}
                   {tool.cons && (
-                    <div className="card-elevated p-8">
+                    <div className="card-elevated p-5 md:p-8">
                       <h3 className="text-2xl font-bold mb-6 flex items-center gap-3 text-red-500">
                         <ThumbsDown className="w-6 h-6" />
                         Limitations
@@ -190,7 +190,7 @@ const DashboardToolDetail = () => {
 
               {/* Getting Started Tab */}
               {activeTab === "start" && tool.gettingStarted && (
-                <div className="card-elevated p-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="card-elevated p-5 md:p-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
                   <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
                     <Rocket className="w-6 h-6 text-purple-500" />
                     Getting Started Guide

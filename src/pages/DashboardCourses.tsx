@@ -115,9 +115,9 @@ const DashboardCourses = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const CourseCard = ({ course, featured = false }: { course: any; featured?: boolean }) => (
     <div
-      className={`card-elevated group hover:border-accent/20 transition-all duration-300 flex flex-col cursor-pointer ${
-        featured ? "p-8" : "p-6"
-      } ${viewMode === "list" ? "flex-row gap-6 items-center" : ""}`}
+      className={`card-elevated group hover:border-accent/20 transition-all duration-300 flex flex-col cursor-pointer p-5 md:p-6 ${
+        featured ? "p-6 md:p-8" : ""
+      } ${viewMode === "list" ? "flex-row gap-4 md:gap-6 items-center" : ""}`}
       onClick={() => handleStartCourse(course.id, course.isStarted)}
     >
       {viewMode === "list" && (
@@ -245,7 +245,7 @@ const DashboardCourses = () => {
     <div className="min-h-screen bg-background flex">
       <DashboardSidebar />
 
-      <main className="flex-1 px-4 py-8 lg:p-10 overflow-auto pt-16 lg:pt-10">
+      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-auto w-full">
         <DashboardHeader
           title="Courses"
           subtitle="Explore our curriculum and master new skills"
@@ -417,7 +417,7 @@ const DashboardCourses = () => {
         <div className="mb-8">
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between mb-6">
             {/* Category Pills - Scrollable on mobile */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-2 px-2 md:mx-0 md:px-0 md:flex-wrap no-scrollbar">
+            <div className="flex items-center gap-2 overflow-x-auto pb-4 -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap no-scrollbar scroll-smooth">
               {CATEGORIES.map((category) => (
                 <button
                   key={category}

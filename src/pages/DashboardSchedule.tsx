@@ -32,7 +32,7 @@ const DashboardSchedule = () => {
     <div className="min-h-screen bg-background flex">
       <DashboardSidebar />
 
-      <main className="flex-1 px-4 py-8 lg:p-10 overflow-auto pt-16 lg:pt-10">
+      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-auto w-full">
         <DashboardHeader
           title="Schedule"
           subtitle="Upcoming programs, workshops, and meetings"
@@ -52,15 +52,15 @@ const DashboardSchedule = () => {
               return (
                 <div
                     key={event.id}
-                    className="card-elevated p-8 hover:border-accent/20 transition-all duration-300"
+                    className="card-elevated p-5 md:p-8 hover:border-accent/20 transition-all duration-300"
                 >
                     <div className="flex flex-col md:flex-row md:items-center gap-6">
                     {/* Date Card */}
-                    <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-secondary flex flex-col items-center justify-center text-center">
-                        <span className="text-xs text-muted-foreground uppercase font-medium">
+                    <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-secondary flex flex-col items-center justify-center text-center">
+                        <span className="text-[10px] md:text-xs text-muted-foreground uppercase font-medium">
                         {new Date(event.date).toLocaleDateString("en-US", { month: "short" })}
                         </span>
-                        <span className="text-3xl font-bold text-foreground">
+                        <span className="text-2xl md:text-3xl font-bold text-foreground">
                         {new Date(event.date).getDate()}
                         </span>
                     </div>
@@ -72,10 +72,10 @@ const DashboardSchedule = () => {
                             {event.type}
                         </span>
                         </div>
-                        <h3 className="text-xl font-semibold text-foreground mb-2">
+                        <h3 className="text-lg md:text-xl font-semibold text-foreground mb-1 md:mb-2">
                         {event.title}
                         </h3>
-                        <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                        <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2">
                         {event.description}
                         </p>
                         <div className="flex flex-wrap items-center gap-5 text-sm text-muted-foreground">
@@ -99,7 +99,7 @@ const DashboardSchedule = () => {
                                 onClick={() => handleRegister(event.id, event.title)}
                                 className="gap-2"
                             >
-                                Register Now
+                                Register
                                 <ExternalLink size={14} />
                             </Button>
                         )}

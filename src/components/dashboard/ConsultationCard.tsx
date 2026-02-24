@@ -230,13 +230,13 @@ export const ConsultationCard: React.FC = () => {
                 <p className="text-xs font-medium text-foreground uppercase tracking-wider mb-2">
                   Continue Contact via:
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
                   <a
                     href="mailto:btehubsolutions@gmail.com?subject=Continuing%20Consultation%20Request"
                     className="flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-white text-black font-semibold text-sm hover:bg-white/90 transition-colors"
                   >
                     <Mail size={16} />
-                    Email (Official Record)
+                    Email
                   </a>
                   <a
                     href="https://wa.me/2347045422815"

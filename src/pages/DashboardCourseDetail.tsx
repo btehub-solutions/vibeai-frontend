@@ -114,7 +114,7 @@ const DashboardCourseDetail = () => {
     <div className="min-h-screen bg-background flex">
       <DashboardSidebar />
 
-      <main className="flex-1 px-4 py-8 lg:p-10 overflow-auto pt-16 lg:pt-10">
+      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-auto w-full">
         <div className="max-w-6xl mx-auto">
           <Button 
             variant="ghost" 
@@ -135,8 +135,8 @@ const DashboardCourseDetail = () => {
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-8">
               {/* Course Overview Card */}
-              <div className="card-elevated p-8">
-                <div className="flex items-start gap-4 mb-6">
+              <div className="card-elevated p-5 md:p-8">
+                <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-purple-500/20 flex items-center justify-center flex-shrink-0">
                     <BookOpen className="w-8 h-8 text-accent" />
                   </div>
@@ -176,12 +176,12 @@ const DashboardCourseDetail = () => {
 
               {/* Learning Outcomes */}
               {course.learningOutcomes && course.learningOutcomes.length > 0 && (
-                <div className="card-elevated p-8">
+                <div className="card-elevated p-5 md:p-8">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
                       <Target className="w-5 h-5 text-accent" />
                     </div>
-                    <h3 className="text-xl font-semibold">What You'll Learn</h3>
+                    <h3 className="text-lg md:text-xl font-semibold">What You'll Learn</h3>
                   </div>
                   <div className="grid md:grid-cols-2 gap-4">
                     {course.learningOutcomes.map((outcome, idx) => (
@@ -232,7 +232,7 @@ const DashboardCourseDetail = () => {
                       return (
                         <div key={mIdx} className="card-elevated overflow-hidden border border-white/5">
                           {/* Module Header */}
-                          <div className="bg-gradient-to-r from-secondary/50 to-secondary/30 p-6 border-b border-white/5">
+                          <div className="bg-gradient-to-r from-secondary/50 to-secondary/30 p-5 md:p-6 border-b border-white/5">
                             <div className="flex items-start justify-between gap-4 mb-4">
                               <div className="flex-1">
                                 <div className="flex items-center gap-3 mb-2">
@@ -284,7 +284,7 @@ const DashboardCourseDetail = () => {
                                 }`}>
                                   {/* Lesson Header */}
                                   <div
-                                    className="p-5 flex items-center justify-between cursor-pointer group"
+                                    className="p-4 md:p-5 flex items-center justify-between cursor-pointer group"
                                     onClick={() => {
                                       if (!isUnlocked) return;
                                       // Navigate directly to the lesson if it has an ID

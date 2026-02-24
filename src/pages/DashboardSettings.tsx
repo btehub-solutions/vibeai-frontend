@@ -47,7 +47,7 @@ const DashboardSettings = () => {
     <div className="min-h-screen bg-background flex">
       <DashboardSidebar />
 
-      <main className="flex-1 p-6 lg:p-10 overflow-auto">
+      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-auto w-full">
         <DashboardHeader
           title="Settings"
           subtitle="Manage your account preferences"
@@ -56,8 +56,8 @@ const DashboardSettings = () => {
 
         <div className="max-w-xl mt-8 space-y-8">
           {/* Profile Section */}
-          <div className="card-elevated p-8">
-            <h3 className="text-xl font-semibold mb-6">Profile Information</h3>
+          <div className="card-elevated p-5 md:p-8">
+            <h3 className="text-lg md:text-xl font-semibold mb-6">Profile Information</h3>
             
             <div className="space-y-4">
               <div className="space-y-2">
@@ -92,8 +92,8 @@ const DashboardSettings = () => {
           </div>
 
           {/* Preferences Mock */}
-          <div className="card-elevated p-8">
-            <h3 className="text-xl font-semibold mb-6">Preferences</h3>
+          <div className="card-elevated p-5 md:p-8">
+            <h3 className="text-lg md:text-xl font-semibold mb-6">Preferences</h3>
             <div className="space-y-4 text-sm text-muted-foreground">
                 <div className="flex items-center justify-between p-4 rounded-lg bg-secondary/30">
                     <span>Email Notifications</span>

@@ -13,6 +13,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/lib/supabase";
 
 const navItems = [
@@ -85,48 +86,34 @@ const DashboardSidebar = () => {
 
   return (
     <>
-      {/* Mobile Top Bar - Fixed Header for small screens */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-background/80 backdrop-blur-md border-b border-white/5 z-40 flex items-center justify-between px-4">
-        <button
-          onClick={() => setIsMobileOpen(!isMobileOpen)}
-          className="p-2 rounded-lg bg-card border border-white/10 text-foreground"
-        >
-          <Menu size={20} />
-        </button>
-        
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Logo" className="h-8 w-auto" />
-        </Link>
-
-        {/* Placeholder to balance the flexbox (avatar is usually on the right in DashboardHeader) */}
-        <div className="w-9" /> 
-      </div>
+      {/* Mobile Toggle */}
+      <button
+        onClick={() => setIsMobileOpen(!isMobileOpen)}
+        className="lg:hidden fixed top-4 left-4 z-[60] p-2.5 rounded-xl bg-card border border-white/[0.06] shadow-xl text-foreground"
+        aria-label="Toggle Menu"
+      >
+        {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
+      </button>
 
       {/* Mobile Overlay */}
-      {isMobileOpen && (
-        <div
-          className="lg:hidden fixed inset-0 bg-background/80 backdrop-blur-sm z-50 transition-opacity duration-300"
-          onClick={() => setIsMobileOpen(false)}
-        />
-      )}
+      <AnimatePresence>
+        {isMobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="lg:hidden fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
+            onClick={() => setIsMobileOpen(false)}
+          />
+        )}
+      </AnimatePresence>
 
-      {/* Sidebar - z-index increased to be above overlay */}
+      {/* Sidebar */}
       <aside
-        className={`fixed lg:static inset-y-0 left-0 z-[60] w-72 bg-sidebar border-r border-white/[0.04] flex flex-col transition-transform duration-300 ease-in-out ${
+        className={`fixed lg:static inset-y-0 left-0 z-50 w-72 bg-sidebar border-r border-white/[0.04] flex flex-col transition-transform duration-300 ease-in-out ${
           isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
-        <div className="flex items-center justify-between lg:block p-6">
-          <Link to="/" className="flex items-center gap-2.5">
-            <img src={logo} alt="VibeAI Logo" className="h-14 lg:h-20 w-auto object-contain" />
-          </Link>
-          <button 
-            onClick={() => setIsMobileOpen(false)}
-            className="lg:hidden p-2 rounded-lg bg-white/5 text-muted-foreground hover:text-foreground"
-          >
-            <X size={20} />
-          </button>
-        </div>
         <SidebarContent />
       </aside>
     </>
