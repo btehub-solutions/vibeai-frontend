@@ -164,6 +164,8 @@ const StoryBentoSection = () => {
                   src="/images/landing/ai_is_present.png"
                   alt="Black professionals collaborating on AI solutions"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
                 <div className="absolute bottom-4 left-5">
@@ -274,6 +276,8 @@ const StoryBentoSection = () => {
                   src="/images/landing/classroom-mentoring.jpg"
                   alt="Black students in a classroom"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-red-950/20" />
                 <AlertTriangle className="absolute bottom-3 left-4 w-6 h-6 md:w-8 md:h-8 text-red-400 group-hover:drop-shadow-[0_0_12px_rgba(255,80,80,0.5)] group-hover:animate-bounce transition-all duration-300" />
@@ -298,6 +302,8 @@ const StoryBentoSection = () => {
                   src="/images/landing/computer-training.jpg"
                   alt="Market scene reflecting economic factors"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-amber-950/20" />
                 <TrendingDown className="absolute bottom-3 left-4 w-6 h-6 md:w-8 md:h-8 text-amber-400 group-hover:drop-shadow-[0_0_12px_rgba(255,180,50,0.5)] transition-all duration-300" />
@@ -322,6 +328,8 @@ const StoryBentoSection = () => {
                   src="/images/landing/coworking-space.jpg"
                   alt="City street scene"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-red-950/30" />
                 <div className="absolute bottom-4 left-5 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-black/40 backdrop-blur-xl border border-red-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
@@ -372,6 +380,8 @@ const StoryBentoSection = () => {
                   src="/images/landing/woman-laptop-outdoor.jpg"
                   alt="Student studying with focus"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-blue-950/20" />
                 <GraduationCap className="absolute bottom-3 left-4 w-6 h-6 md:w-8 md:h-8 text-blue-400 group-hover:drop-shadow-[0_0_12px_rgba(80,160,255,0.5)] transition-all duration-300" />
@@ -396,6 +406,8 @@ const StoryBentoSection = () => {
                   src="/images/landing/tech-hub-learning.jpg"
                   alt="Airport scene"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-70"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/70 to-purple-950/20" />
                 <Users className="absolute bottom-3 left-4 w-6 h-6 md:w-8 md:h-8 text-purple-400 group-hover:drop-shadow-[0_0_12px_rgba(160,80,255,0.5)] transition-all duration-300" />
@@ -450,6 +462,8 @@ const StoryBentoSection = () => {
                   src="/images/landing/structured_ai_paths.png"
                   alt="Black student working on laptop"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
                 <div className="absolute bottom-4 left-5 w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-black/40 backdrop-blur-xl border border-accent/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg shadow-accent/10">
@@ -549,6 +563,8 @@ const StoryBentoSection = () => {
                   src="/images/landing/built_for_global.png"
                   alt="Professionals working together"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card md:bg-gradient-to-l md:from-card md:to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent md:from-transparent" />
