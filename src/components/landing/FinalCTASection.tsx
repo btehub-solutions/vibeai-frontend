@@ -86,15 +86,15 @@ const FinalCTASection = () => {
           {/* CTA with dramatic glow */}
           <div className="inline-block relative group">
             {/* Background glow ring */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 via-emerald-500/20 to-cyan-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute -inset-4 bg-gradient-to-r from-accent/20 via-emerald-500/20 to-cyan-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
             
             <Link 
               to="/dashboard" 
-              className="btn-primary flex items-center justify-center gap-3 text-base md:text-lg px-8 py-5 md:px-12 md:py-6 shadow-xl shadow-accent/10"
+              className="btn-primary relative z-20 flex items-center justify-center gap-3 text-base md:text-lg px-8 py-5 md:px-12 md:py-6 shadow-xl shadow-accent/10"
             >
-              <Sparkles className="w-5 h-5" />
-              Start Your AI Journey — Free
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
+              <Sparkles className="w-5 h-5 pointer-events-none" />
+              <span className="pointer-events-none">Start Your AI Journey — Free</span>
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2 pointer-events-none" />
             </Link>
           </div>
           

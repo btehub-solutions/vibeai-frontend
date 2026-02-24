@@ -90,9 +90,9 @@ const HeroSection = () => {
             <div className="animate-text-reveal animate-delay-300 flex flex-col w-full sm:flex-row items-center justify-center lg:justify-start gap-4">
               <Link
                 to="/dashboard"
-                className="btn-primary group w-full sm:w-auto text-center text-base md:text-lg font-semibold rounded-xl"
+                className="btn-primary group w-full sm:w-auto text-center text-base md:text-lg font-semibold rounded-xl relative z-20"
               >
-                <span className="relative flex items-center justify-center gap-2">
+                <span className="relative flex items-center justify-center gap-2 pointer-events-none">
                   <Star className="w-5 h-5 hidden sm:block" />
                   Start Your AI Journey
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
