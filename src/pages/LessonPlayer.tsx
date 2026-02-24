@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
-import { toast } from "sonner";
+import { useNotification } from "@/components/providers/NotificationProvider";
 import { supabase } from "@/lib/supabase";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -110,6 +110,7 @@ const renderLessonContent = (content: string) => {
 const LessonPlayer = () => {
   const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
+  const { success, error: notifyError } = useNotification();
   const [complete, setComplete] = useState(false);
   const [quizAnswers, setQuizAnswers] = useState<Record<string, string>>({});
   const [quizSubmitted, setQuizSubmitted] = useState(false);
@@ -162,7 +163,7 @@ const LessonPlayer = () => {
     if (courseId && lessonId) {
       intelligence.recordNoteTaken(courseId, lessonId);
     }
-    toast.success("Notes saved!");
+    success("Notes saved!");
   };
 
   const fetchAiContent = async (overrideKey?: string) => {
@@ -184,7 +185,7 @@ const LessonPlayer = () => {
       if (error.message?.includes("Missing Gemini API Key") || error.message?.includes("API key not valid")) {
         setNeedsApiKey(true);
       } else {
-        toast.error("Could not generate AI content. Ensure your key is valid and has sufficient quota.");
+        notifyError("Could not generate AI content", "Ensure your key is valid and has sufficient quota.");
       }
       setDynamicContent(null);
     } finally {
@@ -237,9 +238,9 @@ const LessonPlayer = () => {
     }
     
     if (score >= 70) {
-      toast.success(`Great job! You scored ${score}%`);
+      success(`Great job! You scored ${score}%`);
     } else {
-      toast.error(`You scored ${score}%. Try reviewing the material and retake the quiz.`);
+      notifyError("Quiz failed", `You scored ${score}%. Try reviewing the material and retake the quiz.`);
     }
   };
 
@@ -259,11 +260,11 @@ const LessonPlayer = () => {
     // Check if quiz exists and is passed
     if (currentLesson.type === 'quiz' && currentLesson.questions) {
       if (!quizSubmitted) {
-        toast.error("Please complete the quiz before proceeding.");
+        notifyError("Quiz incomplete", "Please complete the quiz before proceeding.");
         return;
       }
       if (quizScore < 70) {
-        toast.error("You need to score at least 70% to proceed. Please retake the quiz.");
+        notifyError("Quiz failed", "You need to score at least 70% to proceed. Please retake the quiz.");
         return;
       }
     }
@@ -286,7 +287,7 @@ const LessonPlayer = () => {
     }
 
     setComplete(true);
-    toast.success("Lesson completed!");
+    success("Lesson completed!");
     
     if (nextLesson) {
       setTimeout(() => {
@@ -295,7 +296,7 @@ const LessonPlayer = () => {
         lessonStartTime.current = Date.now(); // Reset timer
       }, 1500);
     } else {
-      toast.success("Course completed! Congratulations! 🎉");
+      success("Course completed!", "Congratulations! 🎉");
       setTimeout(() => navigate(`/dashboard/courses/${courseId}`), 2000);
     }
   };

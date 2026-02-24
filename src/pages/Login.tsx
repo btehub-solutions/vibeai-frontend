@@ -8,13 +8,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { toast } from "sonner";
+import { useNotification } from "@/components/providers/NotificationProvider";
 import { Loader2, Mail, Lock, User, Github } from "lucide-react";
 import { motion } from "framer-motion";
 import { AuthError } from "@supabase/supabase-js";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { success, error: notifyError, info } = useNotification();
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -60,14 +61,10 @@ const Login = () => {
         throw error;
       }
       
-      toast.success("Welcome back!", {
-        description: "Successfully logged in.",
-      });
+      success("Welcome back!", "Successfully logged in.");
       navigate("/dashboard");
     } catch (error) {
-      toast.error("Login failed", {
-        description: getErrorMessage(error) || "Please check your credentials and try again.",
-      });
+      notifyError("Login failed", getErrorMessage(error) || "Please check your credentials and try again.");
     } finally {
       setIsLoading(false);
     }
@@ -92,13 +89,9 @@ const Login = () => {
         throw error;
       }
 
-      toast.success("Account created!", {
-        description: "Please check your email to verify your account.",
-      });
+      success("Account created!", "Please check your email to verify your account.");
     } catch (error) {
-      toast.error("Signup failed", {
-        description: getErrorMessage(error) || "Something went wrong. Please try again.",
-      });
+      notifyError("Signup failed", getErrorMessage(error) || "Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -116,9 +109,7 @@ const Login = () => {
       if (error) throw error;
       // Note: The actual redirection happens automatically by Supabase
     } catch (error) {
-      toast.error(`${provider} login failed`, {
-        description: getErrorMessage(error),
-      });
+      notifyError(`${provider} login failed`, getErrorMessage(error));
     }
   };
 
@@ -172,7 +163,7 @@ const Login = () => {
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
                         <Label htmlFor="password">Password</Label>
-                        <a href="#" className="text-xs text-accent hover:text-accent/80 transition-colors" onClick={(e) => { e.preventDefault(); toast.info("Password reset link sent to your email."); }}>Forgot password?</a>
+                        <a href="#" className="text-xs text-accent hover:text-accent/80 transition-colors" onClick={(e) => { e.preventDefault(); info("Password reset link sent to your email."); }}>Forgot password?</a>
                       </div>
                       <div className="relative">
                         <Lock className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />

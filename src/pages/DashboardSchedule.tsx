@@ -3,8 +3,8 @@ import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import { useUser } from "@/hooks/useUser";
 import { Clock, ExternalLink, Video, Calendar, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
 import { useState } from "react";
+import { useNotification } from "@/components/providers/NotificationProvider";
 
 const upcomingEvents = [
   { id: 1, title: "AI Tools Workshop", description: "Hands-on session exploring the latest AI tools and how to integrate them into your workflow.", date: "February 1, 2026", time: "3:00 PM WAT", duration: "90 min", type: "Workshop" },
@@ -20,13 +20,12 @@ const pastEvents = [
 
 const DashboardSchedule = () => {
   const { user } = useUser();
+  const { success, info } = useNotification();
   const [registeredEvents, setRegisteredEvents] = useState<number[]>([]);
 
   const handleRegister = (id: number, title: string) => {
     setRegisteredEvents([...registeredEvents, id]);
-    toast.success("Successfully registered!", {
-        description: `You are now signed up for ${title}. We'll send you a reminder.`
-    });
+    success("Successfully registered!", `You are now signed up for ${title}. We'll send you a reminder.`);
   };
 
   return (
@@ -139,7 +138,7 @@ const DashboardSchedule = () => {
                     onClick={(e) => {
                       if (event.recording === "#") {
                         e.preventDefault();
-                        toast.info("Recording will be available soon");
+                        info("Recording will be available soon");
                       }
                     }}
                   >

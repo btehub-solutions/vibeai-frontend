@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { CourseMetadata, COURSES_LIST, getCourseMetadata } from "@/data/courses-expanded";
-import { toast } from "sonner";
+import { useNotification } from "@/components/providers/NotificationProvider";
 
 export interface CourseWithProgress extends CourseMetadata {
   progress: number;
@@ -11,6 +11,7 @@ export interface CourseWithProgress extends CourseMetadata {
 }
 
 export const useCourses = () => {
+  const { success, error: notifyError } = useNotification();
   const [loading, setLoading] = useState(true);
   const [courses, setCourses] = useState<CourseWithProgress[]>([]);
 
@@ -57,7 +58,7 @@ export const useCourses = () => {
 
     } catch (error) {
       console.error("Error fetching courses:", error);
-      toast.error("Failed to load course progress");
+      notifyError("Failed to load course progress");
     } finally {
       setLoading(false);
     }
@@ -83,12 +84,12 @@ export const useCourses = () => {
 
       if (error) throw error;
 
-      toast.success("Course started!");
+      success("Course started!");
       fetchCourses(); // Refresh state
 
     } catch (error) {
       console.error("Error starting course:", error);
-      toast.error("Could not enroll in course");
+      notifyError("Could not enroll in course");
     }
   };
 

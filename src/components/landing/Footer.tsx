@@ -1,8 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
-import { toast } from "sonner";
+import { useNotification } from "@/components/providers/NotificationProvider";
 
 const Footer = () => {
+  const { info } = useNotification();
   const footerLinks = {
     Product: [
       { name: "How It Works", href: "/#how-it-works" },
@@ -52,9 +53,9 @@ const Footer = () => {
                         if (link.href === "#" || link.href === "#contact") {
                           e.preventDefault();
                           if (link.href === "#contact") {
-                            toast.info("Contact form opening soon!");
+                            info("Contact form opening soon!");
                           } else {
-                            toast.info(`${link.name} page will be available soon`);
+                            info(`${link.name} page will be available soon`);
                           }
                         }
                       }}

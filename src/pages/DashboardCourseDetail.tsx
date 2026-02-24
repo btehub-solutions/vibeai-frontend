@@ -10,13 +10,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { toast } from "sonner";
+import { useNotification } from "@/components/providers/NotificationProvider";
 import { useUser } from "@/hooks/useUser";
 
 const DashboardCourseDetail = () => {
   const { courseId } = useParams();
   const navigate = useNavigate();
   const { user } = useUser();
+  const { success, error: notifyError, info } = useNotification();
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [expandedLessons, setExpandedLessons] = useState<Set<string>>(new Set());
@@ -56,9 +57,9 @@ const DashboardCourseDetail = () => {
     if (course?.modules?.[0]?.lessons?.[0]) {
       const firstLessonId = course.modules[0].lessons[0].id;
       navigate(`/dashboard/courses/${courseId}/lessons/${firstLessonId}`);
-      toast.success("Starting course...");
+      success("Starting course...");
     } else {
-      toast.error("No lessons found for this course.");
+      notifyError("Course error", "No lessons found for this course.");
     }
   };
 
@@ -409,7 +410,7 @@ const DashboardCourseDetail = () => {
                                           if (lesson.id) {
                                             navigate(`/dashboard/courses/${courseId}/lessons/${lesson.id}`);
                                           } else {
-                                            toast.info(`Starting: ${lesson.title}`);
+                                            info("Starting lesson", lesson.title);
                                           }
                                         }}
                                         className="w-full py-3 rounded-xl bg-accent text-accent-foreground font-semibold hover:bg-accent/90 transition-all flex items-center justify-center gap-2"

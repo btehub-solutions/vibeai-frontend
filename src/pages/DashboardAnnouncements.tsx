@@ -3,7 +3,7 @@ import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import { Bell, Calendar, BookOpen, Sparkles, X, Check } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { useNotification } from "@/components/providers/NotificationProvider";
 import { useUser } from "@/hooks/useUser";
 
 const initialAnnouncements = [
@@ -15,15 +15,16 @@ const initialAnnouncements = [
 
 const DashboardAnnouncements = () => {
   const { user } = useUser();
+  const { success } = useNotification();
   const [announcements, setAnnouncements] = useState(initialAnnouncements);
 
   const handleDismiss = (id: number) => {
     setAnnouncements((prev) => prev.filter((a) => a.id !== id));
-    toast.success("Announcement archived");
+    success("Announcement archived");
   };
 
   const handleMarkAllRead = () => {
-     toast.success("All notifications marked as read");
+     success("All notifications marked as read");
      // In a real app, this would update server state
   };
 
