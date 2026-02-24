@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Bell, Search, X } from "lucide-react";
+import { Bell, Search, X, Menu } from "lucide-react";
 import { User } from "@supabase/supabase-js";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +7,7 @@ interface DashboardHeaderProps {
   title: string;
   subtitle?: string;
   user?: User | null;
+  onMenuClick?: () => void;
 }
 
 // Helper function to get user initials
@@ -33,7 +34,7 @@ const getUserInitials = (user: User | null | undefined): string => {
   return "U";
 };
 
-const DashboardHeader = ({ title, subtitle, user }: DashboardHeaderProps) => {
+const DashboardHeader = ({ title, subtitle, user, onMenuClick }: DashboardHeaderProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showNotifications, setShowNotifications] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -56,14 +57,29 @@ const DashboardHeader = ({ title, subtitle, user }: DashboardHeaderProps) => {
 
   return (
     <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8 md:mb-10">
-      <div className="pl-14 lg:pl-0">
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight line-clamp-1">{title}</h1>
-        {subtitle && (
-          <p className="text-muted-foreground mt-1 text-sm md:text-base lg:text-lg line-clamp-2 max-w-2xl">{subtitle}</p>
+      <div className="flex items-center gap-4">
+        {onMenuClick && (
+          <button
+            onClick={onMenuClick}
+            className="lg:hidden p-2.5 rounded-xl bg-card border border-white/[0.06] text-foreground hover:bg-white/[0.03] transition-all"
+            aria-label="Toggle Menu"
+          >
+            <Menu size={20} />
+          </button>
         )}
+        <div className="min-w-0">
+          <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight truncate">
+            {title}
+          </h1>
+          {subtitle && (
+            <p className="text-muted-foreground mt-0.5 text-xs md:text-base lg:text-lg line-clamp-1">
+              {subtitle}
+            </p>
+          )}
+        </div>
       </div>
 
-      <div className="flex items-center gap-4 pl-14 lg:pl-0">
+      <div className="flex items-center gap-3 sm:gap-4">
         {/* Search */}
         <div className="relative hidden md:block">
           <Search

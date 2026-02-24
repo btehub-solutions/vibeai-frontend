@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   BookOpen,
   Clock,
@@ -41,6 +42,7 @@ const timeAgo = (date: Date) => {
 const Dashboard = () => {
   const { loading, user, stats, learningPath, recentActivity, achievements } =
     useDashboardData();
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const statCards = [
     {
@@ -102,10 +104,10 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-background lg:flex">
-      <DashboardSidebar />
+      <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
       <main className="flex-1 overflow-x-hidden overflow-y-auto w-full lg:h-screen">
-        <div className="max-w-7xl mx-auto p-4 md:p-6 lg:p-10 space-y-6 md:space-y-8">
+        <div className="max-w-7xl mx-auto p-4 md:p-6 lg:p-10 space-y-8">
           <DashboardHeader
             title={`Welcome back, ${
               user?.user_metadata?.full_name?.split(" ")[0] ||
@@ -114,6 +116,7 @@ const Dashboard = () => {
             }`}
             subtitle="Ready to level up your AI skills today?"
             user={user}
+            onMenuClick={() => setIsMobileOpen(true)}
           />
 
           <motion.div

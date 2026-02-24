@@ -25,9 +25,13 @@ const navItems = [
   { name: "Consultation", href: "/dashboard/consultation", icon: MessageSquare },
 ];
 
-const DashboardSidebar = () => {
+interface DashboardSidebarProps {
+  isMobileOpen: boolean;
+  setIsMobileOpen: (open: boolean) => void;
+}
+
+const DashboardSidebar = ({ isMobileOpen, setIsMobileOpen }: DashboardSidebarProps) => {
   const location = useLocation();
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const isActive = (href: string) => {
     if (href === "/dashboard") {
@@ -86,14 +90,7 @@ const DashboardSidebar = () => {
 
   return (
     <>
-      {/* Mobile Toggle */}
-      <button
-        onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="lg:hidden fixed top-4 left-4 z-[60] p-2.5 rounded-xl bg-card border border-white/[0.06] shadow-xl text-foreground"
-        aria-label="Toggle Menu"
-      >
-        {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
-      </button>
+      {/* Mobile Toggle removed from here - moved to Header */}
 
       {/* Mobile Overlay */}
       <AnimatePresence>

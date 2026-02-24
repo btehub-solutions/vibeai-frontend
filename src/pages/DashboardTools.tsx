@@ -12,6 +12,7 @@ const DashboardTools = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [showTrendingOnly, setShowTrendingOnly] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   const filteredTools = useMemo(() => {
     return tools.filter((tool) => {
@@ -34,13 +35,14 @@ const DashboardTools = () => {
 
   return (
     <div className="min-h-screen bg-background lg:flex">
-      <DashboardSidebar />
+      <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
-      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full">
+      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full lg:h-screen">
         <DashboardHeader
           title="AI Tools Library"
           subtitle="Explore and learn about the most impactful AI tools"
           user={user}
+          onMenuClick={() => setIsMobileOpen(true)}
         />
 
         {/* Stats Cards */}
