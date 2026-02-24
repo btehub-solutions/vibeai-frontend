@@ -44,10 +44,10 @@ const DashboardSettings = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen bg-background lg:flex">
       <DashboardSidebar />
 
-      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-auto w-full">
+      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full">
         <DashboardHeader
           title="Settings"
           subtitle="Manage your account preferences"

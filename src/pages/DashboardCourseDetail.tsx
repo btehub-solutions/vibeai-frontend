@@ -75,7 +75,7 @@ const DashboardCourseDetail = () => {
 
   if (!course || course.title === "Unknown Course") {
     return (
-      <div className="min-h-screen bg-background flex">
+      <div className="min-h-screen bg-background lg:flex">
         <DashboardSidebar />
         <main className="flex-1 p-6 lg:p-10 flex flex-col items-center justify-center">
           <h2 className="text-2xl font-bold mb-4">Course not found</h2>
@@ -111,10 +111,10 @@ const DashboardCourseDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen bg-background lg:flex">
       <DashboardSidebar />
 
-      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-auto w-full">
+      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full">
         <div className="max-w-6xl mx-auto">
           <Button 
             variant="ghost" 

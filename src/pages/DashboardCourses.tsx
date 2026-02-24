@@ -117,7 +117,7 @@ const DashboardCourses = () => {
     <div
       className={`card-elevated group hover:border-accent/20 transition-all duration-300 flex flex-col cursor-pointer p-5 md:p-6 ${
         featured ? "p-6 md:p-8" : ""
-      } ${viewMode === "list" ? "flex-row gap-4 md:gap-6 items-center" : ""}`}
+      } ${viewMode === "list" ? "flex-col sm:flex-row gap-4 md:gap-6 items-start sm:items-center" : ""}`}
       onClick={() => handleStartCourse(course.id, course.isStarted)}
     >
       {viewMode === "list" && (
@@ -128,7 +128,7 @@ const DashboardCourses = () => {
 
       <div className={`flex-1 ${viewMode === "list" ? "" : "flex flex-col"}`}>
         {/* Header */}
-        <div className={`${viewMode === "list" ? "flex items-start justify-between gap-4" : ""}`}>
+        <div className={`${viewMode === "list" ? "flex flex-col sm:flex-row items-start justify-between gap-4 w-full" : ""}`}>
           <div className="flex-1">
             {/* Category & Status */}
             <div className="flex items-center gap-2 mb-3">
@@ -164,7 +164,7 @@ const DashboardCourses = () => {
             </p>
 
             {/* Meta Info */}
-            <div className="flex items-center gap-5 text-xs text-muted-foreground mb-4">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-5 text-xs text-muted-foreground mb-4">
               <span className="flex items-center gap-1.5">
                 <BookOpen size={12} />
                 {course.totalLessons} lessons
@@ -202,7 +202,7 @@ const DashboardCourses = () => {
           {/* CTA Button */}
           {viewMode === "list" && (
             <button 
-              className="flex-shrink-0 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 bg-secondary text-foreground hover:bg-accent hover:text-accent-foreground flex items-center gap-2"
+              className="w-full sm:w-auto flex-shrink-0 px-6 py-3 mt-4 sm:mt-0 rounded-xl font-semibold text-sm transition-all duration-200 bg-secondary text-foreground hover:bg-accent hover:text-accent-foreground flex justify-center items-center gap-2"
             >
               {course.isStarted ? (
                 <>
@@ -242,10 +242,10 @@ const DashboardCourses = () => {
   );
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen bg-background lg:flex">
       <DashboardSidebar />
 
-      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-auto w-full">
+      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full">
         <DashboardHeader
           title="Courses"
           subtitle="Explore our curriculum and master new skills"
