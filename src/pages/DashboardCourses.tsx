@@ -381,7 +381,7 @@ const DashboardCourses = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 overflow-x-auto pb-4">
+            <div className="flex items-center gap-4 overflow-x-auto pb-12 pt-4 px-12 -mx-8 no-scrollbar">
               {courses.slice(0, 6).map((course, idx) => (
                 <div key={course.id} className="flex items-center gap-4 flex-shrink-0">
                   <div className="relative">
@@ -400,11 +400,11 @@ const DashboardCourses = () => {
                         <Circle size={20} />
                       )}
                     </div>
-                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-32 text-center">
-                      <p className="text-xs text-muted-foreground truncate">{course.title.split(':')[0]}</p>
+                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-32 text-center">
+                      <p className="text-[10px] md:text-xs text-muted-foreground font-medium truncate">{course.title.split(':')[0]}</p>
                     </div>
                   </div>
-                  {idx < 5 && (
+                  {idx < 5 && idx < courses.length - 1 && (
                     <div className={`w-16 h-0.5 ${
                       courses[idx + 1]?.isStarted ? "bg-accent" : "bg-secondary"
                     }`} />
