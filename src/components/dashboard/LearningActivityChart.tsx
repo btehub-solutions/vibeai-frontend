@@ -53,9 +53,9 @@ export function LearningActivityChart() {
         </select>
       </CardHeader>
       
-      <div className="flex-1 w-full min-h-[200px] sm:min-h-[250px] min-w-0">
+      <div className="flex-1 w-full min-h-[200px] sm:min-h-[250px] min-w-0 overflow-hidden">
         <ResponsiveContainer width="99%" height="100%">
-          <AreaChart data={data} margin={{ top: 10, right: 10, left: -15, bottom: 0 }}>
+          <AreaChart data={data} margin={{ top: 10, right: 5, left: -25, bottom: 0 }}>
             <defs>
               <linearGradient id="colorHours" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="hsl(var(--accent))" stopOpacity={0.3} />

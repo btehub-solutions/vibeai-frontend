@@ -56,23 +56,23 @@ const DashboardHeader = ({ title, subtitle, user, onMenuClick }: DashboardHeader
   };
 
   return (
-    <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8 md:mb-10">
-      <div className="flex items-center gap-4">
+    <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 md:gap-6 mb-6 md:mb-10 w-full overflow-hidden">
+      <div className="flex items-center gap-3 md:gap-4 min-w-0">
         {onMenuClick && (
           <button
             onClick={onMenuClick}
-            className="lg:hidden p-2.5 rounded-xl bg-card border border-white/[0.06] text-foreground hover:bg-white/[0.03] transition-all"
+            className="lg:hidden p-2.5 rounded-xl bg-card border border-white/[0.06] text-foreground hover:bg-white/[0.03] transition-all flex-shrink-0"
             aria-label="Toggle Menu"
           >
             <Menu size={20} />
           </button>
         )}
-        <div className="min-w-0">
+        <div className="min-w-0 flex-1">
           <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight truncate">
             {title}
           </h1>
           {subtitle && (
-            <p className="text-muted-foreground mt-0.5 text-xs md:text-base lg:text-lg line-clamp-1">
+            <p className="text-muted-foreground mt-0.5 text-xs md:text-base lg:text-lg truncate">
               {subtitle}
             </p>
           )}

@@ -106,8 +106,8 @@ const Dashboard = () => {
     <div className="min-h-screen bg-background lg:flex overflow-hidden">
       <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
-      <main className="flex-1 overflow-x-hidden overflow-y-auto w-full lg:h-screen min-w-0">
-        <div className="max-w-7xl mx-auto p-2 sm:p-6 lg:p-10 space-y-4 sm:space-y-8 min-w-0">
+      <main className="flex-1 overflow-x-hidden overflow-y-auto w-full lg:h-screen min-w-0 bg-background/50">
+        <div className="max-w-7xl mx-auto px-3 py-6 sm:p-6 lg:p-10 space-y-6 sm:space-y-8 min-w-0 overflow-hidden">
           <DashboardHeader
             title={`Welcome, ${
               user?.user_metadata?.full_name?.split(" ")[0] ||
@@ -139,7 +139,7 @@ const Dashboard = () => {
                 <motion.div
                   whileHover={{ y: -4, scale: 1.02 }}
                   key={stat.label}
-                  className="card-elevated p-3 sm:p-6 transition-all duration-300 border-t border-white/5 min-w-0"
+                  className="card-elevated p-3 sm:p-6 transition-all duration-300 border-t border-white/5 min-w-0 overflow-hidden"
                 >
                   <div className="flex items-start justify-between mb-2">
                     <div
@@ -203,7 +203,7 @@ const Dashboard = () => {
                         >
                           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.03] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                           
-                          <div className="flex items-start justify-between gap-3 sm:gap-4 mb-3 sm:mb-4 relative z-10">
+                          <div className="flex items-start justify-between gap-3 sm:gap-4 mb-3 sm:mb-4 relative z-10 min-w-0">
                             <div className="flex-1 min-w-0">
                               <h3 className="font-semibold text-foreground text-sm sm:text-base mb-0.5 sm:mb-1 group-hover:text-accent transition-colors truncate">
                                 {course.title}

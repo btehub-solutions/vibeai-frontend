@@ -235,12 +235,12 @@ export function IntelligencePanel() {
             </div>
             <div className="space-y-3">
               {performance?.topicBreakdown.map((topic) => (
-                <div key={topic.topicId} className="space-y-1.5 min-w-0">
-                  <div className="flex justify-between text-xs">
-                    <span className="text-muted-foreground truncate mr-2">{topic.topicName}</span>
-                    <span className="text-foreground font-medium">{topic.proficiency}%</span>
+                <div key={topic.topicId} className="space-y-1.5 min-w-0 w-full overflow-hidden">
+                  <div className="flex justify-between text-xs min-w-0">
+                    <span className="text-muted-foreground truncate mr-2 flex-1">{topic.topicName}</span>
+                    <span className="text-foreground font-medium flex-shrink-0">{topic.proficiency}%</span>
                   </div>
-                  <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                  <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden min-w-0">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${topic.proficiency}%` }}
