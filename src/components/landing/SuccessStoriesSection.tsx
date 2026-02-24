@@ -41,7 +41,7 @@ const testimonials = [
     role: "Content Creator",
     company: "YouTube (400K subscribers)",
     location: "Austin, TX",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1507152927220-18c1d3315b37?w=400&h=400&fit=crop&q=80",
     quote: "I went from spending 3 days editing a video to finishing in 4 hours. VibeAI taught me Runway, Midjourney, and AI-powered editing workflows. My channel grew 200% because I could post more consistently.",
     outcome: "200% channel growth",
     outcomeColor: "text-purple-400",
@@ -151,8 +151,6 @@ const SuccessStoriesSection = () => {
                       src={person.image}
                       alt={person.name}
                       className="w-full h-full object-cover"
-                      loading="lazy"
-                      decoding="async"
                     />
                   </div>
                   <div className="min-w-0">
