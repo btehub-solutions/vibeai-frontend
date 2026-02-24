@@ -133,7 +133,7 @@ const Dashboard = () => {
             {/* Stats Grid */}
             <motion.div
               variants={item}
-              className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 min-w-0 w-full overflow-hidden"
             >
               {statCards.map((stat, idx) => (
                 <motion.div
@@ -162,9 +162,9 @@ const Dashboard = () => {
               ))}
             </motion.div>
 
-            <div className="grid lg:grid-cols-3 gap-6">
+            <div className="grid lg:grid-cols-3 gap-6 min-w-0 w-full overflow-hidden">
               {/* Main Content Area */}
-              <div className="lg:col-span-2 space-y-6">
+              <div className="lg:col-span-2 space-y-6 min-w-0">
                 {/* Activity Chart */}
                 <motion.div variants={item} className="h-[280px] sm:h-[350px] md:h-[400px]">
                   <LearningActivityChart />
@@ -248,7 +248,7 @@ const Dashboard = () => {
               </div>
 
               {/* Right Sidebar — Intelligence Panel */}
-              <div className="space-y-6">
+              <div className="space-y-6 min-w-0">
                 {/* AI-Powered Intelligence Panel */}
                 <motion.div variants={item}>
                   <IntelligencePanel />

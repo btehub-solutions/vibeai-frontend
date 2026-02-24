@@ -177,7 +177,7 @@ const DashboardHeader = ({ title, subtitle, user, onMenuClick }: DashboardHeader
         </div>
 
         {/* Avatar */}
-        <button className="w-11 h-11 rounded-xl bg-accent flex items-center justify-center text-accent-foreground font-bold text-sm hover:bg-accent/90 transition-colors">
+        <button className="w-11 h-11 rounded-xl bg-accent flex items-center justify-center text-accent-foreground font-bold text-sm hover:bg-accent/90 transition-colors flex-shrink-0">
           {getUserInitials(user)}
         </button>
       </div>
