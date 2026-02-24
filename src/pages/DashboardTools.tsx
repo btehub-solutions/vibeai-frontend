@@ -44,51 +44,51 @@ const DashboardTools = () => {
         />
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
-          <div className="card-elevated p-5">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-accent" />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-8">
+          <div className="card-elevated p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-3 mb-1 sm:mb-2 text-center sm:text-left">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-accent/20 flex items-center justify-center">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
               </div>
               <div>
-                <p className="text-2xl font-bold">{stats.total}</p>
-                <p className="text-xs text-muted-foreground">Total Tools</p>
+                <p className="text-xl sm:text-2xl font-bold">{stats.total}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">Total Tools</p>
               </div>
             </div>
           </div>
 
-          <div className="card-elevated p-5">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center">
-                <TrendingUp className="w-5 h-5 text-orange-500" />
+          <div className="card-elevated p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-3 mb-1 sm:mb-2 text-center sm:text-left">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-orange-500/20 flex items-center justify-center">
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
               </div>
               <div>
-                <p className="text-2xl font-bold">{stats.trending}</p>
-                <p className="text-xs text-muted-foreground">Trending</p>
+                <p className="text-xl sm:text-2xl font-bold">{stats.trending}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">Trending</p>
               </div>
             </div>
           </div>
 
-          <div className="card-elevated p-5">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
-                <Bot className="w-5 h-5 text-purple-500" />
+          <div className="card-elevated p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-3 mb-1 sm:mb-2 text-center sm:text-left">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500" />
               </div>
               <div>
-                <p className="text-2xl font-bold">{stats.internal}</p>
-                <p className="text-xs text-muted-foreground">Internal</p>
+                <p className="text-xl sm:text-2xl font-bold">{stats.internal}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">Internal</p>
               </div>
             </div>
           </div>
 
-          <div className="card-elevated p-5">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
-                <Target className="w-5 h-5 text-blue-500" />
+          <div className="card-elevated p-4 sm:p-5">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 sm:gap-3 mb-1 sm:mb-2 text-center sm:text-left">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                <Target className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" />
               </div>
               <div>
-                <p className="text-2xl font-bold">{stats.categories}</p>
-                <p className="text-xs text-muted-foreground">Categories</p>
+                <p className="text-xl sm:text-2xl font-bold">{stats.categories}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground">Categories</p>
               </div>
             </div>
           </div>
@@ -110,12 +110,12 @@ const DashboardTools = () => {
 
         {/* Filters */}
         <div className="flex flex-col md:flex-row gap-4 mb-8">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap no-scrollbar">
+          <div className="flex items-center gap-2 overflow-x-auto pb-4 -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap no-scrollbar">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                className={`flex-shrink-0 px-4 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
                   activeCategory === category
                     ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
                     : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80"
@@ -128,7 +128,7 @@ const DashboardTools = () => {
 
           <button
             onClick={() => setShowTrendingOnly(!showTrendingOnly)}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 ${
+            className={`flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-200 md:ml-auto ${
               showTrendingOnly
                 ? "bg-accent text-accent-foreground shadow-lg shadow-accent/20"
                 : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80"

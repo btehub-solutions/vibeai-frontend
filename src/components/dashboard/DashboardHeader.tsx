@@ -55,15 +55,15 @@ const DashboardHeader = ({ title, subtitle, user }: DashboardHeaderProps) => {
   };
 
   return (
-    <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10">
-      <div className="pl-16 lg:pl-0">
+    <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8 md:mb-10">
+      <div className="pl-14 lg:pl-0">
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground tracking-tight line-clamp-1">{title}</h1>
         {subtitle && (
-          <p className="text-muted-foreground mt-1 text-sm md:text-base lg:text-lg line-clamp-1">{subtitle}</p>
+          <p className="text-muted-foreground mt-1 text-sm md:text-base lg:text-lg line-clamp-2 max-w-2xl">{subtitle}</p>
         )}
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 pl-14 lg:pl-0">
         {/* Search */}
         <div className="relative hidden md:block">
           <Search

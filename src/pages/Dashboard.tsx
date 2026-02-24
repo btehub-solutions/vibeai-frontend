@@ -130,31 +130,31 @@ const Dashboard = () => {
             {/* Stats Grid */}
             <motion.div
               variants={item}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
             >
               {statCards.map((stat, idx) => (
                 <motion.div
                   whileHover={{ y: -4, scale: 1.02 }}
                   key={stat.label}
-                  className="card-elevated p-6 transition-all duration-300 border-t border-white/5"
+                  className="card-elevated p-4 sm:p-6 transition-all duration-300 border-t border-white/5"
                 >
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-start justify-between mb-2 sm:mb-4">
                     <div
-                      className={`w-12 h-12 rounded-2xl ${stat.bg} flex items-center justify-center`}
+                      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl ${stat.bg} flex items-center justify-center`}
                     >
-                      <stat.icon size={20} className={stat.color} />
+                      <stat.icon size={18} className={stat.color} />
                     </div>
                     {idx === 3 && (
-                      <span className="flex h-3 w-3 relative">
+                      <span className="flex h-2 w-2 sm:h-3 sm:w-3 relative">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 sm:h-3 sm:w-3 bg-orange-500"></span>
                       </span>
                     )}
                   </div>
-                  <p className="text-3xl font-bold text-foreground mb-1 tracking-tight">
+                  <p className="text-xl sm:text-3xl font-bold text-foreground mb-0.5 sm:mb-1 tracking-tight">
                     {stat.value}
                   </p>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
+                  <p className="text-[10px] sm:text-sm text-muted-foreground">{stat.label}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -168,53 +168,53 @@ const Dashboard = () => {
                 </motion.div>
 
                 {/* Continue Learning */}
-                <motion.div variants={item} className="card-elevated p-5 md:p-8">
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="flex items-center gap-3">
+                <motion.div variants={item} className="card-elevated p-4 sm:p-8">
+                  <div className="flex items-center justify-between mb-6 sm:mb-8">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <div className="p-2 rounded-lg bg-accent/10">
-                        <Zap size={20} className="text-accent" />
+                        <Zap size={18} className="text-accent" />
                       </div>
-                      <h2 className="text-xl font-semibold text-foreground">
+                      <h2 className="text-lg sm:text-xl font-semibold text-foreground">
                         Continue Learning
                       </h2>
                     </div>
                     <Link
                       to="/dashboard/courses"
-                      className="text-sm text-accent hover:text-accent/80 transition-colors flex items-center gap-1 font-medium group"
+                      className="text-xs sm:text-sm text-accent hover:text-accent/80 transition-colors flex items-center gap-1 font-medium group"
                     >
                       View All
                       <ArrowRight
-                        size={14}
+                        size={12}
                         className="group-hover:translate-x-1 transition-transform"
                       />
                     </Link>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     {learningPath.length > 0 ? (
                       learningPath.slice(0, 3).map((course) => (
                         <Link
                           key={course.courseId}
                           to={`/dashboard/courses/${course.courseId}`}
-                          className="relative block p-5 rounded-2xl bg-secondary/30 hover:bg-secondary/60 border border-white/5 hover:border-accent/20 transition-all group overflow-hidden"
+                          className="relative block p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-secondary/30 hover:bg-secondary/60 border border-white/5 hover:border-accent/20 transition-all group overflow-hidden"
                         >
                           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.03] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                           
-                          <div className="flex items-start justify-between gap-4 mb-4 relative z-10">
-                            <div className="flex-1">
-                              <h3 className="font-semibold text-foreground mb-1 group-hover:text-accent transition-colors">
+                          <div className="flex items-start justify-between gap-3 sm:gap-4 mb-3 sm:mb-4 relative z-10">
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-semibold text-foreground text-sm sm:text-base mb-0.5 sm:mb-1 group-hover:text-accent transition-colors truncate">
                                 {course.title}
                               </h3>
-                              <p className="text-sm text-muted-foreground">
+                              <p className="text-[11px] sm:text-sm text-muted-foreground truncate">
                                 Next: {course.nextLesson}
                               </p>
                             </div>
-                            <button className="flex-shrink-0 w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-all shadow-lg shadow-accent/5">
-                              <Play size={18} fill="currentColor" />
+                            <button className="flex-shrink-0 w-9 h-9 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-all shadow-lg shadow-accent/5">
+                              <Play size={14} fill="currentColor" />
                             </button>
                           </div>
-                          <div className="flex items-center gap-4 relative z-10">
-                            <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
+                          <div className="flex items-center gap-3 sm:gap-4 relative z-10">
+                            <div className="flex-1 h-1 sm:h-1.5 bg-muted rounded-full overflow-hidden">
                               <div
                                 className="h-full bg-accent rounded-full transition-all relative"
                                 style={{ width: `${course.progress}%` }}
@@ -222,19 +222,19 @@ const Dashboard = () => {
                                 <div className="absolute inset-0 bg-white/20 animate-pulse" />
                               </div>
                             </div>
-                            <span className="text-xs text-muted-foreground font-medium">
+                            <span className="text-[10px] sm:text-xs text-muted-foreground font-medium">
                               {course.progress}%
                             </span>
                           </div>
                         </Link>
                       ))
                     ) : (
-                      <div className="text-center py-12 text-muted-foreground bg-secondary/20 rounded-2xl border border-dashed border-white/10">
-                        <BookOpen className="w-12 h-12 mx-auto mb-4 opacity-30" />
-                        <p>No active courses found.</p>
+                      <div className="text-center py-8 sm:py-12 text-muted-foreground bg-secondary/20 rounded-xl sm:rounded-2xl border border-dashed border-white/10">
+                        <BookOpen className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 opacity-30" />
+                        <p className="text-sm">No active courses found.</p>
                         <Link
                           to="/dashboard/courses"
-                          className="text-accent hover:underline mt-2 inline-block"
+                          className="text-accent hover:underline mt-1 sm:2 inline-block text-sm"
                         >
                           Start learning today
                         </Link>
@@ -262,35 +262,35 @@ const Dashboard = () => {
                     Weekly Goal
                   </h2>
                   <div className="relative pt-2 flex justify-center mb-8">
-                    <div className="relative w-40 h-40">
+                    <div className="relative w-32 h-32 sm:w-40 sm:h-40">
                       <svg className="w-full h-full transform -rotate-90">
                         <circle
-                          cx="80"
-                          cy="80"
-                          r="70"
+                          cx="50%"
+                          cy="50%"
+                          r="45%"
                           fill="transparent"
                           stroke="hsl(var(--muted))"
-                          strokeWidth="12"
+                          strokeWidth="10"
                           strokeLinecap="round"
                         />
                         <circle
-                          cx="80"
-                          cy="80"
-                          r="70"
+                          cx="50%"
+                          cy="50%"
+                          r="45%"
                           fill="transparent"
                           stroke="hsl(var(--accent))"
-                          strokeWidth="12"
-                          strokeDasharray={440}
-                          strokeDashoffset={440 - (440 * stats.completionRate) / 100}
+                          strokeWidth="10"
+                          strokeDasharray="283"
+                          strokeDashoffset={283 - (283 * stats.completionRate / 100)}
                           strokeLinecap="round"
                           className="transition-all duration-1000 ease-out"
                         />
                       </svg>
                       <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-4xl font-bold text-foreground">
+                        <span className="text-2xl sm:text-4xl font-bold text-foreground">
                           {stats.completionRate}%
                         </span>
-                        <span className="text-xs text-muted-foreground">Completed</span>
+                        <span className="text-[10px] sm:text-xs text-muted-foreground uppercase tracking-wider">Goal</span>
                       </div>
                     </div>
                   </div>
