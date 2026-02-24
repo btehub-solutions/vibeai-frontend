@@ -1,10 +1,4 @@
-// ═══════════════════════════════════════════════════════════════════════
-// VibeAI Intelligence Dashboard Panel
-// Shows learner insights, predictions, and adaptive recommendations
-// Integrates seamlessly into the existing dashboard design
-// ═══════════════════════════════════════════════════════════════════════
-
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Brain,
@@ -27,14 +21,15 @@ import {
   ChevronRight,
   AlertCircle,
   ArrowUpRight,
+  Compass,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useIntelligence } from '@/hooks/useIntelligence';
 import { supabase } from '@/lib/supabase';
+import { Area, AreaChart, ResponsiveContainer } from 'recharts';
 import type {
   LessonRecommendation,
   PredictiveSignal,
-  AdaptivePath,
 } from '@/intelligence';
 
 // ─── Difficulty Badge ────────────────────────────────────────────────
@@ -104,16 +99,16 @@ function RecommendationCard({ rec, index }: { rec: LessonRecommendation; index: 
     >
       <Link
         to={`/dashboard/courses/${rec.courseId}/lessons/${rec.lessonId}`}
-        className="group flex items-start gap-3 p-3.5 rounded-xl bg-secondary/30 hover:bg-secondary/60 border border-white/5 hover:border-accent/20 transition-all"
+        className="group flex items-start gap-2 sm:gap-3 p-3 sm:p-3.5 rounded-xl bg-secondary/30 hover:bg-secondary/60 border border-white/5 hover:border-accent/20 transition-all"
       >
-        <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${color}`}>
-          <TypeIcon size={16} />
+        <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${color}`}>
+          <TypeIcon size={14} className="sm:w-4 sm:h-4" />
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-foreground truncate group-hover:text-accent transition-colors">
+          <p className="text-xs sm:text-sm font-medium text-foreground truncate group-hover:text-accent transition-colors">
             {rec.title}
           </p>
-          <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-2">
+          <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-0.5 line-clamp-1 sm:line-clamp-2">
             {rec.reason}
           </p>
           <div className="flex items-center gap-2 mt-1.5">
@@ -154,13 +149,13 @@ function PredictionAlert({ signal, index }: { signal: PredictiveSignal; index: n
       initial={{ opacity: 0, y: 5 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className={`p-3.5 rounded-xl border ${severityStyles[signal.severity]}`}
+      className={`p-3 sm:p-3.5 rounded-xl border ${severityStyles[signal.severity]}`}
     >
-      <div className="flex items-start gap-2.5">
-        <SeverityIcon size={15} className={`${severityColors[signal.severity]} flex-shrink-0 mt-0.5`} />
+      <div className="flex items-start gap-2 sm:gap-2.5">
+        <SeverityIcon size={14} className={`${severityColors[signal.severity]} flex-shrink-0 mt-0.5`} />
         <div className="flex-1 min-w-0">
           <p className="text-xs font-medium text-foreground">{signal.message}</p>
-          <p className="text-[11px] text-muted-foreground mt-1">{signal.recommendation}</p>
+          <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-1">{signal.recommendation}</p>
         </div>
       </div>
     </motion.div>
@@ -193,117 +188,106 @@ export function IntelligencePanel() {
   const summary = intelligence.profileSummary;
   const path = intelligence.adaptivePath;
   const predictions = intelligence.predictions;
+  const performance = intelligence.performance;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6 min-w-0 overflow-hidden">
       {/* ── Progress Insight Banner ──────────────────────────────────── */}
       {path?.progressInsight && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="card-elevated p-5 border-l-4 border-accent bg-gradient-to-r from-accent/5 via-transparent to-transparent"
+          className="card-elevated p-4 sm:p-5 border-l-4 border-accent bg-gradient-to-r from-accent/5 via-transparent to-transparent min-w-0"
         >
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center flex-shrink-0">
               <Brain className="w-5 h-5 text-accent" />
             </div>
-            <div className="flex-1">
-              <p className="text-xs font-bold uppercase tracking-widest text-accent mb-1">AI Learning Insight</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{path.progressInsight}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] font-bold uppercase tracking-widest text-accent mb-1">AI Insight</p>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{path.progressInsight}</p>
             </div>
           </div>
         </motion.div>
       )}
 
-      {/* ── Learner Profile Card ─────────────────────────────────────── */}
-      <div className="card-elevated p-6">
-        <div className="flex items-center justify-between mb-5">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center">
-              <GraduationCap size={18} className="text-accent" />
-            </div>
-            <h3 className="text-base font-semibold text-foreground">Your Learning Profile</h3>
+      {/* ── Intelligence Dashboard ──────────────────────────────────── */}
+      <div className="card-elevated p-4 sm:p-6 mb-3 sm:mb-6 overflow-hidden min-w-0">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="p-2 sm:p-2.5 rounded-xl bg-accent/10 flex-shrink-0">
+            <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
           </div>
-          <RiskBadge risk={summary.risk} />
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
-          <div className="p-3 rounded-xl bg-secondary/40 border border-white/5">
-            <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Knowledge</p>
-            <div className="flex items-end gap-1.5">
-              <span className="text-2xl font-bold text-foreground">{summary.score}</span>
-              <span className="text-xs text-muted-foreground mb-1">/100</span>
-            </div>
-          </div>
-          <div className="p-3 rounded-xl bg-secondary/40 border border-white/5">
-            <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Level</p>
-            <div className="mt-1">
-              <DifficultyBadge level={summary.level} />
-            </div>
-          </div>
-          <div className="p-3 rounded-xl bg-secondary/40 border border-white/5">
-            <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Quiz Avg</p>
-            <span className="text-2xl font-bold text-foreground">{summary.quizAverage}%</span>
-          </div>
-          <div className="p-3 rounded-xl bg-secondary/40 border border-white/5">
-            <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Speed</p>
-            <span className="text-sm font-semibold text-foreground capitalize">{summary.speed}</span>
+          <div className="min-w-0">
+            <h2 className="text-lg sm:text-xl font-bold text-foreground truncate">Intelligence Hub</h2>
+            <p className="text-[10px] sm:text-xs text-muted-foreground truncate">AI-powered learner insights & predictions</p>
           </div>
         </div>
 
-        {/* Strengths & Weaknesses */}
-        {(summary.strengths.length > 0 || summary.weaknesses.length > 0) && (
-          <div className="space-y-3">
-            {summary.strengths.length > 0 && (
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-1.5">Strengths</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {summary.strengths.map(s => (
-                    <span key={s} className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-            {summary.weaknesses.length > 0 && (
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-amber-400 mb-1.5">Focus Areas</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {summary.weaknesses.map(w => (
-                    <span key={w} className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                      {w}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Difficulty Calibration */}
-        {path?.difficultyCalibration && path.difficultyCalibration.currentLevel !== path.difficultyCalibration.recommendedLevel && (
-          <div className="mt-4 p-3 rounded-xl bg-accent/5 border border-accent/15">
-            <div className="flex items-center gap-2 mb-1">
-              <Sparkles size={12} className="text-accent" />
-              <p className="text-[10px] font-bold uppercase tracking-widest text-accent">Difficulty Adjustment</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 mb-6">
+          {/* Topic Mastery */}
+          <div className="space-y-4 min-w-0">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+                <Compass size={14} className="text-accent" />
+                Topic Mastery
+              </h3>
+              <span className="text-[10px] text-muted-foreground">Updated</span>
             </div>
-            <p className="text-xs text-muted-foreground">{path.difficultyCalibration.reason}</p>
+            <div className="space-y-3">
+              {performance?.topicBreakdown.map((topic) => (
+                <div key={topic.topicId} className="space-y-1.5 min-w-0">
+                  <div className="flex justify-between text-xs">
+                    <span className="text-muted-foreground truncate mr-2">{topic.topicName}</span>
+                    <span className="text-foreground font-medium">{topic.proficiency}%</span>
+                  </div>
+                  <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${topic.proficiency}%` }}
+                      transition={{ duration: 1, ease: "easeOut" }}
+                      className="h-full bg-gradient-to-r from-accent to-primary rounded-full"
+                    />
+                  </div>
+                </div>
+              ))}
+              {(!performance?.topicBreakdown || performance.topicBreakdown.length === 0) && (
+                <p className="text-[10px] text-muted-foreground italic">No mastery data yet.</p>
+              )}
+            </div>
           </div>
-        )}
+
+          {/* Predictive Signals Mini-Panel */}
+          <div className="space-y-4 min-w-0">
+            <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+              <Zap size={14} className="text-primary" />
+              Learning Signals
+            </h3>
+            <div className="space-y-2">
+              {predictions.slice(0, 2).map((signal, i) => (
+                <PredictionAlert key={i} signal={signal} index={i} />
+              ))}
+              {predictions.length === 0 && (
+                <div className="p-4 rounded-xl border border-white/5 bg-white/5 text-center">
+                  <CheckCircle2 size={24} className="text-emerald-400 mx-auto mb-2 opacity-50" />
+                  <p className="text-[10px] text-muted-foreground">All signals clear! You're learning at an optimal pace.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ── Adaptive Recommendations ─────────────────────────────────── */}
       {path && (
-        <div className="card-elevated p-6">
+        <div className="card-elevated p-4 sm:p-6 min-w-0 overflow-hidden">
           <div className="flex items-center gap-2.5 mb-5">
-            <div className="w-9 h-9 rounded-lg bg-purple-500/10 flex items-center justify-center">
-              <Sparkles size={18} className="text-purple-400" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+              <Sparkles size={16} className="text-purple-400" />
             </div>
-            <h3 className="text-base font-semibold text-foreground">Personalized For You</h3>
+            <h3 className="text-sm sm:text-base font-semibold text-foreground">Personalized Path</h3>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {/* Next Lesson (Primary) */}
             {path.nextLesson && (
               <div>
@@ -312,89 +296,25 @@ export function IntelligencePanel() {
               </div>
             )}
 
-            {/* Reinforcement */}
-            {path.reinforcementTopics.length > 0 && (
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-amber-400 mb-2 mt-4">Reinforce Knowledge</p>
-                {path.reinforcementTopics.slice(0, 2).map((rec, i) => (
-                  <RecommendationCard key={rec.lessonId} rec={rec} index={i + 1} />
-                ))}
-              </div>
-            )}
-
-            {/* Practice */}
-            {path.practiceActivities.length > 0 && (
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-purple-400 mb-2 mt-4">Practice & Test</p>
-                {path.practiceActivities.slice(0, 2).map((rec, i) => (
-                  <RecommendationCard key={rec.lessonId} rec={rec} index={i + 2} />
-                ))}
-              </div>
-            )}
-
-            {/* Advanced */}
-            {path.advancedSuggestions.length > 0 && (
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-rose-400 mb-2 mt-4">Advanced Challenge</p>
-                {path.advancedSuggestions.slice(0, 1).map((rec, i) => (
-                  <RecommendationCard key={rec.lessonId} rec={rec} index={i + 3} />
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* ── Predictive Signals ───────────────────────────────────────── */}
-      {predictions.length > 0 && (
-        <div className="card-elevated p-6">
-          <div className="flex items-center gap-2.5 mb-5">
-            <div className="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center">
-              <Shield size={18} className="text-blue-400" />
-            </div>
-            <h3 className="text-base font-semibold text-foreground">Learning Signals</h3>
-          </div>
-          <div className="space-y-2.5">
-            {predictions.slice(0, 3).map((signal, i) => (
-              <PredictionAlert key={`${signal.type}-${i}`} signal={signal} index={i} />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* ── Topic Performance ────────────────────────────────────────── */}
-      {intelligence.performance?.topicBreakdown && intelligence.performance.topicBreakdown.length > 0 && (
-        <div className="card-elevated p-6">
-          <div className="flex items-center gap-2.5 mb-5">
-            <div className="w-9 h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-              <BarChart3 size={18} className="text-emerald-400" />
-            </div>
-            <h3 className="text-base font-semibold text-foreground">Topic Mastery</h3>
-          </div>
-          <div className="space-y-3">
-            {intelligence.performance.topicBreakdown.map(topic => (
-              <div key={topic.topicId} className="space-y-1.5">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-foreground">{topic.topicName}</span>
-                    <TrendIcon trend={topic.trend} />
-                  </div>
-                  <span className="text-sm font-bold text-foreground">{topic.proficiency}%</span>
+            {/* Other categories collapsed on mobile if many? No, just keep simple */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {path.reinforcementTopics.length > 0 && (
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-amber-400 mb-2">Reinforcement</p>
+                  {path.reinforcementTopics.slice(0, 1).map((rec, i) => (
+                    <RecommendationCard key={rec.lessonId} rec={rec} index={i + 1} />
+                  ))}
                 </div>
-                <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${topic.proficiency}%` }}
-                    transition={{ duration: 0.8, ease: 'easeOut' }}
-                    className={`h-full rounded-full ${
-                      topic.proficiency >= 80 ? 'bg-emerald-500' :
-                      topic.proficiency >= 50 ? 'bg-accent' :
-                      'bg-amber-500'
-                    }`}
-                  />
+              )}
+              {path.practiceActivities.length > 0 && (
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-purple-400 mb-2">Practice</p>
+                  {path.practiceActivities.slice(0, 1).map((rec, i) => (
+                    <RecommendationCard key={rec.lessonId} rec={rec} index={i + 2} />
+                  ))}
                 </div>
-              </div>
-            ))}
+              )}
+            </div>
           </div>
         </div>
       )}

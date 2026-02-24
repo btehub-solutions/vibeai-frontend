@@ -34,10 +34,10 @@ const DashboardTools = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background lg:flex">
+    <div className="min-h-screen bg-background lg:flex overflow-hidden">
       <DashboardSidebar isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
 
-      <main className="flex-1 p-4 md:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full lg:h-screen">
+      <main className="flex-1 p-3 sm:p-6 lg:p-10 overflow-x-hidden overflow-y-auto w-full lg:h-screen min-w-0">
         <DashboardHeader
           title="AI Tools Library"
           subtitle="Explore and learn about the most impactful AI tools"

@@ -153,7 +153,7 @@ export const ConsultationCard: React.FC = () => {
   };
 
   return (
-    <div className="card-elevated p-6 md:p-8 bg-gradient-to-br from-card via-card to-secondary/20 relative overflow-hidden border border-white/5 shadow-2xl">
+    <div className="card-elevated p-4 sm:p-6 md:p-8 bg-gradient-to-br from-card via-card to-secondary/20 relative overflow-hidden border border-white/5 shadow-2xl">
       {/* Decorative Glow */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 

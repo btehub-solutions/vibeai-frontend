@@ -38,24 +38,24 @@ export function LearningActivityChart() {
   const data = view === "Weekly" ? weeklyData : monthlyData;
 
   return (
-    <div className="card-elevated p-6 h-full flex flex-col">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-foreground">
+    <div className="card-elevated p-4 sm:p-6 h-full flex flex-col overflow-hidden">
+      <div className="flex items-center justify-between mb-4 sm:mb-6">
+        <h2 className="text-lg sm:text-xl font-semibold text-foreground">
           Learning Activity
         </h2>
         <select 
           value={view}
           onChange={(e) => setView(e.target.value)}
-          className="bg-secondary/50 text-xs text-muted-foreground border-none rounded-lg px-2 py-1 outline-none"
+          className="bg-secondary/50 text-[10px] sm:text-xs text-muted-foreground border-none rounded-lg px-2 py-1 outline-none"
         >
           <option value="Weekly">Weekly</option>
           <option value="Monthly">Monthly</option>
         </select>
       </div>
       
-      <div className="flex-1 w-full min-h-[250px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={data} margin={{ top: 10, right: 0, left: -20, bottom: 0 }}>
+      <div className="flex-1 w-full min-h-[200px] sm:min-h-[250px] min-w-0">
+        <ResponsiveContainer width="99%" height="100%">
+          <AreaChart data={data} margin={{ top: 10, right: 10, left: -15, bottom: 0 }}>
             <defs>
               <linearGradient id="colorHours" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="hsl(var(--accent))" stopOpacity={0.3} />
@@ -66,14 +66,14 @@ export function LearningActivityChart() {
             <XAxis 
               dataKey="name" 
               stroke="#666" 
-              fontSize={12} 
+              fontSize={10} 
               tickLine={false} 
               axisLine={false}
               dy={10}
             />
             <YAxis 
               stroke="#666" 
-              fontSize={12} 
+              fontSize={10} 
               tickLine={false} 
               axisLine={false}
               tickFormatter={(value) => `${value}h`}

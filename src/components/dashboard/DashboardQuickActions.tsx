@@ -40,13 +40,13 @@ export function DashboardQuickActions() {
         >
           <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
           
-          <div className="relative z-10 flex flex-row sm:flex-col items-center sm:items-start gap-3 sm:gap-4">
+          <div className="relative z-10 flex flex-row sm:flex-col items-center sm:items-start gap-3 sm:gap-4 min-w-0 w-full">
             <div className={`p-2 sm:p-3 rounded-lg sm:rounded-xl bg-white/10 backdrop-blur-md ${action.accent} group-hover:scale-110 transition-transform flex-shrink-0`}>
               <action.icon size={20} className="sm:w-6 sm:h-6" />
             </div>
             
-            <div className="min-w-0">
-              <h3 className="text-white font-semibold text-base sm:text-lg mb-0.5 sm:mb-1 group-hover:text-white transition-colors truncate">
+            <div className="min-w-0 flex-1 sm:w-full">
+              <h3 className="text-white font-semibold text-sm sm:text-lg mb-0.5 sm:mb-1 group-hover:text-white transition-colors truncate">
                 {action.title}
               </h3>
               <p className="text-white/60 text-[10px] sm:text-xs truncate sm:whitespace-normal">
