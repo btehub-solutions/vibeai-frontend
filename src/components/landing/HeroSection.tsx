@@ -39,6 +39,10 @@ const HeroSection = () => {
           src="/hero-image.png" 
           alt="AI Background" 
           className="w-full h-full object-cover object-[center_top] opacity-60"
+          width="1200"
+          height="800"
+          fetchPriority="high"
+          decoding="async"
         />
       </div>
 
@@ -150,6 +154,10 @@ const HeroSection = () => {
                src="/hero-image.png" 
                alt="Professional Human interacting with Humanoid AI" 
                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-[15s] ease-out group-hover:scale-110 z-0 opacity-90"
+               width="1200"
+               height="800"
+               fetchPriority="high"
+               decoding="async"
              />
 
              {/* Floating Info Cards (Glassmorphism) */}

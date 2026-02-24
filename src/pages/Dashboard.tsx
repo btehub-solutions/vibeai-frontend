@@ -104,8 +104,8 @@ const Dashboard = () => {
     <div className="min-h-screen bg-background flex overflow-hidden">
       <DashboardSidebar />
 
-      <main className="flex-1 overflow-y-auto h-screen">
-        <div className="max-w-7xl mx-auto p-6 lg:p-10 space-y-8">
+      <main className="flex-1 overflow-y-auto h-screen relative pt-16 lg:pt-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-8 lg:py-10 space-y-8">
           <DashboardHeader
             title={`Welcome back, ${
               user?.user_metadata?.full_name?.split(" ")[0] ||
@@ -140,7 +140,7 @@ const Dashboard = () => {
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div
-                      className={`w-12 h-12 rounded-2xl ${stat.bg} flex items-center justify-center`}
+                      className={`w-10 h-10 md:w-12 md:h-12 rounded-2xl ${stat.bg} flex items-center justify-center`}
                     >
                       <stat.icon size={20} className={stat.color} />
                     </div>

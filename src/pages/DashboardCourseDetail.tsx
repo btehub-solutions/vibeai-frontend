@@ -114,7 +114,7 @@ const DashboardCourseDetail = () => {
     <div className="min-h-screen bg-background flex">
       <DashboardSidebar />
 
-      <main className="flex-1 p-6 lg:p-10 overflow-auto">
+      <main className="flex-1 px-4 py-8 lg:p-10 overflow-auto pt-16 lg:pt-10">
         <div className="max-w-6xl mx-auto">
           <Button 
             variant="ghost" 

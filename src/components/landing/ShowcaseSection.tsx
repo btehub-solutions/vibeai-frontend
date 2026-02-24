@@ -135,6 +135,10 @@ const ShowcaseSection = () => {
                     src={features[activeFeature].image} 
                     alt={features[activeFeature].title}
                     className="w-full h-full object-cover transition-all duration-700 opacity-90 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="600"
                  />
                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
               </div>
