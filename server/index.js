@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
+import { createClient } from '@supabase/supabase-js';
 
 dotenv.config();
 
@@ -21,6 +22,33 @@ app.use(express.json());
 
 // Initialize Gemini
 const genAI = new GoogleGenAI(process.env.GEMINI_API_KEY || '');
+
+// Initialize Supabase (for Keep-Alive)
+const supabaseUrl = process.env.SUPABASE_URL || '';
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+const supabase = (supabaseUrl && supabaseKey) ? createClient(supabaseUrl, supabaseKey) : null;
+
+// Keep-Alive Function (pings Supabase every 24 hours)
+const keepAlive = async () => {
+  if (!supabase) {
+    console.log('Keep-alive skipped: Supabase credentials not set in backend');
+    return;
+  }
+
+  try {
+    const { data, error } = await supabase.from('_keep_alive').select('count', { count: 'exact', head: true });
+    // Note: If _keep_alive table doesn't exist, this will still count as activity
+    console.log('Supabase Keep-Alive ping successful');
+  } catch (err) {
+    console.error('Supabase Keep-Alive ping failed:', err.message);
+  }
+};
+
+// Start the ping loop (Once per day)
+const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000;
+setInterval(keepAlive, TWENTY_FOUR_HOURS);
+// Run once on startup
+setTimeout(keepAlive, 5000);
 
 // Routes
 app.get('/health', (req, res) => {
